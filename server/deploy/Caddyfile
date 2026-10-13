@@ -1,0 +1,14 @@
+# Caddy 会自动申请 HTTPS 证书。把两个域名换成你自己的。
+capsight.example.com {
+	root * /srv/capsight/web/dist
+	try_files {path} /index.html
+	file_server
+	encode gzip
+}
+
+api.capsight.example.com {
+	reverse_proxy 127.0.0.1:8787 {
+		# 让实时进度（SSE）立即推送，不被缓冲
+		flush_interval -1
+	}
+}

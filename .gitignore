@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.DS_Store
+server/data/
+server/.env
+server/keys.env
+*.log
+
+# local design previews
+/*.html

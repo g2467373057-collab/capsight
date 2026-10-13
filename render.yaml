@@ -1,0 +1,30 @@
+# Render Blueprint — creates one web service (web app + API) in Singapore on the free plan.
+# Keys marked "sync: false" are asked for in the Render dashboard; they never live in the repo.
+services:
+  - type: web
+    name: capsight
+    runtime: docker
+    plan: free
+    region: singapore
+    healthCheckPath: /api/health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: REQUIRE_EMAIL_VERIFICATION
+        value: "false"
+      - key: LLM_PROVIDER
+        value: deepseek
+      - key: SEARCH_PROVIDER_EN
+        value: serper
+      - key: SEARCH_PROVIDER_ZH
+        value: bocha
+      - key: X_ENABLED
+        value: "false"
+      - key: RUNS_PER_DAY_GLOBAL
+        value: "100"
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: SERPER_API_KEY
+        sync: false
+      - key: BOCHA_API_KEY
+        sync: false

@@ -1,0 +1,16 @@
+{
+  "name": "capsight-server",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Capsight API: intent → multi-source fetch → verify → self-check → organise → CSV",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "dev": "node --no-warnings=ExperimentalWarning --watch src/main.ts",
+    "start": "node --no-warnings=ExperimentalWarning src/main.ts",
+    "test": "node --no-warnings=ExperimentalWarning --test test/*.test.ts",
+    "typecheck": "tsc -p tsconfig.json"
+  }
+}

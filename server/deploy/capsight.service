@@ -1,0 +1,14 @@
+# /etc/systemd/system/capsight.service
+[Unit]
+Description=Capsight API
+After=network.target
+
+[Service]
+WorkingDirectory=/srv/capsight/server
+ExecStart=/usr/bin/node --no-warnings=ExperimentalWarning src/main.ts
+Restart=always
+User=capsight
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

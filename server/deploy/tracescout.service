@@ -1,0 +1,14 @@
+# /etc/systemd/system/tracescout.service
+[Unit]
+Description=TraceScout API
+After=network.target
+
+[Service]
+WorkingDirectory=/srv/tracescout/server
+ExecStart=/usr/bin/node --no-warnings=ExperimentalWarning src/main.ts
+Restart=always
+User=tracescout
+Environment=NODE_ENV=production
+
+[Install]
+WantedBy=multi-user.target

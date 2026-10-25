@@ -2,7 +2,7 @@
 
 - **Author:** LI YISHA (Harper, the operator). Written and handed to AI on **19 October 2026, 20:58 SGT**, after reviewing Batch A.
 - **Why:** Batch A showed wrong official sites and one-line pricing. Yisa's own check of monday.com/pricing (screenshot, 19 Oct) showed what a complete answer looks like.
-- **Implemented by AI (Aiden)** on 19 Oct 2026 in server/src (intent, collect, facts, run) and web/src, with 35 automated tests passing (39 after v2.1, 43 after v2.2).
+- **Implemented by AI (Aiden)** on 19 Oct 2026 in server/src (intent, collect, facts, run) and web/src, with 35 automated tests passing (39 after v2.1, 43 after v2.2, 46 after v2.3).
 
 ## What was implemented as designed
 - Intent classification stays a separate step that outputs JSON only; two branches: A = user does not know competitors (list + basic introduction), B = user names them (full modules).
@@ -27,6 +27,11 @@
 - Yisa compared Capsight with how a general AI assistant researches pricing: it already knows the competitors, runs one specific search per company with the points that matter in the query, prefers official pages and otherwise a dated third-party summary, and asks the page only the questions that fill the table.
 - Adopted (decided by Yisa, 16:33 SGT): (1) one specific pricing search per company naming the template points and the user's own fields; (2) a dated third-party pricing page (updated within 12 months) is accepted when no official page states the price, always labelled 「第三方来源 · date」 and audited in full.
 - Kept from Capsight, not adopted from the assistant: every value must quote text the program finds on the page. The assistant's own explanation of why it is accurate is not evidence; it has not been measured with the same audit.
+
+## v2.3 · 25 October 2026 · Harper's product review of v2.2
+- **Positioning narrowed to SaaS competitor research** (22:20): page copy, examples and README no longer invite schools, cities or open-source projects. Other research types come after this one works.
+- **Branch A shows basic company information** (22:27): besides the introduction, every competitor found gets country/region, company size and funding, read from the official about page, web pages and news, each quoted with its year.
+- **One click from A to B** (22:27): after a "find competitors" run, the user does not start over. A button carries the list and the official sites already confirmed into a details run (features, pricing template, social, news); the user can still remove competitors or fields first. Carried-over sites are not re-identified, and pages fetched in the first run are reused from the cache.
 
 ---
 

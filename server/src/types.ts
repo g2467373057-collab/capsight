@@ -2,15 +2,15 @@
 
 export type Lang = 'zh' | 'en'
 
-export type Dimension = 'name' | 'overview' | 'region' | 'features' | 'pricing' | 'contact' | 'social' | 'news'
-export const DIMENSIONS: Dimension[] = ['name', 'overview', 'region', 'features', 'pricing', 'contact', 'social', 'news']
+export type Dimension = 'name' | 'overview' | 'region' | 'size' | 'funding' | 'features' | 'pricing' | 'contact' | 'social' | 'news'
+export const DIMENSIONS: Dimension[] = ['name', 'overview', 'region', 'size', 'funding', 'features', 'pricing', 'contact', 'social', 'news']
 
 /**
  * Default fields per branch (design v2, 19 Oct 2026):
- * A · own   — the user does not know the competitors: a list with a basic introduction only.
+ * A · own   — the user does not know the competitors: a list with basic company information (introduction, country, size, funding), no pricing or news.
  * B · named — the user names them: basic info (overview, region), business (features, pricing template), recent activity (news, social).
  */
-export const DEFAULT_DIMS_OWN: Dimension[] = ['name', 'overview']
+export const DEFAULT_DIMS_OWN: Dimension[] = ['name', 'overview', 'region', 'size', 'funding']
 export const DEFAULT_DIMS_NAMED: Dimension[] = ['name', 'overview', 'region', 'features', 'pricing', 'social', 'news']
 
 /** The SaaS pricing template: each slot is extracted and verified on its own. */
@@ -35,6 +35,8 @@ export interface Intent {
   topic?: string
   /** Extra fields the user wants, in their own words, e.g. ["学费", "申请截止日期"]. */
   fields?: string[]
+  /** Official domains already confirmed for some subjects (e.g. carried over from a "find competitors" run), keyed by subject name. */
+  sites?: Record<string, string>
 }
 
 /** Column key of a custom field. */

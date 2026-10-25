@@ -3,7 +3,7 @@ import type { Fetcher } from '../sources/fetcher.ts'
 import type { SearchStack } from '../sources/search.ts'
 import type { Social } from '../sources/social.ts'
 import { columnsOf, customKey, isCustom, PRICING_SLOTS, type Cell, type Intent, type Lang, type Row, type RunEvent, type RunResult, type RunStats } from '../types.ts'
-import { candidateUrls, collect, collectField, countKinds, FIELD_PAGES, fetchSiteDoc, pricingQuery, type Bundle, type CollectDeps, type Doc } from './collect.ts'
+import { candidateUrls, collect, collectField, countKinds, FIELD_PAGES, fetchSiteDoc, INFO_SEARCH, pricingQuery, type Bundle, type CollectDeps, type Doc } from './collect.ts'
 import { CORE_SLOT, extractFacts, FACT_FIELDS, filledSlots, isPricingSlot, judge, nameCell, newsCell, pricingCell, slotKey, socialCell, toSources, verifyFact, type Checked, type FactField } from './facts.ts'
 import { colLabel, NO_INFO, REASON, SITE_METHOD_LABEL, T } from './i18n.ts'
 
@@ -41,7 +41,7 @@ export async function runResearch(runId: string, intent: Intent, deps: RunDeps):
         const i = next++
         const name = intent.competitors[i]
         try {
-          const b = await collect(cdeps, name, dims, intent.timeRange, custom)
+          const b = await collect(cdeps, name, dims, intent.timeRange, custom, intent.sites?.[name])
           bundles[i] = b
           const k = countKinds(b)
           stats.sources += b.docs.length + b.accounts.length
@@ -177,7 +177,8 @@ async function requery(deps: RunDeps, cdeps: CollectDeps, b: Bundle, failed: Che
   const { lang, emit } = deps
   const t = T[lang]
   emit({ stage: 4, kind: 'retry', text: t.retry(b.name, colLabel(lang, failed.field), REASON[lang][failed.reason ?? 'not_found']) })
-  const custom = isCustom(failed.field)
+  // custom fields, size and funding are re-searched across the web; the others re-read the official site
+  const custom = isCustom(failed.field) || failed.field === 'size' || failed.field === 'funding'
   // the pricing template is re-extracted as a whole; its other slots are filled from the same pass
   const pricing = isPricingSlot(failed.field)
   const field = pricing ? 'pricing' : failed.field
@@ -193,7 +194,7 @@ async function requery(deps: RunDeps, cdeps: CollectDeps, b: Bundle, failed: Che
     } else if (custom) {
       // custom field: search again with different wording and read more pages
       emit({ stage: 4, kind: 'info', text: t.requery(t.reSearch) })
-      const label = colLabel(lang, failed.field)
+      const label = failed.field === 'size' || failed.field === 'funding' ? INFO_SEARCH[failed.field][lang] : colLabel(lang, failed.field)
       const extra = attempt === 0 ? label : `${label} ${lang === 'zh' ? '官方 最新' : 'official latest'}`
       fresh.push(...(await collectField(cdeps, b, extra, 3)))
     } else {

@@ -65,3 +65,9 @@ No threshold changes. After reviewing Batch A's official-site accuracy (17 / 31 
 ## Amendment 1b · 20 October 2026, still before Batch B
 
 No threshold changes. Harper decided (20 Oct, 16:33 SGT) that pricing may rest on a third-party page when no official page states it, on two conditions: the page shows an update date within the last 12 months, and the result is labelled 「第三方来源」 with that date. Directory and download sites never count, and features and the official site still need official sources. For measure 1, Harper audits every third-party pricing fact (not only the 5-fact sample), and Batch B reports the third-party share (`pricingThirdParty`) and its audit result separately from official sources. Pricing searches now name the template points (plans, per-user price, annual billing, free plan) and the user's own fields.
+
+## Amendment 1c · 25 October 2026, still before Batch B
+
+No threshold changes. Harper's product review of v2.2 (25 Oct, 22:27 SGT) changed two things:
+1. Branch A ("find competitors": Q01, Q05, Q08) now returns, for each competitor found, the introduction plus country/region, company size and funding (from the official about page, web pages and news; every value quoted, with its year). Measure 1 (Harper's audit) covers these fields for Q01, Q05 and Q08; pricing is still not asked in branch A.
+2. After a branch A run, one click carries the competitor list and their confirmed official sites into a branch B run ("look up details"). Official sites carried over are recorded as `given` in `sites.csv` and are not counted again for measure 2.

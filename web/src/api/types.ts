@@ -1,12 +1,12 @@
 export type Lang = 'zh' | 'en'
 
 /** The output fields, in table order. */
-export type Dimension = 'name' | 'overview' | 'region' | 'features' | 'pricing' | 'contact' | 'social' | 'news'
+export type Dimension = 'name' | 'overview' | 'region' | 'size' | 'funding' | 'features' | 'pricing' | 'contact' | 'social' | 'news'
 
-export const DIMENSIONS: Dimension[] = ['name', 'overview', 'region', 'features', 'pricing', 'contact', 'social', 'news']
+export const DIMENSIONS: Dimension[] = ['name', 'overview', 'region', 'size', 'funding', 'features', 'pricing', 'contact', 'social', 'news']
 
-/** Default fields per branch (keep in sync with server/src/types.ts). A: list + introduction · B: full research. */
-export const DEFAULT_DIMS_OWN: Dimension[] = ['name', 'overview']
+/** Default fields per branch (keep in sync with server/src/types.ts). A: list + basic company info · B: full research. */
+export const DEFAULT_DIMS_OWN: Dimension[] = ['name', 'overview', 'region', 'size', 'funding']
 export const DEFAULT_DIMS_NAMED: Dimension[] = ['name', 'overview', 'region', 'features', 'pricing', 'social', 'news']
 
 /** Where a fact was found. site = the subject's own website · web = another page found by search. */
@@ -32,8 +32,10 @@ export interface Intent {
   dimensions: Dimension[]
   /** What kind of thing the subjects are. */
   topic?: string
-  /** Extra fields in the user's own words, e.g. ["学费", "申请截止时间"]. */
+  /** Extra fields in the user's own words, e.g. ["融资情况", "集成"]. */
   fields?: string[]
+  /** Official domains already confirmed (carried over from a "find competitors" run), keyed by subject name. */
+  sites?: Record<string, string>
 }
 
 /** Column key of a custom field. */

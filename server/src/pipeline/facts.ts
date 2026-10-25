@@ -5,8 +5,8 @@ import { CUSTOM_PREFIX, PRICING_SLOTS, type Cell, type CellItem, type Lang, type
 import { freshEnough, type Bundle, type Doc } from './collect.ts'
 import { NO_INFO, PLATFORM_LABEL, SLOT_LABEL, T } from './i18n.ts'
 
-export type BuiltinFact = 'overview' | 'region' | 'features' | 'pricing' | 'contact'
-export const FACT_FIELDS: BuiltinFact[] = ['overview', 'region', 'features', 'pricing', 'contact']
+export type BuiltinFact = 'overview' | 'region' | 'size' | 'funding' | 'features' | 'pricing' | 'contact'
+export const FACT_FIELDS: BuiltinFact[] = ['overview', 'region', 'size', 'funding', 'features', 'pricing', 'contact']
 
 /** Internal fact keys of the pricing template: `pricing.plans`, `pricing.unit` … */
 export const slotKey = (s: PricingSlot) => `pricing.${s}`
@@ -41,7 +41,9 @@ export interface Checked {
 
 const FIELD_GUIDE: Record<BuiltinFact, string> = {
   overview: 'Company introduction and main business: what the company/product is, what it mainly does and for whom, in one or two sentences (e.g. "字节跳动旗下的一站式协同办公平台，提供即时消息、文档、会议和多维表格，面向企业团队").',
-  region: 'Headquarters city and country, plus main markets if stated (e.g. "美国 · 旧金山，主要面向北美和欧洲").',
+  region: 'Country and headquarters city, plus main markets if stated (e.g. "美国 · 旧金山，主要面向北美和欧洲").',
+  size: 'Company size as stated: number of employees or a range, with the year or date the source gives (e.g. "约 1,000 人（2025 年）", "51–200 employees (LinkedIn, 2026)"). Never estimate.',
+  funding: 'Funding as stated: latest round, amount, date and lead investors, and total raised or valuation if given (e.g. "2024 年 C 轮 2 亿美元，红杉领投"); or "已上市（交易所 · 代码）" for a listed company; or "自筹/未融资" only if a source says so. Always keep the year.',
   features: 'A short summary of what the product actually does: name 3–5 concrete capabilities or modules the documents mention (e.g. "AI 写作、数据库视图、团队知识库、200+ 集成"), not generic words like "powerful" or "easy to use".',
   pricing: 'The SaaS pricing template, one object with one entry per slot (see below). Never invent a price.',
   contact: 'The concrete channel as stated: the actual sales or support e-mail, phone number, or the contact-form page name.',

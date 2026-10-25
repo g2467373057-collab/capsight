@@ -156,10 +156,12 @@ test('intent rules: edge cases', () => {
   assert.deepEqual(normaliseIntent({ type: 'timeframe', competitors: ['A'], timeRange: '7d', dimensions: [] }, 'q', 5).dimensions, ['name', 'social', 'news'])
   // branch B: a named lookup with no fields named gets the full module set (no contact unless asked)
   assert.deepEqual(normaliseIntent({ type: 'named', competitors: ['A'], timeRange: 'all' }, 'q', 5).dimensions, DEFAULT_DIMS_NAMED)
-  // branch A: finding competitors with nothing else asked gives a list with a basic introduction only
-  assert.deepEqual(normaliseIntent({ type: 'own', competitors: ['A'], timeRange: 'all', dimensions: ['name'] }, 'q', 5).dimensions, ['name', 'overview'])
-  // branch A keeps what the user explicitly asked for, plus the introduction
-  assert.deepEqual(normaliseIntent({ type: 'own', competitors: ['A'], timeRange: 'all', dimensions: ['name', 'pricing'] }, 'q', 5).dimensions, ['name', 'overview', 'pricing'])
+  // branch A: finding competitors gives a list with basic company information (introduction, country, size, funding)
+  assert.deepEqual(normaliseIntent({ type: 'own', competitors: ['A'], timeRange: 'all', dimensions: ['name'] }, 'q', 5).dimensions, ['name', 'overview', 'region', 'size', 'funding'])
+  // branch A keeps what the user explicitly asked for, on top of the basic information
+  assert.deepEqual(normaliseIntent({ type: 'own', competitors: ['A'], timeRange: 'all', dimensions: ['name', 'pricing'] }, 'q', 5).dimensions, ['name', 'overview', 'region', 'size', 'funding', 'pricing'])
+  // "公司规模" and "融资情况" written as fields are the built-in size and funding
+  assert.deepEqual(normaliseIntent({ type: 'named', competitors: ['A'], dimensions: ['name'], fields: ['公司规模', '融资情况'] }, 'q', 5).dimensions, ['name', 'size', 'funding'])
   // "公司介绍" written as a field is the built-in overview
   assert.deepEqual(normaliseIntent({ type: 'named', competitors: ['A'], dimensions: ['name'], fields: ['公司介绍'] }, 'q', 5).dimensions, ['name', 'overview'])
   // unknown type → named
@@ -231,7 +233,7 @@ test('intent "own": competitors come from a search on what the product does, and
   }
   const i = await parseIntent(llm as never, search as never, '我是一家做跨境电商 ERP 的公司，查竞品都有哪些，附带他们的基本信息', 'zh', 5)
   assert.equal(i.type, 'own')
-  assert.deepEqual(i.dimensions, ['name', 'overview', 'region', 'features', 'pricing', 'contact'])
+  assert.deepEqual(i.dimensions, ['name', 'overview', 'region', 'size', 'funding', 'features', 'pricing', 'contact'])
   assert.ok(searched.some((q) => q.startsWith('跨境电商 ERP')), searched.join(' | '))
   assert.deepEqual(i.competitors, ['店小秘', '马帮']) // "幻想公司" is not in any result, so it is dropped
 })
@@ -388,4 +390,22 @@ test('v2.2 pricing may rest on a third-party page only if it is dated within 12 
   assert.equal(verifyFact('pricing.plans', { value: 'Pro $8', evidence: [{ doc: 'W2', quote: 'X Pro costs $8 per user per month' }] }, docs).reason, 'stale')
   assert.equal(verifyFact('pricing.plans', { value: 'Pro $9', evidence: [{ doc: 'W3', quote: 'X Pro costs $9 per user per month' }] }, docs).reason, 'stale')
   assert.equal(verifyFact('features', { value: 'Pro', evidence: [{ doc: 'W1', quote: 'X Pro costs $12 per user per month' }] }, docs).reason, 'seo_only')
+})
+
+/* ---------- v2.3: carrying confirmed official sites into the follow-up run (25 Oct 2026) ---------- */
+import { validateIntent } from '../src/pipeline/intent.ts'
+
+test('v2.3 a follow-up intent keeps carried-over official sites only for its own subjects and only as plain host names', () => {
+  const i = validateIntent(
+    {
+      type: 'named',
+      query: 'q',
+      competitors: ['石墨文档', '腾讯文档'],
+      timeRange: 'all',
+      dimensions: ['name', 'pricing'],
+      sites: { 石墨文档: 'https://shimo.im/', 腾讯文档: 'javascript:alert(1)', 金山文档: 'kdocs.cn' },
+    },
+    5,
+  )
+  assert.deepEqual(i?.sites, { 石墨文档: 'shimo.im' })
 })

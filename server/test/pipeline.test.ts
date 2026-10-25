@@ -476,3 +476,92 @@ test('v2.2 no readable official price: a dated third-party pricing page is used 
     review.server.close()
   }
 })
+
+/* ---------- v2.3: company information in branch A, and the details follow-up ---------- */
+
+test('v2.3 branch A: country, size and funding come from the about page, web pages and news, each quoted', async () => {
+  const site = await fakeSite({
+    '/': { body: html('Echo', '<p>Echo is a meeting notes tool.</p><a href="/about">About</a>') },
+    '/about': { body: html('About Echo', '<p>Echo is headquartered in Singapore. We are a team of about 120 people (2026).</p>') },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  const press = await fakeSite({
+    '/echo-series-b': { body: html('Echo raises Series B', '<p>Echo raised a 30 million dollar Series B in March 2026, led by Example Ventures.</p>') },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  try {
+    const cfg = testConfig()
+    const db = freshDb()
+    const pressUrl = `${press.origin.replace('127.0.0.1', 'localhost')}/echo-series-b`
+    const search = mockSearch((q) => {
+      if (q.includes('official website')) return [{ title: 'Echo', url: `${site.origin}/`, snippet: '', position: 1 }]
+      if (q.startsWith('Echo funding round')) return [{ title: 'Echo raises Series B', url: pressUrl, snippet: 'Echo raised a 30 million dollar Series B', position: 1 }]
+      return []
+    })
+    const p = testProviders(
+      cfg,
+      db,
+      (r) => {
+        if (r.task === 'site') return { domains: ['127.0.0.1'], aliases: [] }
+        if (r.task === 'extract') {
+          const docs = docsIn(r.user)
+          const about = docs.find((d) => d.kind === 'site' && d.url.endsWith('/about'))
+          const news = docs.find((d) => d.kind === 'web' && d.url.endsWith('/echo-series-b'))
+          return {
+            facts: {
+              overview: about ? { value: 'Meeting notes tool', evidence: [{ doc: about.id, quote: 'Echo is headquartered in Singapore.' }] } : null,
+              region: about ? { value: 'Singapore', evidence: [{ doc: about.id, quote: 'Echo is headquartered in Singapore.' }] } : null,
+              size: about ? { value: 'About 120 people (2026)', evidence: [{ doc: about.id, quote: 'We are a team of about 120 people (2026).' }] } : null,
+              funding: news ? { value: 'Series B, $30M, March 2026, led by Example Ventures', evidence: [{ doc: news.id, quote: 'Echo raised a 30 million dollar Series B in March 2026, led by Example Ventures.' }] } : null,
+            },
+          }
+        }
+        if (r.task === 'judge') return { checks: {} }
+        return {}
+      },
+      search,
+    )
+    const intent = (await import('../src/pipeline/intent.ts')).normaliseIntent({ type: 'own', competitors: ['Echo'], timeRange: 'all', dimensions: ['name'] }, 'q', 5)
+    assert.deepEqual(intent.dimensions, ['name', 'overview', 'region', 'size', 'funding'])
+    const res = await runResearch('run_info', intent, { llm: p.llm('en'), search: p.search('en'), fetcher: p.fetcher, social: p.social, lang: 'en', maxRequery: 1, emit: () => {} })
+    const c = res.rows[0].cells
+    assert.equal(c.region?.value, 'Singapore')
+    assert.equal(c.size?.value, 'About 120 people (2026)')
+    assert.equal(c.funding?.status, 'verified')
+    assert.equal(c.funding?.sources[0].url, pressUrl)
+    assert.equal(c.pricing, undefined) // branch A: no pricing unless asked
+  } finally {
+    site.server.close()
+    press.server.close()
+  }
+})
+
+test('v2.3 details follow-up: an official site carried over from the "find competitors" run is used as is, with no new search for it', async () => {
+  const site = await fakeSite({
+    '/': { body: html('Foxtrot', '<p>Foxtrot builds forms.</p>') },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  try {
+    const cfg = testConfig()
+    const db = freshDb()
+    const searched: string[] = []
+    const tasks: string[] = []
+    const search = mockSearch((q) => {
+      searched.push(q)
+      return []
+    })
+    const p = testProviders(cfg, db, (r) => {
+      tasks.push(r.task)
+      return r.task === 'judge' ? { checks: {} } : {}
+    }, search)
+    const host = new URL(site.origin).host
+    const intent = (await import('../src/pipeline/intent.ts')).validateIntent({ type: 'named', query: 'q', competitors: ['Foxtrot'], timeRange: 'all', dimensions: ['name'], sites: { Foxtrot: host } }, 5)!
+    const res = await runResearch('run_given', intent, { llm: p.llm('en'), search: p.search('en'), fetcher: p.fetcher, social: p.social, lang: 'en', maxRequery: 1, emit: () => {} })
+    assert.equal(res.rows[0].siteMethod, 'given')
+    assert.equal(res.rows[0].domain, '127.0.0.1')
+    assert.ok(!tasks.includes('site'))
+    assert.ok(!searched.some((q) => q.includes('official website')))
+  } finally {
+    site.server.close()
+  }
+})

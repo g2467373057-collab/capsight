@@ -1,8 +1,8 @@
 import { CUSTOM_PREFIX, type Dimension, type Lang, type PricingSlot, type SiteMethod } from '../types.ts'
 
 export const DIM_LABEL: Record<Lang, Record<Dimension, string>> = {
-  zh: { name: '名称', overview: '公司介绍', region: '地区', features: '功能', pricing: '定价', contact: '联系方式', social: '社媒账号', news: '最新动态' },
-  en: { name: 'Name', overview: 'Overview', region: 'Region', features: 'Features', pricing: 'Pricing', contact: 'Contact', social: 'Social', news: 'Latest news' },
+  zh: { name: '名称', overview: '公司介绍', region: '国家/地区', size: '公司规模', funding: '融资情况', features: '功能', pricing: '定价', contact: '联系方式', social: '社媒账号', news: '最新动态' },
+  en: { name: 'Name', overview: 'Overview', region: 'Country / region', size: 'Company size', funding: 'Funding', features: 'Features', pricing: 'Pricing', contact: 'Contact', social: 'Social', news: 'Latest news' },
 }
 
 export const SLOT_LABEL: Record<Lang, Record<PricingSlot, string>> = {
@@ -11,8 +11,8 @@ export const SLOT_LABEL: Record<Lang, Record<PricingSlot, string>> = {
 }
 
 export const SITE_METHOD_LABEL: Record<Lang, Record<SiteMethod, string>> = {
-  zh: { google_kg: 'Google 知识图谱', wikidata: 'Wikidata', search_hint: '搜索结果 + 模型提示', hint_verified: '模型提示 + 打开网站核实', search_domain: '搜索结果（域名即品牌）', search_weak: '搜索结果（弱匹配）', given: '用户给出的域名' },
-  en: { google_kg: 'Google knowledge graph', wikidata: 'Wikidata', search_hint: 'search results + model hint', hint_verified: 'model hint, checked on the site', search_domain: 'search results (brand domain)', search_weak: 'search results (weak match)', given: 'domain given by the user' },
+  zh: { google_kg: 'Google 知识图谱', wikidata: 'Wikidata', search_hint: '搜索结果 + 模型提示', hint_verified: '模型提示 + 打开网站核实', search_domain: '搜索结果（域名即品牌）', search_weak: '搜索结果（弱匹配）', given: '沿用上一轮确认的官网' },
+  en: { google_kg: 'Google knowledge graph', wikidata: 'Wikidata', search_hint: 'search results + model hint', hint_verified: 'model hint, checked on the site', search_domain: 'search results (brand domain)', search_weak: 'search results (weak match)', given: 'carried over from the previous run' },
 }
 
 /** No public information for this field (wording from the v2 design). */

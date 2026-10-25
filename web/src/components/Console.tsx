@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
 import { colLabel, downloadCsv, parseIntent, runResearch } from '../api/client'
 import {
+  DEFAULT_DIMS_NAMED,
   DIMENSIONS,
   MAX_FIELDS,
   columnsOf,
@@ -226,6 +227,31 @@ export default function Console({
       setError(errorText(t, e))
       setPhase('intent')
     }
+  }
+
+  /** Branch A done → look up details for the competitors found, keeping their confirmed official sites. The user can still edit before running. */
+  const details = () => {
+    if (!result) return
+    const rows = result.rows
+    const sites = Object.fromEntries(rows.filter((r) => r.domain).map((r) => [r.competitor, r.domain]))
+    const wanted = new Set<Dimension>([...result.intent.dimensions, ...DEFAULT_DIMS_NAMED])
+    token.current++
+    setIntent({
+      type: 'named',
+      query: t.studio.result.detailsQuery(result.intent.query),
+      ...(result.intent.company ? { company: result.intent.company } : {}),
+      competitors: rows.map((r) => r.competitor),
+      timeRange: 'all',
+      dimensions: DIMENSIONS.filter((d) => wanted.has(d)),
+      ...(result.intent.topic ? { topic: result.intent.topic } : {}),
+      ...(result.intent.fields?.length ? { fields: result.intent.fields } : {}),
+      ...(Object.keys(sites).length ? { sites } : {}),
+    })
+    setResult(null)
+    setEvents([])
+    setExported(false)
+    setError(null)
+    setPhase('intent')
   }
 
   const reset = () => {
@@ -586,6 +612,12 @@ export default function Console({
                   </p>
                 </div>
                 <div className="result-head__actions">
+                  {result.intent.type === 'own' && result.rows.length > 0 && (
+                    <button className="btn btn--red" onClick={details} title={s.result.detailsHint}>
+                      <Icon name="table" size={18} />
+                      {s.result.details}
+                    </button>
+                  )}
                   <button
                     className="btn btn--red"
                     onClick={async () => {

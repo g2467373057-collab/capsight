@@ -183,6 +183,8 @@ export const PAGE_HINTS: Record<'pricing' | 'about' | 'contact' | 'product', { r
 
 export const FIELD_PAGES: Partial<Record<Dimension, (keyof typeof PAGE_HINTS)[]>> = {
   overview: ['about'],
+  size: ['about'],
+  funding: ['about'],
   pricing: ['pricing'],
   features: ['product', 'pricing'],
   region: ['about', 'contact'],
@@ -296,21 +298,29 @@ export async function collectField(deps: CollectDeps, b: Bundle, label: string, 
   return got.filter((d): d is Doc => !!d)
 }
 
-/** Step 2: official site + search ranking + news + social (+ pages for custom fields) for one subject. */
-export async function collect(deps: CollectDeps, name: string, dims: Dimension[], timeRange: TimeRange, fields: string[] = []): Promise<Bundle> {
+/** Search words for the company-information fields read from web pages and news (third-party sources are fine for these). */
+export const INFO_SEARCH: Record<'size' | 'funding', Record<Lang, string>> = {
+  size: { zh: '员工人数 公司规模', en: 'number of employees company size' },
+  funding: { zh: '融资 轮 投资方 估值', en: 'funding round raised investors valuation' },
+}
+
+/** Step 2: official site + search ranking + news + social (+ pages for custom fields) for one subject. `knownDomain`: an official site already confirmed (carried over). */
+export async function collect(deps: CollectDeps, name: string, dims: Dimension[], timeRange: TimeRange, fields: string[] = [], knownDomain?: string): Promise<Bundle> {
   const { search, lang } = deps
   const b: Bundle = { name, domain: '', docs: [], links: [], accounts: [], profiles: [], news: [], fetchedUrls: new Set() }
   const t = T[lang]
   const step = (text: string) => deps.onStep?.(text)
   step(t.stepSite(name))
 
-  // official website, from the most reliable source down; how it was found is recorded for the audit
-  const hints = await siteHints(deps.llm, name, deps.topic)
+  // official website, from the most reliable source down; how it was found is recorded for the audit.
+  // A domain confirmed in an earlier run (e.g. "find competitors" → details) is used as is.
+  const known = knownDomain && /^[a-z0-9.-]+\.[a-z]{2,}$|^\d{1,3}(\.\d{1,3}){3}(:\d+)?$/i.test(knownDomain) ? knownDomain : undefined
+  const hints = known ? { domains: [known], aliases: [] } : await siteHints(deps.llm, name, deps.topic)
   const names = [name, ...hints.aliases]
   // a Latin-script name (or alias) is also searched on Google in English: Chinese search often lists no official site for English brands
   const latin = isLatin(name) ? name : hints.aliases.find(isLatin)
-  const google = latin && search.google ? await search.google(`${latin} official website`) : undefined
-  const siteHits = lang === 'en' && google && latin === name ? google.hits : await search.web(lang === 'zh' ? `${name} 官网` : `${name} official website`, { lang, num: 10 })
+  const google = !known && latin && search.google ? await search.google(`${latin} official website`) : undefined
+  const siteHits = known ? [] : lang === 'en' && google && latin === name ? google.hits : await search.web(lang === 'zh' ? `${name} 官网` : `${name} official website`, { lang, num: 10 })
   const allHits = google && google.hits !== siteHits ? [...siteHits, ...google.hits] : siteHits
   for (const h of siteHits.slice(0, 3)) {
     const host = hostOf(h.url)
@@ -324,6 +334,7 @@ export async function collect(deps: CollectDeps, name: string, dims: Dimension[]
       method = m
     }
   }
+  if (known) found(`${/^\d/.test(known) ? 'http' : 'https'}://${known}`, 'given')
   // 1) Google's own knowledge-graph panel for this brand
   if (google?.website && panelMatches(google.title, names) && canBeOfficial(google.website)) found(new URL(google.website).origin, 'google_kg')
   // 2) the official website listed on Wikidata
@@ -430,6 +441,11 @@ export async function collect(deps: CollectDeps, name: string, dims: Dimension[]
       if (hasPrice(doc.text)) read.push(doc)
     }
     if (read.length) step(t.thirdParty(name, read.length))
+  }
+
+  // company size and funding: official about page (above), plus search results, news articles and other web pages
+  for (const k of ['size', 'funding'] as const) {
+    if (dims.includes(k)) await collectField(deps, b, INFO_SEARCH[k][lang], 2)
   }
 
   // custom fields: search each one and read the top pages

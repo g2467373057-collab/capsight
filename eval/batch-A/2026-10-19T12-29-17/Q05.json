@@ -1,0 +1,469 @@
+{
+  "test": {
+    "id": "Q05",
+    "lang": "en",
+    "q": "Find competitors of Calendly"
+  },
+  "intent": {
+    "type": "own",
+    "query": "Find competitors of Calendly",
+    "competitors": [
+      "Cal.com",
+      "SavvyCal",
+      "Doodle",
+      "Acuity Scheduling"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "region",
+      "features",
+      "pricing",
+      "contact",
+      "social",
+      "news"
+    ]
+  },
+  "run": {
+    "id": "run_Tfx4TRNTuOTo",
+    "status": "done",
+    "query": "Find competitors of Calendly",
+    "lang": "en",
+    "createdAt": "2026-10-19T12:36:35.075Z",
+    "result": {
+      "runId": "run_Tfx4TRNTuOTo",
+      "intent": {
+        "type": "own",
+        "query": "Find competitors of Calendly",
+        "competitors": [
+          "Cal.com",
+          "SavvyCal",
+          "Doodle",
+          "Acuity Scheduling"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "region",
+          "features",
+          "pricing",
+          "contact",
+          "social",
+          "news"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "Cal.com",
+          "domain": "cal.com",
+          "cells": {
+            "name": {
+              "value": "Cal.com",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://cal.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "No reliable source — removed",
+              "sources": [],
+              "status": "missing"
+            },
+            "features": {
+              "value": "Calendar scheduling with Out-Of-Office blocking and booking redirects, Stripe payments for paid event types, one-click Instant Meetings, Dynamic Group Links combining usernames…",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://cal.com/features/ooo",
+                  "title": "Website · Out-Of-Office | Cal.com"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://cal.com/features/payments",
+                  "title": "Website · Payments | Cal.com"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://cal.com/features/instant-meetings",
+                  "title": "Website · Instant Meetings | Cal.com"
+                }
+              ],
+              "status": "requeried"
+            },
+            "pricing": {
+              "value": "Free for individuals; team plans for collaborative features; no credit card required to sign up. No specific paid prices stated.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://app.cal.com/signup",
+                  "title": "Website · Sign up | Cal.com"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://cal.com",
+                  "title": "Website · Cal.com | Scheduling Software for Online Bookings"
+                }
+              ],
+              "status": "requeried"
+            },
+            "contact": {
+              "value": "Support e-mail support@cal.com; help desk at cal.com/help or go.cal.com/support; sales via Talk to Sales demo form",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://cal.com/talk-to-sales",
+                  "title": "Website · Talk to Sales | Cal.com"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://cal.com/help/welcome",
+                  "title": "Website · Help Desk - Cal.com Help"
+                }
+              ],
+              "status": "verified"
+            },
+            "social": {
+              "value": "1 recent posts · Key point: Cal.com product updates and scheduling features",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "https://x.com/calcom",
+                  "title": "X calcom"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://github.com/calcom",
+                  "title": "GitHub calcom"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.linkedin.com/company/cal-com",
+                  "title": "LinkedIn cal-com"
+                }
+              ],
+              "items": [
+                {
+                  "text": "Cal.com released v6.9.5, adding workflow delays, guest messaging, and out-of-office integrations.",
+                  "url": "https://x.com/calcom/status/2110870071560319453",
+                  "label": "X"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "No public updates in this period",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "SavvyCal",
+          "domain": "savvycal.com",
+          "cells": {
+            "name": {
+              "value": "SavvyCal",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://savvycal.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "美国明尼苏达州明尼阿波利斯；由 Derrick Reimer 创立的独立 SaaS 公司，获 TinySeed 投资",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://www.crunchbase.com/organization/savvycal",
+                  "title": "Ranks #4 for “SavvyCal company headquarters”"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://savvycal.com/company",
+                  "title": "Website · Company · SavvyCal"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "日程链接支持日历叠加、自定义域名与品牌；团队排期含 Collective、Round Robin、Group 模式；Stripe 付费预订、Meeting Polls、Workflows 提醒与 Zapier 集成",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://savvycal.com",
+                  "title": "Website · Scheduling Software Everyone Will Love · SavvyCal"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://savvycal.com/features",
+                  "title": "Website · Features · SavvyCal"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "Basic $10/用户/月，Premium $17/用户/月，年付省两个月；30 天退款保证，可免费试用",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://savvycal.com/pricing",
+                  "title": "Website · Plans & Pricing · SavvyCal"
+                }
+              ],
+              "status": "verified"
+            },
+            "contact": {
+              "value": "支持邮箱 support@savvycal.com",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://savvycal.com",
+                  "title": "Website · Scheduling Software Everyone Will Love · SavvyCal"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://savvycal.com/pricing",
+                  "title": "Website · Plans & Pricing · SavvyCal"
+                }
+              ],
+              "status": "verified"
+            },
+            "social": {
+              "value": "1 recent posts · Key point: SavvyCal brand and scheduling tool discussion",
+              "sources": [],
+              "items": [
+                {
+                  "text": "Derrick Reimer said he refreshed SavvyCal's marketing aesthetic after noticing most brands look the same.",
+                  "url": "https://www.linkedin.com/posts/derrickreimer_have-you-noticed-most-brands-look-basically-activity-7500629940304924672-NIZj",
+                  "label": "LinkedIn"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "No public updates in this period",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "Doodle",
+          "domain": "doodles.google",
+          "cells": {
+            "name": {
+              "value": "Doodle",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://doodles.google",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "No reliable source — removed",
+              "sources": [],
+              "status": "missing"
+            },
+            "features": {
+              "value": "Google logo changes celebrating culture, places and holidays; formats include static illustrations, animations, slideshows, videos, interactive games and VR/360 video Doodles.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://doodles.google",
+                  "title": "Website · Google Doodles - Google’s Search Logo Changes for Every Occa"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://doodles.google/about/",
+                  "title": "Website · The Story and Evolution of Doodles - Google Doodles"
+                }
+              ],
+              "status": "requeried"
+            },
+            "pricing": {
+              "value": "No reliable source — removed",
+              "sources": [],
+              "status": "missing"
+            },
+            "contact": {
+              "value": "No reliable source — removed",
+              "sources": [],
+              "status": "missing"
+            },
+            "social": {
+              "value": "Official accounts: LinkedIn google / Facebook Google / Instagram google / YouTube googledoodles",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "https://www.linkedin.com/company/google",
+                  "title": "LinkedIn google"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.facebook.com/Google",
+                  "title": "Facebook Google"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.instagram.com/google",
+                  "title": "Instagram google"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "Google Doodles published a National Parks Week doodle celebrating Yosemite.",
+              "date": "2026-08-27",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1MS3VEU2RZZzFjT25zSElfMXlDdUt2bGg1cEFUOWZDWHlOZjRkR1FLbGZhTGtiYlVFdnpSX2pvNFZCZ3J3UTRXVGY1SXk5TkhmWmExdFVVM3ptd1BLYmp3UVJ0NXJ6V29Hb2hTSk5sbTBac21MOXNwY1RfVQ?oc=5",
+                  "title": "Celebrating National Parks Week: Yosemite - Google Doodles"
+                }
+              ],
+              "items": [
+                {
+                  "text": "Google Doodles published a National Parks Week doodle celebrating Yosemite.",
+                  "url": "https://news.google.com/rss/articles/CBMie0FVX3lxTE1MS3VEU2RZZzFjT25zSElfMXlDdUt2bGg1cEFUOWZDWHlOZjRkR1FLbGZhTGtiYlVFdnpSX2pvNFZCZ3J3UTRXVGY1SXk5TkhmWmExdFVVM3ptd1BLYmp3UVJ0NXJ6V29Hb2hTSk5sbTBac21MOXNwY1RfVQ?oc=5",
+                  "date": "2026-08-27",
+                  "label": "news.google.com"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "Acuity Scheduling",
+          "domain": "acuityscheduling.com",
+          "cells": {
+            "name": {
+              "value": "Acuity Scheduling",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://acuityscheduling.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "New York, New York, United States; founded 2006, acquired by Squarespace in 2019",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://www.crunchbase.com/organization/acuity-scheduling",
+                  "title": "Ranks #5 for “Acuity Scheduling company headquarters”"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.linkedin.com/company/acuity-scheduling",
+                  "title": "Ranks #3 for “Acuity Scheduling company headquarters”"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://acuityscheduling.com/about",
+                  "title": "Website · About Us - Acuity Scheduling"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "Online booking pages, client management with custom intake forms, class scheduling, payments and invoicing, calendar sync, SMS/email reminders, waitlist, memberships and gift certificates",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://acuityscheduling.com",
+                  "title": "Website · Acuity Scheduling: Online Booking & Appointment Scheduling S"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://acuityscheduling.com/features/client-management",
+                  "title": "Website · Client Management Software - Acuity Scheduling"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://acuityscheduling.com/pricing",
+                  "title": "Website · Acuity Scheduling Pricing Plans & Features"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "7-day free trial, no credit card; Starter $16/mo annual ($20 monthly), Standard $27 ($34), Premium $55 ($69), USD, taxes excluded",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://acuityscheduling.com/pricing",
+                  "title": "Website · Acuity Scheduling Pricing Plans & Features"
+                }
+              ],
+              "status": "verified"
+            },
+            "contact": {
+              "value": "Help Center and email support via developer hub; no sales phone or e-mail stated",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://acuityscheduling.com",
+                  "title": "Website · Acuity Scheduling: Online Booking & Appointment Scheduling S"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://developers.acuityscheduling.com/",
+                  "title": "Website · Acuity Scheduling"
+                }
+              ],
+              "status": "verified"
+            },
+            "social": {
+              "value": "Official accounts: Instagram acuityscheduling / Facebook acuityscheduling / LinkedIn acuity-scheduling / YouTube AcuitySchedulingOfficial",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "https://www.instagram.com/acuityscheduling",
+                  "title": "Instagram acuityscheduling"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.facebook.com/acuityscheduling",
+                  "title": "Facebook acuityscheduling"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.linkedin.com/company/acuity-scheduling",
+                  "title": "LinkedIn acuity-scheduling"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "No public updates in this period",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 158,
+        "checked": 28,
+        "requeried": 3,
+        "passed": 21,
+        "dropped": 7
+      },
+      "finishedAt": "2026-10-19T12:38:33.553Z"
+    }
+  }
+}

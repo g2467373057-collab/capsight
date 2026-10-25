@@ -1,16 +1,16 @@
-import type { Lang, RunResult } from '../types.ts'
-import { DIM_LABEL } from './i18n.ts'
+import { columnsOf, type Lang, type RunResult } from '../types.ts'
+import { colLabel } from './i18n.ts'
 
 const esc = (v: string) => (/[",\n\r]/.test(v) || /^[=+\-@\t]/.test(v) ? `"${v.replace(/^([=+\-@\t])/, "'$1").replace(/"/g, '""')}"` : v)
 
 /** Same columns as the web app's export: each field followed by its sources, then the check result. UTF-8 with BOM for Excel. */
 export function toCsv(result: RunResult, lang: Lang): string {
-  const dims = result.intent.dimensions
-  const L = DIM_LABEL[lang]
+  const dims = columnsOf(result.intent)
+  const L = (k: string) => colLabel(lang, k)
   const src = lang === 'zh' ? '来源' : 'source'
   const check = lang === 'zh' ? '校验' : 'check'
   const status = lang === 'zh' ? { verified: '通过', requeried: '重查后通过', missing: '未通过' } : { verified: 'passed', requeried: 'passed after re-query', missing: 'failed' }
-  const lines = [[...dims.flatMap((d) => [L[d], `${L[d]}_${src}`]), check].map(esc).join(',')]
+  const lines = [[...dims.flatMap((d) => [L(d), `${L(d)}_${src}`]), check].map(esc).join(',')]
   for (const r of result.rows) {
     const out: string[] = []
     let worst: keyof typeof status = 'verified'

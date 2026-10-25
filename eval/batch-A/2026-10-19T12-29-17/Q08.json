@@ -1,0 +1,414 @@
+{
+  "test": {
+    "id": "Q08",
+    "lang": "zh",
+    "q": "我们做 SaaS 客服系统，帮我找竞品"
+  },
+  "intent": {
+    "type": "own",
+    "query": "我们做 SaaS 客服系统，帮我找竞品",
+    "competitors": [
+      "Zendesk",
+      "Intercom",
+      "Freshworks",
+      "HubSpot"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "region",
+      "features",
+      "pricing",
+      "contact",
+      "social",
+      "news"
+    ]
+  },
+  "run": {
+    "id": "run_Pd9EYNUN54ZH",
+    "status": "done",
+    "query": "我们做 SaaS 客服系统，帮我找竞品",
+    "lang": "zh",
+    "createdAt": "2026-10-19T12:42:21.094Z",
+    "result": {
+      "runId": "run_Pd9EYNUN54ZH",
+      "intent": {
+        "type": "own",
+        "query": "我们做 SaaS 客服系统，帮我找竞品",
+        "competitors": [
+          "Zendesk",
+          "Intercom",
+          "Freshworks",
+          "HubSpot"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "region",
+          "features",
+          "pricing",
+          "contact",
+          "social",
+          "news"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "Zendesk",
+          "domain": "zendesk.co.jp",
+          "cells": {
+            "name": {
+              "value": "Zendesk",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.zendesk.co.jp",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "features": {
+              "value": "AIエージェント、Copilot、チケット管理、ナレッジベース、1,800以上のアプリ連携",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.zendesk.co.jp",
+                  "title": "官网 · AIサポートプラットフォーム | Zendesk"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "14天免费试用、无需信用卡；具体套餐价格文档未列出",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.zendesk.co.jp",
+                  "title": "官网 · AIサポートプラットフォーム | Zendesk"
+                }
+              ],
+              "status": "verified"
+            },
+            "contact": {
+              "value": "官网提供“お問い合わせ”联系表单入口",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.zendesk.co.jp",
+                  "title": "官网 · AIサポートプラットフォーム | Zendesk"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.zendesk.co.jp/company/events/",
+                  "title": "官网 · セミナー・イベント情報 | Zendesk"
+                }
+              ],
+              "status": "verified"
+            },
+            "social": {
+              "value": "官方账号：X @zendesk / Facebook zendesk / LinkedIn zendesk / Instagram zendesk",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "https://x.com/zendesk",
+                  "title": "X zendesk"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.facebook.com/zendesk",
+                  "title": "Facebook zendesk"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.linkedin.com/company/zendesk",
+                  "title": "LinkedIn zendesk"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "该时间段内没有公开动态",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "Intercom",
+          "domain": "wbolt.com",
+          "cells": {
+            "name": {
+              "value": "Intercom",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.wbolt.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "美国 · 旧金山，总部位于加州旧金山",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.wbolt.com/navigation/intercom",
+                  "title": "官网 · Intercom"
+                }
+              ],
+              "status": "requeried"
+            },
+            "features": {
+              "value": "网站即时聊天、聊天机器人、自动回答、外发信息、帮助中心文章、收件箱",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.wbolt.com/navigation/intercom",
+                  "title": "官网 · Intercom"
+                }
+              ],
+              "status": "requeried"
+            },
+            "pricing": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "contact": {
+              "value": "邮箱 team@intercom.com，电话 +1 415-673-3820",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.wbolt.com/navigation/intercom",
+                  "title": "官网 · Intercom"
+                }
+              ],
+              "status": "requeried"
+            },
+            "social": {
+              "value": "官方账号：知乎 wbolt",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "https://www.zhihu.com/people/wbolt",
+                  "title": "知乎 wbolt"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "该时间段内没有公开动态",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "Freshworks",
+          "domain": "",
+          "cells": {
+            "name": {
+              "value": "Freshworks",
+              "sources": [],
+              "status": "verified"
+            },
+            "region": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "features": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "pricing": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "contact": {
+              "value": "官网提供电话 +1-866-832-3090 及邮箱 support@freshdesk.com",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.freshworks.com/cn/",
+                  "title": "官网 · 满足业务需求的创新软件 | Freshworks"
+                }
+              ],
+              "status": "requeried"
+            },
+            "social": {
+              "value": "近期 1 条 · 要点：Freshworks平台案例",
+              "sources": [],
+              "items": [
+                {
+                  "text": "领英案例研究介绍Freshworks为AI驱动的统一服务运营平台，部署快、易用。",
+                  "url": "https://business.linkedin.com/advertise/customer-stories/freshworks",
+                  "date": "2026-10-16",
+                  "label": "LinkedIn"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "First Digital 使用 Freshworks 的 Freshservice 为大型时尚零售商运行企业服务管理。",
+              "date": "2026-08-25",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://www.itweb.co.za/article/modernising-enterprise-service-management-with-a-saas-first-omnichannel-platform/KA3WwMdzpdpvrydZ",
+                  "title": "Modernising enterprise service management with a SaaS-first, omnichannel platfor"
+                }
+              ],
+              "items": [
+                {
+                  "text": "First Digital 使用 Freshworks 的 Freshservice 为大型时尚零售商运行企业服务管理。",
+                  "url": "https://www.itweb.co.za/article/modernising-enterprise-service-management-with-a-saas-first-omnichannel-platform/KA3WwMdzpdpvrydZ",
+                  "date": "2026-08-25",
+                  "label": "itweb.co.za"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "HubSpot",
+          "domain": "hubspot.com",
+          "cells": {
+            "name": {
+              "value": "HubSpot",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "美国波士顿创立于2006年，服务全球数百万企业",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/our-story",
+                  "title": "官网 · About HubSpot | HubSpot’s Story"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "Marketing Hub、Sales Hub、Service Hub、Smart CRM、Agent Hub 等模块",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/",
+                  "title": "官网 · HubSpot | Software & Tools for your Business - Homepage"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/products/artificial-intelligence/ai-customer-service-agent",
+                  "title": "官网 · AI Customer Agent for Customer Support  | HubSpot"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "各产品提供免费版和付费版，另有面向小企业的 Starter 版",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/",
+                  "title": "官网 · HubSpot | Software & Tools for your Business - Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "contact": {
+              "value": "官网提供 Contact Sales 和 Customer Support 入口",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/company/contact",
+                  "title": "官网 · Contact Us | HubSpot"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/",
+                  "title": "官网 · HubSpot | Software & Tools for your Business - Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "social": {
+              "value": "近期 1 条 · 要点：B2B营销与线索获取",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "https://www.facebook.com/hubspot",
+                  "title": "Facebook hubspot"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.instagram.com/hubspot",
+                  "title": "Instagram hubspot"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://youtube.com/user/HubSpot",
+                  "title": "YouTube HubSpot"
+                }
+              ],
+              "items": [
+                {
+                  "text": "HubSpot与LinkedIn合作案例研究，介绍其通过赞助内容获取高质量线索。",
+                  "url": "https://business.linkedin.com/marketing-solutions/cx/18/02/hubspot-and-linkedin-fbgdn-mobile/3qc-thank-you",
+                  "date": "2026-09-12",
+                  "label": "LinkedIn"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "HubSpot在Unbound大会发布重构版CRM平台，含新版Breeze助手与情境中心",
+              "date": "2026-09-17",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://news.qq.com/rain/a/20260917A08BFZ00",
+                  "title": "HubSpot重构CRM平台,全面引入情境化AI能力_腾讯新闻"
+                }
+              ],
+              "items": [
+                {
+                  "text": "HubSpot在Unbound大会发布重构版CRM平台，含新版Breeze助手与情境中心",
+                  "url": "https://news.qq.com/rain/a/20260917A08BFZ00",
+                  "date": "2026-09-17",
+                  "label": "news.qq.com"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 112,
+        "checked": 28,
+        "requeried": 4,
+        "passed": 21,
+        "dropped": 7
+      },
+      "finishedAt": "2026-10-19T12:44:13.420Z"
+    }
+  }
+}

@@ -1,0 +1,119 @@
+{
+  "test": {
+    "id": "Q10",
+    "lang": "zh",
+    "q": "查 Linear、Jira 的定价和联系方式"
+  },
+  "intent": {
+    "type": "named",
+    "query": "查 Linear、Jira 的定价和联系方式",
+    "competitors": [
+      "Linear",
+      "Jira"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "pricing",
+      "contact"
+    ]
+  },
+  "run": {
+    "id": "run_ooQL7XSSspuz",
+    "status": "done",
+    "query": "查 Linear、Jira 的定价和联系方式",
+    "lang": "zh",
+    "createdAt": "2026-10-19T12:46:48.371Z",
+    "result": {
+      "runId": "run_ooQL7XSSspuz",
+      "intent": {
+        "type": "named",
+        "query": "查 Linear、Jira 的定价和联系方式",
+        "competitors": [
+          "Linear",
+          "Jira"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "pricing",
+          "contact"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "Linear",
+          "domain": "",
+          "cells": {
+            "name": {
+              "value": "Linear",
+              "sources": [],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "contact": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "Jira",
+          "domain": "atlassian.com",
+          "cells": {
+            "name": {
+              "value": "Jira",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.atlassian.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "contact": {
+              "value": "官网提供General Inquiries、Technical Support、Pricing and Billing、Purchasing and Licensing等联系入口页…",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.atlassian.com/company/contact/general-inquiries",
+                  "title": "官网 · General Inquiries - Contact Atlassian"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.atlassian.com/company/contact/purchasing-licensing",
+                  "title": "官网 · Purchasing & Licensing Contact"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://support.atlassian.com/",
+                  "title": "官网 · Atlassian Support"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 28,
+        "checked": 6,
+        "requeried": 0,
+        "passed": 3,
+        "dropped": 3
+      },
+      "finishedAt": "2026-10-19T12:47:34.106Z"
+    }
+  }
+}

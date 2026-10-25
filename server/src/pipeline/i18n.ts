@@ -1,8 +1,13 @@
-import type { Dimension, Lang } from '../types.ts'
+import { CUSTOM_PREFIX, type Dimension, type Lang } from '../types.ts'
 
 export const DIM_LABEL: Record<Lang, Record<Dimension, string>> = {
   zh: { name: '名称', region: '地区', features: '功能', pricing: '定价', contact: '联系方式', social: '社媒账号', news: '最新动态' },
   en: { name: 'Name', region: 'Region', features: 'Features', pricing: 'Pricing', contact: 'Contact', social: 'Social', news: 'Latest news' },
+}
+
+/** Header for a column key: built-in label, or the custom field's own words. */
+export function colLabel(lang: Lang, key: string): string {
+  return key.startsWith(CUSTOM_PREFIX) ? key.slice(CUSTOM_PREFIX.length) : (DIM_LABEL[lang][key as Dimension] ?? key)
 }
 
 export const REASON: Record<Lang, Record<string, string>> = {
@@ -26,18 +31,19 @@ export const REASON: Record<Lang, Record<string, string>> = {
 
 export const T = {
   zh: {
-    start: (k: number) => `开始调研 ${k} 家竞品：官网、搜索排名、新闻、社媒`,
+    start: (k: number) => `开始调研 ${k} 个对象：官网、相关网页、新闻、社媒`,
     stepSite: (n: string) => `${n} · 正在搜索官网…`,
     stepPages: (n: string, k: number) => `${n} · 读取官网页面（${k} 页）`,
     stepSeo: (n: string) => `${n} · 查看搜索排名`,
     stepNews: (n: string, k: number) => `${n} · 找到 ${k} 条相关新闻`,
     stepSocial: (n: string) => `${n} · 查看社媒账号和公开帖子`,
+    stepFields: (n: string, k: number) => `${n} · 按 ${k} 个自定义字段搜索并读取相关网页`,
     extracting: (n: string, k: number) => `${n} · 提取 ${k} 个字段并核对原文`,
     summarising: (n: string) => `${n} · 总结最新动态和社媒内容`,
     siteFound: (n: string, d: string) => `${n} · 找到官网 ${d}`,
     siteMissing: (n: string) => `${n} · 没有找到官网，只用搜索和新闻结果`,
     fetched: (n: string, k: number, parts: string) => `${n} · ${parts}，共 ${k} 个来源`,
-    parts: (site: number, seo: number, news: number, social: number) => `官网 ${site} 页 / 搜索 ${seo} 条 / 新闻 ${news} 条 / 社媒 ${social} 条`,
+    parts: (site: number, seo: number, news: number, social: number, web = 0) => `官网 ${site} 页 / 网页 ${web} 篇 / 搜索 ${seo} 条 / 新闻 ${news} 条 / 社媒 ${social} 条`,
     checking: (k: number) => `逐条核对 ${k} 条信息的来源 URL 与原文出处`,
     checkedOk: (ok: number, bad: number) => (bad ? `${ok} 条找到原文出处，${bad} 条需要复查` : '来源均可访问，出处已记录'),
     retry: (n: string, label: string, reason: string) => `${n} · ${label}：${reason}`,
@@ -56,18 +62,19 @@ export const T = {
     failedCompetitor: (n: string) => `${n} · 抓取失败，已跳过`,
   },
   en: {
-    start: (k: number) => `Researching ${k} competitors: websites, search rankings, news, social`,
+    start: (k: number) => `Researching ${k} subjects: websites, related pages, news, social`,
     stepSite: (n: string) => `${n} · looking for the official site…`,
     stepPages: (n: string, k: number) => `${n} · reading ${k} pages on the official site`,
     stepSeo: (n: string) => `${n} · checking search rankings`,
     stepNews: (n: string, k: number) => `${n} · found ${k} news items`,
     stepSocial: (n: string) => `${n} · checking social accounts and public posts`,
+    stepFields: (n: string, k: number) => `${n} · searching and reading pages for ${k} custom fields`,
     extracting: (n: string, k: number) => `${n} · extracting ${k} fields and checking each quote`,
     summarising: (n: string) => `${n} · summarising news and social posts`,
     siteFound: (n: string, d: string) => `${n} · official site ${d}`,
     siteMissing: (n: string) => `${n} · no official site found, using search and news only`,
     fetched: (n: string, k: number, parts: string) => `${n} · ${parts} — ${k} sources`,
-    parts: (site: number, seo: number, news: number, social: number) => `site ${site} pages / search ${seo} / news ${news} / social ${social}`,
+    parts: (site: number, seo: number, news: number, social: number, web = 0) => `site ${site} pages / web ${web} / search ${seo} / news ${news} / social ${social}`,
     checking: (k: number) => `Checking source URL and quoted origin for ${k} facts`,
     checkedOk: (ok: number, bad: number) => (bad ? `${ok} facts traced to their source, ${bad} need another look` : 'All sources reachable, origins recorded'),
     retry: (n: string, label: string, reason: string) => `${n} · ${label}: ${reason}`,

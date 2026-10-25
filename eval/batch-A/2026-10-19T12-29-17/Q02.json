@@ -1,0 +1,218 @@
+{
+  "test": {
+    "id": "Q02",
+    "lang": "zh",
+    "q": "查一下 Notion、Coda、ClickUp 的基本信息"
+  },
+  "intent": {
+    "type": "named",
+    "query": "查一下 Notion、Coda、ClickUp 的基本信息",
+    "competitors": [
+      "Notion",
+      "Coda",
+      "ClickUp"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "region",
+      "features",
+      "pricing",
+      "contact"
+    ]
+  },
+  "run": {
+    "id": "run_ucY_FRZK_e81",
+    "status": "done",
+    "query": "查一下 Notion、Coda、ClickUp 的基本信息",
+    "lang": "zh",
+    "createdAt": "2026-10-19T12:31:07.912Z",
+    "result": {
+      "runId": "run_ucY_FRZK_e81",
+      "intent": {
+        "type": "named",
+        "query": "查一下 Notion、Coda、ClickUp 的基本信息",
+        "competitors": [
+          "Notion",
+          "Coda",
+          "ClickUp"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "region",
+          "features",
+          "pricing",
+          "contact"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "Notion",
+          "domain": "hao.itotii.com",
+          "cells": {
+            "name": {
+              "value": "Notion",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://hao.itotii.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "features": {
+              "value": "sites 页面建站、主题定制、网站图标、Google Analytics 集成、10000+ 模板",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.chinaz.com/ainews/9809.shtml",
+                  "title": "官网 · Notion发布新功能sites 支持将Notion页面直接发布为网站"
+                }
+              ],
+              "status": "requeried"
+            },
+            "pricing": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "contact": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "Coda",
+          "domain": "marketingforindustry.com",
+          "cells": {
+            "name": {
+              "value": "Coda",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://marketingforindustry.com/",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "英国多塞特郡普尔，服务全球工业制造与IIoT客户",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://marketingforindustry.com/about/careers/",
+                  "title": "官网 · Careers - Coda | Marketing for Industry"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://marketingforindustry.com/",
+                  "title": "官网 · Home - Coda | Marketing for Industry"
+                }
+              ],
+              "status": "requeried"
+            },
+            "features": {
+              "value": "工业B2B营销代理：网站设计、CRM与营销自动化、影片动画、PR与社媒、品牌设计",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://marketingforindustry.com/",
+                  "title": "官网 · Home - Coda | Marketing for Industry"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "免费版0美元；Pro每位Doc Maker每月10美元（年付）或12美元（月付）；Team 30美元（年付）或36美元（月付）；Enterprise需询价，提供免费试用",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.partnershare.cn/product/coda-coda/price",
+                  "title": "官网 · Coda：产品介绍，价格套餐，功能特色，评价信息 ｜ PartnerShare"
+                }
+              ],
+              "status": "requeried"
+            },
+            "contact": {
+              "value": "电话 +44 (0)1202 721169，邮箱 hello@codacomms.com",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://marketingforindustry.com/contact/",
+                  "title": "官网 · Get in touch - Coda | Marketing for Industry"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "ClickUp",
+          "domain": "tripowerdesign.com",
+          "cells": {
+            "name": {
+              "value": "ClickUp",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.tripowerdesign.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "features": {
+              "value": "任务、文档、聊天、目标、白板协作；15+视图、35+ClickApp、数百集成与自动化",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.apeaksoft.com/zh-TW/mind-map/review-clickup/",
+                  "title": "官网 · ClickUp 審查 ClickUp 功能、定價和下載"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.mg21.com/clickup.html",
+                  "title": "官网 · 可自定义的生产力平台独角兽：ClickUp (Mango Technologies) | 美股之家 - 港股美股开户投资"
+                }
+              ],
+              "status": "requeried"
+            },
+            "pricing": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "contact": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 66,
+        "checked": 15,
+        "requeried": 4,
+        "passed": 9,
+        "dropped": 6
+      },
+      "finishedAt": "2026-10-19T12:34:04.276Z"
+    }
+  }
+}

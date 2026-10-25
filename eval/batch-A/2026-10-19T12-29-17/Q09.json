@@ -1,0 +1,454 @@
+{
+  "test": {
+    "id": "Q09",
+    "lang": "en",
+    "q": "Figma vs Canva vs Sketch"
+  },
+  "intent": {
+    "type": "named",
+    "query": "Figma vs Canva vs Sketch",
+    "competitors": [
+      "Figma",
+      "Canva",
+      "Sketch"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "region",
+      "features",
+      "pricing",
+      "contact",
+      "social",
+      "news"
+    ]
+  },
+  "run": {
+    "id": "run_MtlKWn7iCAgA",
+    "status": "done",
+    "query": "Figma vs Canva vs Sketch",
+    "lang": "en",
+    "createdAt": "2026-10-19T12:44:17.233Z",
+    "result": {
+      "runId": "run_MtlKWn7iCAgA",
+      "intent": {
+        "type": "named",
+        "query": "Figma vs Canva vs Sketch",
+        "competitors": [
+          "Figma",
+          "Canva",
+          "Sketch"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "region",
+          "features",
+          "pricing",
+          "contact",
+          "social",
+          "news"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "Figma",
+          "domain": "figma.com",
+          "cells": {
+            "name": {
+              "value": "Figma",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.figma.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "No reliable source — removed",
+              "sources": [],
+              "status": "missing"
+            },
+            "features": {
+              "value": "No reliable source — removed",
+              "sources": [],
+              "status": "missing"
+            },
+            "pricing": {
+              "value": "Starter free; Professional full seat $16/mo, Dev $12, Collab $3; Organization billed annually full seat $55/mo, Dev $25, Collab $5; Enterprise full seat $90/mo, Dev $35, Collab $5.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.figma.com/pricing/",
+                  "title": "Website · Plans & Pricing | Figma"
+                }
+              ],
+              "status": "requeried"
+            },
+            "contact": {
+              "value": "Contact sales form on the Contact Us page; product support via Support Hub; press inquiries at press@figma.com",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.figma.com/contact/",
+                  "title": "Website · Contact Us | Figma"
+                }
+              ],
+              "status": "verified"
+            },
+            "social": {
+              "value": "5 recent posts · Key point: Config India launches and design system updates",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "https://x.com/figma",
+                  "title": "X figma"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.instagram.com/figma",
+                  "title": "Instagram figma"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.facebook.com/figmadesign",
+                  "title": "Facebook figmadesign"
+                }
+              ],
+              "items": [
+                {
+                  "text": "At Config India, Figma announced Code Layers for collaborating with code on the canvas and Payload for shipping websites",
+                  "url": "https://x.com/figma/status/2110618179982749940",
+                  "label": "X"
+                },
+                {
+                  "text": "Figma announced bringing Payload into Figma Make to create, build, and ship with real data and content.",
+                  "url": "https://x.com/figma/status/2110610071424291119",
+                  "label": "X"
+                },
+                {
+                  "text": "Figma shared a sneak peek of a dedicated design system hub plus Guidelines in open beta.",
+                  "url": "https://x.com/figma/status/2110604452214509864",
+                  "label": "X"
+                },
+                {
+                  "text": "Figma Agent is now generally available, and Figma Make works with production codebases to branch, commit, and open PRs.",
+                  "url": "https://www.linkedin.com/posts/dylanfield_figma-agent-is-now-ga-at-figma-were-not-activity-7513290394441248768-C1my",
+                  "label": "LinkedIn"
+                },
+                {
+                  "text": "Figma introduced a Figma node connecting any frame into Weave workflows for on-brand content at scale.",
+                  "url": "https://x.com/figma/status/2100624143188394161",
+                  "label": "X"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "4 recent updates",
+              "date": "2026-10-15",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOeVl3TUpFMUJ3Qmd5RmRRLUtienRuSEJia1dtd24wVm5iMHFhbUQ0aFFRUk56cWVJQ01PZmJPVVZBN3JHVGpFTXVNX1ozNElOSGY3MFZ3WTJJYXEwZmIyc21NVjlKRFZRU3hHVTBxNVg5WGpxdmZJcm56cDAtdm1ob0llbmV0VllnNFdlbkcxTTJVUldIYTR6bXp0WHNteW93X0tyT1N4LUtEOGpORlU1eWRDZndJS2M?oc=5",
+                  "title": "Figma CFO says design platform willing to put margins on the line to boost AI de"
+                },
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOb3ZuaWwzQlZKUEF6eEdZeEticm9PMG1WdWZGVEI4eWRoaEt4aFhHRGloLVJSdzlzeTJzSlY0SlBnR0czbnN2c05yUFBUVF9QaUR1MEtMNlhacmVYbGIzQm5maEVHY21zOGo0cGp2bGszbUlnSnZ1UzI5bXN4clNEaUFBcVU0NXRIZW5KVTBJTVdJVGxnMTkzcE5FeTV0Y3BFNGtUdmtTdV8?oc=5",
+                  "title": "Figma announces new features to define how agents work on its platform - TechCru"
+                },
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQQWg3NjBzRnhQS1V2SWNxSVRpQXRJTkx1RVJCVFc5R3pfOHlGWHZFdy1uYWxVb3RkWmJPemZtWWpXS1ZsX25LOGpDSzcwdzk0RFNaNFlkb1JXemx6RFplUUVkN0VTMGJsS0ZuaEdCSkRYcUlxQk42di1uUVZLY3VaeFhVZlU2bVlxQXdibzN0YzFPZkxIWFZBQy1HYkVsZ0NPeEhiaGpsdWh5eDdzaDVhbTRJczJGSW02eklXTEE2ZXdJcEUwcEdJ?oc=5",
+                  "title": "Figma CEO Dylan Field on Q2 results, state of AI disruption and company growth o"
+                }
+              ],
+              "items": [
+                {
+                  "text": "Figma's CFO said the company will sacrifice margins to boost AI demand.",
+                  "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOeVl3TUpFMUJ3Qmd5RmRRLUtienRuSEJia1dtd24wVm5iMHFhbUQ0aFFRUk56cWVJQ01PZmJPVVZBN3JHVGpFTXVNX1ozNElOSGY3MFZ3WTJJYXEwZmIyc21NVjlKRFZRU3hHVTBxNVg5WGpxdmZJcm56cDAtdm1ob0llbmV0VllnNFdlbkcxTTJVUldIYTR6bXp0WHNteW93X0tyT1N4LUtEOGpORlU1eWRDZndJS2M?oc=5",
+                  "date": "2026-10-15",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "Figma announced new features defining how AI agents operate on its design platform.",
+                  "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOb3ZuaWwzQlZKUEF6eEdZeEticm9PMG1WdWZGVEI4eWRoaEt4aFhHRGloLVJSdzlzeTJzSlY0SlBnR0czbnN2c05yUFBUVF9QaUR1MEtMNlhacmVYbGIzQm5maEVHY21zOGo0cGp2bGszbUlnSnZ1UzI5bXN4clNEaUFBcVU0NXRIZW5KVTBJTVdJVGxnMTkzcE5FeTV0Y3BFNGtUdmtTdV8?oc=5",
+                  "date": "2026-10-15",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "CEO Dylan Field discussed Q2 results, AI disruption and growth outlook.",
+                  "url": "https://news.google.com/rss/articles/CBMixwFBVV95cUxQQWg3NjBzRnhQS1V2SWNxSVRpQXRJTkx1RVJCVFc5R3pfOHlGWHZFdy1uYWxVb3RkWmJPemZtWWpXS1ZsX25LOGpDSzcwdzk0RFNaNFlkb1JXemx6RFplUUVkN0VTMGJsS0ZuaEdCSkRYcUlxQk42di1uUVZLY3VaeFhVZlU2bVlxQXdibzN0YzFPZkxIWFZBQy1HYkVsZ0NPeEhiaGpsdWh5eDdzaDVhbTRJczJGSW02eklXTEE2ZXdJcEUwcEdJ?oc=5",
+                  "date": "2026-08-19",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "Figma announced its second quarter 2026 financial results.",
+                  "url": "https://news.google.com/rss/articles/CBMirwFBVV95cUxOUVBBaWRSTE1RRHZhVnZ3cGFuOE9UR0lTcVROV3JXOTFqbGhCWGRKd3BDdHkwdkxhUlVwUUV2d21ucU1VX1pTQjRmSGlUV0xHUXJBZEU2THhvOUVibmJXT044WHpsNGJTLV82LTVfc0pwWEVGT2ZOOGZnYk9leTYwU051ck9IaTRJSmVoQk9lVldPVXBzR3BxZjZJUTV1clBtY2RWRGw2NUJtUm9ESXZn?oc=5",
+                  "date": "2026-08-05",
+                  "label": "news.google.com"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "Canva",
+          "domain": "canva.com",
+          "cells": {
+            "name": {
+              "value": "Canva",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "No reliable source — removed",
+              "sources": [],
+              "status": "missing"
+            },
+            "features": {
+              "value": "Online design and publishing tool with AI photo editing (Magic Edit, Magic Eraser, Background Remover, Upscale), video trimming and splitting, PDF editing, and Magic Write…",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com/about/",
+                  "title": "Website · About Canva"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com/features/ai-photo-editing/",
+                  "title": "Website · AI Photo Editor - Instant Photo Editing with AI | Canva"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com/features/video-trimmer/",
+                  "title": "Website · Online Video Trimmer: Trim, split, or cut videos for free | "
+                }
+              ],
+              "status": "requeried"
+            },
+            "pricing": {
+              "value": "No reliable source — removed",
+              "sources": [],
+              "status": "missing"
+            },
+            "contact": {
+              "value": "Contact Sales page linked from the site navigation for business plan inquiries",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com/about/",
+                  "title": "Website · About Canva"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com/features/",
+                  "title": "Website · Explore Canva Features to Unlock Your Creativity"
+                }
+              ],
+              "status": "verified"
+            },
+            "social": {
+              "value": "4 recent posts · Key point: Canva AI design tools and updates",
+              "sources": [],
+              "items": [
+                {
+                  "text": "Canva's latest update adds a tool that converts shapes, AI-generated shapes, or draw strokes into frames.",
+                  "url": "https://x.com/canva/status/2105735567329681828",
+                  "label": "X"
+                },
+                {
+                  "text": "Canva shows using Magic Layers to separate an image and create a popping-out scale effect.",
+                  "url": "https://x.com/canva/status/2099665809274732839",
+                  "label": "X"
+                },
+                {
+                  "text": "Canva shared Creative Director Alex Naghavi's AI Vision remarks that AI makes execution cheap and good got cheap.",
+                  "url": "https://x.com/canva/status/2096901949375262815",
+                  "label": "X"
+                },
+                {
+                  "text": "Canva launched a thread highlighting four Canva AI tools for maximizing design potential under #Canvamaxxing.",
+                  "url": "https://x.com/canva/status/2080276719169048888",
+                  "label": "X"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "5 recent updates",
+              "date": "2026-09-29",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFAtVjl1VjMyU0dRMzk1YmRyNHlqa2FwcXNQRS1UMGJ3NDNBeGhORThackZ2bnFzWXh6UUZ3UFpvTlhWSTROZEY0MS15UjU1UEU4YklQazMzQQ?oc=5",
+                  "title": "10 Hacks Every Canva User Should Know - Lifehacker"
+                },
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQVXQxbGV2MEFqVl81SHdXUnYxdjQwbXN2NktwSlphZUJtR3NoNlRJdkU4bk5YTHNpUnFVQWpTOWtVb25GbFRYd1NUbnQ5bGtYaHE0QVIxeDZsc1RyY2RlUmZleFR0akI1S05jWmUtZGplc2d0NDVOX25BcnhzQV85TW1VUjhaRnJ5WklrOHpaSjlseEkxdlBXSQ?oc=5",
+                  "title": "Canva AI Vision: An AI Activist, Friends Agents and Sequins - Technology Magazin"
+                },
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNcEs1T0kzMHJMSEl4ZW9NcWd6QlVsOU5CNGZFUWRkMGxEOHg1Y3NvTkZLbVpxam1qeGtWZVZXZndydnFVNlVOb2hqV2NOZEpOSUxaSk9zVi1EUFdWYmgtNXk3MnVobWhtRlI1UW5VZ2N4ZW11cEs0cUNXS2JrUklVUnlpTHVVNnFXNlBndTcyYXVaYVhIWFllajdHbTdvSm1mQ2pYekxSbXVPNXNUTVhhMlFoNXVKS1E0dk5fOWJtaEQ2dTRuS2JJelBkTTBYOXViM3E4XzlCZlFuak5DVnc?oc=5",
+                  "title": "Washington Post. . An activist disrupted a Canva AI event in London, calling for"
+                }
+              ],
+              "items": [
+                {
+                  "text": "Lifehacker shares 10 tips to help Canva users work more efficiently.",
+                  "url": "https://news.google.com/rss/articles/CBMiV0FVX3lxTFAtVjl1VjMyU0dRMzk1YmRyNHlqa2FwcXNQRS1UMGJ3NDNBeGhORThackZ2bnFzWXh6UUZ3UFpvTlhWSTROZEY0MS15UjU1UEU4YklQazMzQQ?oc=5",
+                  "date": "2026-09-29",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "Technology Magazine covers Canva's AI vision, including Friends Agents and an AI activist protest.",
+                  "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQVXQxbGV2MEFqVl81SHdXUnYxdjQwbXN2NktwSlphZUJtR3NoNlRJdkU4bk5YTHNpUnFVQWpTOWtVb25GbFRYd1NUbnQ5bGtYaHE0QVIxeDZsc1RyY2RlUmZleFR0akI1S05jWmUtZGplc2d0NDVOX25BcnhzQV85TW1VUjhaRnJ5WklrOHpaSjlseEkxdlBXSQ?oc=5",
+                  "date": "2026-09-21",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "An activist from group Pull the Plug disrupted Canva's London AI event, calling for a data center moratorium.",
+                  "url": "https://news.google.com/rss/articles/CBMi3gFBVV95cUxNcEs1T0kzMHJMSEl4ZW9NcWd6QlVsOU5CNGZFUWRkMGxEOHg1Y3NvTkZLbVpxam1qeGtWZVZXZndydnFVNlVOb2hqV2NOZEpOSUxaSk9zVi1EUFdWYmgtNXk3MnVobWhtRlI1UW5VZ2N4ZW11cEs0cUNXS2JrUklVUnlpTHVVNnFXNlBndTcyYXVaYVhIWFllajdHbTdvSm1mQ2pYekxSbXVPNXNUTVhhMlFoNXVKS1E0dk5fOWJtaEQ2dTRuS2JJelBkTTBYOXViM3E4XzlCZlFuak5DVnc?oc=5",
+                  "date": "2026-09-19",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "An activist disrupted Canva's London AI event, chanting that AI steals from people.",
+                  "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQbWhFbXBYOXNtb0FTb1pxTG0tZHN4MDN0R3NaYjZpcUFMNFktQ25Gb2V6dWpwWWtNczdNMXFHbWdFUFhtNGZibXlVUFgxa1hfdE5ORi12dEZ2RFNMREMyLXNINTNZNFpqclVaYzZLbE5fZVRHcU1GZHlSc1BqWXlwcmRlZy1lWXhJZlI2dG9hTV9OMExiamRvMHg4NGotek1McHVoSWRZYlJTYm5KMVFRV3ZhMnlxcVo3ZV93QlY0cklPOThuUGtWaE1vTTRLUms0dHFSRWY0Q04tOVllOWlrSVpaQllLckVaQnhzT3BOeEtWYVpRRHJmcjU1MA?oc=5",
+                  "date": "2026-09-18",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "Canva launched ProSuite, combining Affinity, Cavalry, Flourish and Leonardo with over 100 new features.",
+                  "url": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxQLTFyUzBwYW9FeF9CVF9TbGlkaGowT21oZ1g5cGhMaHlJYUYwZ1U2Yk9GQ1RubzZpOFdlRkp6T3N4TFFUcU4xWEktWnJ5bk9UTktBWUEtS0VkTTdCWEFNcy1UdWZLdWdOVUZ0M09zTkNxekJnVW5TVmdVOU5GcVdmcmNLVXdVWTE1a0VVczctcmFncXkxUm9fcU91X293enhuOFludXhRRGFocXd4MjBXb21Ta0dYUHNRVEg3TEtzUTQxVjhLZnRMbHE0VGUzdXo0WXdtRHNlZHNERmRObkFvTw?oc=5",
+                  "date": "2026-09-15",
+                  "label": "news.google.com"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "Sketch",
+          "domain": "sketch.com",
+          "cells": {
+            "name": {
+              "value": "Sketch",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "荷兰（Sketch B.V.），专注为 Mac 上的 UI/UX 设计师打造原生 macOS 应用",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com/about-us/",
+                  "title": "Website · About Sketch · What makes us different"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "macOS 矢量设计编辑器、原型制作（Smart Animate、Overlays）、实时协作与评论、开发者交付、连接 Claude/Cursor 等 MCP 客户端的 AI 功能",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com",
+                  "title": "Website · Sketch · Design, prototype, collaborate and handoff"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "无免费方案；两种选择：一次性购买 Mac 许可证永久使用，或订阅以获得云存储和网页协作工具",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com/about-us/",
+                  "title": "Website · About Sketch · What makes us different"
+                }
+              ],
+              "status": "verified"
+            },
+            "contact": {
+              "value": "支持联系表单（Contact Customer Support 页面）；媒体咨询邮箱 press@sketch.com",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com/support/contact/",
+                  "title": "Website · Contact Customer Support"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com/about-us/",
+                  "title": "Website · About Sketch · What makes us different"
+                }
+              ],
+              "status": "verified"
+            },
+            "social": {
+              "value": "1 recent posts · Key point: free developer seats for design handoff",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "https://x.com/twostraws",
+                  "title": "X twostraws"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://x.com/sketch",
+                  "title": "X sketch"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.instagram.com/madewithsketch",
+                  "title": "Instagram madewithsketch"
+                }
+              ],
+              "items": [
+                {
+                  "text": "Sketch announced free developer seats letting devs inspect designs and copy CSS and colors without a paid seat.",
+                  "url": "https://x.com/sketch/status/2109932634721640685",
+                  "label": "X"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "No public updates in this period",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 128,
+        "checked": 21,
+        "requeried": 2,
+        "passed": 16,
+        "dropped": 5
+      },
+      "finishedAt": "2026-10-19T12:46:46.166Z"
+    }
+  }
+}

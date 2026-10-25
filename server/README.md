@@ -14,7 +14,7 @@ cp .env.example .env      # 填入 Key，本地开发把 NODE_ENV 改成 develop
 npm run dev               # http://localhost:8787
 ```
 
-前端连后端：在 `web/` 下新建 `.env.local`，写一行 `VITE_API_BASE=http://localhost:8787`，再 `npm run dev`。
+前端连后端：直接 `cd web && npm run dev`，`/api` 会自动转发到 http://localhost:8787（不用再配 `VITE_API_BASE`；设成 `demo` 才是演示数据）。
 不设这个变量时，前端用内置演示数据，后端不需要启动。
 
 ## 每一步怎么做的

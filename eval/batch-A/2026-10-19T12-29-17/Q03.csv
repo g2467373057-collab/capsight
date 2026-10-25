@@ -1,0 +1,4 @@
+﻿Name,Name_source,Pricing,Pricing_source,check
+Asana,,,,failed
+Monday.com,https://monday.com,,,failed
+Trello,https://trello.com,Free plan for individuals/small teams; Standard $5 per user per month; Premium $10 per user per month; Enterprise plan available (price not stated).,https://trello.com/standard | https://trello.com/premium | https://trello.com/pricing,passed after re-query

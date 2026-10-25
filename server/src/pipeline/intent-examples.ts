@@ -15,6 +15,12 @@ export interface IntentExample {
   competitors: string[] | null
   timeRange: TimeRange
   dimensions: Dimension[]
+  /** What kind of thing the subjects are. */
+  topic?: string
+  /** Custom fields in the user's words. */
+  fields?: string[]
+  /** type own: find rivals of the user's product ("competitors") or things matching a description ("list"). */
+  discover?: 'competitors' | 'list'
 }
 
 export const INTENT_EXAMPLES: IntentExample[] = [
@@ -30,5 +36,11 @@ export const INTENT_EXAMPLES: IntentExample[] = [
   { query: 'Notion 的定价和功能，顺便看下这个月的动态', type: 'named', company: null, competitors: ['Notion'], timeRange: '30d', dimensions: ['name', 'features', 'pricing', 'news'] },
   { query: '我是一家做跨境电商 ERP 的公司，主要功能是多平台订单和库存管理，查竞品都有哪些，附带他们的基本信息', type: 'own', company: null, product: '跨境电商 ERP 多平台订单 库存管理', competitors: null, timeRange: 'all', dimensions: ['name', 'region', 'features', 'pricing', 'contact'] },
   { query: 'We make a scheduling app for hair salons. Who are our competitors? Include pricing.', type: 'own', company: null, product: 'scheduling app for hair salons', competitors: null, timeRange: 'all', dimensions: ['name', 'pricing'] },
+  { query: '对比新加坡国立大学和南洋理工大学的人工智能硕士，学费、学制和申请截止时间', type: 'named', company: null, topic: '大学硕士项目', competitors: ['新加坡国立大学 人工智能硕士', '南洋理工大学 人工智能硕士'], timeRange: 'all', dimensions: ['name'], fields: ['学费', '学制', '申请截止时间'] },
+  { query: '新加坡有哪些做 AI 教育的公司？看看融资情况和成立时间', type: 'own', company: null, discover: 'list', product: '新加坡 AI 教育 公司', topic: 'AI 教育公司', competitors: null, timeRange: 'all', dimensions: ['name', 'region', 'features'], fields: ['融资情况', '成立时间'] },
+  { query: '推荐几个开源向量数据库，比较 GitHub star、开源协议和支持的语言', type: 'own', company: null, discover: 'list', product: '开源向量数据库', topic: '开源向量数据库', competitors: null, timeRange: 'all', dimensions: ['name', 'features'], fields: ['GitHub star 数', '开源协议', '支持的编程语言'] },
+  { query: '小红书和抖音的用户规模、主要用户画像和商业化方式', type: 'named', company: null, topic: '社交内容平台', competitors: ['小红书', '抖音'], timeRange: 'all', dimensions: ['name'], fields: ['用户规模', '用户画像', '商业化方式'] },
+  { query: 'Compare Tokyo and Seoul for a 5-day trip: visa rules, average hotel price, best season', type: 'named', company: null, topic: 'travel destinations', competitors: ['Tokyo', 'Seoul'], timeRange: 'all', dimensions: ['name'], fields: ['visa rules', 'average hotel price', 'best season'] },
+  { query: 'Cursor 和 Windsurf 怎么样', type: 'named', company: null, topic: 'AI 编程工具', competitors: ['Cursor', 'Windsurf'], timeRange: 'all', dimensions: ['name', 'region', 'features', 'pricing', 'contact', 'social', 'news'] },
   { query: "What's new with Figma?", type: 'timeframe', company: null, competitors: ['Figma'], timeRange: '7d', dimensions: ['name', 'social', 'news'] },
 ]

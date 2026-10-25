@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState, type FormEvent, type KeyboardEvent } from 'react'
-import { downloadCsv, parseIntent, runResearch } from '../api/client'
+import { colLabel, downloadCsv, parseIntent, runResearch } from '../api/client'
 import {
   DIMENSIONS,
+  MAX_FIELDS,
+  columnsOf,
   type Cell,
   type Dimension,
   type Intent,
@@ -66,7 +68,7 @@ function SourcePill({ s }: { s: Source }) {
   const label = s.kind === 'seo' || s.kind === 'news' ? t.sources[s.kind].label : host
   return (
     <a className={`src-pill src-pill--${s.kind}`} href={s.url} target="_blank" rel="noreferrer" title={`${s.title}\n${s.url}`}>
-      <Icon name={s.kind} size={12} />
+      <Icon name={s.kind === 'web' ? 'site' : s.kind} size={12} />
       {label}
     </a>
   )
@@ -144,6 +146,7 @@ export default function Console({
   const [query, setQuery] = useState('')
   const [intent, setIntent] = useState<Intent | null>(null)
   const [adding, setAdding] = useState('')
+  const [addingField, setAddingField] = useState('')
   const [events, setEvents] = useState<RunEvent[]>([])
   const [live, setLive] = useState<RunStats>(ZERO)
   const [result, setResult] = useState<RunResult | null>(null)
@@ -254,6 +257,21 @@ export default function Console({
     setAdding('')
   }
 
+  const fields = intent?.fields ?? []
+  const addField = () => {
+    const label = addingField.replace(/\s+/g, ' ').trim().slice(0, 24)
+    if (intent && label && fields.length < MAX_FIELDS && !fields.some((f) => f.toLowerCase() === label.toLowerCase())) {
+      patch({ fields: [...fields, label] })
+    }
+    setAddingField('')
+  }
+  const onFieldKey = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault()
+      addField()
+    }
+  }
+
   const onAddKey = (e: KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault()
@@ -331,8 +349,9 @@ export default function Console({
                 </span>
               ))}
               <span className="chip">{t.timeRanges[intent.timeRange]}</span>
+              {intent.topic && <span className="chip">{intent.topic}</span>}
               <span className="chip">
-                {intent.dimensions.length} {lang === 'zh' ? '个维度' : 'fields'}
+                {columnsOf(intent).length} {lang === 'zh' ? '个字段' : 'fields'}
               </span>
             </div>
           )}
@@ -380,6 +399,7 @@ export default function Console({
                 <div>
                   <dt>
                     {s.intent.competitors}
+                    {intent.topic && <small>{intent.topic}</small>}
                     {intent.type === 'own' && <small>{s.intent.suggested}</small>}
                   </dt>
                   <dd className="chips">
@@ -399,18 +419,20 @@ export default function Console({
                     {phase === 'intent' && (
                       <span className="chip chip--add">
                         <input
-                          list="ts-competitors"
+                          list={isDemo ? 'ts-competitors' : undefined}
                           value={adding}
                           placeholder={`+ ${s.intent.add}`}
                           onChange={(e) => setAdding(e.target.value)}
                           onKeyDown={onAddKey}
                           onBlur={() => adding.trim() && addCompetitor()}
                         />
-                        <datalist id="ts-competitors">
-                          {COMPETITORS.map((c) => (
-                            <option key={c.name} value={c.name} />
-                          ))}
-                        </datalist>
+                        {isDemo && (
+                          <datalist id="ts-competitors">
+                            {COMPETITORS.map((c) => (
+                              <option key={c.name} value={c.name} />
+                            ))}
+                          </datalist>
+                        )}
                       </span>
                     )}
                   </dd>
@@ -445,6 +467,34 @@ export default function Console({
                         {t.dims[d]}
                       </button>
                     ))}
+                  </dd>
+                </div>
+
+                <div>
+                  <dt>
+                    {s.intent.fields}
+                    <small>{s.intent.fieldsHint}</small>
+                  </dt>
+                  <dd className="chips">
+                    {fields.map((f) => (
+                      <span key={f} className="chip chip--on">
+                        {f}
+                        <button aria-label={`remove ${f}`} onClick={() => patch({ fields: fields.filter((x) => x !== f) })}>
+                          <Icon name="close" size={12} />
+                        </button>
+                      </span>
+                    ))}
+                    {fields.length < MAX_FIELDS && (
+                      <span className="chip chip--add">
+                        <input
+                          value={addingField}
+                          placeholder={`+ ${s.intent.addField}`}
+                          onChange={(e) => setAddingField(e.target.value)}
+                          onKeyDown={onFieldKey}
+                          onBlur={() => addingField.trim() && addField()}
+                        />
+                      </span>
+                    )}
                   </dd>
                 </div>
               </dl>
@@ -509,7 +559,7 @@ export default function Console({
                 <TraceGauge ratio={result.stats.checked ? result.stats.passed / result.stats.checked : 0} label={s.result.passRate} />
                 <div className="result-head__text">
                   <p className="pane__label">{s.result.heading}</p>
-                  <h3>{s.result.summary(result.rows.length, result.intent.dimensions.length)}</h3>
+                  <h3>{s.result.summary(result.rows.length, columnsOf(result.intent).length)}</h3>
                   <p className="legend">
                     <span className="legend__i legend__i--ok">{s.result.verified}</span>
                     <span className="legend__i legend__i--loop">{s.result.requeried}</span>
@@ -541,15 +591,15 @@ export default function Console({
                 <table className="ftable">
                   <thead>
                     <tr>
-                      {result.intent.dimensions.map((d) => (
-                        <th key={d}>{t.dims[d]}</th>
+                      {columnsOf(result.intent).map((d) => (
+                        <th key={d}>{colLabel(lang, d)}</th>
                       ))}
                     </tr>
                   </thead>
                   <tbody>
                     {result.rows.map((r) => (
                       <tr key={r.competitor}>
-                        {result.intent.dimensions.map((d) => (
+                        {columnsOf(result.intent).map((d) => (
                           <CellView key={d} c={r.cells[d]} />
                         ))}
                       </tr>

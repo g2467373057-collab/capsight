@@ -28,7 +28,7 @@ function scriptedLlm() {
     const docs = docsIn(r.user)
     const find = (kind: string, pathEnd: string) => docs.find((d) => d.kind === kind && new URL(d.url).pathname === pathEnd)
     if (r.task === 'extract') {
-      const fields = [...r.user.matchAll(/^- (\w+): /gm)].map((m) => m[1])
+      const fields = [...r.user.matchAll(/^- "?([\w:]+)"?: /gm)].map((m) => m[1])
       const facts: Record<string, unknown> = {}
       const hasSeo = docs.some((d) => d.kind === 'seo')
       for (const f of fields) {
@@ -181,4 +181,44 @@ test('judge can reject a verified fact, which then gets re-queried', async () =>
   })
   assert.equal(res.rows[0].cells.region?.status, 'requeried')
   assert.ok(events.some((e) => /sources disagree/.test(e.text)))
+})
+
+test('custom fields: searched, read from third-party pages, verified and shown as their own columns', async () => {
+  const wiki = await fakeSite({
+    '/acme': { body: html('Acme - Wiki', '<p>Acme raised a 12 million euro Series A in 2022, led by Example Ventures.</p>') },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  try {
+    const cfg = testConfig()
+    const db = freshDb()
+    const search = mockSearch((q) => {
+      if (q.includes('official website')) return [{ title: 'Acme Docs', url: `${acme.origin}/`, snippet: 'Acme Docs', position: 1 }]
+      // a different host from the official site (both fake servers listen on 127.0.0.1)
+      if (q === 'Acme funding') return [{ title: 'Acme - Wiki', url: `${wiki.origin.replace('127.0.0.1', 'localhost')}/acme`, snippet: 'Acme raised…', position: 1 }]
+      return []
+    })
+    const seen: string[] = []
+    const p = testProviders(
+      cfg,
+      db,
+      (r) => {
+        if (r.task !== 'extract') return { checks: {} }
+        seen.push(r.user)
+        const d = docsIn(r.user).find((x) => x.kind === 'web')
+        return { facts: { 'f:funding': d ? { value: 'Series A, €12M (2022)', evidence: [{ doc: d.id, quote: 'raised a 12 million euro Series A in 2022' }] } : null, 'f:mascot': null } }
+      },
+      search,
+    )
+    const intent: Intent = { type: 'named', query: 'Acme funding and mascot', competitors: ['Acme'], timeRange: 'all', dimensions: ['name'], fields: ['funding', 'mascot'] }
+    const res = await runResearch('run_custom', intent, { llm: p.llm('en'), search: p.search('en'), fetcher: p.fetcher, social: p.social, lang: 'en', maxRequery: 1, emit: () => {} })
+    const row = res.rows[0]
+    assert.deepEqual(Object.keys(row.cells), ['name', 'f:funding', 'f:mascot'])
+    assert.equal(row.cells['f:funding']?.status, 'verified')
+    assert.equal(row.cells['f:funding']?.sources[0].kind, 'web')
+    assert.equal(row.cells['f:mascot']?.status, 'missing')
+    assert.equal(res.stats.checked, 3)
+    assert.match(seen[0], /"f:funding": "funding"/)
+  } finally {
+    wiki.server.close()
+  }
 })

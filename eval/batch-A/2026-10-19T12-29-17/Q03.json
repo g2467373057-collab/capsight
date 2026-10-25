@@ -1,0 +1,131 @@
+{
+  "test": {
+    "id": "Q03",
+    "lang": "en",
+    "q": "Compare Asana, Monday.com and Trello pricing"
+  },
+  "intent": {
+    "type": "named",
+    "query": "Compare Asana, Monday.com and Trello pricing",
+    "competitors": [
+      "Asana",
+      "Monday.com",
+      "Trello"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "pricing"
+    ]
+  },
+  "run": {
+    "id": "run_LhxfO-OcAL5i",
+    "status": "done",
+    "query": "Compare Asana, Monday.com and Trello pricing",
+    "lang": "en",
+    "createdAt": "2026-10-19T12:34:09.567Z",
+    "result": {
+      "runId": "run_LhxfO-OcAL5i",
+      "intent": {
+        "type": "named",
+        "query": "Compare Asana, Monday.com and Trello pricing",
+        "competitors": [
+          "Asana",
+          "Monday.com",
+          "Trello"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "pricing"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "Asana",
+          "domain": "",
+          "cells": {
+            "name": {
+              "value": "Asana",
+              "sources": [],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "No reliable source — removed",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "Monday.com",
+          "domain": "monday.com",
+          "cells": {
+            "name": {
+              "value": "Monday.com",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://monday.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "No reliable source — removed",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "Trello",
+          "domain": "trello.com",
+          "cells": {
+            "name": {
+              "value": "Trello",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://trello.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "Free plan for individuals/small teams; Standard $5 per user per month; Premium $10 per user per month; Enterprise plan available (price not stated).",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://trello.com/standard",
+                  "title": "Website · Make Teamwork Less Work with Trello Standard"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://trello.com/premium",
+                  "title": "Website · Boost Your Business Productivity with Trello Premium"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://trello.com/pricing",
+                  "title": "Website · Which Trello Plan Is Best for You? Our Pricing Guide Can Hel"
+                }
+              ],
+              "status": "requeried"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 20,
+        "checked": 6,
+        "requeried": 1,
+        "passed": 4,
+        "dropped": 2
+      },
+      "finishedAt": "2026-10-19T12:35:01.688Z"
+    }
+  }
+}

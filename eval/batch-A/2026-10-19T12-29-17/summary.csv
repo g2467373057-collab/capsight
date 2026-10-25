@@ -1,0 +1,11 @@
+﻿id,lang,query,status,runSeconds,sources,checked,requeried,passed,dropped,coverage,llmCalls,inputTokens,outputTokens,companies
+"Q01","zh","我们是做在线协作文档的，帮我找竞品","done","104","66","21","3","16","5","0.76","29","86094","2277","石墨文档 (shimo.im); 腾讯文档 (chinaubuntu.com); 金山文档 (account.kdocs.cn)"
+"Q02","zh","查一下 Notion、Coda、ClickUp 的基本信息","done","176","66","15","4","9","6","0.60","30","332883","1413","Notion (hao.itotii.com); Coda (marketingforindustry.com); ClickUp (tripowerdesign.com)"
+"Q03","en","Compare Asana, Monday.com and Trello pricing","done","52","20","6","1","4","2","0.67","18","57350","2063","Asana (); Monday.com (monday.com); Trello (trello.com)"
+"Q04","zh","我们做 CRM，帮我查 Salesforce、HubSpot、纷享销客","done","83","84","21","3","20","1","0.95","22","92983","2158","Salesforce (); HubSpot (hubspot.com); 纷享销客 (fxiaoke.com)"
+"Q05","en","Find competitors of Calendly","done","118","158","28","3","21","7","0.75","29","144118","2330","Cal.com (cal.com); SavvyCal (savvycal.com); Doodle (doodles.google); Acuity Scheduling (acuityscheduling.com)"
+"Q06","zh","查飞书、钉钉、企业微信的定价和功能","done","141","35","9","3","6","3","0.67","18","103046","1312","飞书 (m.xitongzhijia.net); 钉钉 (gamege.com); 企业微信 (eday360.com.cn)"
+"Q07","en","Zoom, Microsoft Teams, Google Meet: pricing and recent news","done","74","48","9","1","8","1","0.89","11","28984","808","Zoom (zoom.com); Microsoft Teams (microsoft.com); Google Meet ()"
+"Q08","zh","我们做 SaaS 客服系统，帮我找竞品","done","112","112","28","4","21","7","0.75","36","236775","2100","Zendesk (zendesk.co.jp); Intercom (wbolt.com); Freshworks (); HubSpot (hubspot.com)"
+"Q09","en","Figma vs Canva vs Sketch","done","149","128","21","2","16","5","0.76","30","154375","3988","Figma (figma.com); Canva (canva.com); Sketch (sketch.com)"
+"Q10","zh","查 Linear、Jira 的定价和联系方式","done","46","28","6","0","3","3","0.50","9","57904","207","Linear (); Jira (atlassian.com)"

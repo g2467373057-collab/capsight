@@ -1,0 +1,533 @@
+{
+  "batch": "A",
+  "startedAt": "2026-10-19T12-29-17",
+  "tests": [
+    {
+      "id": "Q01",
+      "lang": "zh",
+      "query": "我们是做在线协作文档的，帮我找竞品",
+      "intent": {
+        "type": "own",
+        "query": "我们是做在线协作文档的，帮我找竞品",
+        "competitors": [
+          "石墨文档",
+          "腾讯文档",
+          "金山文档"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "region",
+          "features",
+          "pricing",
+          "contact",
+          "social",
+          "news"
+        ]
+      },
+      "runId": "run_xQ-7HYky-bA9",
+      "status": "done",
+      "usage": {
+        "calls": 29,
+        "inputTokens": 86094,
+        "outputTokens": 2277
+      },
+      "runSeconds": 104,
+      "totalSeconds": 109,
+      "stats": {
+        "sources": 66,
+        "checked": 21,
+        "requeried": 3,
+        "passed": 16,
+        "dropped": 5
+      },
+      "companies": [
+        {
+          "name": "石墨文档",
+          "domain": "shimo.im"
+        },
+        {
+          "name": "腾讯文档",
+          "domain": "chinaubuntu.com"
+        },
+        {
+          "name": "金山文档",
+          "domain": "account.kdocs.cn"
+        }
+      ]
+    },
+    {
+      "id": "Q02",
+      "lang": "zh",
+      "query": "查一下 Notion、Coda、ClickUp 的基本信息",
+      "intent": {
+        "type": "named",
+        "query": "查一下 Notion、Coda、ClickUp 的基本信息",
+        "competitors": [
+          "Notion",
+          "Coda",
+          "ClickUp"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "region",
+          "features",
+          "pricing",
+          "contact"
+        ]
+      },
+      "runId": "run_ucY_FRZK_e81",
+      "status": "done",
+      "usage": {
+        "calls": 30,
+        "inputTokens": 332883,
+        "outputTokens": 1413
+      },
+      "runSeconds": 176,
+      "totalSeconds": 181,
+      "stats": {
+        "sources": 66,
+        "checked": 15,
+        "requeried": 4,
+        "passed": 9,
+        "dropped": 6
+      },
+      "companies": [
+        {
+          "name": "Notion",
+          "domain": "hao.itotii.com"
+        },
+        {
+          "name": "Coda",
+          "domain": "marketingforindustry.com"
+        },
+        {
+          "name": "ClickUp",
+          "domain": "tripowerdesign.com"
+        }
+      ]
+    },
+    {
+      "id": "Q03",
+      "lang": "en",
+      "query": "Compare Asana, Monday.com and Trello pricing",
+      "intent": {
+        "type": "named",
+        "query": "Compare Asana, Monday.com and Trello pricing",
+        "competitors": [
+          "Asana",
+          "Monday.com",
+          "Trello"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "pricing"
+        ]
+      },
+      "runId": "run_LhxfO-OcAL5i",
+      "status": "done",
+      "usage": {
+        "calls": 18,
+        "inputTokens": 57350,
+        "outputTokens": 2063
+      },
+      "runSeconds": 52,
+      "totalSeconds": 56,
+      "stats": {
+        "sources": 20,
+        "checked": 6,
+        "requeried": 1,
+        "passed": 4,
+        "dropped": 2
+      },
+      "companies": [
+        {
+          "name": "Asana",
+          "domain": ""
+        },
+        {
+          "name": "Monday.com",
+          "domain": "monday.com"
+        },
+        {
+          "name": "Trello",
+          "domain": "trello.com"
+        }
+      ]
+    },
+    {
+      "id": "Q04",
+      "lang": "zh",
+      "query": "我们做 CRM，帮我查 Salesforce、HubSpot、纷享销客",
+      "intent": {
+        "type": "named",
+        "query": "我们做 CRM，帮我查 Salesforce、HubSpot、纷享销客",
+        "competitors": [
+          "Salesforce",
+          "HubSpot",
+          "纷享销客"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "region",
+          "features",
+          "pricing",
+          "contact",
+          "social",
+          "news"
+        ],
+        "topic": "CRM"
+      },
+      "runId": "run_J_ROLeyUGy3n",
+      "status": "done",
+      "usage": {
+        "calls": 22,
+        "inputTokens": 92983,
+        "outputTokens": 2158
+      },
+      "runSeconds": 83,
+      "totalSeconds": 86,
+      "stats": {
+        "sources": 84,
+        "checked": 21,
+        "requeried": 3,
+        "passed": 20,
+        "dropped": 1
+      },
+      "companies": [
+        {
+          "name": "Salesforce",
+          "domain": ""
+        },
+        {
+          "name": "HubSpot",
+          "domain": "hubspot.com"
+        },
+        {
+          "name": "纷享销客",
+          "domain": "fxiaoke.com"
+        }
+      ]
+    },
+    {
+      "id": "Q05",
+      "lang": "en",
+      "query": "Find competitors of Calendly",
+      "intent": {
+        "type": "own",
+        "query": "Find competitors of Calendly",
+        "competitors": [
+          "Cal.com",
+          "SavvyCal",
+          "Doodle",
+          "Acuity Scheduling"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "region",
+          "features",
+          "pricing",
+          "contact",
+          "social",
+          "news"
+        ]
+      },
+      "runId": "run_Tfx4TRNTuOTo",
+      "status": "done",
+      "usage": {
+        "calls": 29,
+        "inputTokens": 144118,
+        "outputTokens": 2330
+      },
+      "runSeconds": 118,
+      "totalSeconds": 124,
+      "stats": {
+        "sources": 158,
+        "checked": 28,
+        "requeried": 3,
+        "passed": 21,
+        "dropped": 7
+      },
+      "companies": [
+        {
+          "name": "Cal.com",
+          "domain": "cal.com"
+        },
+        {
+          "name": "SavvyCal",
+          "domain": "savvycal.com"
+        },
+        {
+          "name": "Doodle",
+          "domain": "doodles.google"
+        },
+        {
+          "name": "Acuity Scheduling",
+          "domain": "acuityscheduling.com"
+        }
+      ]
+    },
+    {
+      "id": "Q06",
+      "lang": "zh",
+      "query": "查飞书、钉钉、企业微信的定价和功能",
+      "intent": {
+        "type": "named",
+        "query": "查飞书、钉钉、企业微信的定价和功能",
+        "competitors": [
+          "飞书",
+          "钉钉",
+          "企业微信"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "features",
+          "pricing"
+        ]
+      },
+      "runId": "run_HXAiWrzKWMqK",
+      "status": "done",
+      "usage": {
+        "calls": 18,
+        "inputTokens": 103046,
+        "outputTokens": 1312
+      },
+      "runSeconds": 141,
+      "totalSeconds": 146,
+      "stats": {
+        "sources": 35,
+        "checked": 9,
+        "requeried": 3,
+        "passed": 6,
+        "dropped": 3
+      },
+      "companies": [
+        {
+          "name": "飞书",
+          "domain": "m.xitongzhijia.net"
+        },
+        {
+          "name": "钉钉",
+          "domain": "gamege.com"
+        },
+        {
+          "name": "企业微信",
+          "domain": "eday360.com.cn"
+        }
+      ]
+    },
+    {
+      "id": "Q07",
+      "lang": "en",
+      "query": "Zoom, Microsoft Teams, Google Meet: pricing and recent news",
+      "intent": {
+        "type": "named",
+        "query": "Zoom, Microsoft Teams, Google Meet: pricing and recent news",
+        "competitors": [
+          "Zoom",
+          "Microsoft Teams",
+          "Google Meet"
+        ],
+        "timeRange": "30d",
+        "dimensions": [
+          "name",
+          "pricing",
+          "news"
+        ]
+      },
+      "runId": "run_rMcM9CQx84Uz",
+      "status": "done",
+      "usage": {
+        "calls": 11,
+        "inputTokens": 28984,
+        "outputTokens": 808
+      },
+      "runSeconds": 74,
+      "totalSeconds": 76,
+      "stats": {
+        "sources": 48,
+        "checked": 9,
+        "requeried": 1,
+        "passed": 8,
+        "dropped": 1
+      },
+      "companies": [
+        {
+          "name": "Zoom",
+          "domain": "zoom.com"
+        },
+        {
+          "name": "Microsoft Teams",
+          "domain": "microsoft.com"
+        },
+        {
+          "name": "Google Meet",
+          "domain": ""
+        }
+      ]
+    },
+    {
+      "id": "Q08",
+      "lang": "zh",
+      "query": "我们做 SaaS 客服系统，帮我找竞品",
+      "intent": {
+        "type": "own",
+        "query": "我们做 SaaS 客服系统，帮我找竞品",
+        "competitors": [
+          "Zendesk",
+          "Intercom",
+          "Freshworks",
+          "HubSpot"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "region",
+          "features",
+          "pricing",
+          "contact",
+          "social",
+          "news"
+        ]
+      },
+      "runId": "run_Pd9EYNUN54ZH",
+      "status": "done",
+      "usage": {
+        "calls": 36,
+        "inputTokens": 236775,
+        "outputTokens": 2100
+      },
+      "runSeconds": 112,
+      "totalSeconds": 119,
+      "stats": {
+        "sources": 112,
+        "checked": 28,
+        "requeried": 4,
+        "passed": 21,
+        "dropped": 7
+      },
+      "companies": [
+        {
+          "name": "Zendesk",
+          "domain": "zendesk.co.jp"
+        },
+        {
+          "name": "Intercom",
+          "domain": "wbolt.com"
+        },
+        {
+          "name": "Freshworks",
+          "domain": ""
+        },
+        {
+          "name": "HubSpot",
+          "domain": "hubspot.com"
+        }
+      ]
+    },
+    {
+      "id": "Q09",
+      "lang": "en",
+      "query": "Figma vs Canva vs Sketch",
+      "intent": {
+        "type": "named",
+        "query": "Figma vs Canva vs Sketch",
+        "competitors": [
+          "Figma",
+          "Canva",
+          "Sketch"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "region",
+          "features",
+          "pricing",
+          "contact",
+          "social",
+          "news"
+        ]
+      },
+      "runId": "run_MtlKWn7iCAgA",
+      "status": "done",
+      "usage": {
+        "calls": 30,
+        "inputTokens": 154375,
+        "outputTokens": 3988
+      },
+      "runSeconds": 149,
+      "totalSeconds": 151,
+      "stats": {
+        "sources": 128,
+        "checked": 21,
+        "requeried": 2,
+        "passed": 16,
+        "dropped": 5
+      },
+      "companies": [
+        {
+          "name": "Figma",
+          "domain": "figma.com"
+        },
+        {
+          "name": "Canva",
+          "domain": "canva.com"
+        },
+        {
+          "name": "Sketch",
+          "domain": "sketch.com"
+        }
+      ]
+    },
+    {
+      "id": "Q10",
+      "lang": "zh",
+      "query": "查 Linear、Jira 的定价和联系方式",
+      "intent": {
+        "type": "named",
+        "query": "查 Linear、Jira 的定价和联系方式",
+        "competitors": [
+          "Linear",
+          "Jira"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "pricing",
+          "contact"
+        ]
+      },
+      "runId": "run_ooQL7XSSspuz",
+      "status": "done",
+      "usage": {
+        "calls": 9,
+        "inputTokens": 57904,
+        "outputTokens": 207
+      },
+      "runSeconds": 46,
+      "totalSeconds": 51,
+      "stats": {
+        "sources": 28,
+        "checked": 6,
+        "requeried": 0,
+        "passed": 3,
+        "dropped": 3
+      },
+      "companies": [
+        {
+          "name": "Linear",
+          "domain": ""
+        },
+        {
+          "name": "Jira",
+          "domain": "atlassian.com"
+        }
+      ]
+    }
+  ]
+}

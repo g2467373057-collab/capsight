@@ -8,3 +8,5 @@ server/keys.env
 
 # local design previews
 /*.html
+*.zip
+MSI5002-*

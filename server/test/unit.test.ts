@@ -144,6 +144,7 @@ test('intent rules: every worked example survives normalisation unchanged', () =
     assert.equal(i.timeRange, e.timeRange, e.query)
     assert.deepEqual(i.dimensions, e.dimensions, e.query)
     assert.equal(i.company ?? null, e.company, e.query)
+    assert.deepEqual(i.fields ?? [], e.fields ?? [], e.query)
   }
 })
 
@@ -226,4 +227,16 @@ test('intent "own": competitors come from a search on what the product does, and
   assert.deepEqual(i.dimensions, ['name', 'region', 'features', 'pricing', 'contact'])
   assert.ok(searched.some((q) => q.startsWith('跨境电商 ERP')), searched.join(' | '))
   assert.deepEqual(i.competitors, ['店小秘', '马帮']) // "幻想公司" is not in any result, so it is dropped
+})
+
+test('intent rules: custom fields', () => {
+  // non-company subjects: only name + the asked fields; built-in synonyms are mapped back to dimensions
+  const i = normaliseIntent({ type: 'named', competitors: ['NUS', 'NTU'], timeRange: 'all', dimensions: ['name'], fields: ['学费', '学制', '定价', '学费', ' '], topic: '大学' }, 'q', 5)
+  assert.deepEqual(i.fields, ['学费', '学制'])
+  assert.deepEqual(i.dimensions, ['name', 'pricing'])
+  assert.equal(i.topic, '大学')
+  // no fields and no dimensions → everything, as before
+  assert.equal(normaliseIntent({ type: 'named', competitors: ['A'], fields: [] }, 'q', 5).dimensions.length, 7)
+  // at most 6 custom fields
+  assert.equal(normaliseIntent({ type: 'named', competitors: ['A'], fields: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] }, 'q', 5).fields?.length, 6)
 })

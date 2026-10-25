@@ -1,6 +1,8 @@
 import { COMPETITORS, DEFAULT_NAMED, SUGGESTED_FOR_OWN, type MockCompetitor, type MockFact } from '../data/mock'
 import {
+  CUSTOM_PREFIX,
   DIMENSIONS,
+  columnsOf,
   type Cell,
   type Dimension,
   type Intent,
@@ -129,6 +131,11 @@ const DIM_LABEL: Record<Lang, Record<Dimension, string>> = {
   en: { name: 'Name', region: 'Region', features: 'Features', pricing: 'Pricing', contact: 'Contact', social: 'Social', news: 'Latest news' },
 }
 
+/** Column header: built-in label or the custom field's own words. */
+export function colLabel(lang: Lang, key: string): string {
+  return key.startsWith(CUSTOM_PREFIX) ? key.slice(CUSTOM_PREFIX.length) : (DIM_LABEL[lang][key as Dimension] ?? key)
+}
+
 function factCell(f: MockFact, lang: Lang): Cell {
   return {
     value: f.value[lang],
@@ -184,7 +191,7 @@ function buildCell(c: MockCompetitor, d: Dimension, intent: Intent, lang: Lang):
   return factCell(c[d], lang)
 }
 
-function unknownRow(name: string, dims: Dimension[], lang: Lang): Row {
+function unknownRow(name: string, dims: string[], lang: Lang): Row {
   const cells: Row['cells'] = {}
   for (const d of dims) {
     cells[d] =
@@ -201,13 +208,13 @@ async function mockRun(intent: Intent, { lang, onEvent }: RunOptions): Promise<R
     await sleep(ms + Math.random() * 180)
     onEvent?.(e)
   }
-  const dims = intent.dimensions
+  const dims = columnsOf(intent)
   const known = intent.competitors.map((n) => COMPETITORS.find((c) => c.name.toLowerCase() === n.toLowerCase()))
   const rows: Row[] = intent.competitors.map((n, i) => {
     const c = known[i]
     if (!c) return unknownRow(n, dims, lang)
     const cells: Row['cells'] = {}
-    dims.forEach((d) => (cells[d] = buildCell(c, d, intent, lang)))
+    dims.forEach((d) => (cells[d] = d.startsWith(CUSTOM_PREFIX) ? { value: lang === 'zh' ? '演示数据未覆盖' : 'Not in demo data', status: 'missing', sources: [] } : buildCell(c, d as Dimension, intent, lang)))
     return { competitor: c.name, domain: c.domain, cells }
   })
 
@@ -307,7 +314,7 @@ async function mockRun(intent: Intent, { lang, onEvent }: RunOptions): Promise<R
   return { runId: `run_${Date.now().toString(36)}`, intent, rows, stats, finishedAt: new Date().toISOString() }
 }
 
-/** Steps 2–5 — runs the research for a confirmed intent. Real backend when VITE_API_BASE is set. */
+/** Steps 2–5 — runs the research for a confirmed intent. Real backend unless built with VITE_API_BASE=demo. */
 export async function runResearch(intent: Intent, opts: RunOptions): Promise<RunResult> {
   if (!API_BASE) return mockRun(intent, opts)
   const { runId } = await api<{ runId: string }>('/runs', { body: { intent, lang: opts.lang } })
@@ -349,8 +356,8 @@ export async function fetchQuota(): Promise<{ used: number; limit: number; unlim
 const esc = (v: string) => (/[",\n]/.test(v) ? `"${v.replace(/"/g, '""')}"` : v)
 
 export function toCsv(result: RunResult, lang: Lang): string {
-  const dims = result.intent.dimensions
-  const L = DIM_LABEL[lang]
+  const dims = columnsOf(result.intent)
+  const L = (k: string) => colLabel(lang, k)
   const srcWord = lang === 'zh' ? '来源' : 'source'
   const statusWord = lang === 'zh' ? '校验' : 'check'
   const statusText: Record<string, string> =
@@ -359,7 +366,7 @@ export function toCsv(result: RunResult, lang: Lang): string {
       : { verified: 'passed', requeried: 'passed after re-query', missing: 'failed' }
 
   const header: string[] = []
-  for (const d of dims) header.push(L[d], `${L[d]}_${srcWord}`)
+  for (const d of dims) header.push(L(d), `${L(d)}_${srcWord}`)
   header.push(statusWord)
 
   const lines = [header.map(esc).join(',')]

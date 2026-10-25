@@ -1,12 +1,14 @@
 import { UNTRUSTED_NOTE, type Llm } from '../llm/llm.ts'
 import { normalizeForMatch } from '../sources/html.ts'
 import { hostOf } from '../sources/net.ts'
-import type { Cell, Dimension, Lang, Source } from '../types.ts'
+import { CUSTOM_PREFIX, type Cell, type Lang, type Source } from '../types.ts'
 import type { Bundle, Doc } from './collect.ts'
 import { PLATFORM_LABEL, T } from './i18n.ts'
 
-export type FactField = Extract<Dimension, 'region' | 'features' | 'pricing' | 'contact'>
-export const FACT_FIELDS: FactField[] = ['region', 'features', 'pricing', 'contact']
+export type BuiltinFact = 'region' | 'features' | 'pricing' | 'contact'
+export const FACT_FIELDS: BuiltinFact[] = ['region', 'features', 'pricing', 'contact']
+/** A built-in fact field, or a custom column key `f:<label>`. */
+export type FactField = string
 
 export interface Evidence {
   doc: string
@@ -29,14 +31,23 @@ export interface Checked {
   reason?: 'not_found' | 'quote_not_found' | 'unreachable' | 'unsupported' | 'conflict' | 'seo_only'
 }
 
-const FIELD_GUIDE: Record<FactField, string> = {
+const FIELD_GUIDE: Record<BuiltinFact, string> = {
   region: 'Headquarters city and country, plus main markets if stated (e.g. "美国 · 旧金山，主要面向北美和欧洲").',
   features: 'A short summary of what the product actually does: name 3–5 concrete capabilities or modules the documents mention (e.g. "AI 写作、数据库视图、团队知识库、200+ 集成"), not generic words like "powerful" or "easy to use".',
   pricing: 'Concrete plans and prices as stated, e.g. "Free / Plus $10 / Business $20 每人每月，Enterprise 需询价". Include the free tier, billing basis and trial if mentioned. Never invent a price.',
   contact: 'The concrete channel as stated: the actual sales or support e-mail, phone number, or the contact-form page name.',
 }
 
-const DOC_BUDGET: Record<Doc['kind'], number> = { site: 6000, seo: 450, news: 300, social: 300 }
+/** What to extract for a field. Custom fields use the user's own words. */
+export function fieldGuide(f: FactField): string {
+  if (f.startsWith(CUSTOM_PREFIX)) {
+    const label = f.slice(CUSTOM_PREFIX.length)
+    return `"${label}" — exactly what the user asked for under this name. Give the concrete facts as stated (numbers with units, dates, names, conditions). If the documents give several values (e.g. per plan, per year, per programme), name each briefly.`
+  }
+  return FIELD_GUIDE[f as BuiltinFact] ?? f
+}
+
+const DOC_BUDGET: Record<Doc['kind'], number> = { site: 6000, web: 4000, seo: 450, news: 300, social: 300 }
 
 export function renderDocs(docs: Doc[], totalChars = 42000): string {
   let used = 0
@@ -51,30 +62,31 @@ export function renderDocs(docs: Doc[], totalChars = 42000): string {
 }
 
 /** Step 3a: the model proposes facts, each with verbatim quotes pointing at documents. */
-export async function extractFacts(llm: Llm, lang: Lang, name: string, fields: FactField[], docs: Doc[]): Promise<Partial<Record<FactField, Fact | null>>> {
+export async function extractFacts(llm: Llm, lang: Lang, name: string, fields: FactField[], docs: Doc[], topic?: string): Promise<Partial<Record<FactField, Fact | null>>> {
   if (!fields.length) return {}
   const schema = Object.fromEntries(fields.map((f) => [f, { value: '…', evidence: [{ doc: 'D1', quote: 'exact text copied from D1' }] }]))
   const out = await llm.json<{ facts?: Partial<Record<FactField, Fact | null>> }>({
     task: 'extract',
     system: [
-      'You extract competitor facts for a research table. Output JSON only.',
+      'You extract facts about one subject (a company, product, school, place, tool, programme…) for a research table. Output JSON only.',
       UNTRUSTED_NOTE,
       'Rules:',
       '- Use only the documents. If a field is not stated, set it to null. Never guess.',
       '- Every fact needs 1–3 evidence items. "quote" must be copied character-for-character from that document (5–220 characters).',
-      '- Prefer kind=site (the official website) over search snippets, news or social posts.',
+      '- Prefer kind=site (the subject\'s own website), then kind=web (full pages found by search), over search snippets (kind=seo), news or social posts.',
+      '- Only use facts that are about this exact subject, not a different one with a similar name.',
       `- "value" is a short summary written from the documents in ${lang === 'zh' ? 'Simplified Chinese, 15–60 characters' : 'English, 8–30 words'}: specific and informative (names, numbers, plans, places), one sentence or a compact list, no filler or marketing adjectives. Keep product and plan names as written.`,
     ].join('\n'),
     user: [
-      `Company / product: ${name}`,
+      `Subject: ${name}${topic ? ` (${topic})` : ''}`,
       'Fields:',
-      ...fields.map((f) => `- ${f}: ${FIELD_GUIDE[f]}`),
+      ...fields.map((f) => `- ${JSON.stringify(f)}: ${fieldGuide(f)}`),
       `Return JSON like: ${JSON.stringify({ facts: schema })}`,
       '',
       'Documents:',
       renderDocs(docs),
     ].join('\n'),
-    maxTokens: 1800,
+    maxTokens: Math.min(3200, 900 + fields.length * 300),
   })
   return out.facts ?? {}
 }
@@ -133,12 +145,12 @@ export async function judge(llm: Llm, lang: Lang, name: string, items: Checked[]
   const out = await llm.json<{ checks?: Record<string, { ok?: boolean; reason?: string }> }>({
     task: 'judge',
     system: [
-      'You are a strict fact checker for a competitor-research table. Output JSON only.',
+      'You are a strict fact checker for a research table. Output JSON only.',
       UNTRUSTED_NOTE,
       'For each field decide ok=true only if the quotes directly support the value and the quotes do not contradict each other.',
       'reason must be one of: "unsupported", "conflict" (when ok=false).',
     ].join('\n'),
-    user: `Company: ${name}\nLanguage of values: ${lang}\nItems: ${JSON.stringify(payload)}\nReturn JSON like {"checks": {"pricing": {"ok": true}, "region": {"ok": false, "reason": "unsupported"}}}`,
+    user: `Subject: ${name}\nLanguage of values: ${lang}\nItems: ${JSON.stringify(payload)}\nReturn JSON like {"checks": {"pricing": {"ok": true}, "region": {"ok": false, "reason": "unsupported"}}}`,
     maxTokens: 600,
   })
   const res: Record<string, { ok: boolean; reason?: string }> = {}

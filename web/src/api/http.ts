@@ -1,5 +1,10 @@
-/** Base URL of the Capsight API. Unset = demo mode with built-in sample data. */
-export const API_BASE = (import.meta.env.VITE_API_BASE as string | undefined)?.replace(/\/$/, '') || undefined
+/**
+ * Base URL of the Capsight API.
+ * Default "/api": the same server that serves the page (share.sh, Docker, Render), or the Vite dev proxy.
+ * Set VITE_API_BASE=demo to build the offline demo with built-in sample data.
+ */
+const RAW_BASE = ((import.meta.env.VITE_API_BASE as string | undefined) ?? '').trim()
+export const API_BASE = RAW_BASE.toLowerCase() === 'demo' ? undefined : RAW_BASE.replace(/\/$/, '') || '/api'
 export const isDemo = !API_BASE
 
 /** An error from the API, carrying its machine-readable code (e.g. "daily_limit"). */

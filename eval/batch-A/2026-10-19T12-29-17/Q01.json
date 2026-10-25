@@ -1,0 +1,326 @@
+{
+  "test": {
+    "id": "Q01",
+    "lang": "zh",
+    "q": "我们是做在线协作文档的，帮我找竞品"
+  },
+  "intent": {
+    "type": "own",
+    "query": "我们是做在线协作文档的，帮我找竞品",
+    "competitors": [
+      "石墨文档",
+      "腾讯文档",
+      "金山文档"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "region",
+      "features",
+      "pricing",
+      "contact",
+      "social",
+      "news"
+    ]
+  },
+  "run": {
+    "id": "run_xQ-7HYky-bA9",
+    "status": "done",
+    "query": "我们是做在线协作文档的，帮我找竞品",
+    "lang": "zh",
+    "createdAt": "2026-10-19T12:29:21.620Z",
+    "result": {
+      "runId": "run_xQ-7HYky-bA9",
+      "intent": {
+        "type": "own",
+        "query": "我们是做在线协作文档的，帮我找竞品",
+        "competitors": [
+          "石墨文档",
+          "腾讯文档",
+          "金山文档"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "region",
+          "features",
+          "pricing",
+          "contact",
+          "social",
+          "news"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "石墨文档",
+          "domain": "shimo.im",
+          "cells": {
+            "name": {
+              "value": "石墨文档",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://shimo.im",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "中国武汉，在北京、上海、武汉设有分支机构和服务中心",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://shimo.im/about",
+                  "title": "官网 · 关于石墨,石墨文档介绍_石墨文档官网"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "pricing": {
+              "value": "企业版360元/人/年，企业高级版600元/人/年，私有部署版需咨询顾问",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://shimo.im/pricing",
+                  "title": "官网 · 石墨文档企业版,云文档协作系统,数据安全管理系统_石墨文档官网"
+                }
+              ],
+              "status": "verified"
+            },
+            "contact": {
+              "value": "客服电话400 666 9920，商务合作market@shimo.im，反馈contact@shimo.im",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://shimo.im/about",
+                  "title": "官网 · 关于石墨,石墨文档介绍_石墨文档官网"
+                }
+              ],
+              "status": "verified"
+            },
+            "social": {
+              "value": "官方账号：微博 shimowendang / X @ShimoDocs",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "http://weibo.com/shimowendang",
+                  "title": "微博 shimowendang"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://x.com/ShimoDocs",
+                  "title": "X ShimoDocs"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "该时间段内没有公开动态",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "腾讯文档",
+          "domain": "chinaubuntu.com",
+          "cells": {
+            "name": {
+              "value": "腾讯文档",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "http://www.chinaubuntu.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "中国深圳，腾讯旗下产品，面向国内用户",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://www.cnpp.cn/pinpai/135822.html",
+                  "title": "搜索「腾讯文档 公司 总部」排名第 2"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.jingxuanxing.com/ltd/86.html",
+                  "title": "搜索「腾讯文档 公司 总部」排名第 3"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "支持Word/Excel/PPT/PDF/收集表/思维导图/流程图，多人实时协作编辑，云端自动保存，可设QQ微信访问编辑权限",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.iefans.net/soft/v1265520.html",
+                  "title": "官网 · 腾讯文档电脑版-腾讯文档下载v2.2.35.0-IE浏览器中文网站"
+                },
+                {
+                  "kind": "site",
+                  "url": "http://www.chinaubuntu.com/wzdh/741.html",
+                  "title": "官网 · 腾讯文档 - 官网导航 - 腾讯文档官方网站为docs.qq.com"
+                }
+              ],
+              "status": "requeried"
+            },
+            "pricing": {
+              "value": "完全免费，无需付费即可使用高级功能，单文件协作人数无上限",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.iefans.net/soft/v1265520.html",
+                  "title": "官网 · 腾讯文档电脑版-腾讯文档下载v2.2.35.0-IE浏览器中文网站"
+                }
+              ],
+              "status": "requeried"
+            },
+            "contact": {
+              "value": "未提供腾讯文档官方客服邮箱或电话，仅见QQ登录与设置内意见反馈",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://app.zol.com.cn/series_112928.html",
+                  "title": "搜索「腾讯文档 features」排名第 4"
+                },
+                {
+                  "kind": "news",
+                  "url": "https://www.w3cschool.cn/workbuddydocs/workbuddydocs-tencent-doc.html",
+                  "title": "WorkBuddy 腾讯文档_w3cschool"
+                }
+              ],
+              "status": "verified"
+            },
+            "social": {
+              "value": "近期 1 条 · 要点：AI涂装小程序上线",
+              "sources": [],
+              "items": [
+                {
+                  "text": "特玩小程序上线AI涂装生成功能，手机选车型输描述即可生成涂装。",
+                  "url": "https://mp.weixin.qq.com/s/Y52M3obppbj4EUiaOdbYlg",
+                  "date": "2026-10-12",
+                  "label": "公众号"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "WorkBuddy与腾讯文档深度集成，支持搜索、预览、引用、回写一站完成。",
+              "date": "2026-09-30",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://www.w3cschool.cn/workbuddydocs/workbuddydocs-tencent-doc.html",
+                  "title": "WorkBuddy 腾讯文档_w3cschool"
+                }
+              ],
+              "items": [
+                {
+                  "text": "WorkBuddy与腾讯文档深度集成，支持搜索、预览、引用、回写一站完成。",
+                  "url": "https://www.w3cschool.cn/workbuddydocs/workbuddydocs-tencent-doc.html",
+                  "date": "2026-09-30",
+                  "label": "w3cschool.cn"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "金山文档",
+          "domain": "account.kdocs.cn",
+          "cells": {
+            "name": {
+              "value": "金山文档",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://account.kdocs.cn/passport/singlesign?cb=https%3A%2F%2Fwww.kdocs.cn%2F&form=kdocs",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "features": {
+              "value": "支持docx/pptx/xlsx编辑、多人同时在线协作评论、文档版本控制与回退、大量文档模板",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://168dmj.com/sites/jinshanwendang.html",
+                  "title": "官网 · 金山文档官网,在线网页版,电脑版下载,支持多人协作编辑在线文档"
+                }
+              ],
+              "status": "requeried"
+            },
+            "pricing": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "contact": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "social": {
+              "value": "近期 1 条 · 要点：AI创作与招聘",
+              "sources": [],
+              "items": [
+                {
+                  "text": "特玩小程序上线AI涂装生成功能，手机端可选车型并生成涂装。",
+                  "url": "https://mp.weixin.qq.com/s/Y52M3obppbj4EUiaOdbYlg",
+                  "date": "2026-10-12",
+                  "label": "公众号"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "金山文档发布v3.11.5版本，支持多人在线协作与云端同步",
+              "date": "2026-10-09",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://down.chinaz.com/ruanjian/50567.htm",
+                  "title": "金山文档-金山文档(原WPS文档)下载 - 站长源码"
+                }
+              ],
+              "items": [
+                {
+                  "text": "金山文档发布v3.11.5版本，支持多人在线协作与云端同步",
+                  "url": "https://down.chinaz.com/ruanjian/50567.htm",
+                  "date": "2026-10-09",
+                  "label": "down.chinaz.com"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 66,
+        "checked": 21,
+        "requeried": 3,
+        "passed": 16,
+        "dropped": 5
+      },
+      "finishedAt": "2026-10-19T12:31:05.141Z"
+    }
+  }
+}

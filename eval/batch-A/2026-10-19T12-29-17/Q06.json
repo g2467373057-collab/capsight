@@ -1,0 +1,161 @@
+{
+  "test": {
+    "id": "Q06",
+    "lang": "zh",
+    "q": "查飞书、钉钉、企业微信的定价和功能"
+  },
+  "intent": {
+    "type": "named",
+    "query": "查飞书、钉钉、企业微信的定价和功能",
+    "competitors": [
+      "飞书",
+      "钉钉",
+      "企业微信"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "features",
+      "pricing"
+    ]
+  },
+  "run": {
+    "id": "run_HXAiWrzKWMqK",
+    "status": "done",
+    "query": "查飞书、钉钉、企业微信的定价和功能",
+    "lang": "zh",
+    "createdAt": "2026-10-19T12:38:36.023Z",
+    "result": {
+      "runId": "run_HXAiWrzKWMqK",
+      "intent": {
+        "type": "named",
+        "query": "查飞书、钉钉、企业微信的定价和功能",
+        "competitors": [
+          "飞书",
+          "钉钉",
+          "企业微信"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "features",
+          "pricing"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "飞书",
+          "domain": "m.xitongzhijia.net",
+          "cells": {
+            "name": {
+              "value": "飞书",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://m.xitongzhijia.net",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            },
+            "pricing": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "钉钉",
+          "domain": "gamege.com",
+          "cells": {
+            "name": {
+              "value": "钉钉",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.gamege.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "集成IM、视频会议、在线文档、考勤审批、钉盘存储，支持多端同步",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.gamege.com/gonglue/202604/299618.html",
+                  "title": "官网 · 钉钉官网入口 钉钉官方在线地址_游戏阁gamege.com"
+                }
+              ],
+              "status": "requeried"
+            },
+            "pricing": {
+              "value": "未找到可靠来源，已剔除",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "企业微信",
+          "domain": "eday360.com.cn",
+          "cells": {
+            "name": {
+              "value": "企业微信",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "http://eday360.com.cn",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "智能助理“大圆”、智能机器人、记录面聊、智能搜索与智能总结；连接微信客户联系、客户群、客户朋友圈、微信客服；集成文档、智能表格、邮件、日程、会议、微盘及打卡审批等OA应用",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://work.weixin.qq.com/",
+                  "title": "官网 · 企业微信"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://wiki.mbalib.com/wiki/%E4%BC%81%E4%B8%9A%E5%BE%AE%E4%BF%A1",
+                  "title": "官网 · 企业微信 - MBA智库百科"
+                }
+              ],
+              "status": "requeried"
+            },
+            "pricing": {
+              "value": "按企业通讯录账号规模定价，管理员可在手机端工作台查看「数据保障计划」价格",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://open.work.weixin.qq.com/help2/pc/20935",
+                  "title": "官网 · 「数据保障计划」的价格-帮助中心-企业微信"
+                }
+              ],
+              "status": "requeried"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 35,
+        "checked": 9,
+        "requeried": 3,
+        "passed": 6,
+        "dropped": 3
+      },
+      "finishedAt": "2026-10-19T12:40:57.164Z"
+    }
+  }
+}

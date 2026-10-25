@@ -84,7 +84,7 @@ export const resetDocIds = () => {
 }
 
 /** Fetches one official page and turns it into a Doc (plus its links). */
-export async function fetchSiteDoc(deps: CollectDeps, b: Bundle, url: string): Promise<Doc | undefined> {
+export async function fetchSiteDoc(deps: CollectDeps, b: Bundle, url: string, kind: 'site' | 'web' = 'site'): Promise<Doc | undefined> {
   if (b.fetchedUrls.has(url)) return undefined
   b.fetchedUrls.add(url)
   const page = await deps.fetcher.get(url, { lang: deps.lang })
@@ -98,8 +98,9 @@ export async function fetchSiteDoc(deps: CollectDeps, b: Bundle, url: string): P
   const mails = ex.links.filter((l) => l.url.startsWith('mailto:')).map((l) => l.url.slice(7).split('?')[0])
   if (mails.length) text += `\n${[...new Set(mails)].join(' ')}`
   if (ex.description) text = `${ex.description}\n${text}`
-  b.links.push(...ex.links)
-  const doc: Doc = { id: nextId(), kind: 'site', url: page.url, title: ex.title || hostOf(page.url), text, status: 200 }
+  // links on the subject's own site are used to find its pages and social accounts; other sites' links are not
+  if (kind === 'site') b.links.push(...ex.links)
+  const doc: Doc = { id: nextId(), kind, url: page.url, title: ex.title || hostOf(page.url), text, status: 200 }
   b.docs.push(doc)
   return doc
 }
@@ -142,8 +143,30 @@ async function pool<T, R>(items: T[], n: number, fn: (t: T) => Promise<R>): Prom
   return out
 }
 
-/** Step 2: official site + search ranking + news + social for one competitor. */
-export async function collect(deps: CollectDeps, name: string, dims: Dimension[], timeRange: TimeRange): Promise<Bundle> {
+/** Hosts whose pages are not worth reading as text (video, social feeds, login walls). */
+const NOT_READABLE = /(^|\.)(youtube\.com|youtu\.be|bilibili\.com|x\.com|twitter\.com|facebook\.com|instagram\.com|tiktok\.com|douyin\.com|linkedin\.com|weibo\.com|xiaohongshu\.com|pinterest\.com)$/
+
+/** Search one custom field and read the best result pages. Official-site results count as "site", others as "web". */
+export async function collectField(deps: CollectDeps, b: Bundle, label: string, pages = 2): Promise<Doc[]> {
+  const { search, lang } = deps
+  const q = `${b.name} ${label}`
+  const hits = await search.web(q, { lang, num: 8 })
+  for (const h of hits.slice(0, 4)) {
+    if (b.docs.some((d) => d.kind === 'seo' && d.url === h.url && d.query === q)) continue
+    b.docs.push({ id: nextId(), kind: 'seo', url: h.url, title: h.title, text: `${h.title}\n${h.snippet}`, status: 200, rank: h.position, query: q, date: h.date })
+  }
+  const base = b.home ? baseDomain(hostOf(b.home)) : ''
+  const readable = hits.filter((h) => {
+    const host = hostOf(h.url)
+    return host && !NOT_READABLE.test(host) && !/\.pdf($|\?)/i.test(h.url) && !b.fetchedUrls.has(h.url)
+  })
+  const picked = readable.slice(0, pages)
+  const got = await pool(picked, 2, (h) => fetchSiteDoc(deps, b, h.url, base && baseDomain(hostOf(h.url)) === base ? 'site' : 'web'))
+  return got.filter((d): d is Doc => !!d)
+}
+
+/** Step 2: official site + search ranking + news + social (+ pages for custom fields) for one subject. */
+export async function collect(deps: CollectDeps, name: string, dims: Dimension[], timeRange: TimeRange, fields: string[] = []): Promise<Bundle> {
   const { search, lang } = deps
   const b: Bundle = { name, domain: '', docs: [], links: [], accounts: [], profiles: [], news: [], fetchedUrls: new Set() }
   const t = T[lang]
@@ -189,6 +212,12 @@ export async function collect(deps: CollectDeps, name: string, dims: Dimension[]
     for (const h of hits.slice(0, 5)) {
       b.docs.push({ id: nextId(), kind: 'seo', url: h.url, title: h.title, text: `${h.title}\n${h.snippet}`, status: 200, rank: h.position, query: q, date: h.date })
     }
+  }
+
+  // custom fields: search each one and read the top pages
+  if (fields.length) {
+    step(t.stepFields(name, fields.length))
+    await pool(fields, 2, (f) => collectField(deps, b, f, fields.length > 3 ? 1 : 2))
   }
 
   // news
@@ -244,6 +273,7 @@ export function searchSocialTargets(lang: Lang, readByApi: Set<string>): { platf
 
 export const countKinds = (b: Bundle) => ({
   site: b.docs.filter((d) => d.kind === 'site').length,
+  web: b.docs.filter((d) => d.kind === 'web').length,
   seo: b.docs.filter((d) => d.kind === 'seo').length,
   news: b.docs.filter((d) => d.kind === 'news').length,
   social: b.docs.filter((d) => d.kind === 'social').length + b.accounts.length,

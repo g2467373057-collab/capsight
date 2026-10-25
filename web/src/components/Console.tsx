@@ -84,8 +84,24 @@ function CellView({ c }: { c?: Cell }) {
       </td>
     )
   }
+  // pricing template: the slots with no public information are named, never left blank; a third-party basis is flagged
+  const gaps = (
+    <>
+      {c.thirdParty && (
+        <span className="cell__meta">
+          <span className="badge-loop">{t.studio.result.thirdParty}</span>
+        </span>
+      )}
+      {c.gaps?.length ? (
+        <span className="cell__meta cell__gaps">
+          {t.studio.result.noInfo}：{c.gaps.join(' / ')}
+        </span>
+      ) : null}
+    </>
+  )
   if (c.items?.length) {
-    const extra = c.sources.filter((s) => s.kind === 'social' && !c.items!.some((i) => i.url === s.url))
+    const template = c.gaps !== undefined
+    const extra = template ? c.sources : c.sources.filter((s) => s.kind === 'social' && !c.items!.some((i) => i.url === s.url))
     return (
       <td className="cell cell--list">
         {!(c.items.length === 1 && c.items[0].text === c.value) && <span className="cell__v cell__v--sum">{c.value}</span>}
@@ -108,8 +124,10 @@ function CellView({ c }: { c?: Cell }) {
             {extra.map((s) => (
               <SourcePill key={s.url} s={s} />
             ))}
+            {c.status === 'requeried' && <span className="badge-loop" title={t.studio.result.requeried}>↺ {t.studio.result.requeriedShort}</span>}
           </span>
         )}
+        {gaps}
       </td>
     )
   }
@@ -125,6 +143,7 @@ function CellView({ c }: { c?: Cell }) {
         ))}
         {c.status === 'requeried' && <span className="badge-loop" title={t.studio.result.requeried}>↺ {t.studio.result.requeriedShort}</span>}
       </span>
+      {gaps}
     </td>
   )
 }

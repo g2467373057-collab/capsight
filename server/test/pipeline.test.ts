@@ -62,6 +62,7 @@ function scriptedLlm() {
       return { facts }
     }
     if (r.task === 'judge') return { checks: {} }
+    if (r.task === 'site') return { domains: ['127.0.0.1'], aliases: [] }
     if (r.task === 'news') {
       return { items: docs.filter((x) => x.kind === 'news').map((d) => ({ id: d.id, summary: 'Acme launches AI assistant' })).concat([{ id: 'D999', summary: 'made up' }]) }
     }
@@ -77,7 +78,7 @@ test('six-step pipeline: collects, verifies, catches bad facts, re-queries and o
   const recent = new Date(Date.now() - 3 * 86400000).toISOString()
   const search = mockSearch((q) => {
     if (q.includes('official website')) return [{ title: 'Acme Docs – official', url: `${acme.origin}/`, snippet: 'Acme Docs', position: 1 }]
-    if (q === 'Acme pricing') return [{ title: 'Acme pricing', url: 'https://reviews.example/acme', snippet: 'Acme pricing: Pro from $8 per user', position: 1 }]
+    if (q.startsWith('Acme pricing')) return [{ title: 'Acme pricing', url: 'https://reviews.example/acme', snippet: 'Acme pricing: Pro from $8 per user', position: 1 }]
     if (q === 'site:linkedin.com/posts Acme')
       return [
         { title: 'Acme on LinkedIn: new template gallery', url: 'https://www.linkedin.com/posts/acme_templates-123', snippet: 'We just shipped…', position: 1, date: recent },
@@ -147,7 +148,7 @@ test('a fact that never verifies is dropped, not guessed', async () => {
     emit: () => {},
   })
   assert.equal(res.rows[0].cells.region?.status, 'missing')
-  assert.equal(res.rows[0].cells.region?.value, '未找到可靠来源，已剔除')
+  assert.equal(res.rows[0].cells.region?.value, '暂无公开信息')
   assert.equal(res.stats.dropped, 1)
 })
 
@@ -165,6 +166,7 @@ test('judge can reject a verified fact, which then gets re-queried', async () =>
         return { facts: { region: d ? { value: 'Germany · Berlin', evidence: [{ doc: d.id, quote: 'headquartered in Berlin, Germany' }] } : null } }
       }
       if (r.task === 'judge') return judged++ === 0 ? { checks: { region: { ok: false, reason: 'conflict' } } } : { checks: { region: { ok: true } } }
+      if (r.task === 'site') return { domains: ['127.0.0.1'], aliases: [] }
       return {}
     },
     search,
@@ -220,5 +222,257 @@ test('custom fields: searched, read from third-party pages, verified and shown a
     assert.match(seen[0], /"f:funding": "funding"/)
   } finally {
     wiki.server.close()
+  }
+})
+
+/* ---------- v2: the SaaS pricing template (design of 19 Oct 2026) ---------- */
+
+test('v2 pricing template: each slot is quoted and checked on its own; unsupported slots show as "no public information"', async () => {
+  const site = await fakeSite({
+    '/': { body: html('Beta Boards', '<p>Beta Boards is a work management platform for teams.</p><a href="/pricing">Pricing</a>') },
+    '/pricing': {
+      body: html(
+        'Beta pricing',
+        '<p>Free $0 forever, up to 2 seats. Basic $9 per seat per month. Standard $12 per seat per month. Enterprise: contact sales.</p><p>Prices shown are billed annually. Monthly billing costs 18% more.</p><p>Minimum 3 seats on paid plans.</p>',
+      ),
+    },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  try {
+    const cfg = testConfig()
+    const db = freshDb()
+    const search = mockSearch((q) => (q.includes('官网') ? [{ title: 'Beta Boards', url: `${site.origin}/`, snippet: '', position: 1 }] : []))
+    let extracts = 0
+    const p = testProviders(
+      cfg,
+      db,
+      (r) => {
+        if (r.task === 'site') return { domains: ['127.0.0.1'], aliases: [] }
+        if (r.task === 'extract') {
+          extracts++
+          const d = docsIn(r.user).find((x) => x.url.endsWith('/pricing'))
+          if (!d) return { facts: { pricing: null } }
+          const q = (value: string, quote: string) => ({ value, evidence: [{ doc: d.id, quote }] })
+          return {
+            facts: {
+              pricing: {
+                plans: q('Free $0 / Basic $9 / Standard $12 / Enterprise contact sales', 'Basic $9 per seat per month. Standard $12 per seat per month.'),
+                unit: q('Per seat per month, minimum 3 seats', 'Minimum 3 seats on paid plans.'),
+                billing: q('Billed annually; monthly costs 18% more', 'Prices shown are billed annually. Monthly billing costs 18% more.'),
+                free: q('Free forever, up to 2 seats', 'Free $0 forever, up to 2 seats.'),
+                addons: q('AI credits $5 per month', 'AI credits cost $5 per month'), // not on the page → must not pass
+                promo: null,
+              },
+            },
+          }
+        }
+        if (r.task === 'judge') return { checks: {} }
+        return {}
+      },
+      search,
+    )
+    const intent: Intent = { type: 'named', query: 'Beta pricing', competitors: ['Beta'], timeRange: 'all', dimensions: ['name', 'pricing'] }
+    const res = await runResearch('run_pricing', intent, { llm: p.llm('zh'), search: p.search('zh'), fetcher: p.fetcher, social: p.social, lang: 'zh', maxRequery: 2, emit: () => {} })
+    const cell = res.rows[0].cells.pricing!
+    assert.equal(cell.status, 'verified')
+    assert.equal(cell.value, 'Free $0 / Basic $9 / Standard $12 / Enterprise contact sales')
+    assert.deepEqual(cell.items?.map((i) => i.label), ['计价单位', '计费方式', '免费策略'])
+    assert.ok(cell.items?.every((i) => i.url.endsWith('/pricing')))
+    // the made-up add-on cost is not on the page, so it is not shown; promo was not stated
+    assert.deepEqual(cell.gaps, ['附加成本', '当前优惠'])
+    assert.deepEqual(res.stats.pricingSlots, { filled: 4, total: 6 })
+    // optional slots are never re-queried on their own: one extraction only
+    assert.equal(extracts, 1)
+  } finally {
+    site.server.close()
+  }
+})
+
+test('v2 official site that refuses the crawler: the domain is kept and its pricing is read from the search index', async () => {
+  const site = await fakeSite({
+    '/': { status: 403, body: 'Forbidden' },
+    '/pricing': { status: 403, body: 'Forbidden' },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  try {
+    const cfg = testConfig()
+    const db = freshDb()
+    const host = new URL(site.origin).host
+    const search = mockSearch((q) => {
+      if (q.includes('official website')) return [{ title: 'Gamma – project tool', url: `${site.origin}/`, snippet: '', position: 1 }]
+      if (q.includes('pricing plans site:'))
+        return [
+          { title: 'Gamma Pricing | Plans', url: `http://${host}/pricing`, snippet: 'Starter $10 per user per month, Business $24 per user per month.', position: 1 },
+          { title: 'Someone else', url: 'https://reviews.example/gamma', snippet: 'Gamma costs $5', position: 2 },
+        ]
+      return []
+    })
+    const p = testProviders(
+      cfg,
+      db,
+      (r) => {
+        if (r.task === 'site') return { domains: ['127.0.0.1'], aliases: [] }
+        if (r.task === 'extract') {
+          const d = docsIn(r.user).find((x) => x.kind === 'site' && x.url.endsWith('/pricing'))
+          return { facts: { pricing: d ? { plans: { value: 'Starter $10 / Business $24 per user per month', evidence: [{ doc: d.id, quote: 'Starter $10 per user per month, Business $24 per user per month.' }] } } : null } }
+        }
+        if (r.task === 'judge') return { checks: {} }
+        return {}
+      },
+      search,
+    )
+    const events: RunEvent[] = []
+    const res = await runResearch('run_blocked', { type: 'named', query: 'q', competitors: ['Gamma'], timeRange: 'all', dimensions: ['name', 'pricing'] }, {
+      llm: p.llm('en'),
+      search: p.search('en'),
+      fetcher: p.fetcher,
+      social: p.social,
+      lang: 'en',
+      maxRequery: 2,
+      emit: (e) => events.push(e),
+    })
+    assert.equal(res.rows[0].domain, '127.0.0.1')
+    assert.ok(events.some((e) => /refused direct reading/.test(e.text)))
+    const cell = res.rows[0].cells.pricing!
+    assert.equal(cell.status, 'verified')
+    assert.match(cell.sources[0].title, /via search index/)
+    // only the official domain's own result is used, never the review site
+    assert.ok(cell.sources.every((s) => s.url.includes(host)))
+  } finally {
+    site.server.close()
+  }
+})
+
+/* ---------- v2.1: layered official-site sources, method recorded per company ---------- */
+
+test('v2.1 official site: Chinese search shows only look-alikes, so Wikidata (cross-checked) decides, and the method is recorded', async () => {
+  const site = await fakeSite({
+    '/': { body: html('飞书', '<p>飞书，先进团队先用飞书。</p>') },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  try {
+    const cfg = testConfig()
+    const db = freshDb()
+    const search = mockSearch((q) => (q.includes('官网') ? [{ title: '飞书官网下载', url: 'https://m.xitongzhijia.net/soft/1.html', snippet: '', position: 1 }] : []))
+    const p = testProviders(
+      cfg,
+      db,
+      (r) => (r.task === 'site' ? { domains: ['127.0.0.1'], aliases: ['Feishu'] } : r.task === 'judge' ? { checks: {} } : {}),
+      search,
+      { google: async () => ({ hits: [] }), wikidata: async () => [{ id: 'Q1', label: '飞书', website: `${site.origin}/` }] },
+    )
+    const events: RunEvent[] = []
+    const res = await runResearch('run_wd', { type: 'named', query: 'q', competitors: ['飞书'], timeRange: 'all', dimensions: ['name'] }, {
+      llm: p.llm('zh'), search: p.search('zh'), fetcher: p.fetcher, social: p.social, lang: 'zh', maxRequery: 2, emit: (e) => events.push(e),
+    })
+    assert.equal(res.rows[0].domain, '127.0.0.1')
+    assert.equal(res.rows[0].siteMethod, 'wikidata')
+    assert.ok(events.some((e) => /xitongzhijia.*不是官网/.test(e.text)))
+    assert.ok(events.some((e) => /找到官网 127\.0\.0\.1（Wikidata）/.test(e.text)))
+  } finally {
+    site.server.close()
+  }
+})
+
+test('v2.1 official site: an English brand in a Chinese run is found through Google\'s knowledge graph', async () => {
+  const site = await fakeSite({
+    '/': { body: html('Notion', '<p>Notion is the connected workspace.</p>') },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  try {
+    const cfg = testConfig()
+    const db = freshDb()
+    const googled: string[] = []
+    const search = mockSearch((q) => (q.includes('官网') ? [{ title: 'Notion官网 - 导航', url: 'https://hao.itotii.com/notion', snippet: '', position: 1 }] : []))
+    const p = testProviders(cfg, db, (r) => (r.task === 'site' ? { domains: [], aliases: [] } : r.task === 'judge' ? { checks: {} } : {}), search, {
+      google: async (q) => {
+        googled.push(q)
+        return { hits: [], website: `${site.origin}/`, title: 'Notion' }
+      },
+      wikidata: async () => {
+        throw new Error('must not be needed')
+      },
+    })
+    const res = await runResearch('run_kg', { type: 'named', query: 'q', competitors: ['Notion'], timeRange: 'all', dimensions: ['name'] }, {
+      llm: p.llm('zh'), search: p.search('zh'), fetcher: p.fetcher, social: p.social, lang: 'zh', maxRequery: 2, emit: () => {},
+    })
+    assert.deepEqual(googled, ['Notion official website'])
+    assert.equal(res.rows[0].siteMethod, 'google_kg')
+    assert.equal(res.rows[0].domain, '127.0.0.1')
+  } finally {
+    site.server.close()
+  }
+})
+
+/* ---------- v2.2: dated third-party pricing when the official site shows none ---------- */
+
+test('v2.2 no readable official price: a dated third-party pricing page is used and labelled; download sites and undated pages are not', async () => {
+  const recent = new Date(Date.now() - 20 * 86400000).toISOString()
+  const official = await fakeSite({
+    '/': { body: html('Delta', '<p>Delta helps teams plan work. Talk to sales for a quote.</p>') },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  const review = await fakeSite({
+    '/delta-pricing': { body: `<html><head><title>Delta pricing 2026</title><meta property="article:modified_time" content="${recent}"></head><body><p>Delta Team costs $15 per user per month, billed annually. Delta Free supports up to 3 users.</p></body></html>` },
+    '/undated': { body: html('Delta price list', '<p>Delta Team costs $11 per user per month.</p>') },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  try {
+    const cfg = testConfig()
+    const db = freshDb()
+    const reviewOrigin = review.origin.replace('127.0.0.1', 'localhost')
+    const searched: string[] = []
+    const search = mockSearch((q) => {
+      searched.push(q)
+      if (q.includes('official website')) return [{ title: 'Delta', url: `${official.origin}/`, snippet: '', position: 1 }]
+      if (q.startsWith('Delta pricing plans per user'))
+        return [
+          { title: 'Delta 下载', url: 'https://www.onlinedown.net/delta', snippet: 'Delta $1', position: 1 },
+          { title: 'Delta price list', url: `${reviewOrigin}/undated`, snippet: '', position: 2 },
+          { title: 'Delta pricing 2026', url: `${reviewOrigin}/delta-pricing`, snippet: '', position: 3 },
+        ]
+      return []
+    })
+    const p = testProviders(
+      cfg,
+      db,
+      (r) => {
+        if (r.task === 'site') return { domains: ['127.0.0.1'], aliases: [] }
+        if (r.task === 'extract') {
+          const docs = docsIn(r.user)
+          const dated = docs.find((d) => d.kind === 'web' && d.url.endsWith('/delta-pricing'))
+          const undated = docs.find((d) => d.kind === 'web' && d.url.endsWith('/undated'))
+          return {
+            facts: {
+              pricing: {
+                plans: dated ? { value: 'Free (3 users) / Team $15 per user per month', evidence: [{ doc: dated.id, quote: 'Delta Team costs $15 per user per month, billed annually.' }] } : null,
+                billing: undated ? { value: 'Team $11', evidence: [{ doc: undated.id, quote: 'Delta Team costs $11 per user per month.' }] } : null,
+              },
+            },
+          }
+        }
+        if (r.task === 'judge') return { checks: {} }
+        return {}
+      },
+      search,
+    )
+    const events: RunEvent[] = []
+    const res = await runResearch('run_third', { type: 'named', query: 'q', competitors: ['Delta'], timeRange: 'all', dimensions: ['name', 'pricing'] }, {
+      llm: p.llm('en'), search: p.search('en'), fetcher: p.fetcher, social: p.social, lang: 'en', maxRequery: 1, emit: (e) => events.push(e),
+    })
+    const cell = res.rows[0].cells.pricing!
+    assert.equal(cell.status, 'verified')
+    assert.equal(cell.thirdParty, true)
+    assert.equal(cell.value, 'Free (3 users) / Team $15 per user per month')
+    assert.match(cell.sources[0].title, /^Third party · \d{4}-\d\d-\d\d · Delta pricing 2026/)
+    // the undated page's $11 never reaches the table; the download site is never read
+    assert.ok(!cell.items?.some((i) => i.text.includes('$11')))
+    assert.ok(cell.gaps?.includes('Billing'))
+    assert.equal(res.stats.pricingThirdParty, 1)
+    assert.ok(events.some((e) => /dated third-party pricing pages/.test(e.text)))
+    assert.ok(searched.some((q) => q.startsWith('Delta pricing plans per user per month billed annually free plan')))
+  } finally {
+    official.server.close()
+    review.server.close()
   }
 })

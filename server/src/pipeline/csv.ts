@@ -16,7 +16,14 @@ export function toCsv(result: RunResult, lang: Lang): string {
     let worst: keyof typeof status = 'verified'
     for (const d of dims) {
       const c = r.cells[d]
-      if (c && c.status !== 'missing' && c.items?.length) {
+      if (c && c.status !== 'missing' && c.gaps !== undefined) {
+        // pricing template: plans first, then one line per slot, then the slots with no public information
+        const none = lang === 'zh' ? '暂无公开信息' : 'No public information'
+        out.push(
+          [c.value, ...(c.items ?? []).map((i) => `${i.label}${lang === 'zh' ? '：' : ': '}${i.text}`), ...(c.gaps.length ? [`${none}${lang === 'zh' ? '：' : ': '}${c.gaps.join(' / ')}`] : [])].join('\n'),
+          [...new Set([...c.sources.map((s) => s.url), ...(c.items ?? []).map((i) => i.url)])].join(' | '),
+        )
+      } else if (c && c.status !== 'missing' && c.items?.length) {
         out.push(
           c.items.map((i) => [i.date, i.label && `[${i.label}]`, i.text].filter(Boolean).join(' ')).join('\n'),
           [...c.items.map((i) => i.url), ...c.sources.filter((s) => !c.items!.some((i) => i.url === s.url)).map((s) => s.url)].join(' | '),

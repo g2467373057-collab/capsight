@@ -11,6 +11,43 @@ export interface Extracted {
   lang: string
   text: string
   links: Link[]
+  /** When the page says it was last updated (or published), ISO day; undefined when it does not say. */
+  date?: string
+}
+
+const isoDay = (v: string | undefined): string | undefined => {
+  if (!v) return undefined
+  const s = v.trim().replace(/年|月/g, '-').replace(/日/g, '').replace(/\//g, '-').replace(/\.(?=\d)/g, '-')
+  const pad = (n: number) => String(n).padStart(2, '0')
+  // calendar dates are taken as written, never shifted by time zone
+  const ymd = /^(\d{4})-(\d{1,2})-(\d{1,2})/.exec(s)
+  let day: string
+  if (ymd) day = `${ymd[1]}-${pad(+ymd[2])}-${pad(+ymd[3])}`
+  else {
+    const t = Date.parse(s)
+    if (Number.isNaN(t)) return undefined
+    const d = new Date(t)
+    day = `${d.getFullYear()}-${pad(d.getMonth() + 1)}-${pad(d.getDate())}`
+  }
+  const t = Date.parse(`${day}T00:00:00Z`)
+  // ignore nonsense: before 2000 or more than a day in the future
+  if (Number.isNaN(t) || +day.slice(0, 4) < 2000 || t > Date.now() + 86400000) return undefined
+  return day
+}
+
+/** The page's own "last updated" date: meta tags, JSON-LD, <time>, or an "Updated: …" / "更新于 …" line. Modified beats published. */
+export function pageDate(html: string, text = ''): string | undefined {
+  const head = html.slice(0, 300_000)
+  const meta = (prop: string) => {
+    const tag = new RegExp(`<meta[^>]+(?:property|name|itemprop)=["']${prop}["'][^>]*>`, 'i').exec(head)?.[0]
+    return tag ? /content=["']([^"']+)/i.exec(tag)?.[1] : undefined
+  }
+  const ld = (key: string) => new RegExp(`"${key}"\\s*:\\s*"([^"]+)"`, 'i').exec(head)?.[1]
+  const modified = meta('article:modified_time') ?? meta('og:updated_time') ?? meta('dateModified') ?? meta('last-modified') ?? ld('dateModified')
+  const textual =
+    /(?:last\s+updated|updated(?:\s+on)?|更新(?:于|时间|日期)?)[:：\s]*((?:\d{4}[-/.年]\d{1,2}[-/.月]\d{1,2}日?)|(?:[A-Z][a-z]+\.?\s+\d{1,2},?\s+\d{4})|(?:\d{1,2}\s+[A-Z][a-z]+\s+\d{4})|(?:[A-Z][a-z]+\s+\d{4}))/i.exec(text)?.[1]
+  const published = meta('article:published_time') ?? meta('datePublished') ?? ld('datePublished') ?? /<time[^>]+datetime=["']([^"']+)/i.exec(head)?.[1]
+  return isoDay(modified) ?? isoDay(textual) ?? isoDay(published)
 }
 
 const NAMED: Record<string, string> = {
@@ -84,7 +121,7 @@ export function extractHtml(html: string, baseUrl: string): Extracted {
     .filter((l, i, arr) => l !== arr[i - 1])
     .join('\n')
 
-  return { title, description, lang, text, links }
+  return { title, description, lang, text, links, date: pageDate(html, text.slice(0, 20000)) }
 }
 
 /** Normalises text for quote matching: case, whitespace, quotes, dashes, full-width forms. */

@@ -1,7 +1,7 @@
 import type { Llm } from '../llm/llm.ts'
 import type { SearchStack } from '../sources/search.ts'
 import { INTENT_EXAMPLES } from './intent-examples.ts'
-import { DIMENSIONS, TIME_RANGES, type Dimension, type Intent, type IntentType, type Lang, type TimeRange } from '../types.ts'
+import { DEFAULT_DIMS_NAMED, DEFAULT_DIMS_OWN, DIMENSIONS, TIME_RANGES, type Dimension, type Intent, type IntentType, type Lang, type TimeRange } from '../types.ts'
 
 interface RawIntent {
   type?: string
@@ -21,6 +21,7 @@ export const MAX_FIELDS = 6
 
 /** Custom field labels that are really a built-in field go to that field instead. */
 const BUILTIN_ALIAS: [RegExp, Dimension][] = [
+  [/^(公司介绍|公司简介|简介|介绍|基础介绍|基本介绍|主营业务|主要业务|产品定位|overview|about|introduction|description|company overview)$/i, 'overview'],
   [/^(地区|国家|总部|总部所在地|所在地|region|country|location|headquarters?|hq)$/i, 'region'],
   [/^(功能|主要功能|核心功能|产品功能|features?|key features|capabilities)$/i, 'features'],
   [/^(定价|价格|收费|套餐|费用|pricing|price|prices|plans?|cost)$/i, 'pricing'],
@@ -47,7 +48,10 @@ export function normaliseIntent(raw: RawIntent, query: string, maxCompetitors: n
       else if (!fields.some((x) => x.toLowerCase() === label.toLowerCase())) fields.push(label)
     }
   }
-  if (dims.size === 1 && !fields.length) (kind === 'timeframe' ? (['social', 'news'] as Dimension[]) : DIMENSIONS).forEach((d) => dims.add(d))
+  // nothing specific asked → the branch default (A: list + basic introduction; B: full research; timeframe: activity)
+  if (dims.size === 1 && !fields.length) (kind === 'timeframe' ? (['social', 'news'] as Dimension[]) : kind === 'own' ? DEFAULT_DIMS_OWN : DEFAULT_DIMS_NAMED).forEach((d) => dims.add(d))
+  // branch A always gives each competitor found a basic introduction
+  if (kind === 'own') dims.add('overview')
   if (kind === 'timeframe') dims.add('news')
   const competitors = Array.isArray(raw.competitors) ? [...new Set(raw.competitors.map(clean).filter((n) => n && !n.startsWith('<')))].slice(0, maxCompetitors) : []
   const topic = raw.topic ? clean(raw.topic).slice(0, 40) : ''
@@ -65,14 +69,15 @@ export function normaliseIntent(raw: RawIntent, query: string, maxCompetitors: n
 }
 
 const INTENT_SYSTEM = [
-  'You turn a research request into JSON. Output JSON only, shaped like the examples.',
-  'The things being researched ("subjects", stored in "competitors") can be anything public: companies, products, apps, AI tools, open-source projects, schools or degree programmes, cities, countries, platforms, public organisations. They are not always competitors or software.',
+  'You classify a research request and turn it into JSON. Output JSON only, shaped like the examples. Never invent facts; decide only from the user\'s words.',
+  'The things being researched ("subjects", stored in "competitors") are usually SaaS companies and products, but can be anything public: apps, AI tools, open-source projects, schools or degree programmes, cities, platforms, public organisations.',
   'Never research private individuals; public companies, products, places and institutions only.',
   '',
-  'type — decided by where the subjects come from and what the question is about:',
-  '- "own": the user does NOT name the subjects and wants you to find them. Either they describe their own company/product and want its competitors (discover "competitors"), or they ask for things matching a description, e.g. "新加坡有哪些做 AI 教育的公司", "推荐几个开源向量数据库" (discover "list"). Suggest up to 4 real, well-known candidates.',
-  '- "named" (default): the user names at least one subject. Use exactly the names they wrote (add a qualifier only when the bare name is ambiguous, e.g. a programme at a school). If they also describe their own company, still "named" and put it in "company".',
-  '- "timeframe": the user names subjects AND the question is about what happened in a period (launches, announcements, news, "how is X doing lately") AND asks for no other facts.',
+  'type — the branch. Decide by one question: did the user write the names of the subjects they want researched?',
+  '- "own" (branch A, user does NOT know the competitors): the user describes their own product, feature, category or market and wants to find who is in it. They name no subject to research. Either competitors of their own product (discover "competitors"), e.g. "我们做 AI 客户管理 SaaS，有哪些竞品", or things matching a description (discover "list"), e.g. "客户管理系统有哪些？", "推荐几个开源向量数据库". A reference product named only to describe the market ("Find competitors of Calendly", "像 Notion 一样的工具有哪些") is still "own": put it in "company" so it is excluded from the results. Suggest up to 4 real, well-known candidates.',
+  '- "named" (branch B, user knows the competitors, default): the user writes at least one subject\'s name and wants facts about it. Use exactly the names they wrote (add a qualifier only when the bare name is ambiguous). If they also describe their own company, it is still "named" and their company goes in "company".',
+  '  A request that both asks "what are the competitors" AND names one to look into ("我做 AI 表单 SaaS，竞品有哪些？帮我看看其中 Typeform 的定价") is "named" with only the named subject(s).',
+  '- "timeframe": the user names subjects AND the question is only about what happened in a period (launches, announcements, news, "how is X doing lately") with no other facts asked.',
   '  A request that mixes facts with "latest news" or "this month\'s news" is "named", with the time range applied to news.',
   '  "how is X doing lately" / "最近怎么样" / "what\'s new with X" = timeframe, 7d, social + news only.',
   '',
@@ -81,16 +86,17 @@ const INTENT_SYSTEM = [
   '- 本周/这周/近7天/this week/past 7 days → 7d; 本月/过去一个月/近30天/last month/past 30 days → 30d',
   '- 这个季度/近三个月/近90天/this quarter → 90d; 今年/今年以来/this year/YTD → ytd; anything older or a specific date → 90d',
   '',
-  `dimensions — built-in fields, subset of ${DIMENSIONS.join(', ')}, always including name. They suit companies and products: region = HQ/location, features = what it does, pricing, contact, social = official social accounts and posts, news = latest news.`,
-  '"基本信息/basic info" for a company or product = region, features, pricing, contact. "动态/发布/news/announce/what happened" = news, plus social when the question is about activity in a period.',
-  'If the subjects are companies or products and nothing specific is asked → all dimensions (timeframe: social + news). If the subjects are something else (schools, cities, programmes…), use only name plus fields, and news only if asked.',
+  `dimensions — built-in fields, subset of ${DIMENSIONS.join(', ')}, always including name. overview = company introduction and main business (what it is, who it serves); region = HQ/location; features = what the product does; pricing = plans and prices; contact; social = official accounts and posts; news = latest news.`,
+  'Only list the fields the user actually asks for. If nothing specific is asked, return just ["name"]: the system then applies the branch default (A: name + overview only, no pricing or news; B: overview, region, features, pricing, social, news).',
+  '"基本信息/basic info/概况" = overview, region, features, pricing. "介绍/简介/是做什么的" = overview. "动态/发布/news/announce/what happened" = news, plus social when the question is about activity in a period.',
+  'If the subjects are not companies or products (schools, cities, programmes…), use name plus fields, and news only if asked.',
   '',
-  'fields — everything else the user wants to know that is not a built-in dimension, as short column names in the user\'s language (2–10 characters in Chinese, 1–4 words in English), at most 6. Examples: 学费, 学制, 申请截止时间, 融资情况, 成立时间, 创始人, 用户规模, 商业化方式, GitHub star 数, 开源协议, visa rules, population.',
+  'fields — everything else the user wants to know that is not a built-in dimension, as short column names in the user\'s language (2–10 characters in Chinese, 1–4 words in English), at most 6. Examples: 学费, 学制, 申请截止时间, 融资情况, 成立时间, 创始人, 用户规模, GitHub star 数, 开源协议, visa rules.',
   'If the subjects are not companies/products and the user names nothing specific, propose the 3–5 fields that matter most for that kind of subject. Never put a built-in dimension into fields.',
   '',
-  'topic: a short phrase naming what kind of thing the subjects are, in the user\'s language (e.g. "SaaS 协作工具", "大学硕士项目", "开源向量数据库", "travel destinations").',
-  'company: the user\'s own company name if they give one, else null.',
-  'product: for type "own", 2–8 words to search for the subjects, in the user\'s language (e.g. "在线协作文档", "新加坡 AI 教育 公司", "AI writing assistant for marketers"); else null.',
+  'topic: a short phrase naming what kind of thing the subjects are, in the user\'s language (e.g. "SaaS 协作工具", "大学硕士项目", "开源向量数据库").',
+  'company: the user\'s own company name (or, for type "own", the reference product they want competitors of), else null.',
+  'product: for type "own", 2–8 words to search for the subjects, in the user\'s language (e.g. "在线协作文档", "AI 客户管理 SaaS", "online meeting scheduling software"); else null.',
   'discover: for type "own", "competitors" or "list"; else null.',
   '',
   'Examples:',

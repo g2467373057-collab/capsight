@@ -21,6 +21,24 @@ export interface SearchProvider {
   name: string
   web(q: string, o: SearchOpts): Promise<SearchHit[]>
   news?(q: string, o: SearchOpts): Promise<SearchHit[]>
+  /** Google results plus the knowledge-graph panel (Serper only). */
+  webWithEntity?(q: string, o: SearchOpts): Promise<EntityResult>
+}
+
+/** Search results plus the search engine's own entity panel, when it shows one. */
+export interface EntityResult {
+  hits: SearchHit[]
+  /** Official website from Google's knowledge graph. */
+  website?: string
+  /** Name of the entity the panel is about. */
+  title?: string
+}
+
+/** One official website listed on Wikidata (property P856). */
+export interface WikidataSite {
+  id: string
+  label: string
+  website: string
 }
 
 export const DAYS: Record<TimeRange, number> = { all: 36500, '7d': 7, '30d': 30, '90d': 90, ytd: 366 }
@@ -46,14 +64,23 @@ function serper(key: string): SearchProvider {
   const tbs = (r?: TimeRange) =>
     !r || r === 'all' ? undefined : r === '7d' ? 'qdr:w' : r === '30d' ? 'qdr:m' : r === '90d' ? 'qdr:m3' : 'qdr:y'
   const loc = (lang: Lang) => (lang === 'zh' ? { gl: 'cn', hl: 'zh-cn' } : { gl: 'us', hl: 'en' })
+  const search = async (q: string, o: SearchOpts): Promise<EntityResult> => {
+    const data = (await postJson('https://google.serper.dev/search', { 'X-API-KEY': key }, { q, num: o.num ?? 10, tbs: tbs(o.timeRange), ...loc(o.lang) })) as {
+      organic?: { title: string; link: string; snippet?: string; position?: number; date?: string }[]
+      knowledgeGraph?: { title?: string; website?: string }
+    }
+    return {
+      hits: (data.organic ?? []).map((r, i) => ({ title: r.title, url: r.link, snippet: r.snippet ?? '', position: r.position ?? i + 1, date: r.date })),
+      website: data.knowledgeGraph?.website || undefined,
+      title: data.knowledgeGraph?.title || undefined,
+    }
+  }
   return {
     name: 'serper',
     async web(q, o) {
-      const data = (await postJson('https://google.serper.dev/search', { 'X-API-KEY': key }, { q, num: o.num ?? 10, tbs: tbs(o.timeRange), ...loc(o.lang) })) as {
-        organic?: { title: string; link: string; snippet?: string; position?: number; date?: string }[]
-      }
-      return (data.organic ?? []).map((r, i) => ({ title: r.title, url: r.link, snippet: r.snippet ?? '', position: r.position ?? i + 1, date: r.date }))
+      return (await search(q, o)).hits
     },
+    webWithEntity: search,
     async news(q, o) {
       const data = (await postJson('https://google.serper.dev/news', { 'X-API-KEY': key }, { q, num: o.num ?? 10, tbs: tbs(o.timeRange), ...loc(o.lang) })) as {
         news?: { title: string; link: string; snippet?: string; date?: string; source?: string; position?: number }[]
@@ -140,9 +167,62 @@ function gdelt(): SearchProvider {
   return { name: 'gdelt', web: news, news }
 }
 
+/* ---------- Wikidata (no key): official website, property P856 ---------- */
+
+export interface WdEntity {
+  id: string
+  labels?: Record<string, { value: string }>
+  aliases?: Record<string, { value: string }[]>
+  claims?: Record<string, { mainsnak?: { datavalue?: { value?: unknown } }; rank?: string }[]>
+}
+
+/** From Wikidata entities, the official websites of those whose label or alias is exactly the name (case-insensitive). */
+export function wikidataSites(entities: WdEntity[], names: string[]): WikidataSite[] {
+  const want = new Set(names.map((n) => n.trim().toLowerCase()).filter(Boolean))
+  const out: WikidataSite[] = []
+  for (const e of entities) {
+    const labels = [...Object.values(e.labels ?? {}).map((l) => l.value), ...Object.values(e.aliases ?? {}).flat().map((a) => a.value)]
+    const match = labels.find((l) => want.has(l.trim().toLowerCase()))
+    if (!match) continue
+    const claims = (e.claims?.P856 ?? []).filter((c) => c.rank !== 'deprecated')
+    // preferred rank first
+    claims.sort((a, b) => (b.rank === 'preferred' ? 1 : 0) - (a.rank === 'preferred' ? 1 : 0))
+    const site = claims.map((c) => c.mainsnak?.datavalue?.value).find((v): v is string => typeof v === 'string' && /^https?:\/\//.test(v))
+    if (site) out.push({ id: e.id, label: match, website: site })
+  }
+  return out
+}
+
+async function getJson(url: string): Promise<unknown> {
+  const res = await fetch(url, { headers: { 'User-Agent': 'CapsightBot/1.0 (competitor research; official-site lookup)', Accept: 'application/json' }, signal: AbortSignal.timeout(12000) })
+  if (!res.ok) throw new Error(`wikidata_http_${res.status}`)
+  return res.json()
+}
+
+async function wikidataLookup(names: string[]): Promise<WikidataSite[]> {
+  const ids = new Set<string>()
+  for (const n of names.slice(0, 2)) {
+    for (const language of ['zh', 'en']) {
+      const data = (await getJson(
+        `https://www.wikidata.org/w/api.php?action=wbsearchentities&format=json&type=item&limit=5&language=${language}&uselang=${language}&search=${encodeURIComponent(n)}`,
+      )) as { search?: { id: string }[] }
+      for (const s of data.search ?? []) ids.add(s.id)
+    }
+  }
+  if (!ids.size) return []
+  const data = (await getJson(
+    `https://www.wikidata.org/w/api.php?action=wbgetentities&format=json&props=labels|aliases|claims&languages=zh|zh-cn|zh-hans|en&ids=${[...ids].slice(0, 20).join('|')}`,
+  )) as { entities?: Record<string, WdEntity> }
+  return wikidataSites(Object.values(data.entities ?? {}), names)
+}
+
 export interface SearchStack {
   web(q: string, o: SearchOpts): Promise<SearchHit[]>
   news(q: string, o: SearchOpts): Promise<SearchHit[]>
+  /** English Google search with the knowledge-graph website, whatever the run's language (undefined without a Serper key). */
+  google?(q: string): Promise<EntityResult>
+  /** Official websites listed on Wikidata for these names (undefined when switched off). */
+  wikidata?(names: string[]): Promise<WikidataSite[]>
   calls: number
 }
 
@@ -151,7 +231,7 @@ export function createSearch(
   cfg: Config,
   db: Db,
   lang: Lang,
-  overrides?: { web?: SearchProvider; news?: SearchProvider[] },
+  overrides?: { web?: SearchProvider; news?: SearchProvider[]; google?: (q: string) => Promise<EntityResult>; wikidata?: (names: string[]) => Promise<WikidataSite[]> },
 ): SearchStack {
   const make = (n: SearchProviderName | NewsProviderName): SearchProvider | undefined => {
     if (n === 'serper' && cfg.keys.serper) return serper(cfg.keys.serper)
@@ -191,6 +271,30 @@ export function createSearch(
       }
       return []
     },
+  }
+  // official-site lookups shared by both languages: Google in English (with its knowledge graph), and Wikidata
+  const g = overrides?.google ?? (overrides ? undefined : cfg.keys.serper ? serper(cfg.keys.serper).webWithEntity : undefined)
+  if (g) {
+    stack.google = async (q) => {
+      try {
+        return await cached(db, `kg:serper:en:${q}`, ttl, async () => {
+          stack.calls++
+          return g(q, { lang: 'en', num: 10 })
+        })
+      } catch {
+        return { hits: [] }
+      }
+    }
+  }
+  const wd = overrides?.wikidata ?? (overrides || !cfg.wikidata ? undefined : wikidataLookup)
+  if (wd) {
+    stack.wikidata = async (names) => {
+      try {
+        return await cached(db, `wikidata:${names.join('|').toLowerCase()}`, 7 * 24 * 3600_000, () => wd(names))
+      } catch {
+        return []
+      }
+    }
   }
   return stack
 }

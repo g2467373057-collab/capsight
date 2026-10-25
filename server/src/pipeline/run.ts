@@ -2,10 +2,13 @@ import type { Llm } from '../llm/llm.ts'
 import type { Fetcher } from '../sources/fetcher.ts'
 import type { SearchStack } from '../sources/search.ts'
 import type { Social } from '../sources/social.ts'
-import { columnsOf, customKey, isCustom, type Cell, type Intent, type Lang, type Row, type RunEvent, type RunResult, type RunStats } from '../types.ts'
-import { candidateUrls, collect, collectField, countKinds, FIELD_PAGES, fetchSiteDoc, type Bundle, type CollectDeps, type Doc } from './collect.ts'
-import { extractFacts, FACT_FIELDS, judge, nameCell, newsCell, socialCell, toSources, verifyFact, type Checked, type FactField } from './facts.ts'
-import { colLabel, REASON, T } from './i18n.ts'
+import { columnsOf, customKey, isCustom, PRICING_SLOTS, type Cell, type Intent, type Lang, type Row, type RunEvent, type RunResult, type RunStats } from '../types.ts'
+import { candidateUrls, collect, collectField, countKinds, FIELD_PAGES, fetchSiteDoc, pricingQuery, type Bundle, type CollectDeps, type Doc } from './collect.ts'
+import { CORE_SLOT, extractFacts, FACT_FIELDS, filledSlots, isPricingSlot, judge, nameCell, newsCell, pricingCell, slotKey, socialCell, toSources, verifyFact, type Checked, type FactField } from './facts.ts'
+import { colLabel, NO_INFO, REASON, SITE_METHOD_LABEL, T } from './i18n.ts'
+
+/** Fact keys checked for a requested field: the pricing template expands into its slots. */
+const factKeys = (fields: FactField[]) => fields.flatMap((f) => (f === 'pricing' ? PRICING_SLOTS.map(slotKey) : [f]))
 
 export interface RunDeps {
   llm: Llm
@@ -26,7 +29,7 @@ export async function runResearch(runId: string, intent: Intent, deps: RunDeps):
   const cols = columnsOf(intent)
   const fields: FactField[] = [...FACT_FIELDS.filter((f) => dims.includes(f)), ...custom.map(customKey)]
   const stats: RunStats = { sources: 0, checked: 0, requeried: 0, passed: 0, dropped: 0 }
-  const cdeps: CollectDeps = { fetcher: deps.fetcher, search: deps.search, social: deps.social, lang, onStep: (text) => emit({ stage: 2, kind: 'info', text }) }
+  const cdeps: CollectDeps = { fetcher: deps.fetcher, search: deps.search, social: deps.social, llm: deps.llm, topic: intent.topic, focus: intent.fields, lang, onStep: (text) => emit({ stage: 2, kind: 'info', text }) }
   emit({ stage: 2, kind: 'info', text: t.start(intent.competitors.length) })
 
   // ---- step 2: collect, two competitors at a time
@@ -42,7 +45,7 @@ export async function runResearch(runId: string, intent: Intent, deps: RunDeps):
           bundles[i] = b
           const k = countKinds(b)
           stats.sources += b.docs.length + b.accounts.length
-          emit({ stage: 2, kind: b.home ? 'ok' : 'info', text: b.home ? t.siteFound(name, b.domain) : t.siteMissing(name) })
+          emit({ stage: 2, kind: b.home ? 'ok' : 'info', text: b.home ? t.siteFound(name, b.domain, b.siteMethod ? SITE_METHOD_LABEL[lang][b.siteMethod] : '') : t.siteMissing(name) })
           emit({ stage: 2, kind: 'ok', text: t.fetched(name, b.docs.length + b.accounts.length, t.parts(k.site, k.seo, k.news, k.social, k.web)), stats: { sources: stats.sources } })
         } catch {
           emit({ stage: 2, kind: 'fail', text: t.failedCompetitor(name) })
@@ -69,8 +72,9 @@ export async function runResearch(runId: string, intent: Intent, deps: RunDeps):
     } catch {
       facts = {}
     }
-    checkedBy[i] = fields.map((f) => verifyFact(f, facts[f], b.docs))
-    bad += checkedBy[i].filter((c) => !c.ok).length
+    checkedBy[i] = factKeys(fields).map((f) => verifyFact(f, facts[f], b.docs))
+    // a missing optional pricing slot is not a failure: the cell says "no public information" for it
+    bad += checkedBy[i].filter((c) => !c.ok && (!isPricingSlot(c.field) || c.field === CORE_SLOT)).length
   }
   stats.checked = total
   emit({ stage: 3, kind: bad ? 'info' : 'ok', text: t.checkedOk(total - bad, bad), stats: { checked: total } })
@@ -91,9 +95,11 @@ export async function runResearch(runId: string, intent: Intent, deps: RunDeps):
     } catch {
       /* judge unavailable: keep verification result */
     }
-    for (const c of checkedBy[i]) {
+    for (const c of [...checkedBy[i]]) {
       if (c.ok) continue
-      const fixed = await requery(deps, cdeps, b, c, intent.topic)
+      // optional template slots are filled when the plans slot is re-queried, never re-queried on their own
+      if (isPricingSlot(c.field) && c.field !== CORE_SLOT) continue
+      const fixed = await requery(deps, cdeps, b, c, intent.topic, checkedBy[i])
       if (fixed) {
         checkedBy[i][checkedBy[i].indexOf(c)] = fixed
         stats.requeried++
@@ -112,10 +118,15 @@ export async function runResearch(runId: string, intent: Intent, deps: RunDeps):
     const cells: Row['cells'] = {}
     if (b && (dims.includes('news') || dims.includes('social'))) emit({ stage: 5, kind: 'info', text: t.summarising(b.name) })
     for (const d of cols) cells[d] = b ? await buildCell(deps, b, d, checkedBy[i]) : missing(lang, d === 'name' ? name : undefined)
-    rows.push({ competitor: b?.name ?? name, domain: b?.domain ?? '', cells })
+    rows.push({ competitor: b?.name ?? name, domain: b?.domain ?? '', ...(b?.siteMethod ? { siteMethod: b.siteMethod } : {}), cells })
   }
   stats.dropped = rows.reduce((n, r) => n + Object.values(r.cells).filter((c) => c?.status === 'missing').length, 0)
   stats.passed = stats.checked - stats.dropped
+  if (dims.includes('pricing')) {
+    const withBundle = checkedBy.filter((c, i) => bundles[i] && c.length)
+    stats.pricingSlots = { filled: withBundle.reduce((n, c) => n + filledSlots(c), 0), total: withBundle.length * PRICING_SLOTS.length }
+    stats.pricingThirdParty = rows.filter((r) => r.cells.pricing?.thirdParty).length
+  }
   emit({ stage: 4, kind: 'ok', text: t.selfDone(stats.passed), stats: { passed: stats.passed, dropped: stats.dropped } })
   emit({ stage: 5, kind: 'ok', text: t.organised(cols.length, dims.includes('social')) })
 
@@ -125,7 +136,7 @@ export async function runResearch(runId: string, intent: Intent, deps: RunDeps):
 function missing(lang: Lang, value?: string): Cell {
   return value
     ? { value, sources: [], status: 'verified' }
-    : { value: lang === 'zh' ? '未找到可靠来源，已剔除' : 'No reliable source — removed', sources: [], status: 'missing' }
+    : { value: NO_INFO[lang], sources: [], status: 'missing' }
 }
 
 async function buildCell(deps: RunDeps, b: Bundle, d: string, checked: Checked[]): Promise<Cell> {
@@ -145,6 +156,7 @@ async function buildCell(deps: RunDeps, b: Bundle, d: string, checked: Checked[]
       return missing(lang)
     }
   }
+  if (d === 'pricing') return pricingCell(lang, checked, clip) ?? missing(lang)
   const c = checked.find((x) => x.field === d)
   if (!c || !c.ok || !c.fact) return missing(lang)
   const max = isCustom(d) ? (lang === 'zh' ? 160 : 320) : lang === 'zh' ? 90 : 200
@@ -161,16 +173,19 @@ function clip(v: string, max: number): string {
 }
 
 /** Re-query one failing field: fetch more official pages, search with sharper keywords, extract again, check again. */
-async function requery(deps: RunDeps, cdeps: CollectDeps, b: Bundle, failed: Checked, topic?: string): Promise<Checked | null> {
+async function requery(deps: RunDeps, cdeps: CollectDeps, b: Bundle, failed: Checked, topic?: string, siblings: Checked[] = []): Promise<Checked | null> {
   const { lang, emit } = deps
   const t = T[lang]
   emit({ stage: 4, kind: 'retry', text: t.retry(b.name, colLabel(lang, failed.field), REASON[lang][failed.reason ?? 'not_found']) })
   const custom = isCustom(failed.field)
+  // the pricing template is re-extracted as a whole; its other slots are filled from the same pass
+  const pricing = isPricingSlot(failed.field)
+  const field = pricing ? 'pricing' : failed.field
   for (let attempt = 0; attempt < deps.maxRequery; attempt++) {
     const fresh: Doc[] = []
     if (attempt === 0 && b.home && !custom) {
       emit({ stage: 4, kind: 'info', text: t.requery(t.reFetch(b.domain)) })
-      const urls = candidateUrls(b, FIELD_PAGES[failed.field as keyof typeof FIELD_PAGES] ?? [], true).slice(0, 4)
+      const urls = candidateUrls(b, FIELD_PAGES[field as keyof typeof FIELD_PAGES] ?? [], true).slice(0, 4)
       for (const u of urls) {
         const doc = await fetchSiteDoc(cdeps, b, u)
         if (doc) fresh.push(doc)
@@ -183,9 +198,9 @@ async function requery(deps: RunDeps, cdeps: CollectDeps, b: Bundle, failed: Che
       fresh.push(...(await collectField(cdeps, b, extra, 3)))
     } else {
       emit({ stage: 4, kind: 'info', text: t.requery(t.reSearch) })
-      const kw: Record<string, string> = { pricing: 'pricing plans', features: 'features', region: 'headquarters', contact: 'contact' }
-      const kwZh: Record<string, string> = { pricing: '定价 套餐', features: '功能', region: '总部', contact: '联系方式' }
-      const q = `${b.name} ${lang === 'zh' ? kwZh[failed.field] : kw[failed.field]}${b.domain ? ` site:${b.domain}` : ''}`
+      const kw: Record<string, string> = { overview: 'about company', pricing: 'pricing plans', features: 'features', region: 'headquarters', contact: 'contact' }
+      const kwZh: Record<string, string> = { overview: '公司介绍 关于我们', pricing: '定价 套餐', features: '功能', region: '总部', contact: '联系方式' }
+      const q = field === 'pricing' ? `${pricingQuery(b.name, lang)}${b.domain ? ` site:${b.domain}` : ''}` : `${b.name} ${lang === 'zh' ? kwZh[field] : kw[field]}${b.domain ? ` site:${b.domain}` : ''}`
       const hits = await cdeps.search.web(q, { lang, num: 5 })
       for (const h of hits.slice(0, 3)) {
         const doc = await fetchSiteDoc(cdeps, b, h.url)
@@ -193,16 +208,24 @@ async function requery(deps: RunDeps, cdeps: CollectDeps, b: Bundle, failed: Che
       }
     }
     // re-extract from official pages (old + new), not from the snippets that misled us
-    const pool = b.docs.filter((d) => d.kind === 'site' || (custom && (d.kind === 'web' || d.kind === 'seo')))
+    const pool = b.docs.filter((d) => d.kind === 'site' || (custom && (d.kind === 'web' || d.kind === 'seo')) || (pricing && d.kind === 'web'))
     if (!pool.length && !fresh.length) continue
     let facts: Awaited<ReturnType<typeof extractFacts>>
     try {
-      facts = await extractFacts(deps.llm, lang, b.name, [failed.field], [...fresh, ...pool.filter((d) => !fresh.includes(d))], topic)
+      facts = await extractFacts(deps.llm, lang, b.name, [field], [...fresh, ...pool.filter((d) => !fresh.includes(d))], topic)
     } catch {
       continue
     }
     const again = verifyFact(failed.field, facts[failed.field], b.docs)
     if (!again.ok) continue
+    if (pricing) {
+      for (let k = 0; k < siblings.length; k++) {
+        const sib = siblings[k]
+        if (sib.ok || !isPricingSlot(sib.field) || sib.field === failed.field) continue
+        const v = verifyFact(sib.field, facts[sib.field], b.docs)
+        if (v.ok) siblings[k] = Object.assign(v, { requeried: true })
+      }
+    }
     try {
       const v = (await judge(deps.llm, lang, b.name, [again]))[failed.field]
       if (v && !v.ok) continue

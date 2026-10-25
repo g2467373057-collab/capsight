@@ -40,3 +40,28 @@ Cost is recorded for every run (model calls, tokens, seconds) but has no pass/fa
 - Batch A: current version (v1), run as-is with `bash eval/run-batch.sh A`. Intent is used exactly as the system parses it, with no human editing.
 - Audit Batch A, record failures, fix, then Batch B: same 10 questions, at least 12 hours later (cache expiry), `bash eval/run-batch.sh B`.
 - Pilot runs of 10 Oct 2026 were before this bar and count only as pilot evidence.
+
+---
+
+## Amendment 1 · 19 October 2026, after Batch A, before Batch B
+
+Written after Batch A results were seen (run 19 Oct 2026, 20:29–20:47 SGT). Thresholds 1, 3, 4 and 5 are unchanged. What changed and why:
+
+**What Batch A showed (v1, n = 10 questions, 31 company look-ups):**
+- Official site wrong for 9 of 31 look-ups (link directories, download sites, unrelated blogs: hao.itotii.com for Notion, m.xitongzhijia.net for 飞书, doodles.google for Doodle …) and missing for 5 (Asana, Salesforce, Google Meet, Freshworks, Linear). Measure 2 (0 wrong official sites) is missed.
+- Coverage 124 / 164 = 75.6 %, but facts taken from a wrong "official" site still passed the automatic quote check. Coverage alone overstates quality; measure 1 (Harper's audit) is the one that catches this.
+- Pricing came back as one short line (Q03: 1 of 3 companies priced). Harper's own check of monday.com/pricing showed five plans, annual billing, seat counts and a discount the system did not capture.
+
+**Changes for v2 (design by Harper, eval/design-v2.md; implemented by AI):**
+1. Branch A ("find competitors": Q01, Q05, Q08) now returns the competitor list with a basic introduction only, no pricing or news. For these three questions Batch A and B are compared on competitor identification, official sites and the introduction, not on pricing.
+2. Branch B returns overview, region, features, pricing (template), social and news by default.
+3. New measure 6, pricing template completeness, on the questions that ask for pricing (Q02, Q03, Q04, Q06, Q07, Q09, Q10): slots filled with verified facts out of 6 per company (plans, unit, billing, extra costs, free tier, current offer), from the run database (`stats.pricingSlots`), plus Harper's check against her own manual lookup for Q03.
+   Threshold: ≥ 3.5 of 6 slots per company on average. Falsifier F6: < 2.5. The plans slot must match Harper's manual lookup for all three Q03 companies.
+
+## Amendment 1a · 20 October 2026, still before Batch B
+
+No threshold changes. After reviewing Batch A's official-site accuracy (17 / 31 correct, 55 %), Harper asked for more reliable sources of the official site. v2.1 adds, in this order: Google's knowledge-graph website, Wikidata's official-website property (P856), and an English Google search for every brand with a Latin-script name or alias. Each run now records how every official site was found (`siteMethod`), and the batch writes `sites.csv`, one row per company, for Harper to mark correct / wrong / none. Measure 2 is reported overall and per method.
+
+## Amendment 1b · 20 October 2026, still before Batch B
+
+No threshold changes. Harper decided (20 Oct, 16:33 SGT) that pricing may rest on a third-party page when no official page states it, on two conditions: the page shows an update date within the last 12 months, and the result is labelled 「第三方来源」 with that date. Directory and download sites never count, and features and the official site still need official sources. For measure 1, Harper audits every third-party pricing fact (not only the 5-fact sample), and Batch B reports the third-party share (`pricingThirdParty`) and its audit result separately from official sources. Pricing searches now name the template points (plans, per-user price, annual billing, free plan) and the user's own fields.

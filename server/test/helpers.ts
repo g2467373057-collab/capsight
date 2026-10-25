@@ -5,7 +5,7 @@ import { openDb, type Db } from '../src/db/db.ts'
 import { MockLlm, type LlmRequest } from '../src/llm/llm.ts'
 import type { Providers } from '../src/runs.ts'
 import { Fetcher } from '../src/sources/fetcher.ts'
-import { createSearch, type SearchHit, type SearchProvider } from '../src/sources/search.ts'
+import { createSearch, type EntityResult, type SearchHit, type SearchProvider, type WikidataSite } from '../src/sources/search.ts'
 import { Social } from '../src/sources/social.ts'
 
 export function testConfig(over: Partial<Config> = {}): Config {
@@ -20,7 +20,7 @@ export function testConfig(over: Partial<Config> = {}): Config {
     allowedOrigins: ['http://app.test'],
     requireEmailVerification: false,
     cookie: { ...c.cookie, secure: false },
-    fetch: { ...c.fetch, allowPrivate: true, timeoutMs: 3000 },
+    fetch: { ...c.fetch, allowPrivate: true, timeoutMs: 3000, reader: 'none' },
     keys: {},
     ...over,
   }
@@ -60,9 +60,15 @@ export function mockSearch(table: (q: string) => SearchHit[]): SearchProvider {
   return { name: 'mock', web: async (q) => table(q), news: async (q) => table(`news:${q}`) }
 }
 
-export function testProviders(cfg: Config, db: Db, llmFn: (r: LlmRequest) => unknown, search: SearchProvider): Providers & { llmInstance: MockLlm } {
+export function testProviders(
+  cfg: Config,
+  db: Db,
+  llmFn: (r: LlmRequest) => unknown,
+  search: SearchProvider,
+  lookups: { google?: (q: string) => Promise<EntityResult>; wikidata?: (names: string[]) => Promise<WikidataSite[]> } = {},
+): Providers & { llmInstance: MockLlm } {
   const llmInstance = new MockLlm(llmFn)
-  const stack = createSearch(cfg, db, 'en', { web: search, news: [search] })
+  const stack = createSearch(cfg, db, 'en', { web: search, news: [search], ...lookups })
   return {
     llmInstance,
     llm: () => llmInstance,

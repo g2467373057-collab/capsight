@@ -12,6 +12,7 @@ import { assertPublicUrl, baseDomain, isPrivateIp } from '../src/sources/net.ts'
 import { isAllowed, parseRobots } from '../src/sources/robots.ts'
 import { parseRss } from '../src/sources/search.ts'
 import { detectAccounts } from '../src/sources/social.ts'
+import { DEFAULT_DIMS_NAMED } from '../src/types.ts'
 
 test('private IPs are recognised', () => {
   for (const ip of ['127.0.0.1', '10.1.2.3', '172.16.0.1', '192.168.1.1', '169.254.169.254', '100.64.0.1', '0.0.0.0', '::1', 'fd00::1', 'fe80::1', '::ffff:127.0.0.1'])
@@ -153,8 +154,14 @@ test('intent rules: edge cases', () => {
   assert.equal(normaliseIntent({ type: 'timeframe', competitors: ['A'], timeRange: 'all', dimensions: ['news'] }, 'q', 5).type, 'named')
   // a timeframe question with no fields named looks at news and social only
   assert.deepEqual(normaliseIntent({ type: 'timeframe', competitors: ['A'], timeRange: '7d', dimensions: [] }, 'q', 5).dimensions, ['name', 'social', 'news'])
-  // a named lookup with no fields named gets everything
-  assert.equal(normaliseIntent({ type: 'named', competitors: ['A'], timeRange: 'all' }, 'q', 5).dimensions.length, 7)
+  // branch B: a named lookup with no fields named gets the full module set (no contact unless asked)
+  assert.deepEqual(normaliseIntent({ type: 'named', competitors: ['A'], timeRange: 'all' }, 'q', 5).dimensions, DEFAULT_DIMS_NAMED)
+  // branch A: finding competitors with nothing else asked gives a list with a basic introduction only
+  assert.deepEqual(normaliseIntent({ type: 'own', competitors: ['A'], timeRange: 'all', dimensions: ['name'] }, 'q', 5).dimensions, ['name', 'overview'])
+  // branch A keeps what the user explicitly asked for, plus the introduction
+  assert.deepEqual(normaliseIntent({ type: 'own', competitors: ['A'], timeRange: 'all', dimensions: ['name', 'pricing'] }, 'q', 5).dimensions, ['name', 'overview', 'pricing'])
+  // "公司介绍" written as a field is the built-in overview
+  assert.deepEqual(normaliseIntent({ type: 'named', competitors: ['A'], dimensions: ['name'], fields: ['公司介绍'] }, 'q', 5).dimensions, ['name', 'overview'])
   // unknown type → named
   assert.equal(normaliseIntent({ type: 'weird', competitors: ['A'] }, 'q', 5).type, 'named')
 })
@@ -224,7 +231,7 @@ test('intent "own": competitors come from a search on what the product does, and
   }
   const i = await parseIntent(llm as never, search as never, '我是一家做跨境电商 ERP 的公司，查竞品都有哪些，附带他们的基本信息', 'zh', 5)
   assert.equal(i.type, 'own')
-  assert.deepEqual(i.dimensions, ['name', 'region', 'features', 'pricing', 'contact'])
+  assert.deepEqual(i.dimensions, ['name', 'overview', 'region', 'features', 'pricing', 'contact'])
   assert.ok(searched.some((q) => q.startsWith('跨境电商 ERP')), searched.join(' | '))
   assert.deepEqual(i.competitors, ['店小秘', '马帮']) // "幻想公司" is not in any result, so it is dropped
 })
@@ -236,7 +243,149 @@ test('intent rules: custom fields', () => {
   assert.deepEqual(i.dimensions, ['name', 'pricing'])
   assert.equal(i.topic, '大学')
   // no fields and no dimensions → everything, as before
-  assert.equal(normaliseIntent({ type: 'named', competitors: ['A'], fields: [] }, 'q', 5).dimensions.length, 7)
+  assert.deepEqual(normaliseIntent({ type: 'named', competitors: ['A'], fields: [] }, 'q', 5).dimensions, DEFAULT_DIMS_NAMED)
   // at most 6 custom fields
   assert.equal(normaliseIntent({ type: 'named', competitors: ['A'], fields: ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h'] }, 'q', 5).fields?.length, 6)
+})
+
+/* ---------- v2: official-site detection, replayed on the real Batch A search results (19 Oct 2026) ---------- */
+import { readFileSync } from 'node:fs'
+import { hostMatches, scoreOfficial } from '../src/pipeline/collect.ts'
+
+const BATCH_A_SEARCHES = JSON.parse(readFileSync(new URL('./fixtures-official-site.json', import.meta.url), 'utf8')) as Record<string, { title: string; url: string; snippet: string; position: number }[]>
+/** What the model is expected to suggest as official domains (hints are checked, never trusted on their own). */
+const HINTS: Record<string, { domains: string[]; aliases: string[]; official?: string }> = {
+  石墨文档: { domains: ['shimo.im'], aliases: ['Shimo'], official: 'https://shimo.im' },
+  腾讯文档: { domains: ['docs.qq.com'], aliases: ['Tencent Docs'] },
+  金山文档: { domains: ['kdocs.cn'], aliases: ['KDocs', 'WPS'], official: 'https://www.kdocs.cn' },
+  Coda: { domains: ['coda.io'], aliases: [] },
+  Notion: { domains: ['notion.so', 'notion.com'], aliases: [] },
+  ClickUp: { domains: ['clickup.com'], aliases: [] },
+  'Monday.com': { domains: ['monday.com'], aliases: ['monday'], official: 'https://monday.com' },
+  Asana: { domains: ['asana.com'], aliases: [] },
+  Trello: { domains: ['trello.com'], aliases: [], official: 'https://trello.com' },
+  Salesforce: { domains: ['salesforce.com'], aliases: [] },
+  HubSpot: { domains: ['hubspot.com'], aliases: [], official: 'http://www.hubspot.com' },
+  纷享销客: { domains: ['fxiaoke.com'], aliases: ['Fxiaoke', 'ShareCRM'], official: 'http://www.fxiaoke.com' },
+  SavvyCal: { domains: ['savvycal.com'], aliases: [], official: 'https://savvycal.com' },
+  'Cal.com': { domains: ['cal.com'], aliases: [], official: 'https://cal.com' },
+  Doodle: { domains: ['doodle.com'], aliases: [], official: 'https://doodle.com' },
+  'Acuity Scheduling': { domains: ['acuityscheduling.com'], aliases: ['Acuity'], official: 'https://acuityscheduling.com' },
+  钉钉: { domains: ['dingtalk.com'], aliases: ['DingTalk'], official: 'https://dingtalk.com' },
+  飞书: { domains: ['feishu.cn', 'larksuite.com'], aliases: ['Feishu', 'Lark'], official: 'https://www.feishu.cn' },
+  企业微信: { domains: ['work.weixin.qq.com'], aliases: ['WeCom', 'WeChat Work'], official: 'https://work.weixin.qq.com' },
+  'Microsoft Teams': { domains: ['microsoft.com/microsoft-teams'], aliases: ['Teams'], official: 'https://www.microsoft.com' },
+  Zoom: { domains: ['zoom.us', 'zoom.com'], aliases: [], official: 'https://zoom.us' },
+  'Google Meet': { domains: ['meet.google.com'], aliases: [], official: 'https://meet.google.com' },
+  Zendesk: { domains: ['zendesk.com'], aliases: [] },
+  Intercom: { domains: ['intercom.com'], aliases: [] },
+  Freshworks: { domains: ['freshworks.com'], aliases: ['Freshdesk'], official: 'https://www.freshworks.com' },
+  Canva: { domains: ['canva.com'], aliases: [], official: 'https://www.canva.com' },
+  Figma: { domains: ['figma.com'], aliases: [], official: 'https://www.figma.com' },
+  Sketch: { domains: ['sketch.com'], aliases: [], official: 'https://www.sketch.com' },
+  Jira: { domains: ['atlassian.com/software/jira'], aliases: [], official: 'https://www.atlassian.com' },
+}
+/** The wrong "official sites" Batch A picked. None may ever be picked again. */
+const BATCH_A_WRONG = ['hao.itotii.com', 'codacomms.com', 'tripowerdesign.com', 'chinaubuntu.com', 'm.xitongzhijia.net', 'gamege.com', 'eday360.com.cn', 'doodles.google', 'wbolt.com', 'marketingforindustry.com']
+
+test('v2 official site: with checked hints, every Batch A company gets its real site or none (never a look-alike)', () => {
+  for (const [name, hits] of Object.entries(BATCH_A_SEARCHES)) {
+    const h = HINTS[name]
+    assert.ok(h, `hint missing for ${name}`)
+    const got = pickOfficialSite(name, hits, h, 5, true)
+    // official site present in the results → picked (on one of its official domains); absent → nothing picked here (the domain is then checked directly)
+    if (h.official) assert.ok(got && hostMatches(new URL(got).hostname, h.domains), `${name} → ${got}`)
+    else assert.equal(got, undefined, name)
+  }
+})
+
+test('v2 official site: without any hints, no look-alike from Batch A is ever picked', () => {
+  for (const [name, hits] of Object.entries(BATCH_A_SEARCHES)) {
+    const got = pickOfficialSite(name, hits, { domains: [], aliases: [] }, 4)
+    if (got) assert.ok(!BATCH_A_WRONG.includes(new URL(got).hostname), `${name} → ${got}`)
+  }
+})
+
+test('v2 official site: directories, download sites and big-platform pages score as never official', () => {
+  const hit = (url: string, title = 'Notion 官网') => ({ title, url, snippet: '', position: 1 })
+  assert.equal(scoreOfficial('Notion', hit('https://hao.itotii.com/notion')), -1)
+  assert.equal(scoreOfficial('飞书', hit('https://m.xitongzhijia.net/soft/1.html', '飞书官网下载')), -1)
+  assert.equal(scoreOfficial('腾讯文档', hit('https://pc.qq.com/detail/1.html', '腾讯文档')), -1)
+  // …but the exact product sub-site of a platform is fine once hinted
+  assert.ok(scoreOfficial('腾讯文档', hit('https://docs.qq.com/', '腾讯文档'), { domains: ['docs.qq.com'], aliases: [] }) >= 5)
+})
+
+test('v2 CSV: a pricing template cell exports plans, each slot and the slots with no public information', () => {
+  const csv = toCsv(
+    {
+      runId: 'r',
+      finishedAt: '',
+      stats: { sources: 0, checked: 1, requeried: 0, passed: 1, dropped: 0 },
+      intent: { type: 'named', query: 'q', competitors: ['A'], timeRange: 'all', dimensions: ['name', 'pricing'] },
+      rows: [{ competitor: 'A', domain: 'a.io', cells: { name: { value: 'A', sources: [], status: 'verified' }, pricing: { value: 'Free / Pro $10', sources: [{ kind: 'site', url: 'https://a.io/pricing', title: '' }], status: 'verified', items: [{ label: '计费方式', text: '按年计费', url: 'https://a.io/pricing' }], gaps: ['附加成本'] } } }],
+    },
+    'zh',
+  )
+  assert.match(csv, /"Free \/ Pro \$10\n计费方式：按年计费\n暂无公开信息：附加成本"/)
+})
+
+/* ---------- v2.1: Google knowledge graph and Wikidata as official-site sources (20 Oct 2026) ---------- */
+import { panelMatches, wikidataAgrees } from '../src/pipeline/collect.ts'
+import { wikidataSites, type WdEntity } from '../src/sources/search.ts'
+
+test('v2.1 Wikidata: only an entity whose label or alias is the name counts, deprecated websites are skipped', () => {
+  const entities: WdEntity[] = [
+    { id: 'Q1', labels: { en: { value: 'Notion (concept)' } }, claims: { P856: [{ mainsnak: { datavalue: { value: 'https://wrong.example' } } }] } },
+    { id: 'Q2', labels: { zh: { value: '飞书' } }, aliases: { en: [{ value: 'Lark' }] }, claims: { P856: [{ rank: 'deprecated', mainsnak: { datavalue: { value: 'https://old.example' } } }, { mainsnak: { datavalue: { value: 'https://www.feishu.cn/' } } }] } },
+    { id: 'Q3', labels: { en: { value: 'Lark' } } },
+  ]
+  assert.deepEqual(wikidataSites(entities, ['飞书', 'Feishu']), [{ id: 'Q2', label: '飞书', website: 'https://www.feishu.cn/' }])
+  assert.deepEqual(wikidataSites(entities, ['Notion']), [])
+})
+
+test('v2.1 knowledge graph and Wikidata answers are cross-checked before use', () => {
+  assert.equal(panelMatches('Notion', ['Notion']), true)
+  assert.equal(panelMatches('Notion Labs', ['Notion']), true)
+  assert.equal(panelMatches('Doodle', ['Google Doodle']), false)
+  assert.equal(panelMatches(undefined, ['Notion']), false)
+  const hints = { domains: ['feishu.cn', 'larksuite.com'], aliases: ['Feishu', 'Lark'] }
+  assert.equal(wikidataAgrees('https://www.feishu.cn/', '飞书', hints), true)
+  assert.equal(wikidataAgrees('https://m.xitongzhijia.net/feishu', '飞书', hints), false)
+  assert.equal(wikidataAgrees('https://unrelated.example', '飞书', hints), false)
+  // no hints to disagree with: a curated Wikidata site is accepted, unless it is a directory or review site
+  assert.equal(wikidataAgrees('https://www.dingtalk.com', '钉钉', { domains: [], aliases: [] }), true)
+  assert.equal(wikidataAgrees('https://www.g2.com/x', '钉钉', { domains: [], aliases: [] }), false)
+})
+
+/* ---------- v2.2: specific pricing searches and dated third-party sources (20 Oct 2026) ---------- */
+import { pageDate } from '../src/sources/html.ts'
+import { pricingQuery } from '../src/pipeline/collect.ts'
+
+test('v2.2 page dates: modified beats published; meta, JSON-LD, <time> and "Updated:" lines are read', () => {
+  assert.equal(pageDate('<meta property="article:modified_time" content="2026-09-12T08:00:00Z"><meta property="article:published_time" content="2025-01-01">'), '2026-09-12')
+  assert.equal(pageDate('<script type="application/ld+json">{"datePublished":"2025-03-01","dateModified":"2026-08-30"}</script>'), '2026-08-30')
+  assert.equal(pageDate('<time datetime="2026-07-01">July</time>'), '2026-07-01')
+  assert.equal(pageDate('', 'Kapwing pricing — Last updated: September 3, 2026'), '2026-09-03')
+  assert.equal(pageDate('', '石墨文档价格 更新于 2026年9月20日'), '2026-09-20')
+  assert.equal(pageDate('<p>no date here</p>', 'no date here'), undefined)
+})
+
+test('v2.2 pricing searches name the template points and what the user cares about', () => {
+  assert.equal(pricingQuery('Kapwing', 'en', ['watermark', 'subtitles']), 'Kapwing pricing plans per user per month billed annually free plan watermark subtitles')
+  assert.match(pricingQuery('飞书', 'zh'), /^飞书 定价 套餐 价格 每人每月 年付 免费版$/)
+})
+
+test('v2.2 pricing may rest on a third-party page only if it is dated within 12 months; features still need the official site', () => {
+  const recent = new Date(Date.now() - 40 * 86400000).toISOString().slice(0, 10)
+  const docs = [
+    { id: 'W1', kind: 'web' as const, url: 'https://review.example/x-pricing', title: 'X pricing', text: 'X Pro costs $12 per user per month', status: 200, date: recent },
+    { id: 'W2', kind: 'web' as const, url: 'https://old.example/x', title: 'X pricing 2023', text: 'X Pro costs $8 per user per month', status: 200, date: '2023-05-01' },
+    { id: 'W3', kind: 'web' as const, url: 'https://nodate.example/x', title: 'X pricing', text: 'X Pro costs $9 per user per month', status: 200 },
+  ]
+  const fresh = verifyFact('pricing.plans', { value: 'Pro $12', evidence: [{ doc: 'W1', quote: 'X Pro costs $12 per user per month' }] }, docs)
+  assert.equal(fresh.ok, true)
+  assert.equal(fresh.thirdParty, true)
+  assert.equal(verifyFact('pricing.plans', { value: 'Pro $8', evidence: [{ doc: 'W2', quote: 'X Pro costs $8 per user per month' }] }, docs).reason, 'stale')
+  assert.equal(verifyFact('pricing.plans', { value: 'Pro $9', evidence: [{ doc: 'W3', quote: 'X Pro costs $9 per user per month' }] }, docs).reason, 'stale')
+  assert.equal(verifyFact('features', { value: 'Pro', evidence: [{ doc: 'W1', quote: 'X Pro costs $12 per user per month' }] }, docs).reason, 'seo_only')
 })

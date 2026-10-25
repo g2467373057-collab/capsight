@@ -60,6 +60,8 @@ export interface Config {
   mailFrom: string
   fetch: { timeoutMs: number; maxBytes: number; userAgent: string; allowPrivate: boolean; respectRobots: boolean; reader: 'none' | 'jina' }
   cacheHours: number
+  /** Look up official websites on Wikidata (free, public structured data). */
+  wikidata: boolean
   /** Posts read per X account (5–100). X bills per post read. */
   xMaxPosts: number
 }
@@ -167,9 +169,11 @@ export function loadConfig(): Config {
       userAgent: str('FETCH_USER_AGENT', `CapsightBot/1.0 (+${appUrl}/#bot)`),
       allowPrivate: bool('FETCH_ALLOW_PRIVATE', false),
       respectRobots: bool('FETCH_RESPECT_ROBOTS', true),
-      reader: (str('READER', 'none') as 'none' | 'jina') || 'none',
+      // JavaScript-rendered pages (pricing tables) are read through Jina Reader by default; READER=none turns it off
+      reader: (str('READER', 'jina') as 'none' | 'jina') || 'jina',
     },
     cacheHours: num('CACHE_HOURS', 12),
+    wikidata: bool('WIKIDATA', true),
     xMaxPosts: Math.min(100, Math.max(5, num('X_MAX_POSTS', 5))),
   }
 }

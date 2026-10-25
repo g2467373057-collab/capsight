@@ -1,6 +1,8 @@
 import { COMPETITORS, DEFAULT_NAMED, SUGGESTED_FOR_OWN, type MockCompetitor, type MockFact } from '../data/mock'
 import {
   CUSTOM_PREFIX,
+  DEFAULT_DIMS_NAMED,
+  DEFAULT_DIMS_OWN,
   DIMENSIONS,
   columnsOf,
   type Cell,
@@ -44,7 +46,8 @@ const NAMES_GIVEN = /竞品(有|是|包括)|对手(有|是|包括)|competitors? 
 const BASIC: Dimension[] = ['region', 'features', 'pricing', 'contact']
 
 const DIM_RULES: [RegExp, Dimension[]][] = [
-  [/基本信息|概况|basic info|overview|profile/i, ['region', 'features', 'pricing', 'contact']],
+  [/基本信息|概况|basic info|profile/i, ['overview', 'region', 'features', 'pricing']],
+  [/介绍|简介|是做什么|overview|about|introduction/i, ['overview']],
   [/地区|国家|总部|哪里|region|country|location|headquarter|\bhq\b/i, ['region']],
   [/功能|特性|产品能力|feature|capabilit/i, ['features']],
   [/定价|价格|收费|多少钱|套餐|pricing|price|plans?\b|cost/i, ['pricing']],
@@ -80,7 +83,8 @@ function localParse(query: string): Intent {
   const asksBasic = BASIC.some((d) => dims.has(d))
   const timeframe = !own && !asksBasic && (status || (!!explicit && EVENT_RE.test(q)))
   if (timeframe) ['social', 'news'].forEach((d) => dims.add(d as Dimension))
-  if (dims.size === 1) DIMENSIONS.forEach((d) => dims.add(d))
+  if (dims.size === 1) (own ? DEFAULT_DIMS_OWN : DEFAULT_DIMS_NAMED).forEach((d) => dims.add(d))
+  if (own) dims.add('overview')
   if (own && explicit && EVENT_RE.test(q)) dims.add('social')
 
   const company = findCompany(q)
@@ -127,8 +131,8 @@ function rangeDays(r: TimeRange): number {
 const isoDaysAgo = (n: number) => new Date(Date.now() - n * 86400000).toISOString().slice(0, 10)
 
 const DIM_LABEL: Record<Lang, Record<Dimension, string>> = {
-  zh: { name: '名称', region: '地区', features: '功能', pricing: '定价', contact: '联系方式', social: '社媒账号', news: '最新动态' },
-  en: { name: 'Name', region: 'Region', features: 'Features', pricing: 'Pricing', contact: 'Contact', social: 'Social', news: 'Latest news' },
+  zh: { name: '名称', overview: '公司介绍', region: '地区', features: '功能', pricing: '定价', contact: '联系方式', social: '社媒账号', news: '最新动态' },
+  en: { name: 'Name', overview: 'Overview', region: 'Region', features: 'Features', pricing: 'Pricing', contact: 'Contact', social: 'Social', news: 'Latest news' },
 }
 
 /** Column header: built-in label or the custom field's own words. */
@@ -145,6 +149,7 @@ function factCell(f: MockFact, lang: Lang): Cell {
 }
 
 function buildCell(c: MockCompetitor, d: Dimension, intent: Intent, lang: Lang): Cell {
+  if (d === 'overview') return { value: lang === 'zh' ? '演示数据未覆盖' : 'Not in demo data', status: 'missing', sources: [] }
   if (d === 'name') {
     return {
       value: c.name,
@@ -375,7 +380,13 @@ export function toCsv(result: RunResult, lang: Lang): string {
     let worst = 'verified'
     for (const d of dims) {
       const c = r.cells[d]
-      if (c && c.status !== 'missing' && c.items?.length) {
+      if (c && c.status !== 'missing' && c.gaps !== undefined) {
+        const none = lang === 'zh' ? '暂无公开信息' : 'No public information'
+        out.push(
+          [c.value, ...(c.items ?? []).map((it) => `${it.label}${lang === 'zh' ? '：' : ': '}${it.text}`), ...(c.gaps.length ? [`${none}${lang === 'zh' ? '：' : ': '}${c.gaps.join(' / ')}`] : [])].join('\n'),
+          [...new Set([...c.sources.map((x) => x.url), ...(c.items ?? []).map((it) => it.url)])].join(' | '),
+        )
+      } else if (c && c.status !== 'missing' && c.items?.length) {
         const items = c.items
         out.push(
           items.map((i) => [i.date, i.label && `[${i.label}]`, i.text].filter(Boolean).join(' ')).join('\n'),

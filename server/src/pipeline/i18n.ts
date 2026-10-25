@@ -1,13 +1,28 @@
-import { CUSTOM_PREFIX, type Dimension, type Lang } from '../types.ts'
+import { CUSTOM_PREFIX, type Dimension, type Lang, type PricingSlot, type SiteMethod } from '../types.ts'
 
 export const DIM_LABEL: Record<Lang, Record<Dimension, string>> = {
-  zh: { name: '名称', region: '地区', features: '功能', pricing: '定价', contact: '联系方式', social: '社媒账号', news: '最新动态' },
-  en: { name: 'Name', region: 'Region', features: 'Features', pricing: 'Pricing', contact: 'Contact', social: 'Social', news: 'Latest news' },
+  zh: { name: '名称', overview: '公司介绍', region: '地区', features: '功能', pricing: '定价', contact: '联系方式', social: '社媒账号', news: '最新动态' },
+  en: { name: 'Name', overview: 'Overview', region: 'Region', features: 'Features', pricing: 'Pricing', contact: 'Contact', social: 'Social', news: 'Latest news' },
 }
 
-/** Header for a column key: built-in label, or the custom field's own words. */
+export const SLOT_LABEL: Record<Lang, Record<PricingSlot, string>> = {
+  zh: { plans: '套餐与单价', unit: '计价单位', billing: '计费方式', addons: '附加成本', free: '免费策略', promo: '当前优惠' },
+  en: { plans: 'Plans & prices', unit: 'Pricing unit', billing: 'Billing', addons: 'Extra costs', free: 'Free tier & trial', promo: 'Current offer' },
+}
+
+export const SITE_METHOD_LABEL: Record<Lang, Record<SiteMethod, string>> = {
+  zh: { google_kg: 'Google 知识图谱', wikidata: 'Wikidata', search_hint: '搜索结果 + 模型提示', hint_verified: '模型提示 + 打开网站核实', search_domain: '搜索结果（域名即品牌）', search_weak: '搜索结果（弱匹配）', given: '用户给出的域名' },
+  en: { google_kg: 'Google knowledge graph', wikidata: 'Wikidata', search_hint: 'search results + model hint', hint_verified: 'model hint, checked on the site', search_domain: 'search results (brand domain)', search_weak: 'search results (weak match)', given: 'domain given by the user' },
+}
+
+/** No public information for this field (wording from the v2 design). */
+export const NO_INFO: Record<Lang, string> = { zh: '暂无公开信息', en: 'No public information' }
+
+/** Header for a column key: built-in label, a pricing slot (`pricing.unit`), or the custom field's own words. */
 export function colLabel(lang: Lang, key: string): string {
-  return key.startsWith(CUSTOM_PREFIX) ? key.slice(CUSTOM_PREFIX.length) : (DIM_LABEL[lang][key as Dimension] ?? key)
+  if (key.startsWith(CUSTOM_PREFIX)) return key.slice(CUSTOM_PREFIX.length)
+  if (key.startsWith('pricing.')) return `${DIM_LABEL[lang].pricing} · ${SLOT_LABEL[lang][key.slice(8) as PricingSlot] ?? key.slice(8)}`
+  return DIM_LABEL[lang][key as Dimension] ?? key
 }
 
 export const REASON: Record<Lang, Record<string, string>> = {
@@ -18,6 +33,7 @@ export const REASON: Record<Lang, Record<string, string>> = {
     unsupported: '证据不支持这个结论',
     conflict: '不同来源的说法不一致',
     seo_only: '只有搜索摘要，缺少官网来源',
+    stale: '第三方来源没有更新日期，或已超过 12 个月',
   },
   en: {
     not_found: 'nothing relevant found',
@@ -26,6 +42,7 @@ export const REASON: Record<Lang, Record<string, string>> = {
     unsupported: 'evidence does not support the value',
     conflict: 'sources disagree',
     seo_only: 'search snippet only, no official source',
+    stale: 'third-party source undated or over 12 months old',
   },
 }
 
@@ -40,8 +57,12 @@ export const T = {
     stepFields: (n: string, k: number) => `${n} · 按 ${k} 个自定义字段搜索并读取相关网页`,
     extracting: (n: string, k: number) => `${n} · 提取 ${k} 个字段并核对原文`,
     summarising: (n: string) => `${n} · 总结最新动态和社媒内容`,
-    siteFound: (n: string, d: string) => `${n} · 找到官网 ${d}`,
+    siteFound: (n: string, d: string, via = '') => `${n} · 找到官网 ${d}${via ? `（${via}）` : ''}`,
     siteMissing: (n: string) => `${n} · 没有找到官网，只用搜索和新闻结果`,
+    siteRejected: (n: string, d: string) => `${n} · ${d} 不是官网（导航/下载/资讯站），已跳过`,
+    siteBlocked: (n: string, d: string) => `${n} · 官网 ${d} 拒绝直接读取，改用搜索引擎收录的官网页面`,
+    siteSnippets: (n: string, k: number) => `${n} · 从搜索引擎读取官网定价页 ${k} 条`,
+    thirdParty: (n: string, k: number) => `${n} · 官网没有可读的价格，另读 ${k} 篇标有日期的第三方定价页（结果会标注）`,
     fetched: (n: string, k: number, parts: string) => `${n} · ${parts}，共 ${k} 个来源`,
     parts: (site: number, seo: number, news: number, social: number, web = 0) => `官网 ${site} 页 / 网页 ${web} 篇 / 搜索 ${seo} 条 / 新闻 ${news} 条 / 社媒 ${social} 条`,
     checking: (k: number) => `逐条核对 ${k} 条信息的来源 URL 与原文出处`,
@@ -71,8 +92,12 @@ export const T = {
     stepFields: (n: string, k: number) => `${n} · searching and reading pages for ${k} custom fields`,
     extracting: (n: string, k: number) => `${n} · extracting ${k} fields and checking each quote`,
     summarising: (n: string) => `${n} · summarising news and social posts`,
-    siteFound: (n: string, d: string) => `${n} · official site ${d}`,
+    siteFound: (n: string, d: string, via = '') => `${n} · official site ${d}${via ? ` (${via})` : ''}`,
     siteMissing: (n: string) => `${n} · no official site found, using search and news only`,
+    siteRejected: (n: string, d: string) => `${n} · ${d} is not the official site (directory, download or media site), skipped`,
+    siteBlocked: (n: string, d: string) => `${n} · ${d} refused direct reading, using its pages as indexed by search`,
+    siteSnippets: (n: string, k: number) => `${n} · read ${k} official pricing results from search`,
+    thirdParty: (n: string, k: number) => `${n} · no readable price on the official site, reading ${k} dated third-party pricing pages (marked in results)`,
     fetched: (n: string, k: number, parts: string) => `${n} · ${parts} — ${k} sources`,
     parts: (site: number, seo: number, news: number, social: number, web = 0) => `site ${site} pages / web ${web} / search ${seo} / news ${news} / social ${social}`,
     checking: (k: number) => `Checking source URL and quoted origin for ${k} facts`,

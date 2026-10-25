@@ -103,7 +103,7 @@ for (const t of tests) {
     line.totalSeconds = Math.round((Date.now() - t0) / 1000)
     if (run.result) {
       line.stats = run.result.stats
-      line.companies = (run.result.rows ?? []).map((x: any) => ({ name: x.competitor, domain: x.domain }))
+      line.companies = (run.result.rows ?? []).map((x: any) => ({ name: x.competitor, domain: x.domain, method: x.siteMethod ?? '' }))
       writeFileSync(join(outDir, `${t.id}.json`), JSON.stringify({ test: t, intent: intent.data, run }, null, 2))
       writeFileSync(join(outDir, `${t.id}.csv`), toCsv(run.result, t.lang))
     }
@@ -119,16 +119,20 @@ for (const t of tests) {
 }
 
 // a flat table for the audit sheet
-const head = ['id', 'lang', 'query', 'status', 'runSeconds', 'sources', 'checked', 'requeried', 'passed', 'dropped', 'coverage', 'llmCalls', 'inputTokens', 'outputTokens', 'companies']
+const head = ['id', 'lang', 'query', 'type', 'dimensions', 'status', 'runSeconds', 'sources', 'checked', 'requeried', 'passed', 'dropped', 'coverage', 'pricingSlotsFilled', 'pricingSlotsTotal', 'pricingThirdParty', 'llmCalls', 'inputTokens', 'outputTokens', 'companies']
 const esc = (v: unknown) => `"${String(v ?? '').replace(/"/g, '""')}"`
 const rows = summary.map((l: any) => {
   const s = l.stats ?? {}
   const cov = s.passed + s.dropped > 0 ? (s.passed / (s.passed + s.dropped)).toFixed(2) : ''
-  return [l.id, l.lang, l.query, l.status, l.runSeconds, s.sources, s.checked, s.requeried, s.passed, s.dropped, cov, l.usage?.calls, l.usage?.inputTokens, l.usage?.outputTokens, (l.companies ?? []).map((c: any) => `${c.name} (${c.domain})`).join('; ')].map(esc).join(',')
+  return [l.id, l.lang, l.query, l.intent?.type, (l.intent?.dimensions ?? []).join(' '), l.status, l.runSeconds, s.sources, s.checked, s.requeried, s.passed, s.dropped, cov, s.pricingSlots?.filled, s.pricingSlots?.total, s.pricingThirdParty, l.usage?.calls, l.usage?.inputTokens, l.usage?.outputTokens, (l.companies ?? []).map((c: any) => `${c.name} (${c.domain || '—'}${c.method ? `, ${c.method}` : ''})`).join('; ')].map(esc).join(',')
 })
 writeFileSync(join(outDir, 'summary.csv'), '﻿' + [head.join(','), ...rows].join('\n'))
 
-console.log(`\nDone. Results: eval/batch-${label}/${stamp}/  (summary.csv + one JSON/CSV per question)\n`)
+// the official-site audit sheet: one row per company look-up; Harper fills in the last two columns
+const siteRows = summary.flatMap((l: any) => (l.companies ?? []).map((c: any) => [l.id, l.lang, c.name, c.domain || '', c.method, '', ''].map(esc).join(',')))
+writeFileSync(join(outDir, 'sites.csv'), '\ufeff' + ['test,lang,company,official_site_found,method,correct (Y/N/none),note', ...siteRows].join('\n'))
+
+console.log(`\nDone. Results: eval/batch-${label}/${stamp}/  (summary.csv, sites.csv, one JSON/CSV per question)\n`)
 app.server.close()
 db.close()
 process.exit(0)

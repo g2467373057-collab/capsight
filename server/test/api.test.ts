@@ -23,6 +23,7 @@ async function boot(over: Parameters<typeof testConfig>[0] = {}) {
   const search = mockSearch((q) => (q.includes('official website') || q.includes('官网') ? [{ title: 'Beta', url: `${site.origin}/`, snippet: '', position: 1 }] : []))
   const providers = testProviders(cfg, db, (r) => {
     if (r.task === 'intent') return { type: 'named', competitors: ['Beta'], timeRange: 'all', dimensions: ['name', 'pricing'] }
+    if (r.task === 'site') return { domains: ['127.0.0.1'], aliases: [] }
     if (r.task === 'extract') {
       const m = /\[(D\d+)\] kind=site url=\S+\/pricing/.exec(r.user)
       return { facts: { pricing: m ? { value: 'Starter / Business, per user', evidence: [{ doc: m[1], quote: 'Starter and Business plans, billed per user.' }] } : null } }

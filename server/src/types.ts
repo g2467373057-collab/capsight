@@ -2,8 +2,20 @@
 
 export type Lang = 'zh' | 'en'
 
-export type Dimension = 'name' | 'region' | 'features' | 'pricing' | 'contact' | 'social' | 'news'
-export const DIMENSIONS: Dimension[] = ['name', 'region', 'features', 'pricing', 'contact', 'social', 'news']
+export type Dimension = 'name' | 'overview' | 'region' | 'features' | 'pricing' | 'contact' | 'social' | 'news'
+export const DIMENSIONS: Dimension[] = ['name', 'overview', 'region', 'features', 'pricing', 'contact', 'social', 'news']
+
+/**
+ * Default fields per branch (design v2, 19 Oct 2026):
+ * A · own   — the user does not know the competitors: a list with a basic introduction only.
+ * B · named — the user names them: basic info (overview, region), business (features, pricing template), recent activity (news, social).
+ */
+export const DEFAULT_DIMS_OWN: Dimension[] = ['name', 'overview']
+export const DEFAULT_DIMS_NAMED: Dimension[] = ['name', 'overview', 'region', 'features', 'pricing', 'social', 'news']
+
+/** The SaaS pricing template: each slot is extracted and verified on its own. */
+export type PricingSlot = 'plans' | 'unit' | 'billing' | 'addons' | 'free' | 'promo'
+export const PRICING_SLOTS: PricingSlot[] = ['plans', 'unit', 'billing', 'addons', 'free', 'promo']
 
 /** site = the subject's own website · web = any other page found by search · seo = search snippet */
 export type SourceKind = 'site' | 'web' | 'seo' | 'news' | 'social'
@@ -62,11 +74,20 @@ export interface Cell {
   date?: string
   /** Present for list fields: each item has its own summary and link. */
   items?: CellItem[]
+  /** Pricing template slots with no public information. */
+  gaps?: string[]
+  /** The pricing came from a dated third-party page because no official page stated it. */
+  thirdParty?: boolean
 }
+
+/** How the official site was found, most reliable first (recorded for the audit). */
+export type SiteMethod = 'google_kg' | 'wikidata' | 'search_hint' | 'hint_verified' | 'search_domain' | 'search_weak' | 'given'
 
 export interface Row {
   competitor: string
   domain: string
+  /** How the official site was identified; absent when none was found. */
+  siteMethod?: SiteMethod
   /** Keyed by column: a Dimension or `f:<custom label>`. */
   cells: Record<string, Cell | undefined>
 }
@@ -80,6 +101,10 @@ export interface RunStats {
   requeried: number
   passed: number
   dropped: number
+  /** Pricing template slots filled with verified facts, out of slots asked for. */
+  pricingSlots?: { filled: number; total: number }
+  /** Companies whose pricing rests on a dated third-party page instead of the official site. */
+  pricingThirdParty?: number
 }
 
 export interface RunEvent {

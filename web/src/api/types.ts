@@ -1,9 +1,13 @@
 export type Lang = 'zh' | 'en'
 
-/** The seven output fields, in table order. */
-export type Dimension = 'name' | 'region' | 'features' | 'pricing' | 'contact' | 'social' | 'news'
+/** The output fields, in table order. */
+export type Dimension = 'name' | 'overview' | 'region' | 'features' | 'pricing' | 'contact' | 'social' | 'news'
 
-export const DIMENSIONS: Dimension[] = ['name', 'region', 'features', 'pricing', 'contact', 'social', 'news']
+export const DIMENSIONS: Dimension[] = ['name', 'overview', 'region', 'features', 'pricing', 'contact', 'social', 'news']
+
+/** Default fields per branch (keep in sync with server/src/types.ts). A: list + introduction · B: full research. */
+export const DEFAULT_DIMS_OWN: Dimension[] = ['name', 'overview']
+export const DEFAULT_DIMS_NAMED: Dimension[] = ['name', 'overview', 'region', 'features', 'pricing', 'social', 'news']
 
 /** Where a fact was found. site = the subject's own website · web = another page found by search. */
 export type SourceKind = 'site' | 'web' | 'seo' | 'news' | 'social'
@@ -71,11 +75,17 @@ export interface Cell {
   date?: string
   /** Present for list fields: each item has its own summary and link. */
   items?: CellItem[]
+  /** Pricing template: slots with no public information (present, possibly empty, on pricing cells). */
+  gaps?: string[]
+  /** The pricing rests on a dated third-party page because no official page stated it. */
+  thirdParty?: boolean
 }
 
 export interface Row {
   competitor: string
   domain: string
+  /** How the official site was identified (google_kg, wikidata, search_hint, hint_verified, search_domain, search_weak). */
+  siteMethod?: string
   /** Keyed by column: a Dimension or `f:<custom label>`. */
   cells: Record<string, Cell | undefined>
 }
@@ -99,6 +109,9 @@ export interface RunStats {
   requeried: number
   passed: number
   dropped: number
+  /** Pricing template slots filled with verified facts. */
+  pricingSlots?: { filled: number; total: number }
+  pricingThirdParty?: number
 }
 
 export interface RunResult {

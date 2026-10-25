@@ -59,6 +59,7 @@ const zh = {
   } as Record<SourceKind, { label: string; hint: string }>,
   dims: {
     name: '名称',
+    overview: '公司介绍',
     region: '地区',
     features: '功能',
     pricing: '定价',
@@ -115,6 +116,8 @@ const zh = {
       verified: '已核对',
       requeried: '重查后通过',
       requeriedShort: '重查通过',
+      noInfo: '暂无公开信息',
+      thirdParty: '第三方来源',
       missing: '未通过',
       showLog: '查看过程',
       hideLog: '收起过程',
@@ -275,6 +278,7 @@ const en: Copy = {
   },
   dims: {
     name: 'Name',
+    overview: 'Overview',
     region: 'Region',
     features: 'Features',
     pricing: 'Pricing',
@@ -331,6 +335,8 @@ const en: Copy = {
       verified: 'Verified',
       requeried: 'Passed after re-query',
       requeriedShort: 'Re-queried',
+      noInfo: 'No public information',
+      thirdParty: 'Third-party source',
       missing: 'Failed',
       showLog: 'Show log',
       hideLog: 'Hide log',

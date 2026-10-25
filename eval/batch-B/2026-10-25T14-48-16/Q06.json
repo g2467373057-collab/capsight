@@ -1,0 +1,171 @@
+{
+  "test": {
+    "id": "Q06",
+    "lang": "zh",
+    "q": "查飞书、钉钉、企业微信的定价和功能"
+  },
+  "intent": {
+    "type": "named",
+    "query": "查飞书、钉钉、企业微信的定价和功能",
+    "competitors": [
+      "飞书",
+      "钉钉",
+      "企业微信"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "features",
+      "pricing"
+    ]
+  },
+  "run": {
+    "id": "run_5tP3QkN2HhRr",
+    "status": "done",
+    "query": "查飞书、钉钉、企业微信的定价和功能",
+    "lang": "zh",
+    "createdAt": "2026-10-25T14:59:13.144Z",
+    "result": {
+      "runId": "run_5tP3QkN2HhRr",
+      "intent": {
+        "type": "named",
+        "query": "查飞书、钉钉、企业微信的定价和功能",
+        "competitors": [
+          "飞书",
+          "钉钉",
+          "企业微信"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "features",
+          "pricing"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "飞书",
+          "domain": "larksuite.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "飞书",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.larksuite.com/en_sg/?from_site=feishu",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "pricing": {
+              "value": "Lark 提供从免费入门版到 Pro 及企业版的多档套餐，具体价格需联系销售",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.larksuite.com/en_sg/plans",
+                  "title": "官网 · Lark | Pricing Plans - Best Priced All-in-one Solution"
+                }
+              ],
+              "status": "requeried",
+              "items": [
+                {
+                  "label": "免费策略",
+                  "text": "提供免费入门套餐（free starter pack），具体额度未说明",
+                  "url": "https://www.larksuite.com/en_sg/plans"
+                }
+              ],
+              "gaps": [
+                "计价单位",
+                "计费方式",
+                "附加成本",
+                "当前优惠"
+              ]
+            }
+          }
+        },
+        {
+          "competitor": "钉钉",
+          "domain": "dingtalk.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "钉钉",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.dingtalk.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "企业级智能移动办公平台，提供组织协同办公、应用开发、AI 工作现场与 DingTalk A1 硬件",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.dingtalk.com/",
+                  "title": "官网 · 钉钉，AI时代工作方式"
+                }
+              ],
+              "status": "requeried"
+            },
+            "pricing": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "企业微信",
+          "domain": "work.weixin.qq.com",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "企业微信",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://work.weixin.qq.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "pricing": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 9,
+        "checked": 9,
+        "requeried": 2,
+        "passed": 5,
+        "dropped": 4,
+        "pricingSlots": {
+          "filled": 2,
+          "total": 18
+        },
+        "pricingThirdParty": 0
+      },
+      "finishedAt": "2026-10-25T15:00:33.686Z"
+    }
+  }
+}

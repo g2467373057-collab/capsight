@@ -1,0 +1,587 @@
+{
+  "test": {
+    "id": "Q09",
+    "lang": "en",
+    "q": "Figma vs Canva vs Sketch"
+  },
+  "intent": {
+    "type": "named",
+    "query": "Figma vs Canva vs Sketch",
+    "competitors": [
+      "Figma",
+      "Canva",
+      "Sketch"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "overview",
+      "region",
+      "features",
+      "pricing",
+      "social",
+      "news"
+    ],
+    "topic": "design tools"
+  },
+  "run": {
+    "id": "run_zcMSBTskNFXm",
+    "status": "done",
+    "query": "Figma vs Canva vs Sketch",
+    "lang": "en",
+    "createdAt": "2026-10-25T15:04:08.787Z",
+    "result": {
+      "runId": "run_zcMSBTskNFXm",
+      "intent": {
+        "type": "named",
+        "query": "Figma vs Canva vs Sketch",
+        "competitors": [
+          "Figma",
+          "Canva",
+          "Sketch"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "features",
+          "pricing",
+          "social",
+          "news"
+        ],
+        "topic": "design tools"
+      },
+      "rows": [
+        {
+          "competitor": "Figma",
+          "domain": "figma.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "Figma",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.figma.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "Figma is an AI-native collaborative canvas where design, code, and AI come together, letting product teams design, prototype, and ship products in one workspace.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.figma.com",
+                  "title": "Website · Figma: The collaborative canvas for design, code, and AI"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.figma.com/product-development/",
+                  "title": "Website · Free Online Product Development Tool for Teams | Figma"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "No public information",
+              "sources": [],
+              "status": "missing"
+            },
+            "features": {
+              "value": "Figma Design prototyping, Figma Make prompt-to-code, Dev Mode and MCP server for design-to-code, FigJam whiteboard, Figma Slides, Figma Draw, Figma Sites, Figma Buzz, plus a Figma agent.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.figma.com",
+                  "title": "Website · Figma: The collaborative canvas for design, code, and AI"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.figma.com/product-development/",
+                  "title": "Website · Free Online Product Development Tool for Teams | Figma"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "Starter Free / Professional Full seat $16 /mo, Dev seat $12 /mo, Collab seat $3 /mo / Organization Full seat $55 /mo, Dev seat $25 /mo, Collab seat $5 /mo / Enterprise Full seat $90 /mo, Dev seat $35 /mo, Collab seat $5 /mo",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.figma.com/pricing/",
+                  "title": "Website · Plans & Pricing | Figma"
+                }
+              ],
+              "status": "verified",
+              "items": [
+                {
+                  "label": "Pricing unit",
+                  "text": "Per seat per month, with three seat types: Full seat, Dev seat and Collab seat.",
+                  "url": "https://www.figma.com/pricing/"
+                },
+                {
+                  "label": "Billing",
+                  "text": "Prices in USD; Professional offers Monthly or Annual, Organization and Enterprise are billed annually.",
+                  "url": "https://www.figma.com/pricing/"
+                },
+                {
+                  "label": "Free tier & trial",
+                  "text": "Starter is free with limited access: unlimited drafts, UI kits and templates, 150 AI credits/day up to 500 AI credits/mo.",
+                  "url": "https://www.figma.com/pricing/"
+                },
+                {
+                  "label": "Current offer",
+                  "text": "AI add-ons are now available for all plans.",
+                  "url": "https://www.figma.com/pricing/"
+                }
+              ],
+              "gaps": [
+                "Extra costs"
+              ]
+            },
+            "social": {
+              "value": "4 recent posts · Key point: Code Layers, design systems, Config India launches",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "https://x.com/figma",
+                  "title": "X figma"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.instagram.com/figma",
+                  "title": "Instagram figma"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.facebook.com/figmadesign",
+                  "title": "Facebook figmadesign"
+                }
+              ],
+              "items": [
+                {
+                  "text": "Figma launched Code Layers in open beta, letting teams build code-backed prototypes on the canvas.",
+                  "url": "https://x.com/figma/status/2110693729262850209",
+                  "label": "X"
+                },
+                {
+                  "text": "Figma previewed a dedicated design system hub and released Guidelines in open beta.",
+                  "url": "https://x.com/figma/status/2110604452214509864",
+                  "label": "X"
+                },
+                {
+                  "text": "At Config India, Figma announced Code Layers for coding on the canvas and Payload website shipping.",
+                  "url": "https://x.com/figma/status/2110618179982749940",
+                  "label": "X"
+                },
+                {
+                  "text": "Figma introduced a Figma node that connects any frame into Weave workflows for on-brand content.",
+                  "url": "https://x.com/figma/status/2100624143188394161",
+                  "label": "X"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "5 recent updates",
+              "date": "2026-10-14",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOb3ZuaWwzQlZKUEF6eEdZeEticm9PMG1WdWZGVEI4eWRoaEt4aFhHRGloLVJSdzlzeTJzSlY0SlBnR0czbnN2c05yUFBUVF9QaUR1MEtMNlhacmVYbGIzQm5maEVHY21zOGo0cGp2bGszbUlnSnZ1UzI5bXN4clNEaUFBcVU0NXRIZW5KVTBJTVdJVGxnMTkzcE5FeTV0Y3BFNGtUdmtTdV8?oc=5",
+                  "title": "Figma announces new features to define how agents work on its platform - TechCru"
+                },
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOeVl3TUpFMUJ3Qmd5RmRRLUtienRuSEJia1dtd24wVm5iMHFhbUQ0aFFRUk56cWVJQ01PZmJPVVZBN3JHVGpFTXVNX1ozNElOSGY3MFZ3WTJJYXEwZmIyc21NVjlKRFZRU3hHVTBxNVg5WGpxdmZJcm56cDAtdm1ob0llbmV0VllnNFdlbkcxTTJVUldIYTR6bXp0WHNteW93X0tyT1N4LUtEOGpORlU1eWRDZndJS2M?oc=5",
+                  "title": "Figma CFO says design platform willing to put margins on the line to boost AI de"
+                },
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9Ia25uSlZ6WTFGYmx5bmk5T1liSUI0WDhQX2htQlREcGdreXJzTF9YLVd0STlCa2NKb1ZSYVdKWTRQdndWaFVhbEZqNEpLcEoxOGc0cVJYX3JVYVppQk00OTlBNVZ3cFhj?oc=5",
+                  "title": "How Figma Uses AI Agents for Security - infoq.com"
+                }
+              ],
+              "items": [
+                {
+                  "text": "Figma announced new platform features defining how AI agents operate within its design tools.",
+                  "url": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxOb3ZuaWwzQlZKUEF6eEdZeEticm9PMG1WdWZGVEI4eWRoaEt4aFhHRGloLVJSdzlzeTJzSlY0SlBnR0czbnN2c05yUFBUVF9QaUR1MEtMNlhacmVYbGIzQm5maEVHY21zOGo0cGp2bGszbUlnSnZ1UzI5bXN4clNEaUFBcVU0NXRIZW5KVTBJTVdJVGxnMTkzcE5FeTV0Y3BFNGtUdmtTdV8?oc=5",
+                  "date": "2026-10-14",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "Figma's CFO said the company will accept lower margins to drive AI demand.",
+                  "url": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOeVl3TUpFMUJ3Qmd5RmRRLUtienRuSEJia1dtd24wVm5iMHFhbUQ0aFFRUk56cWVJQ01PZmJPVVZBN3JHVGpFTXVNX1ozNElOSGY3MFZ3WTJJYXEwZmIyc21NVjlKRFZRU3hHVTBxNVg5WGpxdmZJcm56cDAtdm1ob0llbmV0VllnNFdlbkcxTTJVUldIYTR6bXp0WHNteW93X0tyT1N4LUtEOGpORlU1eWRDZndJS2M?oc=5",
+                  "date": "2026-10-14",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "InfoQ reported how Figma uses AI agents to support its security operations.",
+                  "url": "https://news.google.com/rss/articles/CBMiaEFVX3lxTE9Ia25uSlZ6WTFGYmx5bmk5T1liSUI0WDhQX2htQlREcGdreXJzTF9YLVd0STlCa2NKb1ZSYVdKWTRQdndWaFVhbEZqNEpLcEoxOGc0cVJYX3JVYVppQk00OTlBNVZ3cFhj?oc=5",
+                  "date": "2026-09-06",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "Bloomberg interviewed Figma about its bet on AI as the next design workflow.",
+                  "url": "https://news.google.com/rss/articles/CBMimAFBVV95cUxQVDcxd1cwRTVBU0Q4Y0FJdlhndGpqZjVBR1BOaFNES2habW5KUEMyTlBOMjkxNDZ1cEVVT0pKMmRVaFR0dFo2YVkxRmIyUmNnSGJwZHlIUzB6elctUXFoOEhUZTItRmVyak8xOFpuNE9PbFpET2F2bUg3eG13NkJHNGg3RUtEZmVFb2JIUkQxaWVwU1B2OHYyNw?oc=5",
+                  "date": "2026-08-06",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "Figma reported its Q2 earnings, with Yahoo Finance highlighting key metrics.",
+                  "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOQ2ZwaHFUem85ekczOGJCQlpyNko1UFlnTnVpVUlWdHRvNEExVlFCM0ZTU3I4bzNCZV9Qa1V1OTNuYWx1Z3R5T2NyTC1ieFVXaG40TUllUGV0VkNEc2o1ODY5SHdacTJUM3NKVGtkU0J6TmlnWGpiXzFFcUJJV29QQlBaWFE2RXFiVnY0ai1xSzIwTUU?oc=5",
+                  "date": "2026-08-05",
+                  "label": "news.google.com"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "Canva",
+          "domain": "canva.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "Canva",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "Online design and publishing tool launched in 2013, letting anyone create and publish designs, presentations, videos, print and social content.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com/about/",
+                  "title": "Website · About Canva"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.canva.com/",
+                  "title": "Ranks #1 for “what is Canva”"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "Founded in Perth, Australia; offices include Surry Hills, Sydney and Austin, Texas; serves 190 countries.",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://en.wikipedia.org/wiki/Canva",
+                  "title": "Ranks #4 for “Canva company headquarters”"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.lifeatcanva.com/en/locations/",
+                  "title": "Ranks #1 for “Canva company headquarters”"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com/about/",
+                  "title": "Website · About Canva"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "Drag-and-drop editor with 1.6M+ templates, photo/video editing, PDF editor, presentations, websites, whiteboards, and Canva AI tools like Magic Write and Magic Resize.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com/pricing/",
+                  "title": "Website · Unsupported client – Canva"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com/features/",
+                  "title": "Website · Explore Canva Features to Unlock Your Creativity"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com/about/",
+                  "title": "Website · About Canva"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "Free US$0 / Pro US$144/year for one person / Business US$250/year per person / Enterprise contact sales",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.canva.com/pricing/",
+                  "title": "Website · Unsupported client – Canva"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.canva.com/help/subscription-options/",
+                  "title": "Ranks #2 for “Canva pricing plans per user per month billed annually free plan”"
+                }
+              ],
+              "status": "verified",
+              "items": [
+                {
+                  "label": "Pricing unit",
+                  "text": "Per person (per seat) per year; Business priced per person",
+                  "url": "https://www.canva.com/pricing/"
+                },
+                {
+                  "label": "Billing",
+                  "text": "Yearly billing shown with monthly toggle; yearly saves from 16%",
+                  "url": "https://www.canva.com/pricing/"
+                },
+                {
+                  "label": "Extra costs",
+                  "text": "AI Pass add-on and AI top-ups available at extra cost on Pro and Business",
+                  "url": "https://www.canva.com/pricing/"
+                },
+                {
+                  "label": "Free tier & trial",
+                  "text": "Free plan: 5GB storage, 1 Brand Kit (3 colors), up to 20 Standard or Premium AI uses",
+                  "url": "https://www.canva.com/pricing/"
+                },
+                {
+                  "label": "Current offer",
+                  "text": "Yearly billing saves from 16% versus monthly",
+                  "url": "https://www.canva.com/pricing/"
+                }
+              ],
+              "gaps": []
+            },
+            "social": {
+              "value": "2 recent posts · Key point: Launch of Canva Craft AI image model",
+              "sources": [],
+              "items": [
+                {
+                  "text": "Canva introduced Canva Craft, its first frontier image generation model built specifically for design, now available to ",
+                  "url": "https://x.com/canva/status/2113348707223753165",
+                  "label": "X"
+                },
+                {
+                  "text": "Canva announced Canva Craft, a frontier image generation model built for design, is now available to everyone.",
+                  "url": "https://x.com/canva/status/2113348719374704668",
+                  "label": "X"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "5 recent updates",
+              "date": "2026-10-22",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQR05XNUt3S2l1QkotOUJTMG1HZlpaeWFTXzFFbXZHOFpIa25pODdkTXdvd2VTS2tZb1pKY05ieHB6YUtPLW5DNUpPTzlPc3BDd0dFY3VDSVc3U05VcEV2LVAxVjNfaF9aZGk3bEVCVTlxQ0ZFUExzMWxjUHFTcVpPa1BseW5rdFl1dmN6REd2TkxVWjA?oc=5",
+                  "title": "Canva’s first AI image model plans designs before generating them - The Verge"
+                },
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNd21jWkQ5TzJTSGZRdl9YQVBqMWNLR3JRME9XX0JiZUJ4OXRFbjZSeWZ3NTlrT3VPLWhQeElXbzJueHAzU1hhUlB6LXFWQ1MyQXFPcUJ1ZU9Vd0ZjbkFmWjY4Y05JOU9KNGk4d3FIVTA5aFhUeHJueG5RVnhwNjgwcUpMQzBiUUc2OEE?oc=5",
+                  "title": "Canva releases its first image generation model - TechCrunch"
+                },
+                {
+                  "kind": "news",
+                  "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9CWExTUnNtbGJCbEFrZ2l5UzV5YjMtT0IxWW9UZ0JDRHBVSmE1WXAwU0ExcEYyR2NJZjRFRG5ZaXk5VVVPWDNIV0luY0VKTnQydGRaamZjS3pSbXpqZ05WSzdQOUFXOHVxM1p1SXJUdUFpc1o3eUVR?oc=5",
+                  "title": "Canva Scales Threat Detection on the Data It Already Trusts - Snowflake"
+                }
+              ],
+              "items": [
+                {
+                  "text": "Canva unveiled its first AI image model, which plans designs before generating them.",
+                  "url": "https://news.google.com/rss/articles/CBMikwFBVV95cUxQR05XNUt3S2l1QkotOUJTMG1HZlpaeWFTXzFFbXZHOFpIa25pODdkTXdvd2VTS2tZb1pKY05ieHB6YUtPLW5DNUpPTzlPc3BDd0dFY3VDSVc3U05VcEV2LVAxVjNfaF9aZGk3bEVCVTlxQ0ZFUExzMWxjUHFTcVpPa1BseW5rdFl1dmN6REd2TkxVWjA?oc=5",
+                  "date": "2026-10-22",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "Canva released its first image generation model, according to TechCrunch.",
+                  "url": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNd21jWkQ5TzJTSGZRdl9YQVBqMWNLR3JRME9XX0JiZUJ4OXRFbjZSeWZ3NTlrT3VPLWhQeElXbzJueHAzU1hhUlB6LXFWQ1MyQXFPcUJ1ZU9Vd0ZjbkFmWjY4Y05JOU9KNGk4d3FIVTA5aFhUeHJueG5RVnhwNjgwcUpMQzBiUUc2OEE?oc=5",
+                  "date": "2026-10-22",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "Canva scaled up threat detection using data it already trusts, per Snowflake.",
+                  "url": "https://news.google.com/rss/articles/CBMid0FVX3lxTE9CWExTUnNtbGJCbEFrZ2l5UzV5YjMtT0IxWW9UZ0JDRHBVSmE1WXAwU0ExcEYyR2NJZjRFRG5ZaXk5VVVPWDNIV0luY0VKTnQydGRaamZjS3pSbXpqZ05WSzdQOUFXOHVxM1p1SXJUdUFpc1o3eUVR?oc=5",
+                  "date": "2026-09-19",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "An activist disrupted Canva's AI event in London, saying 'AI steals from people.'",
+                  "url": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxQbWhFbXBYOXNtb0FTb1pxTG0tZHN4MDN0R3NaYjZpcUFMNFktQ25Gb2V6dWpwWWtNczdNMXFHbWdFUFhtNGZibXlVUFgxa1hfdE5ORi12dEZ2RFNMREMyLXNINTNZNFpqclVaYzZLbE5fZVRHcU1GZHlSc1BqWXlwcmRlZy1lWXhJZlI2dG9hTV9OMExiamRvMHg4NGotek1McHVoSWRZYlJTYm5KMVFRV3ZhMnlxcVo3ZV93QlY0cklPOThuUGtWaE1vTTRLUms0dHFSRWY0Q04tOVllOWlrSVpaQllLckVaQnhzT3BOeEtWYVpRRHJmcjU1MA?oc=5",
+                  "date": "2026-09-18",
+                  "label": "news.google.com"
+                },
+                {
+                  "text": "The American Film Institute named its 2026-2027 Canva Fellowship recipients.",
+                  "url": "https://news.google.com/rss/articles/CBMikAFBVV95cUxOQXBqMEVMaUEtV18zN09iaTJxbFQ3TW0yeWdXMkZzcFFod2dHczUzb0ZGREsxRzB1MTJwb01LQjJ1QzRaMXBOVFNKdmJwY3hxOGwwdldqc3N0SGNObXVjRk5zWTZlM010bXNCNGtFeXloMERMNGUzczJCNDFTenFsOUVtTm1WVVgwcDhPakJUb1c?oc=5",
+                  "date": "2026-09-08",
+                  "label": "news.google.com"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "Sketch",
+          "domain": "sketch.com",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "Sketch",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "Sketch is a macOS design toolkit made by designers for designers, covering design, prototyping, collaboration and developer handoff for UI/UX designers.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com",
+                  "title": "Website · Sketch · Design, prototype, collaborate and handoff"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com/about-us/",
+                  "title": "Website · About Sketch · What makes us different"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "Sketch B.V., an independent company founded in 2010; headquarters city not stated in the documents.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com/support/",
+                  "title": "Website · How can we help?"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com/about-us/",
+                  "title": "Website · About Sketch · What makes us different"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "Vector design editor with Stacks and Symbols, prototyping with Smart Animate and Overlays, real-time collaboration with comments and shared Workspaces, developer handoff, and AI via MCP clients.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com",
+                  "title": "Website · Sketch · Design, prototype, collaborate and handoff"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "Standard subscription (monthly per Editor, billed yearly) and Mac-only license (per Seat, $120 yearly seat cost); no full plan list with prices shown.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com/license/",
+                  "title": "Website · License Overview"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com/pricing/",
+                  "title": "Website · Sketch Pricing: Plans & Subscriptions for Individuals and Te"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.sketch.com/support/subscriptions/professional/",
+                  "title": "Website · Professional plan"
+                }
+              ],
+              "status": "requeried",
+              "items": [
+                {
+                  "label": "Pricing unit",
+                  "text": "Per Editor per month, billed yearly; Mac-only license is per seat including one year of updates",
+                  "url": "https://www.sketch.com/pricing/"
+                },
+                {
+                  "label": "Billing",
+                  "text": "Prices shown are monthly per Editor billed yearly; a Monthly toggle exists; Professional plans billed yearly by credit card",
+                  "url": "https://www.sketch.com/pricing/"
+                },
+                {
+                  "label": "Extra costs",
+                  "text": "One-time setup fee for Private Cloud plans; additional charges may apply for custom requirements",
+                  "url": "https://www.sketch.com/pricing/"
+                },
+                {
+                  "label": "Free tier & trial",
+                  "text": "No free plan; 30-day free trial without credit card; unlimited free Viewers; free Education Workspace with 1 Editor seat",
+                  "url": "https://www.sketch.com/pricing/"
+                },
+                {
+                  "label": "Current offer",
+                  "text": "Free for education: students and educators get one year of free access",
+                  "url": "https://www.sketch.com/education/"
+                }
+              ],
+              "gaps": []
+            },
+            "social": {
+              "value": "Official accounts: X @twostraws / X @sketch / Instagram madewithsketch / YouTube SketchDesign",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "https://x.com/twostraws",
+                  "title": "X twostraws"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://x.com/sketch",
+                  "title": "X sketch"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.instagram.com/madewithsketch",
+                  "title": "Instagram madewithsketch"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "No public updates in this period",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 143,
+        "checked": 21,
+        "requeried": 1,
+        "passed": 19,
+        "dropped": 2,
+        "pricingSlots": {
+          "filled": 17,
+          "total": 18
+        },
+        "pricingThirdParty": 0
+      },
+      "finishedAt": "2026-10-25T15:05:39.509Z"
+    }
+  }
+}

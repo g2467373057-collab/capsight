@@ -1,0 +1,297 @@
+{
+  "test": {
+    "id": "Q08",
+    "lang": "zh",
+    "q": "我们做 SaaS 客服系统，帮我找竞品"
+  },
+  "intent": {
+    "type": "own",
+    "query": "我们做 SaaS 客服系统，帮我找竞品",
+    "competitors": [
+      "Zendesk",
+      "Intercom",
+      "Freshdesk",
+      "Help Scout"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "overview",
+      "region",
+      "size",
+      "funding"
+    ]
+  },
+  "run": {
+    "id": "run_3vQmRKcbXrfX",
+    "status": "done",
+    "query": "我们做 SaaS 客服系统，帮我找竞品",
+    "lang": "zh",
+    "createdAt": "2026-10-25T15:01:52.521Z",
+    "result": {
+      "runId": "run_3vQmRKcbXrfX",
+      "intent": {
+        "type": "own",
+        "query": "我们做 SaaS 客服系统，帮我找竞品",
+        "competitors": [
+          "Zendesk",
+          "Intercom",
+          "Freshdesk",
+          "Help Scout"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "size",
+          "funding"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "Zendesk",
+          "domain": "zendesk.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "Zendesk",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.zendesk.com/sg/#georedirect",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "服务优先的CRM公司，提供AI客服与员工服务软件，覆盖工单、消息、语音和知识库，服务8万多家企业",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.zendesk.com/sg/company/",
+                  "title": "官网 · About Zendesk | Zendesk Singapore"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.zendesk.com/sg/company/agreements-and-terms/privacy-notice/",
+                  "title": "官网 · Privacy Notice | Zendesk Singapore"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.zendesk.com/sg/#georedirect",
+                  "title": "官网 · Transform Customer & Employee Service with AI Agents | Zende"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "size": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "funding": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "Intercom",
+          "domain": "intercom.hu",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "Intercom",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "http://www.intercom.hu",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "region": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "size": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "funding": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "Freshdesk",
+          "domain": "freshworks.com",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "Freshdesk",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.freshworks.com/freshdesk/",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "Freshworks 旗下 AI 客户服务软件，提供全渠道工单、自动化工作流与 Freddy AI，面向客服团队",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.freshworks.com/freshdesk/",
+                  "title": "官网 · AI-Powered Customer Service Software | Freshdesk | Freshwork"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.freshworks.com/company/about/",
+                  "title": "官网 · About Freshworks: Empowering Businesses with Intuitive SaaS "
+                },
+                {
+                  "kind": "site",
+                  "url": "https://support.freshworks.com/support/home",
+                  "title": "官网 · Home | Support"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "美国 · 加州圣马特奥（HQ），客户遍布 120+ 国家",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.freshworks.com/contact/",
+                  "title": "官网 · Contact Freshworks"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.freshworks.com/company/about/",
+                  "title": "官网 · About Freshworks: Empowering Businesses with Intuitive SaaS "
+                }
+              ],
+              "status": "verified"
+            },
+            "size": {
+              "value": "5,000+ 名员工，分布于 13 个地点（官网领导层页，2026 年）",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.freshworks.com/company/leadership/",
+                  "title": "官网 · Freshworks Leadership Team and Board of Directors"
+                }
+              ],
+              "status": "verified"
+            },
+            "funding": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "Help Scout",
+          "domain": "helpscout.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "Help Scout",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.helpscout.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "面向成长型企业的客户沟通与客服平台，提供共享收件箱、AI客服Envoy、Copilot和Signal，服务1.2万多家客户团队",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.helpscout.com/about/",
+                  "title": "官网 · About Help Scout"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.helpscout.com",
+                  "title": "官网 · Help Scout: The AI-driven support platform for customer-firs"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "美国 · 特拉华州公益公司（PBC），团队远程分布于全球115多个城市",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.helpscout.com/company/legal/terms-of-service/",
+                  "title": "官网 · Terms of Service - Help Scout"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.helpscout.com/about/",
+                  "title": "官网 · About Help Scout"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.helpscout.com/company/careers/",
+                  "title": "官网 · Careers at Help Scout - Work with us!"
+                }
+              ],
+              "status": "verified"
+            },
+            "size": {
+              "value": "约140人，分布于全球115多个城市（官网招聘页，未注明年份）",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.helpscout.com/company/careers/",
+                  "title": "官网 · Careers at Help Scout - Work with us!"
+                }
+              ],
+              "status": "verified"
+            },
+            "funding": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 23,
+        "checked": 20,
+        "requeried": 0,
+        "passed": 11,
+        "dropped": 9
+      },
+      "finishedAt": "2026-10-25T15:04:05.728Z"
+    }
+  }
+}

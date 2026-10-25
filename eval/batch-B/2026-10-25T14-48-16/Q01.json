@@ -1,0 +1,258 @@
+{
+  "test": {
+    "id": "Q01",
+    "lang": "zh",
+    "q": "我们是做在线协作文档的，帮我找竞品"
+  },
+  "intent": {
+    "type": "own",
+    "query": "我们是做在线协作文档的，帮我找竞品",
+    "competitors": [
+      "腾讯文档",
+      "石墨文档",
+      "金山文档"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "overview",
+      "region",
+      "size",
+      "funding"
+    ]
+  },
+  "run": {
+    "id": "run_b_rYEKnI1DKv",
+    "status": "done",
+    "query": "我们是做在线协作文档的，帮我找竞品",
+    "lang": "zh",
+    "createdAt": "2026-10-25T14:48:19.363Z",
+    "result": {
+      "runId": "run_b_rYEKnI1DKv",
+      "intent": {
+        "type": "own",
+        "query": "我们是做在线协作文档的，帮我找竞品",
+        "competitors": [
+          "腾讯文档",
+          "石墨文档",
+          "金山文档"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "size",
+          "funding"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "腾讯文档",
+          "domain": "docs.qq.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "腾讯文档",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://docs.qq.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "腾讯旗下多人协作在线文档平台，支持Word、Excel、PPT、PDF、收集表、思维导图等在线编辑与云端保存，面向个人和企业团队",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://docs.qq.com",
+                  "title": "官网 · 腾讯文档-官方网站-支持多人在线编辑Word、Excel和PPT文档"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.cnpp.cn/pinpai/135822.html",
+                  "title": "搜索「腾讯文档 是什么 公司介绍」排名第 1"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://cloud.tencent.com/developer/techpedia/1327",
+                  "title": "搜索「腾讯文档 是什么 公司介绍」排名第 3"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "中国 · 深圳（深圳市南山区腾讯滨海大厦），主要面向中国用户",
+              "sources": [
+                {
+                  "kind": "web",
+                  "url": "https://www.cnpp.cn/pinpai/135822.html",
+                  "title": "第三方 · 腾讯文档简介-腾讯文档办公软件-十大品牌网CNPP"
+                },
+                {
+                  "kind": "seo",
+                  "url": "http://www.changbiyuan.com/qybg/zxwd/xzwd/2021/xzwd_0423/48668.html",
+                  "title": "搜索「腾讯文档 是什么 公司介绍」排名第 2"
+                }
+              ],
+              "status": "verified"
+            },
+            "size": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "funding": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "石墨文档",
+          "domain": "shimo.im",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "石墨文档",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://shimo.im",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "武汉初心科技旗下在线协同文档品牌，提供文档、表格、幻灯片等云端Office套件，面向个人与企业团队",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://shimo.im/about",
+                  "title": "官网 · 关于石墨,石墨文档介绍_石墨文档官网"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://shimo.im",
+                  "title": "官网 · 石墨文档官网-在线协同办公系统平台,支持云端多人在线协作文档,表格,幻灯片"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "中国 · 武汉，在北京、上海、武汉、深圳设有分支机构和服务中心",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://shimo.im/about",
+                  "title": "官网 · 关于石墨,石墨文档介绍_石墨文档官网"
+                }
+              ],
+              "status": "verified"
+            },
+            "size": {
+              "value": "100–499 人（开发屋，2023 年）",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://www.kaifain.com/b/ae4b294ae802d3b1",
+                  "title": "搜索「石墨文档 是什么 公司介绍」排名第 1"
+                }
+              ],
+              "status": "verified"
+            },
+            "funding": {
+              "value": "2017 年获今日头条近亿元 B 轮投资；开发屋标注融资阶段为 B++ 轮（2023 年）",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://shimo.im/about",
+                  "title": "官网 · 关于石墨,石墨文档介绍_石墨文档官网"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.kaifain.com/b/ae4b294ae802d3b1",
+                  "title": "搜索「石墨文档 是什么 公司介绍」排名第 1"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "金山文档",
+          "domain": "account.kdocs.cn",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "金山文档",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://account.kdocs.cn/passport/singlesign?cb=https%3A%2F%2Fwww.kdocs.cn%2F&form=kdocs",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "金山办公旗下在线协作文档工具，支持多人实时编辑文字、表格、演示、表单等，并可云端同步",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://www.kdocs.cn/",
+                  "title": "搜索「金山文档 是什么 公司介绍」排名第 1"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.36dianping.com/space/4717700222",
+                  "title": "搜索「金山文档 是什么 公司介绍」排名第 4"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "size": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "funding": {
+              "value": "母公司金山办公已上市（上交所科创板 · 688111）",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://quote.cfi.cn/gsda_stib/91640/688111.html",
+                  "title": "搜索「金山文档 公司 总部」排名第 5"
+                },
+                {
+                  "kind": "web",
+                  "url": "https://emweb.securities.eastmoney.com/NewsBulletin/Index?code=SH688111&type=soft",
+                  "title": "第三方 · 金山办公(688111.SH)资讯公告-PC_HSF10资料"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 64,
+        "checked": 15,
+        "requeried": 0,
+        "passed": 11,
+        "dropped": 4
+      },
+      "finishedAt": "2026-10-25T14:51:05.061Z"
+    }
+  }
+}

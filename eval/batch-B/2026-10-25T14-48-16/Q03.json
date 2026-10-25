@@ -1,0 +1,192 @@
+{
+  "test": {
+    "id": "Q03",
+    "lang": "en",
+    "q": "Compare Asana, Monday.com and Trello pricing"
+  },
+  "intent": {
+    "type": "named",
+    "query": "Compare Asana, Monday.com and Trello pricing",
+    "competitors": [
+      "Asana",
+      "Monday.com",
+      "Trello"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "pricing"
+    ]
+  },
+  "run": {
+    "id": "run_5CNXFZzvEatG",
+    "status": "done",
+    "query": "Compare Asana, Monday.com and Trello pricing",
+    "lang": "en",
+    "createdAt": "2026-10-25T14:52:36.803Z",
+    "result": {
+      "runId": "run_5CNXFZzvEatG",
+      "intent": {
+        "type": "named",
+        "query": "Compare Asana, Monday.com and Trello pricing",
+        "competitors": [
+          "Asana",
+          "Monday.com",
+          "Trello"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "pricing"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "Asana",
+          "domain": "asana.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "Asana",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://asana.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "No public information",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        },
+        {
+          "competitor": "Monday.com",
+          "domain": "monday.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "Monday.com",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://monday.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "Free $0 / Basic $9 / Standard $12 / Pro $19 per seat per month / Enterprise custom price",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://monday.com/pricing",
+                  "title": "Website · monday.com pricing and plans"
+                }
+              ],
+              "status": "verified",
+              "items": [
+                {
+                  "label": "Pricing unit",
+                  "text": "Per seat per month; pricing page example uses 10 seats (e.g. $9 x 10 seats = $90)",
+                  "url": "https://monday.com/pricing"
+                },
+                {
+                  "label": "Billing",
+                  "text": "Prices shown billed annually (Yearly SAVE 18%); monthly billing option available",
+                  "url": "https://monday.com/pricing"
+                },
+                {
+                  "label": "Extra costs",
+                  "text": "AI credits beyond plan allowance: 1,000 credits = $10, 2,000 = $20, 3,000 = $30; extra API calls purchasable",
+                  "url": "https://monday.com/pricing"
+                },
+                {
+                  "label": "Free tier & trial",
+                  "text": "Free forever plan: up to 2 seats, up to 3 boards, up to 3 Docs, 200+ templates, 8 column types; no credit card needed",
+                  "url": "https://monday.com/pricing"
+                },
+                {
+                  "label": "Current offer",
+                  "text": "Special offer: $10 off/month on Basic, $20 off/month on Standard, $30 off/month on Pro",
+                  "url": "https://monday.com/pricing"
+                }
+              ],
+              "gaps": []
+            }
+          }
+        },
+        {
+          "competitor": "Trello",
+          "domain": "trello.com",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "Trello",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://trello.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "Free $0 / Standard $5 per user/month billed annually ($6 billed monthly) / Premium $10 per user/month billed annually ($12.50 billed monthly) / Enterprise (contact sales)",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://www.trello.com/pricing",
+                  "title": "Ranks #1 for “Trello pricing plans per user per month billed annually free plan”"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://lifestack.ai/blog/trello-pricing",
+                  "title": "Ranks #5 for “Trello pricing plans per user per month billed annually free plan”"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://trello.com/pricing",
+                  "title": "Website · Which Trello Plan Is Best for You? Our Pricing Guide Can Hel"
+                }
+              ],
+              "status": "verified",
+              "items": [
+                {
+                  "label": "Free tier & trial",
+                  "text": "Free plan for individuals or small teams, up to 10 collaborators per Workspace",
+                  "url": "https://www.trello.com/pricing"
+                }
+              ],
+              "gaps": [
+                "Pricing unit",
+                "Billing",
+                "Extra costs",
+                "Current offer"
+              ]
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 25,
+        "checked": 6,
+        "requeried": 0,
+        "passed": 5,
+        "dropped": 1,
+        "pricingSlots": {
+          "filled": 13,
+          "total": 18
+        },
+        "pricingThirdParty": 0
+      },
+      "finishedAt": "2026-10-25T14:53:42.898Z"
+    }
+  }
+}

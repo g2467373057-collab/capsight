@@ -1,0 +1,596 @@
+{
+  "batch": "B",
+  "startedAt": "2026-10-25T14-48-16",
+  "tests": [
+    {
+      "id": "Q01",
+      "lang": "zh",
+      "query": "我们是做在线协作文档的，帮我找竞品",
+      "intent": {
+        "type": "own",
+        "query": "我们是做在线协作文档的，帮我找竞品",
+        "competitors": [
+          "腾讯文档",
+          "石墨文档",
+          "金山文档"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "size",
+          "funding"
+        ]
+      },
+      "runId": "run_b_rYEKnI1DKv",
+      "status": "done",
+      "usage": {
+        "calls": 19,
+        "inputTokens": 133787,
+        "outputTokens": 1283
+      },
+      "runSeconds": 166,
+      "totalSeconds": 173,
+      "stats": {
+        "sources": 64,
+        "checked": 15,
+        "requeried": 0,
+        "passed": 11,
+        "dropped": 4
+      },
+      "companies": [
+        {
+          "name": "腾讯文档",
+          "domain": "docs.qq.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "石墨文档",
+          "domain": "shimo.im",
+          "method": "wikidata"
+        },
+        {
+          "name": "金山文档",
+          "domain": "account.kdocs.cn",
+          "method": "search_hint"
+        }
+      ]
+    },
+    {
+      "id": "Q02",
+      "lang": "zh",
+      "query": "查一下 Notion、Coda、ClickUp 的基本信息",
+      "intent": {
+        "type": "named",
+        "query": "查一下 Notion、Coda、ClickUp 的基本信息",
+        "competitors": [
+          "Notion",
+          "Coda",
+          "ClickUp"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "features",
+          "pricing"
+        ]
+      },
+      "runId": "run_dQO3_wzvp7gY",
+      "status": "done",
+      "usage": {
+        "calls": 17,
+        "inputTokens": 96823,
+        "outputTokens": 3124
+      },
+      "runSeconds": 84,
+      "totalSeconds": 86,
+      "stats": {
+        "sources": 85,
+        "checked": 15,
+        "requeried": 2,
+        "passed": 14,
+        "dropped": 1,
+        "pricingSlots": {
+          "filled": 16,
+          "total": 18
+        },
+        "pricingThirdParty": 0
+      },
+      "companies": [
+        {
+          "name": "Notion",
+          "domain": "notion.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "Coda",
+          "domain": "coda.io",
+          "method": "search_hint"
+        },
+        {
+          "name": "ClickUp",
+          "domain": "clickup.com",
+          "method": "search_hint"
+        }
+      ]
+    },
+    {
+      "id": "Q03",
+      "lang": "en",
+      "query": "Compare Asana, Monday.com and Trello pricing",
+      "intent": {
+        "type": "named",
+        "query": "Compare Asana, Monday.com and Trello pricing",
+        "competitors": [
+          "Asana",
+          "Monday.com",
+          "Trello"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "pricing"
+        ]
+      },
+      "runId": "run_5CNXFZzvEatG",
+      "status": "done",
+      "usage": {
+        "calls": 13,
+        "inputTokens": 41679,
+        "outputTokens": 2751
+      },
+      "runSeconds": 66,
+      "totalSeconds": 71,
+      "stats": {
+        "sources": 25,
+        "checked": 6,
+        "requeried": 0,
+        "passed": 5,
+        "dropped": 1,
+        "pricingSlots": {
+          "filled": 13,
+          "total": 18
+        },
+        "pricingThirdParty": 0
+      },
+      "companies": [
+        {
+          "name": "Asana",
+          "domain": "asana.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "Monday.com",
+          "domain": "monday.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "Trello",
+          "domain": "trello.com",
+          "method": "search_hint"
+        }
+      ]
+    },
+    {
+      "id": "Q04",
+      "lang": "zh",
+      "query": "我们做 CRM，帮我查 Salesforce、HubSpot、纷享销客",
+      "intent": {
+        "type": "named",
+        "query": "我们做 CRM，帮我查 Salesforce、HubSpot、纷享销客",
+        "competitors": [
+          "Salesforce",
+          "HubSpot",
+          "纷享销客"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "features",
+          "pricing",
+          "social",
+          "news"
+        ],
+        "topic": "CRM SaaS"
+      },
+      "runId": "run_-MSrNdbXq923",
+      "status": "done",
+      "usage": {
+        "calls": 24,
+        "inputTokens": 115774,
+        "outputTokens": 3158
+      },
+      "runSeconds": 137,
+      "totalSeconds": 141,
+      "stats": {
+        "sources": 108,
+        "checked": 21,
+        "requeried": 2,
+        "passed": 20,
+        "dropped": 1,
+        "pricingSlots": {
+          "filled": 14,
+          "total": 18
+        },
+        "pricingThirdParty": 0
+      },
+      "companies": [
+        {
+          "name": "Salesforce",
+          "domain": "salesforce.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "HubSpot",
+          "domain": "hubspot.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "纷享销客",
+          "domain": "fxiaoke.com",
+          "method": "search_hint"
+        }
+      ]
+    },
+    {
+      "id": "Q05",
+      "lang": "en",
+      "query": "Find competitors of Calendly",
+      "intent": {
+        "type": "own",
+        "query": "Find competitors of Calendly",
+        "company": "Calendly",
+        "competitors": [
+          "Cal.com",
+          "Doodle",
+          "HubSpot Meetings",
+          "Microsoft Bookings"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "size",
+          "funding"
+        ]
+      },
+      "runId": "run_am49Sw1GF0cF",
+      "status": "done",
+      "usage": {
+        "calls": 34,
+        "inputTokens": 203199,
+        "outputTokens": 2072
+      },
+      "runSeconds": 178,
+      "totalSeconds": 184,
+      "stats": {
+        "sources": 105,
+        "checked": 20,
+        "requeried": 3,
+        "passed": 14,
+        "dropped": 6
+      },
+      "companies": [
+        {
+          "name": "Cal.com",
+          "domain": "cal.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "Doodle",
+          "domain": "doodle.com",
+          "method": "search_hint"
+        },
+        {
+          "name": "HubSpot Meetings",
+          "domain": "hubspot.com",
+          "method": "search_hint"
+        },
+        {
+          "name": "Microsoft Bookings",
+          "domain": "microsoft.com",
+          "method": "search_hint"
+        }
+      ]
+    },
+    {
+      "id": "Q06",
+      "lang": "zh",
+      "query": "查飞书、钉钉、企业微信的定价和功能",
+      "intent": {
+        "type": "named",
+        "query": "查飞书、钉钉、企业微信的定价和功能",
+        "competitors": [
+          "飞书",
+          "钉钉",
+          "企业微信"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "features",
+          "pricing"
+        ]
+      },
+      "runId": "run_5tP3QkN2HhRr",
+      "status": "done",
+      "usage": {
+        "calls": 26,
+        "inputTokens": 154113,
+        "outputTokens": 1921
+      },
+      "runSeconds": 81,
+      "totalSeconds": 86,
+      "stats": {
+        "sources": 9,
+        "checked": 9,
+        "requeried": 2,
+        "passed": 5,
+        "dropped": 4,
+        "pricingSlots": {
+          "filled": 2,
+          "total": 18
+        },
+        "pricingThirdParty": 0
+      },
+      "companies": [
+        {
+          "name": "飞书",
+          "domain": "larksuite.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "钉钉",
+          "domain": "dingtalk.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "企业微信",
+          "domain": "work.weixin.qq.com",
+          "method": "search_hint"
+        }
+      ]
+    },
+    {
+      "id": "Q07",
+      "lang": "en",
+      "query": "Zoom, Microsoft Teams, Google Meet: pricing and recent news",
+      "intent": {
+        "type": "named",
+        "query": "Zoom, Microsoft Teams, Google Meet: pricing and recent news",
+        "competitors": [
+          "Zoom",
+          "Microsoft Teams",
+          "Google Meet"
+        ],
+        "timeRange": "30d",
+        "dimensions": [
+          "name",
+          "pricing",
+          "news"
+        ],
+        "topic": "视频会议工具"
+      },
+      "runId": "run_rrcIdT7Oh-zb",
+      "status": "done",
+      "usage": {
+        "calls": 14,
+        "inputTokens": 34421,
+        "outputTokens": 2116
+      },
+      "runSeconds": 65,
+      "totalSeconds": 71,
+      "stats": {
+        "sources": 58,
+        "checked": 9,
+        "requeried": 0,
+        "passed": 8,
+        "dropped": 1,
+        "pricingSlots": {
+          "filled": 12,
+          "total": 18
+        },
+        "pricingThirdParty": 0
+      },
+      "companies": [
+        {
+          "name": "Zoom",
+          "domain": "zoom.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "Microsoft Teams",
+          "domain": "teams.microsoft.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "Google Meet",
+          "domain": "workspace.google.com",
+          "method": "search_hint"
+        }
+      ]
+    },
+    {
+      "id": "Q08",
+      "lang": "zh",
+      "query": "我们做 SaaS 客服系统，帮我找竞品",
+      "intent": {
+        "type": "own",
+        "query": "我们做 SaaS 客服系统，帮我找竞品",
+        "competitors": [
+          "Zendesk",
+          "Intercom",
+          "Freshdesk",
+          "Help Scout"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "size",
+          "funding"
+        ]
+      },
+      "runId": "run_3vQmRKcbXrfX",
+      "status": "done",
+      "usage": {
+        "calls": 21,
+        "inputTokens": 111563,
+        "outputTokens": 1077
+      },
+      "runSeconds": 133,
+      "totalSeconds": 138,
+      "stats": {
+        "sources": 23,
+        "checked": 20,
+        "requeried": 0,
+        "passed": 11,
+        "dropped": 9
+      },
+      "companies": [
+        {
+          "name": "Zendesk",
+          "domain": "zendesk.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "Intercom",
+          "domain": "intercom.hu",
+          "method": "wikidata"
+        },
+        {
+          "name": "Freshdesk",
+          "domain": "freshworks.com",
+          "method": "search_hint"
+        },
+        {
+          "name": "Help Scout",
+          "domain": "helpscout.com",
+          "method": "wikidata"
+        }
+      ]
+    },
+    {
+      "id": "Q09",
+      "lang": "en",
+      "query": "Figma vs Canva vs Sketch",
+      "intent": {
+        "type": "named",
+        "query": "Figma vs Canva vs Sketch",
+        "competitors": [
+          "Figma",
+          "Canva",
+          "Sketch"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "features",
+          "pricing",
+          "social",
+          "news"
+        ],
+        "topic": "design tools"
+      },
+      "runId": "run_zcMSBTskNFXm",
+      "status": "done",
+      "usage": {
+        "calls": 22,
+        "inputTokens": 96083,
+        "outputTokens": 4351
+      },
+      "runSeconds": 91,
+      "totalSeconds": 96,
+      "stats": {
+        "sources": 143,
+        "checked": 21,
+        "requeried": 1,
+        "passed": 19,
+        "dropped": 2,
+        "pricingSlots": {
+          "filled": 17,
+          "total": 18
+        },
+        "pricingThirdParty": 0
+      },
+      "companies": [
+        {
+          "name": "Figma",
+          "domain": "figma.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "Canva",
+          "domain": "canva.com",
+          "method": "wikidata"
+        },
+        {
+          "name": "Sketch",
+          "domain": "sketch.com",
+          "method": "search_hint"
+        }
+      ]
+    },
+    {
+      "id": "Q10",
+      "lang": "zh",
+      "query": "查 Linear、Jira 的定价和联系方式",
+      "intent": {
+        "type": "named",
+        "query": "查 Linear、Jira 的定价和联系方式",
+        "competitors": [
+          "Linear",
+          "Jira"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "pricing",
+          "contact"
+        ]
+      },
+      "runId": "run_Et3YGIreXwEg",
+      "status": "done",
+      "usage": {
+        "calls": 9,
+        "inputTokens": 54258,
+        "outputTokens": 623
+      },
+      "runSeconds": 36,
+      "totalSeconds": 41,
+      "stats": {
+        "sources": 14,
+        "checked": 6,
+        "requeried": 0,
+        "passed": 4,
+        "dropped": 2,
+        "pricingSlots": {
+          "filled": 5,
+          "total": 12
+        },
+        "pricingThirdParty": 0
+      },
+      "companies": [
+        {
+          "name": "Linear",
+          "domain": "linear.app",
+          "method": "search_hint"
+        },
+        {
+          "name": "Jira",
+          "domain": "atlassian.com",
+          "method": "wikidata"
+        }
+      ]
+    }
+  ]
+}

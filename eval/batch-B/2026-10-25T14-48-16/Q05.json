@@ -1,0 +1,337 @@
+{
+  "test": {
+    "id": "Q05",
+    "lang": "en",
+    "q": "Find competitors of Calendly"
+  },
+  "intent": {
+    "type": "own",
+    "query": "Find competitors of Calendly",
+    "company": "Calendly",
+    "competitors": [
+      "Cal.com",
+      "Doodle",
+      "HubSpot Meetings",
+      "Microsoft Bookings"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "overview",
+      "region",
+      "size",
+      "funding"
+    ]
+  },
+  "run": {
+    "id": "run_am49Sw1GF0cF",
+    "status": "done",
+    "query": "Find competitors of Calendly",
+    "lang": "en",
+    "createdAt": "2026-10-25T14:56:11.730Z",
+    "result": {
+      "runId": "run_am49Sw1GF0cF",
+      "intent": {
+        "type": "own",
+        "query": "Find competitors of Calendly",
+        "company": "Calendly",
+        "competitors": [
+          "Cal.com",
+          "Doodle",
+          "HubSpot Meetings",
+          "Microsoft Bookings"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "size",
+          "funding"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "Cal.com",
+          "domain": "cal.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "Cal.com",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://cal.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "Fully customizable scheduling software for individuals, businesses taking calls, and developers building scheduling platforms where users meet users.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://cal.com",
+                  "title": "Website · Cal.com | Scheduling Software for Online Bookings"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://cal.com/about",
+                  "title": "Website · Learn More About Cal.com"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "No public information",
+              "sources": [],
+              "status": "missing"
+            },
+            "size": {
+              "value": "11–50 employees (LinkedIn); other sources list 36–44 employees (2026).",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://www.linkedin.com/company/cal-com",
+                  "title": "Ranks #1 for “Cal.com number of employees company size”"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://pitchbook.com/profiles/company/472236-13",
+                  "title": "Ranks #2 for “Cal.com number of employees company size”"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://tracxn.com/d/companies/calcom/__IEeuL9zwIQRcTDpJAAntiwKZ0CItPOOlE9FD_QgbF4o",
+                  "title": "Ranks #3 for “Cal.com number of employees company size”"
+                }
+              ],
+              "status": "verified"
+            },
+            "funding": {
+              "value": "$7.4m seed round led by Joseph Jacks of OSS Capital (2022); later $25.0M Series A in April 2022; total raised about $32.4M over 2 rounds.",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://cal.com/blog/seed",
+                  "title": "Ranks #2 for “Cal.com funding round raised investors valuation”"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://startupintros.com/orgs/cal-com",
+                  "title": "Ranks #4 for “Cal.com funding round raised investors valuation”"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://tracxn.com/d/companies/calcom/__IEeuL9zwIQRcTDpJAAntiwKZ0CItPOOlE9FD_QgbF4o",
+                  "title": "Ranks #1 for “Cal.com funding round raised investors valuation”"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "Doodle",
+          "domain": "doodle.com",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "Doodle",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://doodle.com/en/",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "No public information",
+              "sources": [],
+              "status": "missing"
+            },
+            "region": {
+              "value": "Switzerland · Zurich (Werdstrasse 21), with offices in Berlin, Belgrade and the US (Atlanta).",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://help.doodle.com/en/articles/9457354-who-develops-and-operates-doodle",
+                  "title": "Ranks #1 for “Doodle company headquarters”"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://doodle.com/en/website-imprint/",
+                  "title": "Ranks #2 for “Doodle company headquarters”"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.linkedin.com/company/doodle-ag",
+                  "title": "Ranks #4 for “Doodle company headquarters”"
+                }
+              ],
+              "status": "verified"
+            },
+            "size": {
+              "value": "100+ employees spread over four countries (Doodle careers site, 2026); LinkedIn lists 51–200 employees",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://careers.doodle.com/",
+                  "title": "Website · Welcome future Doodler!"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.linkedin.com/company/doodle-ag",
+                  "title": "Ranks #2 for “Doodle number of employees company size official latest”"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.owler.com/company/doodle",
+                  "title": "Ranks #3 for “Doodle number of employees company size official latest”"
+                }
+              ],
+              "status": "requeried"
+            },
+            "funding": {
+              "value": "2022 年 9 月 A 轮 5400 万美元，Seven Seven Six 领投，Acrew Capital、FTX Ventures、50T Funds 参投，估值 7.04 亿美元",
+              "sources": [
+                {
+                  "kind": "web",
+                  "url": "https://www.coindesk.com/business/2022/09/13/nft-marketplace-doodles-raises-54m-at-704m-valuation",
+                  "title": "Third party · 2023-05-11 · NFT Collection Doodles Raises $54M at $704M Valuation"
+                },
+                {
+                  "kind": "web",
+                  "url": "https://multiples.vc/private-comps/doodles",
+                  "title": "Third party · 2022-09-13 · Doodles Valuation, Funding & Investors | Multiples"
+                }
+              ],
+              "status": "requeried"
+            }
+          }
+        },
+        {
+          "competitor": "HubSpot Meetings",
+          "domain": "hubspot.com",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "HubSpot Meetings",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "HubSpot's customer platform provides marketing, sales, customer service and CRM software for growing businesses and enterprises.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com",
+                  "title": "Website · HubSpot | Software & Tools for your Business - Homepage"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/our-story",
+                  "title": "Website · About HubSpot | HubSpot’s Story"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "Founded in Boston, USA; serves businesses around the world.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/our-story",
+                  "title": "Website · About HubSpot | HubSpot’s Story"
+                }
+              ],
+              "status": "verified"
+            },
+            "size": {
+              "value": "No public information",
+              "sources": [],
+              "status": "missing"
+            },
+            "funding": {
+              "value": "已上市（IPO Status: Public）；累计融资 $100.5M，共 6 轮，最近为 2012 年 11 月 $35M Series E",
+              "sources": [
+                {
+                  "kind": "web",
+                  "url": "https://startupintros.com/orgs/hubspot",
+                  "title": "Third party · 2026-07-13 · HubSpot: Funding, Team & Investors"
+                }
+              ],
+              "status": "requeried"
+            }
+          }
+        },
+        {
+          "competitor": "Microsoft Bookings",
+          "domain": "microsoft.com",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "Microsoft Bookings",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.microsoft.com/en-sg",
+                  "title": "Homepage"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "Microsoft 365 app for scheduling and managing customer appointments, with a web-based booking calendar, Outlook integration and automated notification emails, for businesses and organizations.",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://learn.microsoft.com/en-us/microsoft-365/bookings/bookings-faq?view=o365-worldwide",
+                  "title": "Website · Shared Bookings Frequently Asked Questions"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://learn.microsoft.com/en-us/microsoft-365/bookings/?view=o365-worldwide",
+                  "title": "Ranks #5 for “what is Microsoft Bookings”"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "No public information",
+              "sources": [],
+              "status": "missing"
+            },
+            "size": {
+              "value": "No public information",
+              "sources": [],
+              "status": "missing"
+            },
+            "funding": {
+              "value": "No public information",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 105,
+        "checked": 20,
+        "requeried": 3,
+        "passed": 14,
+        "dropped": 6
+      },
+      "finishedAt": "2026-10-25T14:59:09.639Z"
+    }
+  }
+}

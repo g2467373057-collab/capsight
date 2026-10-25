@@ -1,0 +1,158 @@
+{
+  "test": {
+    "id": "Q10",
+    "lang": "zh",
+    "q": "查 Linear、Jira 的定价和联系方式"
+  },
+  "intent": {
+    "type": "named",
+    "query": "查 Linear、Jira 的定价和联系方式",
+    "competitors": [
+      "Linear",
+      "Jira"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "pricing",
+      "contact"
+    ]
+  },
+  "run": {
+    "id": "run_Et3YGIreXwEg",
+    "status": "done",
+    "query": "查 Linear、Jira 的定价和联系方式",
+    "lang": "zh",
+    "createdAt": "2026-10-25T15:05:45.038Z",
+    "result": {
+      "runId": "run_Et3YGIreXwEg",
+      "intent": {
+        "type": "named",
+        "query": "查 Linear、Jira 的定价和联系方式",
+        "competitors": [
+          "Linear",
+          "Jira"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "pricing",
+          "contact"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "Linear",
+          "domain": "linear.app",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "Linear",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://linear.app",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "Free $0 / Basic $10 每用户每月 / Business $16 每用户每月 / Enterprise 定制",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://linear.app/pricing",
+                  "title": "官网 · Pricing – Linear"
+                }
+              ],
+              "status": "verified",
+              "items": [
+                {
+                  "label": "计价单位",
+                  "text": "按每用户每月计费",
+                  "url": "https://linear.app/pricing"
+                },
+                {
+                  "label": "计费方式",
+                  "text": "Basic 与 Business 按年计费；Enterprise 仅支持年付",
+                  "url": "https://linear.app/pricing"
+                },
+                {
+                  "label": "附加成本",
+                  "text": "Salesforce 集成为付费附加项；Coding sessions 与 Loops 需 AI credits",
+                  "url": "https://linear.app/pricing"
+                },
+                {
+                  "label": "免费策略",
+                  "text": "免费版：成员不限、2 个团队、250 个 issue、10MB 文件上传",
+                  "url": "https://linear.app/pricing"
+                }
+              ],
+              "gaps": [
+                "当前优惠"
+              ]
+            },
+            "contact": {
+              "value": "销售联系页 Talk to sales；通用咨询邮箱 hello@linear.app",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://linear.app/contact/sales",
+                  "title": "官网 · Talk to sales – Linear"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://linear.app/contact",
+                  "title": "官网 · Contact us – Linear"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "Jira",
+          "domain": "atlassian.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "Jira",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.atlassian.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "contact": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 14,
+        "checked": 6,
+        "requeried": 0,
+        "passed": 4,
+        "dropped": 2,
+        "pricingSlots": {
+          "filled": 5,
+          "total": 12
+        },
+        "pricingThirdParty": 0
+      },
+      "finishedAt": "2026-10-25T15:06:20.673Z"
+    }
+  }
+}

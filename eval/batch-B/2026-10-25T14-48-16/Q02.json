@@ -1,0 +1,373 @@
+{
+  "test": {
+    "id": "Q02",
+    "lang": "zh",
+    "q": "查一下 Notion、Coda、ClickUp 的基本信息"
+  },
+  "intent": {
+    "type": "named",
+    "query": "查一下 Notion、Coda、ClickUp 的基本信息",
+    "competitors": [
+      "Notion",
+      "Coda",
+      "ClickUp"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "overview",
+      "region",
+      "features",
+      "pricing"
+    ]
+  },
+  "run": {
+    "id": "run_dQO3_wzvp7gY",
+    "status": "done",
+    "query": "查一下 Notion、Coda、ClickUp 的基本信息",
+    "lang": "zh",
+    "createdAt": "2026-10-25T14:51:10.745Z",
+    "result": {
+      "runId": "run_dQO3_wzvp7gY",
+      "intent": {
+        "type": "named",
+        "query": "查一下 Notion、Coda、ClickUp 的基本信息",
+        "competitors": [
+          "Notion",
+          "Coda",
+          "ClickUp"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "features",
+          "pricing"
+        ]
+      },
+      "rows": [
+        {
+          "competitor": "Notion",
+          "domain": "notion.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "Notion",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.notion.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "美国 Notion Labs 推出的 AI 工作空间，集笔记、文档、知识库、数据库与 AI 代理于一体，面向个人和团队协作",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.notion.com/pricing",
+                  "title": "官网 · Notion Pricing Plans: Free, Plus, Business, & Enterprise."
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.notion.com/product/features",
+                  "title": "官网 · Notion features—Capture, find, automate | Notion"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://m.tianyancha.com/brand/be52a562858",
+                  "title": "搜索「Notion 是什么 公司介绍」排名第 4"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "美国 · 旧金山，全球 50 多个国家有用户，并在全球设有办公室",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.notion.com/about",
+                  "title": "官网 · Why we built Notion – About"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.notion.com",
+                  "title": "官网 · The AI workspace that works for you. | Notion"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "块级文档与数据库、企业搜索、AI 会议笔记、Notion Agent 与自定义代理、SAML SSO 等企业安全管控",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.notion.com/product/features",
+                  "title": "官网 · Notion features—Capture, find, automate | Notion"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.notion.com/pricing",
+                  "title": "官网 · Notion Pricing Plans: Free, Plus, Business, & Enterprise."
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "Free $0 / Plus $10 / Business $20（均每成员每月）/ Enterprise 定制价格",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.notion.com/pricing",
+                  "title": "官网 · Notion Pricing Plans: Free, Plus, Business, & Enterprise."
+                }
+              ],
+              "status": "verified",
+              "items": [
+                {
+                  "label": "计价单位",
+                  "text": "按成员（席位）每月计费",
+                  "url": "https://www.notion.com/pricing"
+                },
+                {
+                  "label": "计费方式",
+                  "text": "可选按月或按年付款，年付最多省 20%，价格以美元计",
+                  "url": "https://www.notion.com/pricing"
+                },
+                {
+                  "label": "附加成本",
+                  "text": "Custom Agents 免费试用，之后每 1,000 个月度 Notion credits 收费 $10",
+                  "url": "https://www.notion.com/pricing"
+                },
+                {
+                  "label": "免费策略",
+                  "text": "Free 计划 $0，个人页面与块不限量，2 人以上团队受限，单文件上传上限 5MB，页面历史 7 天",
+                  "url": "https://www.notion.com/pricing"
+                },
+                {
+                  "label": "当前优惠",
+                  "text": "年付相比月付最多可节省 20%",
+                  "url": "https://www.notion.com/pricing"
+                }
+              ],
+              "gaps": []
+            }
+          }
+        },
+        {
+          "competitor": "Coda",
+          "domain": "coda.io",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "Coda",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://coda.io",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "Coda 是一站式协作工作空间，融合文档、电子表格与应用能力，并内置 Coda AI，面向团队协作与工作管理",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://coda.io",
+                  "title": "官网 · Coda: Your all-in-one collaborative workspace."
+                },
+                {
+                  "kind": "site",
+                  "url": "https://coda.io/product",
+                  "title": "官网 · What is Coda? The all-in-one platform for teams. - Coda"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "features": {
+              "value": "文档与团队 Hub、可互通的表格与个性化视图、公式/按钮/自动化应用、Coda AI 聊天与 AI 列、600+ 集成",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://coda.io",
+                  "title": "官网 · Coda: Your all-in-one collaborative workspace."
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "自由 $0/文档制作者/月；专业版 $12/月（年付 $10）；团队 $36/月（年付 $30）；企业 定制",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.partnershare.cn/product/coda-coda/price",
+                  "title": "官网 · Coda：产品介绍，价格套餐，功能特色，评价信息 ｜ PartnerShare"
+                }
+              ],
+              "status": "requeried",
+              "items": [
+                {
+                  "label": "计价单位",
+                  "text": "按每个 Doc Maker（文档制作者）每月计费，查看者不限",
+                  "url": "https://www.partnershare.cn/product/coda-coda/price"
+                },
+                {
+                  "label": "计费方式",
+                  "text": "分月付与年付，年付更便宜：专业版 $10、团队 $30（美元）",
+                  "url": "https://www.partnershare.cn/product/coda-coda/price"
+                },
+                {
+                  "label": "免费策略",
+                  "text": "自由计划 $0：无限编辑者与查看者，文档行数/对象有限，自动化每月35次、7天历史",
+                  "url": "https://www.partnershare.cn/product/coda-coda/price"
+                }
+              ],
+              "gaps": [
+                "附加成本",
+                "当前优惠"
+              ]
+            }
+          }
+        },
+        {
+          "competitor": "ClickUp",
+          "domain": "clickup.com",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "ClickUp",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://clickup.com",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "一体化工作协作平台，整合任务、文档、目标、聊天与AI，面向全球团队替代多个分散工具",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://clickup.com",
+                  "title": "官网 · ClickUp™ | Maximize productivity • Software, AI, and humans "
+                },
+                {
+                  "kind": "site",
+                  "url": "https://clickup.com/about",
+                  "title": "官网 · ClickUp™ | About"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "美国 · 圣迭戈总部，并在加拿大、爱尔兰、英国、澳大利亚等地设点",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://clickup.com/about",
+                  "title": "官网 · ClickUp™ | About"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "任务管理、文档与Wiki、白板流程图、内置时间追踪与工时审批、AI Brain与Super Agents",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://clickup.com/features/tasks",
+                  "title": "官网 · Managing Tasks with ClickUp™ | ClickUp"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://clickup.com/features/docs",
+                  "title": "官网 · Docs in ClickUp | ClickUp"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://clickup.com/features/whiteboards",
+                  "title": "官网 · Online Whiteboard Software | ClickUp Whiteboards | ClickUp"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "Free Forever 免费 / Unlimited $7 每用户每月（年付）/ Business $12 每用户每月（年付）/ Enterprise 联系销售定制",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://clickup.com/pricing",
+                  "title": "官网 · ClickUp Pricing and Plans"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://clickup.com/features/tasks",
+                  "title": "官网 · Managing Tasks with ClickUp™ | ClickUp"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://clickup.com/features/whiteboards",
+                  "title": "官网 · Online Whiteboard Software | ClickUp Whiteboards | ClickUp"
+                }
+              ],
+              "status": "requeried",
+              "items": [
+                {
+                  "label": "计价单位",
+                  "text": "按每用户每月计价，未注明最低席位数",
+                  "url": "https://clickup.com/pricing"
+                },
+                {
+                  "label": "计费方式",
+                  "text": "价格分月付与年付，年付最高省33%；Unlimited 年付$7、月付$10，Business 年付$12、月付$19",
+                  "url": "https://clickup.com/pricing"
+                },
+                {
+                  "label": "附加成本",
+                  "text": "Business 含每月5K自动化（价值$100），Enterprise 含250K自动化（价值$750）；另有独立AI定价",
+                  "url": "https://clickup.com/pricing"
+                },
+                {
+                  "label": "免费策略",
+                  "text": "Free Forever 免费计划：任务和用户不限量，含白板但有限额，无需信用卡",
+                  "url": "https://clickup.com/features/tasks"
+                },
+                {
+                  "label": "当前优惠",
+                  "text": "年付最高可省33%，AI 年付最高省20%",
+                  "url": "https://clickup.com/pricing"
+                }
+              ],
+              "gaps": []
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 85,
+        "checked": 15,
+        "requeried": 2,
+        "passed": 14,
+        "dropped": 1,
+        "pricingSlots": {
+          "filled": 16,
+          "total": 18
+        },
+        "pricingThirdParty": 0
+      },
+      "finishedAt": "2026-10-25T14:52:34.758Z"
+    }
+  }
+}

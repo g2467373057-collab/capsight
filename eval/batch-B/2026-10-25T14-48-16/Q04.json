@@ -1,0 +1,489 @@
+{
+  "test": {
+    "id": "Q04",
+    "lang": "zh",
+    "q": "我们做 CRM，帮我查 Salesforce、HubSpot、纷享销客"
+  },
+  "intent": {
+    "type": "named",
+    "query": "我们做 CRM，帮我查 Salesforce、HubSpot、纷享销客",
+    "competitors": [
+      "Salesforce",
+      "HubSpot",
+      "纷享销客"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+      "name",
+      "overview",
+      "region",
+      "features",
+      "pricing",
+      "social",
+      "news"
+    ],
+    "topic": "CRM SaaS"
+  },
+  "run": {
+    "id": "run_-MSrNdbXq923",
+    "status": "done",
+    "query": "我们做 CRM，帮我查 Salesforce、HubSpot、纷享销客",
+    "lang": "zh",
+    "createdAt": "2026-10-25T14:53:47.840Z",
+    "result": {
+      "runId": "run_-MSrNdbXq923",
+      "intent": {
+        "type": "named",
+        "query": "我们做 CRM，帮我查 Salesforce、HubSpot、纷享销客",
+        "competitors": [
+          "Salesforce",
+          "HubSpot",
+          "纷享销客"
+        ],
+        "timeRange": "all",
+        "dimensions": [
+          "name",
+          "overview",
+          "region",
+          "features",
+          "pricing",
+          "social",
+          "news"
+        ],
+        "topic": "CRM SaaS"
+      },
+      "rows": [
+        {
+          "competitor": "Salesforce",
+          "domain": "salesforce.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "Salesforce",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.salesforce.com/ap/?ir=1&bc=DB",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "Salesforce 是成立于1999年的美国SaaS公司，提供云端CRM平台，涵盖销售、服务、营销、商务、数据与AI代理，面向全球企业客户",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.salesforce.com/ap/company/our-story/?bc=DB",
+                  "title": "官网 · Salesforce develops the technology, the partnerships and the"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.salesforce.com/ap/?ir=1&bc=DB",
+                  "title": "官网 · Salesforce: The Customer Company"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.fxiaoke.com/crm/information-28516.html",
+                  "title": "搜索「Salesforce 是什么 公司介绍」排名第 4"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "美国 · 旧金山，业务覆盖美洲、欧洲中东非洲及亚太等全球市场",
+              "sources": [
+                {
+                  "kind": "seo",
+                  "url": "https://baike.sogou.com/v7921574.htm",
+                  "title": "搜索「Salesforce 是什么 公司介绍」排名第 2"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.salesforce.com/ap/?ir=1&bc=DB",
+                  "title": "官网 · Salesforce: The Customer Company"
+                },
+                {
+                  "kind": "seo",
+                  "url": "https://www.fxiaoke.com/crm/information-28516.html",
+                  "title": "搜索「Salesforce 是什么 公司介绍」排名第 4"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "Sales Cloud 销售管理、Service Cloud 客户服务、Marketing Cloud 营销、Agentforce 自主AI代理、Data 360 数据平台与 Sl…",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.salesforce.com/pricing/?bc=DB",
+                  "title": "官网 · Salesforce Pricing: See Pricing Plans for All Salesforce Pro"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.salesforce.com/ap/?ir=1&bc=DB",
+                  "title": "官网 · Salesforce: The Customer Company"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "Starter Suite $25 USD/user/month；其余产品（Agentforce、Sales Cloud、Service Cloud 等）价格需查看各产品页或联系销售",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.salesforce.com/ap/?ir=1&bc=DB",
+                  "title": "官网 · Salesforce: The Customer Company"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.salesforce.com/pricing/?bc=DB",
+                  "title": "官网 · Salesforce Pricing: See Pricing Plans for All Salesforce Pro"
+                }
+              ],
+              "status": "verified",
+              "items": [
+                {
+                  "label": "计价单位",
+                  "text": "按用户每月计费（USD/user/month）",
+                  "url": "https://www.salesforce.com/ap/?ir=1&bc=DB"
+                },
+                {
+                  "label": "免费策略",
+                  "text": "可免费开始使用（Start for free），具体免费额度未说明",
+                  "url": "https://www.salesforce.com/ap/?ir=1&bc=DB"
+                }
+              ],
+              "gaps": [
+                "计费方式",
+                "附加成本",
+                "当前优惠"
+              ]
+            },
+            "social": {
+              "value": "近期 1 条 · 要点：LinkedIn与Salesforce合作",
+              "sources": [],
+              "items": [
+                {
+                  "text": "LinkedIn与Salesforce合作，帮助客户在变化的市场中取得成功。",
+                  "url": "https://business.linkedin.com/marketing-solutions/cx/20/07/linkedin-and-salesforce",
+                  "date": "2026-09-12",
+                  "label": "LinkedIn"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "Salesforce在Dreamforce 2026发布企业级AI系统AIforce，员工可通过Claude、Slack等AI界面调取公司数据并完成工作。",
+              "date": "2026-09-15",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://news.qq.com/rain/a/20260916A036KX00",
+                  "title": "赛富时推出企业级AI系统AIforce_腾讯新闻"
+                }
+              ],
+              "items": [
+                {
+                  "text": "Salesforce在Dreamforce 2026发布企业级AI系统AIforce，员工可通过Claude、Slack等AI界面调取公司数据并完成工作。",
+                  "url": "https://news.qq.com/rain/a/20260916A036KX00",
+                  "date": "2026-09-15",
+                  "label": "news.qq.com"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "HubSpot",
+          "domain": "hubspot.com",
+          "siteMethod": "wikidata",
+          "cells": {
+            "name": {
+              "value": "HubSpot",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "HubSpot 是一站式客户平台，整合营销、销售、客服与 CRM 软件，面向全球各类企业增长客户",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/",
+                  "title": "官网 · HubSpot | Software & Tools for your Business - Homepage"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/our-story",
+                  "title": "官网 · About HubSpot | HubSpot’s Story"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "美国 · 波士顿，2006 年创立，服务全球数百万企业",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.hubspot.com/our-story",
+                  "title": "官网 · About HubSpot | HubSpot’s Story"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "暂无公开信息",
+              "sources": [],
+              "status": "missing"
+            },
+            "pricing": {
+              "value": "Sales Hub：免费 $0 / Starter $50.00 每月2用户 / Professional $500.00 5用户 / Enterprise $1,200.00 每月10用户",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.partnershare.cn/product/hubspot-sales-hub/price",
+                  "title": "官网 · HubSpot Sales Hub：产品介绍，价格套餐，功能特色，评价信息 ｜ PartnerShare"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.vendr.com/marketplace/hubspot",
+                  "title": "官网 · HubSpot Pricing & Plans (2026): Cost, Comparisons, and Alter"
+                }
+              ],
+              "status": "requeried",
+              "items": [
+                {
+                  "label": "计价单位",
+                  "text": "按用户数计价：Starter 含2用户、Professional 含5用户、Enterprise 含10用户",
+                  "url": "https://www.partnershare.cn/product/hubspot-sales-hub/price"
+                },
+                {
+                  "label": "计费方式",
+                  "text": "默认按年计费，月付价格通常高10–20%",
+                  "url": "https://www.vendr.com/marketplace/hubspot"
+                },
+                {
+                  "label": "附加成本",
+                  "text": "额外营销联系人按每千个$50–$100计费，另有入职、专属支持等附加费",
+                  "url": "https://www.vendr.com/marketplace/hubspot"
+                },
+                {
+                  "label": "免费策略",
+                  "text": "免费CRM含联系人、交易、邮件跟踪等基础功能，所有套餐用户均可使用免费功能",
+                  "url": "https://www.partnershare.cn/product/hubspot-sales-hub/price"
+                },
+                {
+                  "label": "当前优惠",
+                  "text": "Vendr数据显示买家平均节省18%，常见低于标价15–30%",
+                  "url": "https://www.vendr.com/marketplace/hubspot"
+                }
+              ],
+              "gaps": []
+            },
+            "social": {
+              "value": "官方账号：Facebook hubspot / Instagram hubspot / YouTube HubSpot / X @HubSpot",
+              "sources": [
+                {
+                  "kind": "social",
+                  "url": "https://www.facebook.com/hubspot",
+                  "title": "Facebook hubspot"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://www.instagram.com/hubspot",
+                  "title": "Instagram hubspot"
+                },
+                {
+                  "kind": "social",
+                  "url": "https://youtube.com/user/HubSpot",
+                  "title": "YouTube HubSpot"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "HubSpot在Unbound大会发布重构版CRM平台，含新版Breeze助手和情境中心功能。",
+              "date": "2026-09-17",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://news.qq.com/rain/a/20260917A08BFZ00",
+                  "title": "HubSpot重构CRM平台,全面引入情境化AI能力_腾讯新闻"
+                }
+              ],
+              "items": [
+                {
+                  "text": "HubSpot在Unbound大会发布重构版CRM平台，含新版Breeze助手和情境中心功能。",
+                  "url": "https://news.qq.com/rain/a/20260917A08BFZ00",
+                  "date": "2026-09-17",
+                  "label": "news.qq.com"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        },
+        {
+          "competitor": "纷享销客",
+          "domain": "fxiaoke.com",
+          "siteMethod": "search_hint",
+          "cells": {
+            "name": {
+              "value": "纷享销客",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.fxiaoke.com/",
+                  "title": "官网首页"
+                }
+              ],
+              "status": "verified"
+            },
+            "overview": {
+              "value": "北京易动纷享科技有限责任公司旗下AI原生一体化企业级CRM，面向大中型企业提供营销、销售、服务全链路智能CRM产品与服务",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.fxiaoke.com/crm/about-2/",
+                  "title": "官网 · 中国领先的专业AI原生CRM服务商纷享销客公司介绍-纷享销客CRM"
+                }
+              ],
+              "status": "verified"
+            },
+            "region": {
+              "value": "中国 · 北京中关村，在16个地区设直营机构，含香港及美国分公司",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.fxiaoke.com/crm/about-2/",
+                  "title": "官网 · 中国领先的专业AI原生CRM服务商纷享销客公司介绍-纷享销客CRM"
+                }
+              ],
+              "status": "verified"
+            },
+            "features": {
+              "value": "AI销售助理、线索与商机管理、CPQ报价下单、客户360°洞察、智能客服与工单、PaaS定制与BI分析",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.fxiaoke.com/",
+                  "title": "官网 · AI原生CRM软件- AI智能销售助理 - 纷享销客 Agentic CRM"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.fxiaoke.com/ap/product-xs/",
+                  "title": "官网 · 销售管理系统-智能销售管理平台-SFA销售自动化-商机管理-纷享销客"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.fxiaoke.com/crm/about-2/",
+                  "title": "官网 · 中国领先的专业AI原生CRM服务商纷享销客公司介绍-纷享销客CRM"
+                }
+              ],
+              "status": "verified"
+            },
+            "pricing": {
+              "value": "专业版 ¥119/人/月、旗舰版 ¥220/人/月、AI旗舰版 ¥273/人/月，均12个月起购",
+              "sources": [
+                {
+                  "kind": "site",
+                  "url": "https://www.fxiaoke.com/ap/market-price",
+                  "title": "官网 · crm系统报价与价格_纷享销客最新CRM产品报价-纷享销客CRM"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.fxiaoke.com/",
+                  "title": "官网 · AI原生CRM软件- AI智能销售助理 - 纷享销客 Agentic CRM"
+                },
+                {
+                  "kind": "site",
+                  "url": "https://www.fxiaoke.com/messageform/website/html/home.html",
+                  "title": "官网 · fxiaoke"
+                }
+              ],
+              "status": "requeried",
+              "items": [
+                {
+                  "label": "计价单位",
+                  "text": "按账号数计费，每用户每月，12个月起购",
+                  "url": "https://www.fxiaoke.com/ap/market-price"
+                },
+                {
+                  "label": "计费方式",
+                  "text": "按人/月标价，12个月起购，人民币计价",
+                  "url": "https://www.fxiaoke.com/ap/market-price"
+                },
+                {
+                  "label": "附加成本",
+                  "text": "支持CRM系统定制报价，具体报价需咨询热线",
+                  "url": "https://www.fxiaoke.com/ap/market-price"
+                },
+                {
+                  "label": "免费策略",
+                  "text": "官网提供免费试用入口，未说明试用时长与功能限制",
+                  "url": "https://www.fxiaoke.com/"
+                }
+              ],
+              "gaps": [
+                "当前优惠"
+              ]
+            },
+            "social": {
+              "value": "近期 1 条 · 要点：AI创作工具上线",
+              "sources": [],
+              "items": [
+                {
+                  "text": "特玩小程序上线AI涂装生成功能，手机即可创作个性涂装。",
+                  "url": "https://mp.weixin.qq.com/s/Y52M3obppbj4EUiaOdbYlg",
+                  "date": "2026-10-12",
+                  "label": "公众号"
+                }
+              ],
+              "status": "verified"
+            },
+            "news": {
+              "value": "19游戏网提供纷享销客下载app免费版v9.1.9，称其含客户管理与智能分析功能。",
+              "date": "2026-09-06",
+              "sources": [
+                {
+                  "kind": "news",
+                  "url": "https://suizhouhszh.org.cn/auto/40522-20260904-OVMWWRQ.shtml?digi/202609048292056-CMTRVMB.shtml",
+                  "title": "纷享销客下载app-纷享销客下载app免费版v9.1.9 - 19游戏网"
+                }
+              ],
+              "items": [
+                {
+                  "text": "19游戏网提供纷享销客下载app免费版v9.1.9，称其含客户管理与智能分析功能。",
+                  "url": "https://suizhouhszh.org.cn/auto/40522-20260904-OVMWWRQ.shtml?digi/202609048292056-CMTRVMB.shtml",
+                  "date": "2026-09-06",
+                  "label": "suizhouhszh.org.cn"
+                }
+              ],
+              "status": "verified"
+            }
+          }
+        }
+      ],
+      "stats": {
+        "sources": 108,
+        "checked": 21,
+        "requeried": 2,
+        "passed": 20,
+        "dropped": 1,
+        "pricingSlots": {
+          "filled": 14,
+          "total": 18
+        },
+        "pricingThirdParty": 0
+      },
+      "finishedAt": "2026-10-25T14:56:04.795Z"
+    }
+  }
+}

@@ -1,0 +1,11 @@
+﻿Name,Name_source,Pricing,Pricing_source,check
+Asana,https://asana.com,,,failed
+Monday.com,https://monday.com,"Free $0 / Basic $9 / Standard $12 / Pro $19 per seat per month / Enterprise custom price
+Pricing unit: Per seat per month; pricing page example uses 10 seats (e.g. $9 x 10 seats = $90)
+Billing: Prices shown billed annually (Yearly SAVE 18%); monthly billing option available
+Extra costs: AI credits beyond plan allowance: 1,000 credits = $10, 2,000 = $20, 3,000 = $30; extra API calls purchasable
+Free tier & trial: Free forever plan: up to 2 seats, up to 3 boards, up to 3 Docs, 200+ templates, 8 column types; no credit card needed
+Current offer: Special offer: $10 off/month on Basic, $20 off/month on Standard, $30 off/month on Pro",https://monday.com/pricing,passed
+Trello,https://trello.com,"Free $0 / Standard $5 per user/month billed annually ($6 billed monthly) / Premium $10 per user/month billed annually ($12.50 billed monthly) / Enterprise (contact sales)
+Free tier & trial: Free plan for individuals or small teams, up to 10 collaborators per Workspace
+No public information: Pricing unit / Billing / Extra costs / Current offer",https://www.trello.com/pricing | https://lifestack.ai/blog/trello-pricing | https://trello.com/pricing,passed

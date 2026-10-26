@@ -71,3 +71,26 @@ No threshold changes. Harper decided (20 Oct, 16:33 SGT) that pricing may rest o
 No threshold changes. Harper's product review of v2.2 (25 Oct, 22:27 SGT) changed two things:
 1. Branch A ("find competitors": Q01, Q05, Q08) now returns, for each competitor found, the introduction plus country/region, company size and funding (from the official about page, web pages and news; every value quoted, with its year). Measure 1 (Harper's audit) covers these fields for Q01, Q05 and Q08; pricing is still not asked in branch A.
 2. After a branch A run, one click carries the competitor list and their confirmed official sites into a branch B run ("look up details"). Official sites carried over are recorded as `given` in `sites.csv` and are not counted again for measure 2.
+
+## After Batch B · 25 October 2026 (v2.4) — not part of Batch B's result
+
+Batch B (v2.3) ran 22:48–23:06 SGT and stands as recorded. Two defects found in Batch B and in Harper's own live use were fixed afterwards:
+1. **Third-party page labelled "official".** In a re-query, the search engine ignored `site:` and returned partnershare.cn for Coda (Q02); the page was labelled as the official site. Root cause also explains the pilot's chinaz.com "official" label. Fix: only pages on the official domain count as official; others are third-party and must carry a date within 12 months.
+2. **JavaScript prices missed.** typeform.com/pricing returned plan names and "/mo" but no numbers (the prices 28 / 56 / 91 / 266 USD sit in page scripts), yet the page was treated as "has a price", so the rendered-page fallback never ran. Fix: a page has a price only if it states a non-zero amount.
+A separate post-fix check re-runs only the affected companies (Typeform, Coda, Asana) and is reported apart from Batch B.
+
+---
+
+# Batch C · layered evaluation — set 25 October 2026, 23:40 SGT, before it runs
+
+**Why.** The 10-question set (Batches A and B) is a small, hand-picked probe of well-known brands, with no reference answers fixed in advance. Harper proposed (25 Oct, 23:24) building the test set from a catalogue of Chinese and overseas SaaS products by scenario, and testing each intent branch separately. Batch C combines that with the per-question purpose and fixed reference answers of the earlier set. It does **not** replace Batch B, which stands as the before/after result. Batch C runs on v2.4 (the post-Batch-B fixes).
+
+**Test set** (`eval/batch-C/catalog.json`): 8 SaaS scenarios (docs, project management, CRM, customer support, forms and surveys, video meetings, design, HR) × 3 Chinese + 3 overseas products = 48 products, each with its reference official domain(s). Reference sites drafted by Aiden and **checked by Harper** (`catalog-review.csv`); scoring re-reads the reference, so a corrected reference is re-scored without re-running.
+
+| Layer | What | n | Scored by | Threshold (met) | Falsifier |
+|---|---|---|---|---|---|
+| C1 intent | 64 questions, 8 per scenario: find competitors (zh, en, "similar to X"), named pricing (zh, en), "competitors? and show me X's pricing" (Harper's edge rule), basic info (Chinese + overseas brand), recent activity | 64 | program, against labels fixed when the question was written | branch (A vs B) right ≥ 95 %; named competitors extracted exactly ≥ 90 % | branch right < 90 % |
+| C2 official site | every product searched in its own language, every overseas product also searched in Chinese | 72 | program, against Harper-checked reference | ≥ 90 % correct; 0 look-alikes (directory, download, wiki, review or news site) | < 80 % correct, or ≥ 2 look-alikes |
+| C3 content | 8 full runs: branch A in 4 scenarios, branch B pricing in 4 scenarios | 8 | Harper's audit, same 4 checks as measure 1 | as measures 1 and 6 | as F1 and F6 |
+
+Results are reported overall and by slice: Chinese brands, overseas brands in English search, overseas brands in Chinese search, and by official-site method.

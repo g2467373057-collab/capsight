@@ -1,0 +1,1178 @@
+{
+ "I01": {
+  "intent": {
+   "type": "own",
+   "query": "我们是做在线协作文档的，帮我找竞品",
+   "competitors": [
+    "腾讯文档",
+    "石墨文档",
+    "金山文档"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 2745
+ },
+ "I03": {
+  "intent": {
+   "type": "own",
+   "query": "有哪些和石墨文档类似的产品？",
+   "company": "石墨文档",
+   "competitors": [
+    "飞书文档",
+    "腾讯文档",
+    "语雀",
+    "WPS 云文档"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ],
+   "topic": "在线协作文档"
+  },
+  "ms": 3434
+ },
+ "I04": {
+  "intent": {
+   "type": "named",
+   "query": "查一下腾讯文档、语雀的定价",
+   "competitors": [
+    "腾讯文档",
+    "语雀"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 860
+ },
+ "I02": {
+  "intent": {
+   "type": "own",
+   "query": "We build online collaborative docs software. Who are our competitors?",
+   "competitors": [
+    "Notion",
+    "Google Docs",
+    "Coda",
+    "Confluence"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 4179
+ },
+ "I05": {
+  "intent": {
+   "type": "named",
+   "query": "Compare Notion and Coda pricing",
+   "competitors": [
+    "Notion",
+    "Coda"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 980
+ },
+ "I06": {
+  "intent": {
+   "type": "named",
+   "query": "我们做在线协作文档，竞品有哪些？帮我看看其中Confluence的定价",
+   "competitors": [
+    "Confluence"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 979
+ },
+ "I07": {
+  "intent": {
+   "type": "named",
+   "query": "石墨文档和Notion的基本信息",
+   "competitors": [
+    "石墨文档",
+    "Notion"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "features",
+    "pricing"
+   ]
+  },
+  "ms": 1024
+ },
+ "I08": {
+  "intent": {
+   "type": "timeframe",
+   "query": "Coda最近怎么样",
+   "competitors": [
+    "Coda"
+   ],
+   "timeRange": "7d",
+   "dimensions": [
+    "name",
+    "social",
+    "news"
+   ]
+  },
+  "ms": 1349
+ },
+ "I09": {
+  "intent": {
+   "type": "own",
+   "query": "我们是做项目管理的，帮我找竞品",
+   "competitors": [
+    "Asana",
+    "Trello",
+    "Monday.com",
+    "ClickUp"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 1587
+ },
+ "I12": {
+  "intent": {
+   "type": "named",
+   "query": "查一下PingCode、Tower的定价",
+   "competitors": [
+    "PingCode",
+    "Tower"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 721
+ },
+ "I11": {
+  "intent": {
+   "type": "own",
+   "query": "有哪些和Teambition类似的产品？",
+   "company": "Teambition",
+   "competitors": [
+    "Asana",
+    "Trello",
+    "Monday.com",
+    "ClickUp"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ],
+   "topic": "项目协作工具"
+  },
+  "ms": 1351
+ },
+ "I13": {
+  "intent": {
+   "type": "named",
+   "query": "Compare Asana and ClickUp pricing",
+   "competitors": [
+    "Asana",
+    "ClickUp"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 663
+ },
+ "I14": {
+  "intent": {
+   "type": "named",
+   "query": "我们做项目管理，竞品有哪些？帮我看看其中Monday.com的定价",
+   "competitors": [
+    "Monday.com"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 782
+ },
+ "I10": {
+  "intent": {
+   "type": "own",
+   "query": "We build project management software. Who are our competitors?",
+   "competitors": [
+    "Asana",
+    "Trello",
+    "Monday.com",
+    "ClickUp"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 3394
+ },
+ "I16": {
+  "intent": {
+   "type": "timeframe",
+   "query": "ClickUp最近怎么样",
+   "competitors": [
+    "ClickUp"
+   ],
+   "timeRange": "7d",
+   "dimensions": [
+    "name",
+    "social",
+    "news"
+   ]
+  },
+  "ms": 701
+ },
+ "I15": {
+  "intent": {
+   "type": "named",
+   "query": "Teambition和Asana的基本信息",
+   "competitors": [
+    "Teambition",
+    "Asana"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "features",
+    "pricing"
+   ]
+  },
+  "ms": 1151
+ },
+ "I17": {
+  "intent": {
+   "type": "own",
+   "query": "我们是做CRM 客户管理的，帮我找竞品",
+   "competitors": [
+    "Salesforce",
+    "HubSpot",
+    "Zoho CRM",
+    "纷享销客"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 1211
+ },
+ "I20": {
+  "intent": {
+   "type": "named",
+   "query": "查一下销售易、销帮帮的定价",
+   "competitors": [
+    "销售易",
+    "销帮帮"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 1176
+ },
+ "I21": {
+  "intent": {
+   "type": "named",
+   "query": "Compare Salesforce and HubSpot pricing",
+   "competitors": [
+    "Salesforce",
+    "HubSpot"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 544
+ },
+ "I19": {
+  "intent": {
+   "type": "own",
+   "query": "有哪些和纷享销客类似的产品？",
+   "company": "纷享销客",
+   "competitors": [
+    "销售易",
+    "销售force",
+    "HubSpot",
+    "Zoho CRM"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ],
+   "topic": "CRM SaaS"
+  },
+  "ms": 3216
+ },
+ "I18": {
+  "intent": {
+   "type": "own",
+   "query": "We build CRM software. Who are our competitors?",
+   "competitors": [
+    "Microsoft Dynamics 365",
+    "Zoho CRM",
+    "HubSpot",
+    "Pipedrive"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 3316
+ },
+ "I22": {
+  "intent": {
+   "type": "named",
+   "query": "我们做CRM 客户管理，竞品有哪些？帮我看看其中Pipedrive的定价",
+   "competitors": [
+    "Pipedrive"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 986
+ },
+ "I24": {
+  "intent": {
+   "type": "timeframe",
+   "query": "HubSpot最近怎么样",
+   "competitors": [
+    "HubSpot"
+   ],
+   "timeRange": "7d",
+   "dimensions": [
+    "name",
+    "social",
+    "news"
+   ]
+  },
+  "ms": 712
+ },
+ "I23": {
+  "intent": {
+   "type": "named",
+   "query": "纷享销客和Salesforce的基本信息",
+   "competitors": [
+    "纷享销客",
+    "Salesforce"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "features",
+    "pricing"
+   ]
+  },
+  "ms": 764
+ },
+ "I25": {
+  "intent": {
+   "type": "own",
+   "query": "我们是做在线客服系统的，帮我找竞品",
+   "competitors": [
+    "Zendesk",
+    "Intercom",
+    "Freshdesk",
+    "LiveChat"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 1157
+ },
+ "I27": {
+  "intent": {
+   "type": "own",
+   "query": "有哪些和智齿科技类似的产品？",
+   "company": "智齿科技",
+   "competitors": [
+    "网易七鱼",
+    "Udesk",
+    "容联七陌",
+    "美洽"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 1338
+ },
+ "I28": {
+  "intent": {
+   "type": "named",
+   "query": "查一下Udesk、美洽的定价",
+   "competitors": [
+    "Udesk",
+    "美洽"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 916
+ },
+ "I29": {
+  "intent": {
+   "type": "named",
+   "query": "Compare Zendesk and Intercom pricing",
+   "competitors": [
+    "Zendesk",
+    "Intercom"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 925
+ },
+ "I30": {
+  "intent": {
+   "type": "named",
+   "query": "我们做在线客服系统，竞品有哪些？帮我看看其中Freshdesk的定价",
+   "competitors": [
+    "Freshdesk"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 996
+ },
+ "I26": {
+  "intent": {
+   "type": "own",
+   "query": "We build customer support software software. Who are our competitors?",
+   "competitors": [
+    "Zendesk",
+    "Help Scout",
+    "Intercom",
+    "Freshdesk"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 2961
+ },
+ "I31": {
+  "intent": {
+   "type": "named",
+   "query": "智齿科技和Zendesk的基本信息",
+   "competitors": [
+    "智齿科技",
+    "Zendesk"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "features",
+    "pricing"
+   ]
+  },
+  "ms": 889
+ },
+ "I32": {
+  "intent": {
+   "type": "timeframe",
+   "query": "Intercom最近怎么样",
+   "competitors": [
+    "Intercom"
+   ],
+   "timeRange": "7d",
+   "dimensions": [
+    "name",
+    "social",
+    "news"
+   ]
+  },
+  "ms": 1148
+ },
+ "I33": {
+  "intent": {
+   "type": "own",
+   "query": "我们是做在线表单问卷的，帮我找竞品",
+   "competitors": [
+    "Typeform",
+    "SurveyMonkey",
+    "金数据",
+    "问卷星"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 1729
+ },
+ "I36": {
+  "intent": {
+   "type": "named",
+   "query": "查一下问卷星、腾讯问卷的定价",
+   "competitors": [
+    "问卷星",
+    "腾讯问卷"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 806
+ },
+ "I35": {
+  "intent": {
+   "type": "own",
+   "query": "有哪些和金数据类似的产品？",
+   "company": "金数据",
+   "competitors": [
+    "问卷星",
+    "腾讯问卷",
+    "Typeform",
+    "麦客CRM"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ],
+   "topic": "在线表单问卷工具"
+  },
+  "ms": 1411
+ },
+ "I38": {
+  "intent": {
+   "type": "named",
+   "query": "我们做在线表单问卷，竞品有哪些？帮我看看其中SurveyMonkey的定价",
+   "competitors": [
+    "SurveyMonkey"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 819
+ },
+ "I37": {
+  "intent": {
+   "type": "named",
+   "query": "Compare Typeform and Jotform pricing",
+   "competitors": [
+    "Typeform",
+    "Jotform"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 848
+ },
+ "I34": {
+  "intent": {
+   "type": "own",
+   "query": "We build online forms and surveys software. Who are our competitors?",
+   "competitors": [
+    "ProProfs Survey Maker",
+    "SurveyMonkey",
+    "Jotform",
+    "Typeform"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 3178
+ },
+ "I39": {
+  "intent": {
+   "type": "named",
+   "query": "金数据和Typeform的基本信息",
+   "competitors": [
+    "金数据",
+    "Typeform"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "features",
+    "pricing"
+   ]
+  },
+  "ms": 922
+ },
+ "I40": {
+  "intent": {
+   "type": "timeframe",
+   "query": "Jotform最近怎么样",
+   "competitors": [
+    "Jotform"
+   ],
+   "timeRange": "7d",
+   "dimensions": [
+    "name",
+    "social",
+    "news"
+   ]
+  },
+  "ms": 968
+ },
+ "I41": {
+  "intent": {
+   "type": "own",
+   "query": "我们是做视频会议的，帮我找竞品",
+   "competitors": [
+    "Zoom",
+    "Microsoft Teams",
+    "腾讯会议",
+    "飞书"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 1279
+ },
+ "I43": {
+  "intent": {
+   "type": "own",
+   "query": "有哪些和腾讯会议类似的产品？",
+   "company": "腾讯会议",
+   "competitors": [
+    "Zoom",
+    "飞书会议",
+    "钉钉会议",
+    "Microsoft Teams"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ],
+   "topic": "在线会议工具"
+  },
+  "ms": 1111
+ },
+ "I44": {
+  "intent": {
+   "type": "named",
+   "query": "查一下小鱼易连、钉钉的定价",
+   "competitors": [
+    "小鱼易连",
+    "钉钉"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 802
+ },
+ "I45": {
+  "intent": {
+   "type": "named",
+   "query": "Compare Zoom and Webex pricing",
+   "competitors": [
+    "Zoom",
+    "Webex"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 1001
+ },
+ "I46": {
+  "intent": {
+   "type": "named",
+   "query": "我们做视频会议，竞品有哪些？帮我看看其中Google Meet的定价",
+   "competitors": [
+    "Google Meet"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 1018
+ },
+ "I47": {
+  "intent": {
+   "type": "named",
+   "query": "腾讯会议和Zoom的基本信息",
+   "competitors": [
+    "腾讯会议",
+    "Zoom"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "features",
+    "pricing"
+   ]
+  },
+  "ms": 931
+ },
+ "I48": {
+  "intent": {
+   "type": "timeframe",
+   "query": "Webex最近怎么样",
+   "competitors": [
+    "Webex"
+   ],
+   "timeRange": "7d",
+   "dimensions": [
+    "name",
+    "social",
+    "news"
+   ]
+  },
+  "ms": 1167
+ },
+ "I42": {
+  "intent": {
+   "type": "own",
+   "query": "We build video conferencing software. Who are our competitors?",
+   "competitors": [
+    "RingCentral Video",
+    "Zoho Meeting",
+    "Dialpad",
+    "Jitsi"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 3752
+ },
+ "I49": {
+  "intent": {
+   "type": "own",
+   "query": "我们是做在线设计协作的，帮我找竞品",
+   "competitors": [
+    "Figma",
+    "Canva",
+    "Miro",
+    "即时设计"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 1458
+ },
+ "I51": {
+  "intent": {
+   "type": "own",
+   "query": "有哪些和即时设计类似的产品？",
+   "company": "即时设计",
+   "competitors": [
+    "Figma",
+    "Sketch",
+    "Adobe XD",
+    "Pixso"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ],
+   "topic": "在线设计协作工具"
+  },
+  "ms": 1295
+ },
+ "I52": {
+  "intent": {
+   "type": "named",
+   "query": "查一下MasterGo、墨刀的定价",
+   "competitors": [
+    "MasterGo",
+    "墨刀"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ],
+   "topic": "设计协作工具"
+  },
+  "ms": 754
+ },
+ "I53": {
+  "intent": {
+   "type": "named",
+   "query": "Compare Figma and Canva pricing",
+   "competitors": [
+    "Figma",
+    "Canva"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 829
+ },
+ "I54": {
+  "intent": {
+   "type": "named",
+   "query": "我们做在线设计协作，竞品有哪些？帮我看看其中Sketch的定价",
+   "competitors": [
+    "Sketch"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 619
+ },
+ "I55": {
+  "intent": {
+   "type": "named",
+   "query": "即时设计和Figma的基本信息",
+   "competitors": [
+    "即时设计",
+    "Figma"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "features",
+    "pricing"
+   ],
+   "topic": "设计工具"
+  },
+  "ms": 819
+ },
+ "I56": {
+  "intent": {
+   "type": "timeframe",
+   "query": "Canva最近怎么样",
+   "competitors": [
+    "Canva"
+   ],
+   "timeRange": "7d",
+   "dimensions": [
+    "name",
+    "social",
+    "news"
+   ]
+  },
+  "ms": 766
+ },
+ "I50": {
+  "intent": {
+   "type": "own",
+   "query": "We build collaborative design software. Who are our competitors?",
+   "competitors": [
+    "Figma",
+    "Sketch",
+    "Penpot",
+    "Mural"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 3427
+ },
+ "I57": {
+  "intent": {
+   "type": "own",
+   "query": "我们是做人力资源 SaaS的，帮我找竞品",
+   "competitors": [
+    "北森",
+    "Moka",
+    "Workday",
+    "BambooHR"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 1311
+ },
+ "I59": {
+  "intent": {
+   "type": "own",
+   "query": "有哪些和北森类似的产品？",
+   "company": "北森",
+   "competitors": [
+    "Moka",
+    "大易",
+    "Workday",
+    "SAP SuccessFactors"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ],
+   "topic": "人力资源 SaaS"
+  },
+  "ms": 2828
+ },
+ "I60": {
+  "intent": {
+   "type": "named",
+   "query": "查一下Moka、薪人薪事的定价",
+   "competitors": [
+    "Moka",
+    "薪人薪事"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 1780
+ },
+ "I58": {
+  "intent": {
+   "type": "own",
+   "query": "We build HR software software. Who are our competitors?",
+   "competitors": [
+    "ADP Workforce Now",
+    "HiBob",
+    "Personio",
+    "Zoho People"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "size",
+    "funding"
+   ]
+  },
+  "ms": 3540
+ },
+ "I61": {
+  "intent": {
+   "type": "named",
+   "query": "Compare Workday and BambooHR pricing",
+   "competitors": [
+    "Workday",
+    "BambooHR"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 945
+ },
+ "I62": {
+  "intent": {
+   "type": "named",
+   "query": "我们做人力资源 SaaS，竞品有哪些？帮我看看其中Rippling的定价",
+   "competitors": [
+    "Rippling"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "pricing"
+   ]
+  },
+  "ms": 828
+ },
+ "I63": {
+  "intent": {
+   "type": "named",
+   "query": "北森和Workday的基本信息",
+   "competitors": [
+    "北森",
+    "Workday"
+   ],
+   "timeRange": "all",
+   "dimensions": [
+    "name",
+    "overview",
+    "region",
+    "features",
+    "pricing"
+   ]
+  },
+  "ms": 1119
+ },
+ "I64": {
+  "intent": {
+   "type": "timeframe",
+   "query": "BambooHR最近怎么样",
+   "competitors": [
+    "BambooHR"
+   ],
+   "timeRange": "7d",
+   "dimensions": [
+    "name",
+    "social",
+    "news"
+   ]
+  },
+  "ms": 1301
+ }
+}

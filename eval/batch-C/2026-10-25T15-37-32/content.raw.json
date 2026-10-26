@@ -1,0 +1,1736 @@
+{
+ "I01": {
+  "query": "我们是做在线协作文档的，帮我找竞品",
+  "ms": 89324,
+  "usage": {
+   "calls": 18,
+   "inputTokens": 134764,
+   "outputTokens": 1366
+  },
+  "result": {
+   "runId": "batchC_I01",
+   "intent": {
+    "type": "own",
+    "query": "我们是做在线协作文档的，帮我找竞品",
+    "competitors": [
+     "腾讯文档",
+     "石墨文档",
+     "金山文档"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+     "name",
+     "overview",
+     "region",
+     "size",
+     "funding"
+    ]
+   },
+   "rows": [
+    {
+     "competitor": "腾讯文档",
+     "domain": "docs.qq.com",
+     "siteMethod": "wikidata",
+     "cells": {
+      "name": {
+       "value": "腾讯文档",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://docs.qq.com",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "腾讯旗下多人协作在线文档平台，支持Word、Excel、PPT、PDF、收集表、思维导图等在线编辑与云端保存，面向个人和企业团队",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://docs.qq.com",
+         "title": "官网 · 腾讯文档-官方网站-支持多人在线编辑Word、Excel和PPT文档"
+        },
+        {
+         "kind": "seo",
+         "url": "https://www.cnpp.cn/pinpai/135822.html",
+         "title": "搜索「腾讯文档 是什么 公司介绍」排名第 1"
+        },
+        {
+         "kind": "seo",
+         "url": "https://cloud.tencent.com/developer/techpedia/1327",
+         "title": "搜索「腾讯文档 是什么 公司介绍」排名第 3"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "中国 · 深圳（腾讯总部），主要面向国内个人与企业用户",
+       "sources": [
+        {
+         "kind": "web",
+         "url": "https://www.cnpp.cn/pinpai/135822.html",
+         "title": "第三方 · 腾讯文档简介-腾讯文档办公软件-十大品牌网CNPP"
+        },
+        {
+         "kind": "seo",
+         "url": "http://www.changbiyuan.com/qybg/zxwd/xzwd/2021/xzwd_0423/48668.html",
+         "title": "搜索「腾讯文档 是什么 公司介绍」排名第 2"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      },
+      "funding": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      }
+     }
+    },
+    {
+     "competitor": "石墨文档",
+     "domain": "shimo.im",
+     "siteMethod": "wikidata",
+     "cells": {
+      "name": {
+       "value": "石墨文档",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://shimo.im",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "武汉初心科技旗下在线协同文档品牌，提供文档、表格、幻灯片等云端Office套件，面向个人与企业团队",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://shimo.im/about",
+         "title": "官网 · 关于石墨,石墨文档介绍_石墨文档官网"
+        },
+        {
+         "kind": "site",
+         "url": "https://shimo.im",
+         "title": "官网 · 石墨文档官网-在线协同办公系统平台,支持云端多人在线协作文档,表格,幻灯片"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "中国 · 武汉，在北京、上海、武汉、深圳设有分支机构和服务中心",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://shimo.im/about",
+         "title": "官网 · 关于石墨,石墨文档介绍_石墨文档官网"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "100–499 人（开发屋页面，2023 年）",
+       "sources": [
+        {
+         "kind": "seo",
+         "url": "https://www.kaifain.com/b/ae4b294ae802d3b1",
+         "title": "搜索「石墨文档 是什么 公司介绍」排名第 1"
+        }
+       ],
+       "status": "verified"
+      },
+      "funding": {
+       "value": "2017 年获今日头条近亿元 B 轮投资；开发屋页面标注融资阶段为 B++ 轮（2023 年）",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://shimo.im/about",
+         "title": "官网 · 关于石墨,石墨文档介绍_石墨文档官网"
+        },
+        {
+         "kind": "seo",
+         "url": "https://www.kaifain.com/b/ae4b294ae802d3b1",
+         "title": "搜索「石墨文档 是什么 公司介绍」排名第 1"
+        }
+       ],
+       "status": "verified"
+      }
+     }
+    },
+    {
+     "competitor": "金山文档",
+     "domain": "account.kdocs.cn",
+     "siteMethod": "search_hint",
+     "cells": {
+      "name": {
+       "value": "金山文档",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://account.kdocs.cn/passport/singlesign?cb=https%3A%2F%2Fwww.kdocs.cn%2F&form=kdocs",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "金山办公旗下在线协作文档工具，支持多人实时编辑文字、表格、演示、智能表格与表单，并集成WPS AI",
+       "sources": [
+        {
+         "kind": "seo",
+         "url": "https://www.kdocs.cn/",
+         "title": "搜索「金山文档 是什么 公司介绍」排名第 1"
+        },
+        {
+         "kind": "site",
+         "url": "https://account.kdocs.cn/passport/singlesign?cb=https%3A%2F%2Fwww.kdocs.cn%2F&form=kdocs",
+         "title": "官网 · account.kdocs.cn"
+        },
+        {
+         "kind": "seo",
+         "url": "https://www.36dianping.com/space/4717700222",
+         "title": "搜索「金山文档 是什么 公司介绍」排名第 4"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "中国 · 北京海淀区，由珠海金山办公软件有限公司发布",
+       "sources": [
+        {
+         "kind": "seo",
+         "url": "https://www.cnpp.cn/pinpai/4077951.html",
+         "title": "搜索「金山文档 是什么 公司介绍」排名第 2"
+        },
+        {
+         "kind": "seo",
+         "url": "https://www.mapofhrtech.com/5C9EB237-FA7E-B725-F008-55E835E8D5BE/index.html",
+         "title": "搜索「金山文档 是什么 公司介绍」排名第 3"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      },
+      "funding": {
+       "value": "母公司金山办公已上市（上交所科创板 · 688111）",
+       "sources": [
+        {
+         "kind": "seo",
+         "url": "https://quote.cfi.cn/gsda_stib/91640/688111.html",
+         "title": "搜索「金山文档 公司 总部」排名第 5"
+        },
+        {
+         "kind": "seo",
+         "url": "https://emweb.securities.eastmoney.com/NewsBulletin/Index?code=SH688111&type=soft",
+         "title": "搜索「金山文档 融资 轮 投资方 估值」排名第 2"
+        }
+       ],
+       "status": "verified"
+      }
+     }
+    }
+   ],
+   "stats": {
+    "sources": 64,
+    "checked": 15,
+    "requeried": 0,
+    "passed": 12,
+    "dropped": 3
+   },
+   "finishedAt": "2026-10-25T15:41:16.137Z"
+  }
+ },
+ "I17": {
+  "query": "我们是做CRM 客户管理的，帮我找竞品",
+  "ms": 39534,
+  "usage": {
+   "calls": 19,
+   "inputTokens": 116275,
+   "outputTokens": 1686
+  },
+  "result": {
+   "runId": "batchC_I17",
+   "intent": {
+    "type": "own",
+    "query": "我们是做CRM 客户管理的，帮我找竞品",
+    "competitors": [
+     "Salesforce",
+     "HubSpot",
+     "Zoho CRM",
+     "纷享销客"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+     "name",
+     "overview",
+     "region",
+     "size",
+     "funding"
+    ]
+   },
+   "rows": [
+    {
+     "competitor": "Salesforce",
+     "domain": "salesforce.com",
+     "siteMethod": "wikidata",
+     "cells": {
+      "name": {
+       "value": "Salesforce",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.salesforce.com/ap/?ir=1&bc=DB",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "美国CRM软件服务商，提供Salesforce Customer 360、Agentforce等云端客户关系管理与AI平台，面向全球企业客户",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.salesforce.com/ap/company/our-story/?bc=DB",
+         "title": "官网 · Salesforce develops the technology, the partnerships and the"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.salesforce.com/ap/?ir=1&bc=DB",
+         "title": "官网 · Salesforce: The Customer Company"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "美国 · 旧金山（Salesforce Tower, 415 Mission Street），业务覆盖全球多地区",
+       "sources": [
+        {
+         "kind": "seo",
+         "url": "https://xs.qianzhan.com/us/gongsixinxi_CRM.N.html",
+         "title": "搜索「Salesforce 公司 总部」排名第 3"
+        },
+        {
+         "kind": "seo",
+         "url": "https://baike.sogou.com/v7921574.htm",
+         "title": "搜索「Salesforce 是什么 公司介绍」排名第 2"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.salesforce.com/ap/?ir=1&bc=DB",
+         "title": "官网 · Salesforce: The Customer Company"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      },
+      "funding": {
+       "value": "2004年6月在纽约证券交易所上市，股票代码CRM，筹资1.1亿美元",
+       "sources": [
+        {
+         "kind": "seo",
+         "url": "https://www.trjcn.com/cyxm/380.html",
+         "title": "搜索「Salesforce 是什么 公司介绍」排名第 1"
+        },
+        {
+         "kind": "seo",
+         "url": "https://baike.sogou.com/v7921574.htm",
+         "title": "搜索「Salesforce 是什么 公司介绍」排名第 2"
+        }
+       ],
+       "status": "verified"
+      }
+     }
+    },
+    {
+     "competitor": "HubSpot",
+     "domain": "hubspot.com",
+     "siteMethod": "wikidata",
+     "cells": {
+      "name": {
+       "value": "HubSpot",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.hubspot.com/",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "2006年创立于波士顿的客户平台，整合营销、销售、客服与CRM软件，服务全球各类企业",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.hubspot.com/our-story",
+         "title": "官网 · About HubSpot | HubSpot’s Story"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.hubspot.com/",
+         "title": "官网 · HubSpot | Software & Tools for your Business - Homepage"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "美国 · 波士顿，服务全球数百万企业",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.hubspot.com/our-story",
+         "title": "官网 · About HubSpot | HubSpot’s Story"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      },
+      "funding": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      }
+     }
+    },
+    {
+     "competitor": "Zoho CRM",
+     "domain": "zoho.com",
+     "siteMethod": "search_hint",
+     "cells": {
+      "name": {
+       "value": "Zoho CRM",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.zoho.com",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "印度起家的云端软件套件公司，提供CRM、邮件、财务、HR等50多款应用，面向各类规模企业",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.zoho.com",
+         "title": "官网 · Zoho | Cloud Software Suite for Businesses"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "印度（总部金奈），业务覆盖150多个国家，在美、欧、中东、亚太等地设办公室",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.zoho.com",
+         "title": "官网 · Zoho | Cloud Software Suite for Businesses"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.zoho.com/contactus.html",
+         "title": "官网 · Contact Us | Zoho"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "全球约1.9万名员工（官网数据，未注明日期）",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.zoho.com",
+         "title": "官网 · Zoho | Cloud Software Suite for Businesses"
+        }
+       ],
+       "status": "verified"
+      },
+      "funding": {
+       "value": "未融资，从未接受投资者资金，为私人持股公司",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.zoho.com/aboutus.html",
+         "title": "官网 · Zoho | About Us"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.zoho.com",
+         "title": "官网 · Zoho | Cloud Software Suite for Businesses"
+        }
+       ],
+       "status": "verified"
+      }
+     }
+    },
+    {
+     "competitor": "纷享销客",
+     "domain": "fxiaoke.com",
+     "siteMethod": "search_hint",
+     "cells": {
+      "name": {
+       "value": "纷享销客",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.fxiaoke.com/",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "北京易动纷享科技旗下AI原生一体化企业级CRM，面向大中型企业提供营销、销售、服务全链路智能CRM产品与服务",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.fxiaoke.com/crm/about-2/",
+         "title": "官网 · 中国领先的专业AI原生CRM服务商纷享销客公司介绍-纷享销客CRM"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "中国 · 北京中关村，设香港及美国分公司，服务出海与海外企业",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.fxiaoke.com/crm/about-2/",
+         "title": "官网 · 中国领先的专业AI原生CRM服务商纷享销客公司介绍-纷享销客CRM"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.fxiaoke.com/crm/about-connect/",
+         "title": "官网 · 联系我们-纷享销客CRM"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "1000余名员工，其中研发人员300余人（官网企业简介，2026年）",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.fxiaoke.com/crm/about-2/",
+         "title": "官网 · 中国领先的专业AI原生CRM服务商纷享销客公司介绍-纷享销客CRM"
+        }
+       ],
+       "status": "verified"
+      },
+      "funding": {
+       "value": "2024年获7500万美元战略投资，钟鼎资本领投，启明创投、建发新兴投资跟投",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.fxiaoke.com/crm/about-2/",
+         "title": "官网 · 中国领先的专业AI原生CRM服务商纷享销客公司介绍-纷享销客CRM"
+        }
+       ],
+       "status": "verified"
+      }
+     }
+    }
+   ],
+   "stats": {
+    "sources": 55,
+    "checked": 20,
+    "requeried": 0,
+    "passed": 17,
+    "dropped": 3
+   },
+   "finishedAt": "2026-10-25T15:41:55.696Z"
+  }
+ },
+ "I34": {
+  "query": "We build online forms and surveys software. Who are our competitors?",
+  "ms": 77008,
+  "usage": {
+   "calls": 19,
+   "inputTokens": 89210,
+   "outputTokens": 2516
+  },
+  "result": {
+   "runId": "batchC_I34",
+   "intent": {
+    "type": "own",
+    "query": "We build online forms and surveys software. Who are our competitors?",
+    "competitors": [
+     "ProProfs Survey Maker",
+     "SurveyMonkey",
+     "Jotform",
+     "Typeform"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+     "name",
+     "overview",
+     "region",
+     "size",
+     "funding"
+    ]
+   },
+   "rows": [
+    {
+     "competitor": "ProProfs Survey Maker",
+     "domain": "proprofs.com",
+     "siteMethod": "search_hint",
+     "cells": {
+      "name": {
+       "value": "ProProfs Survey Maker",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.proprofs.com",
+         "title": "Homepage"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "ProProfs is a SaaS provider of online tools for training, quizzes, surveys, knowledge bases and customer support, used by businesses, trainers and educators.",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.proprofs.com/about/",
+         "title": "Website · ProProfs - Delightfully Smart Tools"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.proprofs.com/contact/",
+         "title": "Website · Contact Us: 3101 Ocean Park Blvd, Ste 100 PMB 187, Santa Mon"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.proprofs.com",
+         "title": "Website · ProProfs: SaaS Software for Training, Customer Support & Mor"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "Headquartered in Santa Monica, California, USA, with offices in Delhi-NCR/Noida, India.",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.proprofs.com/about/",
+         "title": "Website · ProProfs - Delightfully Smart Tools"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.proprofs.com/contact/",
+         "title": "Website · Contact Us: 3101 Ocean Park Blvd, Ste 100 PMB 187, Santa Mon"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "201–500 employees (LinkedIn)",
+       "sources": [
+        {
+         "kind": "seo",
+         "url": "https://www.linkedin.com/company/proprofs",
+         "title": "Ranks #2 for “ProProfs Survey Maker number of employees company size”"
+        }
+       ],
+       "status": "verified"
+      },
+      "funding": {
+       "value": "Customer-funded, privately owned; not venture-funded (no round or amount stated).",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.proprofs.com/about/",
+         "title": "Website · ProProfs - Delightfully Smart Tools"
+        }
+       ],
+       "status": "verified"
+      }
+     }
+    },
+    {
+     "competitor": "SurveyMonkey",
+     "domain": "surveymonkey.com",
+     "siteMethod": "wikidata",
+     "cells": {
+      "name": {
+       "value": "SurveyMonkey",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.surveymonkey.com",
+         "title": "Homepage"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "American SaaS company providing online survey and forms software for employee and customer feedback, market research, event registrations and more, used by organizations worldwide.",
+       "sources": [
+        {
+         "kind": "seo",
+         "url": "https://en.wikipedia.org/wiki/SurveyMonkey",
+         "title": "Ranks #2 for “what is SurveyMonkey”"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.surveymonkey.com",
+         "title": "Website · SurveyMonkey: The World’s Most Popular Survey Platform"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.surveymonkey.com/about/imprint/",
+         "title": "Website · Company Information"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "美国 · 加州 San Mateo 总部，另在 Portland、Dublin、Ottawa、Amsterdam、Heredia、Bengaluru、Padova 设办公室",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.surveymonkey.com/about/office-locations/",
+         "title": "Website · SurveyMonkey Office Locations"
+        },
+        {
+         "kind": "seo",
+         "url": "https://en.wikipedia.org/wiki/SurveyMonkey",
+         "title": "Ranks #2 for “SurveyMonkey company headquarters”"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "1,001–5,000 employees (LinkedIn); Wikipedia states 1,300 employees (November 2023)",
+       "sources": [
+        {
+         "kind": "seo",
+         "url": "https://www.linkedin.com/company/surveymonkey",
+         "title": "Ranks #1 for “SurveyMonkey number of employees company size”"
+        },
+        {
+         "kind": "seo",
+         "url": "https://en.wikipedia.org/wiki/SurveyMonkey",
+         "title": "Ranks #2 for “SurveyMonkey number of employees company size”"
+        }
+       ],
+       "status": "verified"
+      },
+      "funding": {
+       "value": "Privately held (LinkedIn); no funding round, amount or date stated in the documents",
+       "sources": [
+        {
+         "kind": "seo",
+         "url": "https://www.linkedin.com/company/surveymonkey",
+         "title": "Ranks #1 for “SurveyMonkey number of employees company size”"
+        }
+       ],
+       "status": "verified"
+      }
+     }
+    },
+    {
+     "competitor": "Jotform",
+     "domain": "jotform.com",
+     "siteMethod": "wikidata",
+     "cells": {
+      "name": {
+       "value": "Jotform",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.jotform.com",
+         "title": "Homepage"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "AI-powered online form builder and workflow automation platform for creating secure forms, collecting data, e-signatures and payments, used by 40+ million users worldwide.",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.jotform.com/about/",
+         "title": "Website · About Jotform"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.jotform.com",
+         "title": "Website · Jotform: Free Online Form Builder | Create Forms in Seconds"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "美国 · 旧金山（4 Embarcadero Center, Suite 780），服务全球 40+ 百万用户",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.jotform.com/ai/data-assistant/",
+         "title": "Website · Jotform AI Data Assistant: Analyze Data with AI in Seconds"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.jotform.com/about/",
+         "title": "Website · About Jotform"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "No public information",
+       "sources": [],
+       "status": "missing"
+      },
+      "funding": {
+       "value": "自筹/未融资：Jotform 从未获得外部投资，由创始人 Aytekin Tank 自筹资金创立。",
+       "sources": [
+        {
+         "kind": "web",
+         "url": "https://getlatka.com/companies/jotform",
+         "title": "Third party · 2026-10-07 · Jotform Revenue 2024: $144.9M Est. (Bootstrapped)"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.jotform.com/blog/5-million-users-reflection/",
+         "title": "Website · How we reached 5 million users without funding or frantic hu"
+        }
+       ],
+       "status": "requeried"
+      }
+     }
+    },
+    {
+     "competitor": "Typeform",
+     "domain": "typeform.com",
+     "siteMethod": "search_hint",
+     "cells": {
+      "name": {
+       "value": "Typeform",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.typeform.com",
+         "title": "Homepage"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "Online form builder for creating interactive forms, surveys, quizzes and AI-moderated research, plus automated workflows, used by over 150,000 businesses.",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.typeform.com/about-us",
+         "title": "Website · About us"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.typeform.com",
+         "title": "Website · Form Builder with AI Automation | Typeform"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "Headquartered in Barcelona, Spain, with an office in San Francisco; remote-first with worldwide customers.",
+       "sources": [
+        {
+         "kind": "seo",
+         "url": "https://www.crunchbase.com/organization/typeform",
+         "title": "Ranks #5 for “Typeform company headquarters”"
+        },
+        {
+         "kind": "seo",
+         "url": "https://en.wikipedia.org/wiki/Typeform_(service)",
+         "title": "Ranks #2 for “Typeform company headquarters”"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.typeform.com/about-us",
+         "title": "Website · About us"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "Over 250 employees (Typeform About page); other sources give 450–500, e.g. 502 in 2026.",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.typeform.com/about-us",
+         "title": "Website · About us"
+        },
+        {
+         "kind": "seo",
+         "url": "https://www.crunchbase.com/organization/typeform",
+         "title": "Ranks #5 for “Typeform company headquarters”"
+        },
+        {
+         "kind": "seo",
+         "url": "https://www.reveliolabs.com/companies/typeform/employees",
+         "title": "Ranks #3 for “Typeform number of employees company size”"
+        }
+       ],
+       "status": "verified"
+      },
+      "funding": {
+       "value": "2022 Series C of $135 million led by Sofina, with General Atlantic, Index Ventures and others; total investment over $187 million.",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.typeform.com/blog/typeform-secures-135-million-series-c-funding-led-by-sofina",
+         "title": "Website · Typeform Secures $135 Million in Series C Funding Led by Sof"
+        },
+        {
+         "kind": "seo",
+         "url": "https://techcrunch.com/2022/03/10/typeform-series-c/",
+         "title": "Ranks #4 for “Typeform funding round raised investors valuation”"
+        }
+       ],
+       "status": "verified"
+      }
+     }
+    }
+   ],
+   "stats": {
+    "sources": 105,
+    "checked": 20,
+    "requeried": 1,
+    "passed": 19,
+    "dropped": 1
+   },
+   "finishedAt": "2026-10-25T15:43:12.707Z"
+  }
+ },
+ "I57": {
+  "query": "我们是做人力资源 SaaS的，帮我找竞品",
+  "ms": 71506,
+  "usage": {
+   "calls": 29,
+   "inputTokens": 185984,
+   "outputTokens": 1770
+  },
+  "result": {
+   "runId": "batchC_I57",
+   "intent": {
+    "type": "own",
+    "query": "我们是做人力资源 SaaS的，帮我找竞品",
+    "competitors": [
+     "北森",
+     "Moka",
+     "Workday",
+     "BambooHR"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+     "name",
+     "overview",
+     "region",
+     "size",
+     "funding"
+    ]
+   },
+   "rows": [
+    {
+     "competitor": "北森",
+     "domain": "beisen.com",
+     "siteMethod": "search_hint",
+     "cells": {
+      "name": {
+       "value": "北森",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.beisen.com",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "中国人力资源AI应用公司，提供覆盖测评、招聘、人事、假勤、薪酬、绩效等的一体化HR SaaS及PaaS平台，服务中大型企业",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.beisen.com/about/",
+         "title": "官网 · 北森云计算有限公司_公司简介_关于北森 - 北森官网 - 北森HRSaaS"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.beisen.com",
+         "title": "官网 · 北森HRSaaS软件-人才测评、招聘、绩效、人力资源管理等HRSaaS一体化人才管理云平台 - 北森HRSaaS"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "中国 · 北京（总部位于海淀区上地东路35号颐泉汇大厦B座7层），主要服务中国市场，客户含70%财富中国500强",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.beisen.com/about/contact/",
+         "title": "官网 · 北森云计算有限公司_客服电话_联系方式 - 北森HRSaaS"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.beisen.com/about",
+         "title": "官网 · 北森云计算有限公司_公司简介_关于北森 - 北森官网 - 北森HRSaaS"
+        }
+       ],
+       "status": "requeried"
+      },
+      "size": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      },
+      "funding": {
+       "value": "已上市（港交所 · 09669.HK），国内第一家HR SaaS上市企业",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.beisen.com/about/",
+         "title": "官网 · 北森云计算有限公司_公司简介_关于北森 - 北森官网 - 北森HRSaaS"
+        }
+       ],
+       "status": "verified"
+      }
+     }
+    },
+    {
+     "competitor": "Moka",
+     "domain": "moka.org",
+     "siteMethod": "search_domain",
+     "cells": {
+      "name": {
+       "value": "Moka",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.moka.org",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "密歇根州西部非营利组织，1978年由家长创立，为智力与发展障碍人士提供居住、就业和社区支持服务",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.moka.org/about/",
+         "title": "官网 · MOKA"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.moka.org",
+         "title": "官网 · MOKA"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.moka.org/community-supports/",
+         "title": "官网 · MOKA"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "美国密歇根州西部，服务马斯基根、渥太华和肯特三县",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.moka.org",
+         "title": "官网 · MOKA"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.moka.org/community-supports/",
+         "title": "官网 · MOKA"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      },
+      "funding": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      }
+     }
+    },
+    {
+     "competitor": "Workday",
+     "domain": "workday.com",
+     "siteMethod": "search_hint",
+     "cells": {
+      "name": {
+       "value": "Workday",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.workday.com",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "面向HR、财务和IT的企业级AI平台，提供HCM、财务管理、规划及AI代理等云产品，服务全球企业组织",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.workday.com",
+         "title": "官网 · The Enterprise AI Platform for HR, Finance, and IT | Workday"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.workday.com/en-us/company/about-workday/our-story.html",
+         "title": "官网 · Our Story | Workday"
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "美国 · 总部加州普莱森顿（6110 Stoneridge Mall Road），在旧金山、纽约等美国多城及加拿大、欧洲、亚太、中东设办公室",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.workday.com/en-us/company/about-workday/contact-us.html",
+         "title": "官网 · Contact Us | Workday US"
+        }
+       ],
+       "status": "requeried"
+      },
+      "size": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      },
+      "funding": {
+       "value": "已上市（NYSE），2012年在纽交所上市；2024年进入Fortune 500和S&P 500",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.workday.com/en-us/company/about-workday/our-story.html",
+         "title": "官网 · Our Story | Workday"
+        }
+       ],
+       "status": "verified"
+      }
+     }
+    },
+    {
+     "competitor": "BambooHR",
+     "domain": "bamboohr.com",
+     "siteMethod": "search_hint",
+     "cells": {
+      "name": {
+       "value": "BambooHR",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.bamboohr.com",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "overview": {
+       "value": "2008年成立的云端HR软件平台，整合员工数据、招聘入职、薪酬、考勤与福利管理，面向HR与中小企业",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.bamboohr.com",
+         "title": "官网 · BambooHR: The Complete HR Software for People, Payroll & Ben"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.bamboohr.com/about-bamboohr/",
+         "title": "官网 · About BambooHR | And Why We Love Building Great HR Software "
+        }
+       ],
+       "status": "verified"
+      },
+      "region": {
+       "value": "美国 · 犹他州Draper，服务150多个国家的客户",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.bamboohr.com/about-bamboohr/contact/",
+         "title": "官网 · Contact Us | Got Questions? We’ve Got Answers | BambooHR"
+        },
+        {
+         "kind": "site",
+         "url": "https://www.bamboohr.com",
+         "title": "官网 · BambooHR: The Complete HR Software for People, Payroll & Ben"
+        }
+       ],
+       "status": "verified"
+      },
+      "size": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      },
+      "funding": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      }
+     }
+    }
+   ],
+   "stats": {
+    "sources": 23,
+    "checked": 20,
+    "requeried": 2,
+    "passed": 14,
+    "dropped": 6
+   },
+   "finishedAt": "2026-10-25T15:44:24.215Z"
+  }
+ },
+ "I13": {
+  "query": "Compare Asana and ClickUp pricing",
+  "ms": 14920,
+  "usage": {
+   "calls": 7,
+   "inputTokens": 19953,
+   "outputTokens": 1114
+  },
+  "result": {
+   "runId": "batchC_I13",
+   "intent": {
+    "type": "named",
+    "query": "Compare Asana and ClickUp pricing",
+    "competitors": [
+     "Asana",
+     "ClickUp"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+     "name",
+     "pricing"
+    ]
+   },
+   "rows": [
+    {
+     "competitor": "Asana",
+     "domain": "asana.com",
+     "siteMethod": "wikidata",
+     "cells": {
+      "name": {
+       "value": "Asana",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://asana.com",
+         "title": "Homepage"
+        }
+       ],
+       "status": "verified"
+      },
+      "pricing": {
+       "value": "Personal $0 / Starter $10.99 / Advanced $24.99 / Enterprise contact sales for pricing",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://asana.com/pricing",
+         "title": "Website · Asana Pricing | Personal, Starter, Advanced, & Enterprise pl"
+        },
+        {
+         "kind": "site",
+         "url": "https://asana.com/uses/resource-planning",
+         "title": "Website · Resource Planning Software & Tools"
+        }
+       ],
+       "status": "verified",
+       "items": [
+        {
+         "label": "Pricing unit",
+         "text": "Per user, per month; Personal plan limited to 2 users, Starter has no user seat limits",
+         "url": "https://asana.com/pricing"
+        },
+        {
+         "label": "Billing",
+         "text": "Prices shown billed annually; monthly toggle available with savings up to 18% on yearly billing",
+         "url": "https://asana.com/pricing"
+        },
+        {
+         "label": "Extra costs",
+         "text": "Timesheets and budgets add-on available for separating billable hours against budgets",
+         "url": "https://asana.com/uses/resource-planning"
+        },
+        {
+         "label": "Free tier & trial",
+         "text": "Personal plan free forever for 2 users with unlimited tasks, projects and 100MB max per file",
+         "url": "https://asana.com/pricing"
+        },
+        {
+         "label": "Current offer",
+         "text": "Yearly billing saves up to 18% versus monthly",
+         "url": "https://asana.com/pricing"
+        }
+       ],
+       "gaps": []
+      }
+     }
+    },
+    {
+     "competitor": "ClickUp",
+     "domain": "clickup.com",
+     "siteMethod": "wikidata",
+     "cells": {
+      "name": {
+       "value": "ClickUp",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://clickup.com",
+         "title": "Homepage"
+        }
+       ],
+       "status": "verified"
+      },
+      "pricing": {
+       "value": "Free Forever Free / Unlimited $7 per user/month billed yearly ($10 monthly) / Business $12 per user/month billed yearly ($19 monthly) / Enterprise contact sales",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://clickup.com/pricing",
+         "title": "Website · ClickUp Pricing and Plans"
+        }
+       ],
+       "status": "verified",
+       "items": [
+        {
+         "label": "Pricing unit",
+         "text": "Per user per month",
+         "url": "https://clickup.com/pricing"
+        },
+        {
+         "label": "Billing",
+         "text": "Monthly or yearly; yearly saves up to 33% (Unlimited $7 vs $10, Business $12 vs $19)",
+         "url": "https://clickup.com/pricing"
+        },
+        {
+         "label": "Extra costs",
+         "text": "Business includes 5K automations/month ($100 value); Enterprise 250K automations/month ($750 value); separate AI pricing",
+         "url": "https://clickup.com/pricing"
+        },
+        {
+         "label": "Free tier & trial",
+         "text": "Free Forever: 60MB storage, unlimited tasks and free plan members, 5 Spaces, 1 Form, 100 automation executions",
+         "url": "https://clickup.com/pricing"
+        },
+        {
+         "label": "Current offer",
+         "text": "Save up to 33% with yearly billing; AI pricing saves up to 20% with yearly",
+         "url": "https://clickup.com/pricing"
+        }
+       ],
+       "gaps": []
+      }
+     }
+    }
+   ],
+   "stats": {
+    "sources": 18,
+    "checked": 4,
+    "requeried": 0,
+    "passed": 4,
+    "dropped": 0,
+    "pricingSlots": {
+     "filled": 12,
+     "total": 12
+    },
+    "pricingThirdParty": 0
+   },
+   "finishedAt": "2026-10-25T15:44:39.141Z"
+  }
+ },
+ "I29": {
+  "query": "Compare Zendesk and Intercom pricing",
+  "ms": 80790,
+  "usage": {
+   "calls": 12,
+   "inputTokens": 32634,
+   "outputTokens": 2225
+  },
+  "result": {
+   "runId": "batchC_I29",
+   "intent": {
+    "type": "named",
+    "query": "Compare Zendesk and Intercom pricing",
+    "competitors": [
+     "Zendesk",
+     "Intercom"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+     "name",
+     "pricing"
+    ]
+   },
+   "rows": [
+    {
+     "competitor": "Zendesk",
+     "domain": "zendesk.com",
+     "siteMethod": "wikidata",
+     "cells": {
+      "name": {
+       "value": "Zendesk",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.zendesk.com/sg/#georedirect",
+         "title": "Homepage"
+        }
+       ],
+       "status": "verified"
+      },
+      "pricing": {
+       "value": "No public information",
+       "sources": [],
+       "status": "missing"
+      }
+     }
+    },
+    {
+     "competitor": "Intercom",
+     "domain": "intercom.hu",
+     "siteMethod": "wikidata",
+     "cells": {
+      "name": {
+       "value": "Intercom",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "http://www.intercom.hu",
+         "title": "Homepage"
+        }
+       ],
+       "status": "verified"
+      },
+      "pricing": {
+       "value": "Essential $29/seat/mo annual ($39 monthly) / Advanced $85/seat/mo annual ($99 monthly) / Expert $132/seat/mo annual ($139 monthly); Fin AI Agent from $0.99 per Fin outcome",
+       "sources": [
+        {
+         "kind": "web",
+         "url": "https://www.intercom.com/help/en/articles/9061614-fin-and-intercom-plans-explained",
+         "title": "Third party · 2026-10-08 · Fin and Intercom plans explained | Intercom Help"
+        }
+       ],
+       "status": "requeried",
+       "items": [
+        {
+         "label": "Pricing unit",
+         "text": "Per seat per month; no minimum or maximum seats; Fin charged per outcome",
+         "url": "https://www.intercom.com/help/en/articles/9061614-fin-and-intercom-plans-explained"
+        },
+        {
+         "label": "Billing",
+         "text": "Annual vs monthly billing; annual seat prices $29/$85/$132, monthly $39/$99/$139; all prices in USD",
+         "url": "https://www.intercom.com/help/en/articles/9061614-fin-and-intercom-plans-explained"
+        },
+        {
+         "label": "Extra costs",
+         "text": "Pro $100/mo, Copilot $29 per agent/mo, Proactive Support Plus $99/mo; pay-as-you-go for Fin, email campaigns, SMS, WhatsApp, Phone",
+         "url": "https://www.intercom.com/help/en/articles/9061614-fin-and-intercom-plans-explained"
+        }
+       ],
+       "gaps": [
+        "Free tier & trial",
+        "Current offer"
+       ],
+       "thirdParty": true
+      }
+     }
+    }
+   ],
+   "stats": {
+    "sources": 14,
+    "checked": 4,
+    "requeried": 1,
+    "passed": 3,
+    "dropped": 1,
+    "pricingSlots": {
+     "filled": 8,
+     "total": 12
+    },
+    "pricingThirdParty": 1
+   },
+   "finishedAt": "2026-10-25T15:45:59.934Z"
+  }
+ },
+ "I52": {
+  "query": "查一下MasterGo、墨刀的定价",
+  "ms": 34876,
+  "usage": {
+   "calls": 7,
+   "inputTokens": 15219,
+   "outputTokens": 1551
+  },
+  "result": {
+   "runId": "batchC_I52",
+   "intent": {
+    "type": "named",
+    "query": "查一下MasterGo、墨刀的定价",
+    "competitors": [
+     "MasterGo",
+     "墨刀"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+     "name",
+     "pricing"
+    ]
+   },
+   "rows": [
+    {
+     "competitor": "MasterGo",
+     "domain": "mastergo.com",
+     "siteMethod": "search_hint",
+     "cells": {
+      "name": {
+       "value": "MasterGo",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://mastergo.com",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "pricing": {
+       "value": "初创版 免费 ¥0/年；团队版 编辑席位 ¥624起/席位/年、研发席位 ¥364起/席位/年；企业版 设计席位 ¥1872起、产品席位 ¥832起、研发席位 ¥702起/席位/年；私有部署版 详询报价",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://mastergo.com/pricing",
+         "title": "官网 · 定价 - MasterGo/莫高设计"
+        }
+       ],
+       "status": "verified",
+       "items": [
+        {
+         "label": "计价单位",
+         "text": "按席位每年计费，团队版和企业版席位数不限购",
+         "url": "https://mastergo.com/pricing"
+        },
+        {
+         "label": "计费方式",
+         "text": "价格以每年每席位计，页面未说明月付价格",
+         "url": "https://mastergo.com/pricing"
+        },
+        {
+         "label": "附加成本",
+         "text": "AI 企业积分 2500/席位/年随版本和席位附赠",
+         "url": "https://mastergo.com/pricing"
+        },
+        {
+         "label": "免费策略",
+         "text": "初创版免费：草稿箱文件10个、团队3人、编辑席位1个、文件3个、预置团队库1个",
+         "url": "https://mastergo.com/pricing"
+        },
+        {
+         "label": "当前优惠",
+         "text": "新购享限时折扣，团队版和企业版新购钜惠 65 折起",
+         "url": "https://mastergo.com/pricing"
+        }
+       ],
+       "gaps": []
+      }
+     }
+    },
+    {
+     "competitor": "墨刀",
+     "domain": "modao.cc",
+     "siteMethod": "hint_verified",
+     "cells": {
+      "name": {
+       "value": "墨刀",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://modao.cc",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "pricing": {
+       "value": "墨刀原型订阅199元/年、终身618元（原价999元）；超级会员订阅397元/年（原价696元）、终身1399元（原价3106元）；墨刀AI积分包3000积分68元、10000积分168元（原价198元）",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://modao.cc/brand/pricing",
+         "title": "官网 · 墨刀-VIP会员_免费试用_企业购买低至一天一块钱"
+        },
+        {
+         "kind": "site",
+         "url": "https://modao.cc",
+         "title": "官网 ·  墨刀(Modao) - 智能原型设计与产研协作平台，让产品团队更快落地好想法"
+        }
+       ],
+       "status": "verified",
+       "items": [
+        {
+         "label": "计价单位",
+         "text": "按年订阅，任选一款工具授权（原型/设计/白板/AIPPT）；企业会员每个产品最多500席位，团队会员最多10席位",
+         "url": "https://modao.cc/brand/pricing"
+        },
+        {
+         "label": "计费方式",
+         "text": "价格按年计（元/年），支持支付宝、微信、对公支付；可增减席位",
+         "url": "https://modao.cc/brand/pricing"
+        },
+        {
+         "label": "附加成本",
+         "text": "墨刀AI积分包：3000积分68元、10000积分168元；单品可加价组合，如白板/设计/AIPPT加¥79",
+         "url": "https://modao.cc/brand/pricing"
+        },
+        {
+         "label": "免费策略",
+         "text": "免费版：原型/白板/设计/AIPPT/流程图文件各3个，原型画布3个、元素300个，白板单文件20M、图元150，注册赠100AI积分",
+         "url": "https://modao.cc/brand/pricing"
+        },
+        {
+         "label": "当前优惠",
+         "text": "限时低至4.4折，赠10,000AI积分；原型订阅限时立省￥318赠5,000AI积分；AI积分包秒杀价",
+         "url": "https://modao.cc/brand/pricing"
+        }
+       ],
+       "gaps": []
+      }
+     }
+    }
+   ],
+   "stats": {
+    "sources": 4,
+    "checked": 4,
+    "requeried": 0,
+    "passed": 4,
+    "dropped": 0,
+    "pricingSlots": {
+     "filled": 12,
+     "total": 12
+    },
+    "pricingThirdParty": 0
+   },
+   "finishedAt": "2026-10-25T15:46:34.813Z"
+  }
+ },
+ "I44": {
+  "query": "查一下小鱼易连、钉钉的定价",
+  "ms": 17058,
+  "usage": {
+   "calls": 9,
+   "inputTokens": 39241,
+   "outputTokens": 304
+  },
+  "result": {
+   "runId": "batchC_I44",
+   "intent": {
+    "type": "named",
+    "query": "查一下小鱼易连、钉钉的定价",
+    "competitors": [
+     "小鱼易连",
+     "钉钉"
+    ],
+    "timeRange": "all",
+    "dimensions": [
+     "name",
+     "pricing"
+    ]
+   },
+   "rows": [
+    {
+     "competitor": "小鱼易连",
+     "domain": "xylink.com",
+     "siteMethod": "search_domain",
+     "cells": {
+      "name": {
+       "value": "小鱼易连",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.xylink.com",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "pricing": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      }
+     }
+    },
+    {
+     "competitor": "钉钉",
+     "domain": "dingtalk.com",
+     "siteMethod": "wikidata",
+     "cells": {
+      "name": {
+       "value": "钉钉",
+       "sources": [
+        {
+         "kind": "site",
+         "url": "https://www.dingtalk.com",
+         "title": "官网首页"
+        }
+       ],
+       "status": "verified"
+      },
+      "pricing": {
+       "value": "暂无公开信息",
+       "sources": [],
+       "status": "missing"
+      }
+     }
+    }
+   ],
+   "stats": {
+    "sources": 3,
+    "checked": 4,
+    "requeried": 0,
+    "passed": 2,
+    "dropped": 2,
+    "pricingSlots": {
+     "filled": 0,
+     "total": 12
+    },
+    "pricingThirdParty": 0
+   },
+   "finishedAt": "2026-10-25T15:46:51.875Z"
+  }
+ }
+}

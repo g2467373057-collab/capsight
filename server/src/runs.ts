@@ -102,18 +102,31 @@ export class Runs {
     const lang = (row.lang === 'en' ? 'en' : 'zh') as Lang
     this.db.prepare("UPDATE runs SET status = 'running' WHERE id = ?").run(id)
     const llm = this.providers.llm(lang)
+    const search = this.providers.search(lang)
     const before = { ...llm.usage }
+    const searchBefore = { ...search.callsBy }
+    const readerBefore = this.providers.fetcher.readerCalls ?? 0
     try {
       const result = await runResearch(id, JSON.parse(row.intent_json) as Intent, {
         llm,
-        search: this.providers.search(lang),
+        search,
         fetcher: this.providers.fetcher,
         social: this.providers.social,
         lang,
         maxRequery: this.cfg.limits.maxRequery,
         emit: (e) => this.emit(id, e),
       })
-      const usage = { calls: llm.usage.calls - before.calls, inputTokens: llm.usage.inputTokens - before.inputTokens, outputTokens: llm.usage.outputTokens - before.outputTokens }
+      // calls sent during this run (with several runs at once these are approximate, as for the model calls)
+      const searches: Record<string, number> = {}
+      for (const [k, v] of Object.entries(search.callsBy)) if (v - (searchBefore[k] ?? 0) > 0) searches[k] = v - (searchBefore[k] ?? 0)
+      const usage = {
+        calls: llm.usage.calls - before.calls,
+        inputTokens: llm.usage.inputTokens - before.inputTokens,
+        outputTokens: llm.usage.outputTokens - before.outputTokens,
+        model: `${llm.name}:${this.cfg.llm[lang].model}`,
+        searches,
+        readerCalls: (this.providers.fetcher.readerCalls ?? 0) - readerBefore,
+      }
       this.db.prepare("UPDATE runs SET status = 'done', result_json = ?, usage_json = ?, finished_at = ? WHERE id = ?").run(JSON.stringify(result), JSON.stringify(usage), Date.now(), id)
       this.bus.emit(id, { type: 'result', result })
     } catch (e) {

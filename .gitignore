@@ -10,3 +10,4 @@ server/keys.env
 /*.html
 *.zip
 MSI5002-*
+eval/dashboard/

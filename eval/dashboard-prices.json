@@ -1,0 +1,11 @@
+{
+  "_说明": "单价请按你自己控制台/账单上的实际价格填写，填好后把对应的 confirmed 改成 true。余额：DeepSeek 自动实时查询；Serper 和博查没有余额接口，填上充值额度和充值日期后，看板用「额度 − 之后统计到的调用次数」估算。",
+  "usd_to_cny": { "rate": 7.1, "confirmed": false },
+  "deepseek": { "currency": "CNY", "input_per_million_tokens": 2, "output_per_million_tokens": 3, "confirmed": false },
+  "serper": { "currency": "USD", "per_1000_searches": 1, "confirmed": false, "credits_bought": null, "credits_since": null },
+  "bocha": { "currency": "CNY", "per_search": null, "confirmed": false, "balance_topped_up": null, "balance_since": null },
+  "jina": { "currency": "USD", "per_request": 0, "confirmed": false, "_note": "未填 JINA_API_KEY 时走免费额度" },
+  "wikidata": { "currency": "USD", "per_request": 0, "confirmed": true, "_note": "免费公开数据" },
+  "googlenews": { "currency": "USD", "per_request": 0, "confirmed": true },
+  "gdelt": { "currency": "USD", "per_request": 0, "confirmed": true }
+}

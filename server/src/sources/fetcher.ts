@@ -99,6 +99,9 @@ export class Fetcher {
     return page
   }
 
+  /** Jina Reader requests actually sent (cache hits excluded), for cost tracking. */
+  readerCalls = 0
+
   /** Optional rendered-text fallback for JavaScript-heavy pages (Jina Reader). */
   async rendered(url: string): Promise<string | undefined> {
     if (this.cfg.fetch.reader !== 'jina') return undefined
@@ -107,6 +110,7 @@ export class Fetcher {
     if (hit) return hit
     try {
       await assertPublicUrl(url, this.cfg.fetch.allowPrivate)
+      this.readerCalls++
       const res = await fetch(`https://r.jina.ai/${url}`, {
         headers: { Accept: 'text/plain', ...(this.cfg.keys.jina ? { Authorization: `Bearer ${this.cfg.keys.jina}` } : {}) },
         signal: AbortSignal.timeout(25000),

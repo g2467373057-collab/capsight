@@ -224,6 +224,8 @@ export interface SearchStack {
   /** Official websites listed on Wikidata for these names (undefined when switched off). */
   wikidata?(names: string[]): Promise<WikidataSite[]>
   calls: number
+  /** Paid or rate-limited calls actually sent (cache hits excluded), per provider: serper, bocha, googlenews, gdelt, wikidata. */
+  callsBy: Record<string, number>
 }
 
 /** Builds the search + news stack for one language, with caching. Providers can be replaced in tests. */
@@ -243,13 +245,18 @@ export function createSearch(
   const web = overrides?.web ?? make(cfg.search[lang])
   const news = overrides?.news ?? cfg.news[lang].map(make).filter((p): p is SearchProvider => !!p)
   const ttl = cfg.cacheHours * 3600_000
+  const bump = (name: string) => {
+    stack.calls++
+    stack.callsBy[name] = (stack.callsBy[name] ?? 0) + 1
+  }
   const stack: SearchStack = {
     calls: 0,
+    callsBy: {},
     async web(q, o) {
       if (!web) return []
       try {
         return await cached(db, `web:${web.name}:${lang}:${o.timeRange ?? 'all'}:${q}`, ttl, async () => {
-          stack.calls++
+          bump(web.name)
           return web.web(q, o)
         })
       } catch {
@@ -261,7 +268,7 @@ export function createSearch(
         let hits: SearchHit[] = []
         try {
           hits = await cached(db, `news:${p.name}:${lang}:${o.timeRange ?? 'all'}:${q}`, ttl, async () => {
-            stack.calls++
+            bump(p.name)
             return (p.news ?? p.web)(q, o)
           })
         } catch {
@@ -278,7 +285,7 @@ export function createSearch(
     stack.google = async (q) => {
       try {
         return await cached(db, `kg:serper:en:${q}`, ttl, async () => {
-          stack.calls++
+          bump('serper')
           return g(q, { lang: 'en', num: 10 })
         })
       } catch {
@@ -290,7 +297,10 @@ export function createSearch(
   if (wd) {
     stack.wikidata = async (names) => {
       try {
-        return await cached(db, `wikidata:${names.join('|').toLowerCase()}`, 7 * 24 * 3600_000, () => wd(names))
+        return await cached(db, `wikidata:${names.join('|').toLowerCase()}`, 7 * 24 * 3600_000, () => {
+          bump('wikidata')
+          return wd(names)
+        })
       } catch {
         return []
       }

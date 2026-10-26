@@ -357,6 +357,11 @@ test('v2.1 knowledge graph and Wikidata answers are cross-checked before use', (
   // no hints to disagree with: a curated Wikidata site is accepted, unless it is a directory or review site
   assert.equal(wikidataAgrees('https://www.dingtalk.com', '钉钉', { domains: [], aliases: [] }), true)
   assert.equal(wikidataAgrees('https://www.g2.com/x', '钉钉', { domains: [], aliases: [] }), false)
+  // Batch C: Wikidata's Hungarian "Intercom" (intercom.hu) is not the support product at intercom.com
+  const ic = { domains: ['intercom.com'], aliases: ['Intercom'] }
+  assert.equal(wikidataAgrees('https://www.intercom.hu/', 'Intercom', ic), false)
+  assert.equal(wikidataAgrees('https://www.intercom.com/', 'Intercom', ic), true)
+  assert.equal(wikidataAgrees('https://www.notion.so/', 'Notion', { domains: ['notion.com'], aliases: ['Notion'] }), true)
 })
 
 /* ---------- v2.2: specific pricing searches and dated third-party sources (20 Oct 2026) ---------- */
@@ -408,4 +413,19 @@ test('v2.3 a follow-up intent keeps carried-over official sites only for its own
     5,
   )
   assert.deepEqual(i?.sites, { 石墨文档: 'shimo.im' })
+})
+
+/* ---------- v2.4: fixes found in Batch B and live use (25 Oct 2026) ---------- */
+import { hasPrice } from '../src/pipeline/collect.ts'
+
+test('v2.4 a page "has a price" only with a real amount; JavaScript pricing pages without numbers do not count', () => {
+  // what typeform.com/pricing returned before its scripts ran: plan names and "/mo", no numbers
+  assert.equal(hasPrice('Basic  /mo  Plus  /mo  Business  /mo  Billed monthly  per month  Enterprise contact sales'), false)
+  assert.equal(hasPrice('Free $0 forever'), false)
+  assert.equal(hasPrice('Grow $24 USD per month billed yearly'), true)
+  assert.equal(hasPrice('Basic $9 per seat'), true)
+  assert.equal(hasPrice('企业版 360 元/人/年'), true)
+  assert.equal(hasPrice('个人版 108元/年'), true)
+  assert.equal(hasPrice('Team 15 per user per month'), true)
+  assert.equal(hasPrice('支持按月付费，每人每月计费'), false)
 })

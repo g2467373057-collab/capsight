@@ -39,3 +39,23 @@ export async function api<T>(path: string, init: { method?: 'GET' | 'POST'; body
   }
   return data as T
 }
+
+/* ---------- page views for the admin dashboard: path only (the hash route), no personal data ---------- */
+function trackView() {
+  if (!API_BASE || typeof window === 'undefined') return
+  try {
+    void fetch(`${API_BASE}/track`, {
+      method: 'POST',
+      credentials: 'include',
+      keepalive: true,
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ path: window.location.hash.replace(/^#/, '') || '/', ref: document.referrer || '' }),
+    }).catch(() => {})
+  } catch {
+    /* tracking must never break the page */
+  }
+}
+if (typeof window !== 'undefined') {
+  trackView()
+  window.addEventListener('hashchange', trackView)
+}

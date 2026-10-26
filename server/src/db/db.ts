@@ -65,6 +65,19 @@ const MIGRATIONS: string[] = [
   );
   CREATE INDEX attempts_key ON attempts(key, at);
   `,
+  // 2 · page views for the admin dashboard (26 Oct 2026). No raw IP is kept: the visitor id is a daily salted hash.
+  `
+  CREATE TABLE page_views (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    at INTEGER NOT NULL,
+    day TEXT NOT NULL,
+    path TEXT NOT NULL,
+    visitor TEXT NOT NULL,
+    user_id TEXT,
+    referrer TEXT
+  );
+  CREATE INDEX page_views_day ON page_views(day);
+  `,
 ]
 
 export type Db = DatabaseSync

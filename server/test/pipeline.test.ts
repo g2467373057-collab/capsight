@@ -565,3 +565,48 @@ test('v2.3 details follow-up: an official site carried over from the "find compe
     site.server.close()
   }
 })
+
+/* ---------- v2.4: a re-query never labels another site's page as official ---------- */
+
+test('v2.4 re-query: search results off the official domain are third-party (Coda → partnershare.cn in Batch B), never "official"', async () => {
+  const site = await fakeSite({
+    '/': { body: html('Golf', '<p>Golf is a docs tool.</p><a href="/pricing">Pricing</a>') },
+    '/pricing': { body: html('Golf pricing', '<p>Plans: Free, Pro, Team. Billed monthly per month.</p>') },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  const other = await fakeSite({
+    '/golf/price': { body: html('Golf 价格套餐 | Reseller', '<p>Golf Pro costs $12 per user per month.</p>') },
+    '/robots.txt': { body: 'User-agent: *\nAllow: /', type: 'text/plain' },
+  })
+  try {
+    const cfg = testConfig()
+    const db = freshDb()
+    const otherUrl = `${other.origin.replace('127.0.0.1', 'localhost')}/golf/price`
+    // the engine ignores "site:" and returns a reseller's page
+    const search = mockSearch((q) => (q.includes('official website') ? [{ title: 'Golf', url: `${site.origin}/`, snippet: '', position: 1 }] : q.includes('site:') ? [{ title: 'Golf 价格套餐', url: otherUrl, snippet: '', position: 1 }] : []))
+    const p = testProviders(
+      cfg,
+      db,
+      (r) => {
+        if (r.task === 'site') return { domains: ['127.0.0.1'], aliases: [] }
+        if (r.task === 'extract') {
+          const d = docsIn(r.user).find((x) => x.url === otherUrl)
+          return { facts: { pricing: d ? { plans: { value: 'Pro $12 per user per month', evidence: [{ doc: d.id, quote: 'Golf Pro costs $12 per user per month.' }] } } : null } }
+        }
+        if (r.task === 'judge') return { checks: {} }
+        return {}
+      },
+      search,
+    )
+    const res = await runResearch('run_req3p', { type: 'named', query: 'q', competitors: ['Golf'], timeRange: 'all', dimensions: ['name', 'pricing'] }, {
+      llm: p.llm('en'), search: p.search('en'), fetcher: p.fetcher, social: p.social, lang: 'en', maxRequery: 2, emit: () => {},
+    })
+    const cell = res.rows[0].cells.pricing!
+    // the reseller page is undated, so it may not carry the price, and it is certainly not shown as the official site
+    assert.equal(cell.status, 'missing')
+    assert.ok(!cell.sources.some((s) => s.kind === 'site' && s.url === otherUrl))
+  } finally {
+    site.server.close()
+    other.server.close()
+  }
+})

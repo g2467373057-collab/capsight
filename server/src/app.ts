@@ -2,6 +2,7 @@ import { createServer, type Server, type ServerResponse } from 'node:http'
 import { existsSync, readFileSync, statSync } from 'node:fs'
 import { extname, join, normalize, sep } from 'node:path'
 import { Auth } from './auth/auth.ts'
+import { sha256 } from './auth/crypto.ts'
 import type { Config } from './config.ts'
 import type { Db } from './db/db.ts'
 import { clientIp, HttpError, openSse, parseCookies, readJson, Router, sendJson, type Ctx } from './http/http.ts'
@@ -26,6 +27,23 @@ export function createApp(cfg: Config, db: Db, mailer: Mailer, providers: Provid
   const r = new Router()
 
   r.get('/health', () => ({ ok: true }))
+
+  /* ---------- page views (admin dashboard) ---------- */
+  r.post('/track', (c) => {
+    const b = obj(c.body)
+    const path = String(b.path ?? '/').slice(0, 120) || '/'
+    let referrer = ''
+    try {
+      referrer = b.ref ? new URL(String(b.ref)).hostname : ''
+    } catch {
+      /* not a URL */
+    }
+    const now = Date.now()
+    const day = new Date(now + 8 * 3600_000).toISOString().slice(0, 10) // Asia/Shanghai day
+    const visitor = sha256(`${day}|${c.ip}|${c.req.headers['user-agent'] ?? ''}`).slice(0, 16)
+    db.prepare('INSERT INTO page_views (at, day, path, visitor, user_id, referrer) VALUES (?, ?, ?, ?, ?, ?)').run(now, day, path, visitor, auth.current(c)?.id ?? null, referrer || null)
+    return { ok: true }
+  })
 
   /* ---------- auth ---------- */
   r.get('/auth/me', (c) => ({ user: auth.current(c) }))

@@ -1,0 +1,13 @@
+﻿Name,Name_source,Pricing,Pricing_source,check
+Asana,https://asana.com,"Personal $0 / Starter $10.99 / Advanced $24.99 / Enterprise contact sales for pricing
+Pricing unit: Per user, per month; Personal plan limited to 2 users, Starter has no user seat limits
+Billing: Prices shown billed annually; monthly toggle available with savings up to 18% on yearly billing
+Extra costs: Timesheets and budgets add-on available for separating billable hours against budgets
+Free tier & trial: Personal plan free forever for 2 users with unlimited tasks, projects and 100MB max per file
+Current offer: Yearly billing saves up to 18% versus monthly",https://asana.com/pricing | https://asana.com/uses/resource-planning,passed
+ClickUp,https://clickup.com,"Free Forever Free / Unlimited $7 per user/month billed yearly ($10 monthly) / Business $12 per user/month billed yearly ($19 monthly) / Enterprise contact sales
+Pricing unit: Per user per month
+Billing: Monthly or yearly; yearly saves up to 33% (Unlimited $7 vs $10, Business $12 vs $19)
+Extra costs: Business includes 5K automations/month ($100 value); Enterprise 250K automations/month ($750 value); separate AI pricing
+Free tier & trial: Free Forever: 60MB storage, unlimited tasks and free plan members, 5 Spaces, 1 Form, 100 automation executions
+Current offer: Save up to 33% with yearly billing; AI pricing saves up to 20% with yearly",https://clickup.com/pricing,passed

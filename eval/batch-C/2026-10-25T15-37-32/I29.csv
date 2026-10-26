@@ -1,0 +1,7 @@
+﻿Name,Name_source,Pricing,Pricing_source,check
+Zendesk,https://www.zendesk.com/sg/#georedirect,,,failed
+Intercom,http://www.intercom.hu,"Essential $29/seat/mo annual ($39 monthly) / Advanced $85/seat/mo annual ($99 monthly) / Expert $132/seat/mo annual ($139 monthly); Fin AI Agent from $0.99 per Fin outcome
+Pricing unit: Per seat per month; no minimum or maximum seats; Fin charged per outcome
+Billing: Annual vs monthly billing; annual seat prices $29/$85/$132, monthly $39/$99/$139; all prices in USD
+Extra costs: Pro $100/mo, Copilot $29 per agent/mo, Proactive Support Plus $99/mo; pay-as-you-go for Fin, email campaigns, SMS, WhatsApp, Phone
+No public information: Free tier & trial / Current offer",https://www.intercom.com/help/en/articles/9061614-fin-and-intercom-plans-explained,passed after re-query

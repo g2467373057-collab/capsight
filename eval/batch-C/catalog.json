@@ -1,0 +1,1397 @@
+{
+ "designed": "2026-10-25",
+ "designed_by": "Harper (structure) + Aiden (draft questions and draft reference sites)",
+ "products": [
+  {
+   "id": "docs-1",
+   "scenario": "docs",
+   "scenario_zh": "在线协作文档",
+   "scenario_en": "online collaborative docs",
+   "region": "cn",
+   "name": "石墨文档",
+   "official_domains": [
+    "shimo.im"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "docs-2",
+   "scenario": "docs",
+   "scenario_zh": "在线协作文档",
+   "scenario_en": "online collaborative docs",
+   "region": "cn",
+   "name": "腾讯文档",
+   "official_domains": [
+    "docs.qq.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "docs-3",
+   "scenario": "docs",
+   "scenario_zh": "在线协作文档",
+   "scenario_en": "online collaborative docs",
+   "region": "cn",
+   "name": "语雀",
+   "official_domains": [
+    "yuque.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "docs-4",
+   "scenario": "docs",
+   "scenario_zh": "在线协作文档",
+   "scenario_en": "online collaborative docs",
+   "region": "global",
+   "name": "Notion",
+   "official_domains": [
+    "notion.so",
+    "notion.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "docs-5",
+   "scenario": "docs",
+   "scenario_zh": "在线协作文档",
+   "scenario_en": "online collaborative docs",
+   "region": "global",
+   "name": "Coda",
+   "official_domains": [
+    "coda.io"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "docs-6",
+   "scenario": "docs",
+   "scenario_zh": "在线协作文档",
+   "scenario_en": "online collaborative docs",
+   "region": "global",
+   "name": "Confluence",
+   "official_domains": [
+    "atlassian.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "pm-1",
+   "scenario": "pm",
+   "scenario_zh": "项目管理",
+   "scenario_en": "project management",
+   "region": "cn",
+   "name": "Teambition",
+   "official_domains": [
+    "teambition.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "pm-2",
+   "scenario": "pm",
+   "scenario_zh": "项目管理",
+   "scenario_en": "project management",
+   "region": "cn",
+   "name": "PingCode",
+   "official_domains": [
+    "pingcode.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "pm-3",
+   "scenario": "pm",
+   "scenario_zh": "项目管理",
+   "scenario_en": "project management",
+   "region": "cn",
+   "name": "Tower",
+   "official_domains": [
+    "tower.im"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "pm-4",
+   "scenario": "pm",
+   "scenario_zh": "项目管理",
+   "scenario_en": "project management",
+   "region": "global",
+   "name": "Asana",
+   "official_domains": [
+    "asana.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "pm-5",
+   "scenario": "pm",
+   "scenario_zh": "项目管理",
+   "scenario_en": "project management",
+   "region": "global",
+   "name": "ClickUp",
+   "official_domains": [
+    "clickup.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "pm-6",
+   "scenario": "pm",
+   "scenario_zh": "项目管理",
+   "scenario_en": "project management",
+   "region": "global",
+   "name": "Monday.com",
+   "official_domains": [
+    "monday.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "crm-1",
+   "scenario": "crm",
+   "scenario_zh": "CRM 客户管理",
+   "scenario_en": "CRM",
+   "region": "cn",
+   "name": "纷享销客",
+   "official_domains": [
+    "fxiaoke.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "crm-2",
+   "scenario": "crm",
+   "scenario_zh": "CRM 客户管理",
+   "scenario_en": "CRM",
+   "region": "cn",
+   "name": "销售易",
+   "official_domains": [
+    "xiaoshouyi.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "crm-3",
+   "scenario": "crm",
+   "scenario_zh": "CRM 客户管理",
+   "scenario_en": "CRM",
+   "region": "cn",
+   "name": "销帮帮",
+   "official_domains": [
+    "xbongbong.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "crm-4",
+   "scenario": "crm",
+   "scenario_zh": "CRM 客户管理",
+   "scenario_en": "CRM",
+   "region": "global",
+   "name": "Salesforce",
+   "official_domains": [
+    "salesforce.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "crm-5",
+   "scenario": "crm",
+   "scenario_zh": "CRM 客户管理",
+   "scenario_en": "CRM",
+   "region": "global",
+   "name": "HubSpot",
+   "official_domains": [
+    "hubspot.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "crm-6",
+   "scenario": "crm",
+   "scenario_zh": "CRM 客户管理",
+   "scenario_en": "CRM",
+   "region": "global",
+   "name": "Pipedrive",
+   "official_domains": [
+    "pipedrive.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "support-1",
+   "scenario": "support",
+   "scenario_zh": "在线客服系统",
+   "scenario_en": "customer support software",
+   "region": "cn",
+   "name": "智齿科技",
+   "official_domains": [
+    "sobot.com",
+    "zhichi.com"
+   ],
+   "verified_by_harper": true
+  },
+  {
+   "id": "support-2",
+   "scenario": "support",
+   "scenario_zh": "在线客服系统",
+   "scenario_en": "customer support software",
+   "region": "cn",
+   "name": "Udesk",
+   "official_domains": [
+    "udesk.cn"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "support-3",
+   "scenario": "support",
+   "scenario_zh": "在线客服系统",
+   "scenario_en": "customer support software",
+   "region": "cn",
+   "name": "美洽",
+   "official_domains": [
+    "meiqia.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "support-4",
+   "scenario": "support",
+   "scenario_zh": "在线客服系统",
+   "scenario_en": "customer support software",
+   "region": "global",
+   "name": "Zendesk",
+   "official_domains": [
+    "zendesk.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "support-5",
+   "scenario": "support",
+   "scenario_zh": "在线客服系统",
+   "scenario_en": "customer support software",
+   "region": "global",
+   "name": "Intercom",
+   "official_domains": [
+    "intercom.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "support-6",
+   "scenario": "support",
+   "scenario_zh": "在线客服系统",
+   "scenario_en": "customer support software",
+   "region": "global",
+   "name": "Freshdesk",
+   "official_domains": [
+    "freshdesk.com",
+    "freshworks.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "forms-1",
+   "scenario": "forms",
+   "scenario_zh": "在线表单问卷",
+   "scenario_en": "online forms and surveys",
+   "region": "cn",
+   "name": "金数据",
+   "official_domains": [
+    "jinshuju.net"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "forms-2",
+   "scenario": "forms",
+   "scenario_zh": "在线表单问卷",
+   "scenario_en": "online forms and surveys",
+   "region": "cn",
+   "name": "问卷星",
+   "official_domains": [
+    "wjx.cn"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "forms-3",
+   "scenario": "forms",
+   "scenario_zh": "在线表单问卷",
+   "scenario_en": "online forms and surveys",
+   "region": "cn",
+   "name": "腾讯问卷",
+   "official_domains": [
+    "wj.qq.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "forms-4",
+   "scenario": "forms",
+   "scenario_zh": "在线表单问卷",
+   "scenario_en": "online forms and surveys",
+   "region": "global",
+   "name": "Typeform",
+   "official_domains": [
+    "typeform.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "forms-5",
+   "scenario": "forms",
+   "scenario_zh": "在线表单问卷",
+   "scenario_en": "online forms and surveys",
+   "region": "global",
+   "name": "Jotform",
+   "official_domains": [
+    "jotform.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "forms-6",
+   "scenario": "forms",
+   "scenario_zh": "在线表单问卷",
+   "scenario_en": "online forms and surveys",
+   "region": "global",
+   "name": "SurveyMonkey",
+   "official_domains": [
+    "surveymonkey.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "meeting-1",
+   "scenario": "meeting",
+   "scenario_zh": "视频会议",
+   "scenario_en": "video conferencing",
+   "region": "cn",
+   "name": "腾讯会议",
+   "official_domains": [
+    "meeting.tencent.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "meeting-2",
+   "scenario": "meeting",
+   "scenario_zh": "视频会议",
+   "scenario_en": "video conferencing",
+   "region": "cn",
+   "name": "小鱼易连",
+   "official_domains": [
+    "xylink.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "meeting-3",
+   "scenario": "meeting",
+   "scenario_zh": "视频会议",
+   "scenario_en": "video conferencing",
+   "region": "cn",
+   "name": "钉钉",
+   "official_domains": [
+    "dingtalk.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "meeting-4",
+   "scenario": "meeting",
+   "scenario_zh": "视频会议",
+   "scenario_en": "video conferencing",
+   "region": "global",
+   "name": "Zoom",
+   "official_domains": [
+    "zoom.us",
+    "zoom.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "meeting-5",
+   "scenario": "meeting",
+   "scenario_zh": "视频会议",
+   "scenario_en": "video conferencing",
+   "region": "global",
+   "name": "Webex",
+   "official_domains": [
+    "webex.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "meeting-6",
+   "scenario": "meeting",
+   "scenario_zh": "视频会议",
+   "scenario_en": "video conferencing",
+   "region": "global",
+   "name": "Google Meet",
+   "official_domains": [
+    "meet.google.com",
+    "workspace.google.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "design-1",
+   "scenario": "design",
+   "scenario_zh": "在线设计协作",
+   "scenario_en": "collaborative design",
+   "region": "cn",
+   "name": "即时设计",
+   "official_domains": [
+    "js.design"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "design-2",
+   "scenario": "design",
+   "scenario_zh": "在线设计协作",
+   "scenario_en": "collaborative design",
+   "region": "cn",
+   "name": "MasterGo",
+   "official_domains": [
+    "mastergo.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "design-3",
+   "scenario": "design",
+   "scenario_zh": "在线设计协作",
+   "scenario_en": "collaborative design",
+   "region": "cn",
+   "name": "墨刀",
+   "official_domains": [
+    "modao.cc"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "design-4",
+   "scenario": "design",
+   "scenario_zh": "在线设计协作",
+   "scenario_en": "collaborative design",
+   "region": "global",
+   "name": "Figma",
+   "official_domains": [
+    "figma.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "design-5",
+   "scenario": "design",
+   "scenario_zh": "在线设计协作",
+   "scenario_en": "collaborative design",
+   "region": "global",
+   "name": "Canva",
+   "official_domains": [
+    "canva.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "design-6",
+   "scenario": "design",
+   "scenario_zh": "在线设计协作",
+   "scenario_en": "collaborative design",
+   "region": "global",
+   "name": "Sketch",
+   "official_domains": [
+    "sketch.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "hr-1",
+   "scenario": "hr",
+   "scenario_zh": "人力资源 SaaS",
+   "scenario_en": "HR software",
+   "region": "cn",
+   "name": "北森",
+   "official_domains": [
+    "beisen.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "hr-2",
+   "scenario": "hr",
+   "scenario_zh": "人力资源 SaaS",
+   "scenario_en": "HR software",
+   "region": "cn",
+   "name": "Moka",
+   "official_domains": [
+    "mokahr.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "hr-3",
+   "scenario": "hr",
+   "scenario_zh": "人力资源 SaaS",
+   "scenario_en": "HR software",
+   "region": "cn",
+   "name": "薪人薪事",
+   "official_domains": [
+    "xinrenxinshi.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "hr-4",
+   "scenario": "hr",
+   "scenario_zh": "人力资源 SaaS",
+   "scenario_en": "HR software",
+   "region": "global",
+   "name": "Workday",
+   "official_domains": [
+    "workday.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "hr-5",
+   "scenario": "hr",
+   "scenario_zh": "人力资源 SaaS",
+   "scenario_en": "HR software",
+   "region": "global",
+   "name": "BambooHR",
+   "official_domains": [
+    "bamboohr.com"
+   ],
+   "verified_by_harper": false
+  },
+  {
+   "id": "hr-6",
+   "scenario": "hr",
+   "scenario_zh": "人力资源 SaaS",
+   "scenario_en": "HR software",
+   "region": "global",
+   "name": "Rippling",
+   "official_domains": [
+    "rippling.com"
+   ],
+   "verified_by_harper": false
+  }
+ ],
+ "intents": [
+  {
+   "id": "I01",
+   "scenario": "docs",
+   "kind": "A-find",
+   "lang": "zh",
+   "query": "我们是做在线协作文档的，帮我找竞品",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "描述自家产品找竞品"
+  },
+  {
+   "id": "I02",
+   "scenario": "docs",
+   "kind": "A-find",
+   "lang": "en",
+   "query": "We build online collaborative docs software. Who are our competitors?",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "English, describe own product"
+  },
+  {
+   "id": "I03",
+   "scenario": "docs",
+   "kind": "A-similar",
+   "lang": "zh",
+   "query": "有哪些和石墨文档类似的产品？",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "用一个参照产品找同类"
+  },
+  {
+   "id": "I04",
+   "scenario": "docs",
+   "kind": "B-pricing",
+   "lang": "zh",
+   "query": "查一下腾讯文档、语雀的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "腾讯文档",
+    "语雀"
+   ],
+   "note": "点名查定价（国内品牌）"
+  },
+  {
+   "id": "I05",
+   "scenario": "docs",
+   "kind": "B-pricing",
+   "lang": "en",
+   "query": "Compare Notion and Coda pricing",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Notion",
+    "Coda"
+   ],
+   "note": "named, pricing (global brands)"
+  },
+  {
+   "id": "I06",
+   "scenario": "docs",
+   "kind": "B-mixed",
+   "lang": "zh",
+   "query": "我们做在线协作文档，竞品有哪些？帮我看看其中Confluence的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Confluence"
+   ],
+   "note": "既问竞品又点名 → 只查点名的（你的边界规则）"
+  },
+  {
+   "id": "I07",
+   "scenario": "docs",
+   "kind": "B-basic",
+   "lang": "zh",
+   "query": "石墨文档和Notion的基本信息",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "石墨文档",
+    "Notion"
+   ],
+   "note": "中外混合，基本信息"
+  },
+  {
+   "id": "I08",
+   "scenario": "docs",
+   "kind": "B-news",
+   "lang": "zh",
+   "query": "Coda最近怎么样",
+   "expected_type": "timeframe",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Coda"
+   ],
+   "note": "近期动态（属于知道竞品的分支）"
+  },
+  {
+   "id": "I09",
+   "scenario": "pm",
+   "kind": "A-find",
+   "lang": "zh",
+   "query": "我们是做项目管理的，帮我找竞品",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "描述自家产品找竞品"
+  },
+  {
+   "id": "I10",
+   "scenario": "pm",
+   "kind": "A-find",
+   "lang": "en",
+   "query": "We build project management software. Who are our competitors?",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "English, describe own product"
+  },
+  {
+   "id": "I11",
+   "scenario": "pm",
+   "kind": "A-similar",
+   "lang": "zh",
+   "query": "有哪些和Teambition类似的产品？",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "用一个参照产品找同类"
+  },
+  {
+   "id": "I12",
+   "scenario": "pm",
+   "kind": "B-pricing",
+   "lang": "zh",
+   "query": "查一下PingCode、Tower的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "PingCode",
+    "Tower"
+   ],
+   "note": "点名查定价（国内品牌）"
+  },
+  {
+   "id": "I13",
+   "scenario": "pm",
+   "kind": "B-pricing",
+   "lang": "en",
+   "query": "Compare Asana and ClickUp pricing",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Asana",
+    "ClickUp"
+   ],
+   "note": "named, pricing (global brands)"
+  },
+  {
+   "id": "I14",
+   "scenario": "pm",
+   "kind": "B-mixed",
+   "lang": "zh",
+   "query": "我们做项目管理，竞品有哪些？帮我看看其中Monday.com的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Monday.com"
+   ],
+   "note": "既问竞品又点名 → 只查点名的（你的边界规则）"
+  },
+  {
+   "id": "I15",
+   "scenario": "pm",
+   "kind": "B-basic",
+   "lang": "zh",
+   "query": "Teambition和Asana的基本信息",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Teambition",
+    "Asana"
+   ],
+   "note": "中外混合，基本信息"
+  },
+  {
+   "id": "I16",
+   "scenario": "pm",
+   "kind": "B-news",
+   "lang": "zh",
+   "query": "ClickUp最近怎么样",
+   "expected_type": "timeframe",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "ClickUp"
+   ],
+   "note": "近期动态（属于知道竞品的分支）"
+  },
+  {
+   "id": "I17",
+   "scenario": "crm",
+   "kind": "A-find",
+   "lang": "zh",
+   "query": "我们是做CRM 客户管理的，帮我找竞品",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "描述自家产品找竞品"
+  },
+  {
+   "id": "I18",
+   "scenario": "crm",
+   "kind": "A-find",
+   "lang": "en",
+   "query": "We build CRM software. Who are our competitors?",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "English, describe own product"
+  },
+  {
+   "id": "I19",
+   "scenario": "crm",
+   "kind": "A-similar",
+   "lang": "zh",
+   "query": "有哪些和纷享销客类似的产品？",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "用一个参照产品找同类"
+  },
+  {
+   "id": "I20",
+   "scenario": "crm",
+   "kind": "B-pricing",
+   "lang": "zh",
+   "query": "查一下销售易、销帮帮的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "销售易",
+    "销帮帮"
+   ],
+   "note": "点名查定价（国内品牌）"
+  },
+  {
+   "id": "I21",
+   "scenario": "crm",
+   "kind": "B-pricing",
+   "lang": "en",
+   "query": "Compare Salesforce and HubSpot pricing",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Salesforce",
+    "HubSpot"
+   ],
+   "note": "named, pricing (global brands)"
+  },
+  {
+   "id": "I22",
+   "scenario": "crm",
+   "kind": "B-mixed",
+   "lang": "zh",
+   "query": "我们做CRM 客户管理，竞品有哪些？帮我看看其中Pipedrive的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Pipedrive"
+   ],
+   "note": "既问竞品又点名 → 只查点名的（你的边界规则）"
+  },
+  {
+   "id": "I23",
+   "scenario": "crm",
+   "kind": "B-basic",
+   "lang": "zh",
+   "query": "纷享销客和Salesforce的基本信息",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "纷享销客",
+    "Salesforce"
+   ],
+   "note": "中外混合，基本信息"
+  },
+  {
+   "id": "I24",
+   "scenario": "crm",
+   "kind": "B-news",
+   "lang": "zh",
+   "query": "HubSpot最近怎么样",
+   "expected_type": "timeframe",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "HubSpot"
+   ],
+   "note": "近期动态（属于知道竞品的分支）"
+  },
+  {
+   "id": "I25",
+   "scenario": "support",
+   "kind": "A-find",
+   "lang": "zh",
+   "query": "我们是做在线客服系统的，帮我找竞品",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "描述自家产品找竞品"
+  },
+  {
+   "id": "I26",
+   "scenario": "support",
+   "kind": "A-find",
+   "lang": "en",
+   "query": "We build customer support software software. Who are our competitors?",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "English, describe own product"
+  },
+  {
+   "id": "I27",
+   "scenario": "support",
+   "kind": "A-similar",
+   "lang": "zh",
+   "query": "有哪些和智齿科技类似的产品？",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "用一个参照产品找同类"
+  },
+  {
+   "id": "I28",
+   "scenario": "support",
+   "kind": "B-pricing",
+   "lang": "zh",
+   "query": "查一下Udesk、美洽的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Udesk",
+    "美洽"
+   ],
+   "note": "点名查定价（国内品牌）"
+  },
+  {
+   "id": "I29",
+   "scenario": "support",
+   "kind": "B-pricing",
+   "lang": "en",
+   "query": "Compare Zendesk and Intercom pricing",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Zendesk",
+    "Intercom"
+   ],
+   "note": "named, pricing (global brands)"
+  },
+  {
+   "id": "I30",
+   "scenario": "support",
+   "kind": "B-mixed",
+   "lang": "zh",
+   "query": "我们做在线客服系统，竞品有哪些？帮我看看其中Freshdesk的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Freshdesk"
+   ],
+   "note": "既问竞品又点名 → 只查点名的（你的边界规则）"
+  },
+  {
+   "id": "I31",
+   "scenario": "support",
+   "kind": "B-basic",
+   "lang": "zh",
+   "query": "智齿科技和Zendesk的基本信息",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "智齿科技",
+    "Zendesk"
+   ],
+   "note": "中外混合，基本信息"
+  },
+  {
+   "id": "I32",
+   "scenario": "support",
+   "kind": "B-news",
+   "lang": "zh",
+   "query": "Intercom最近怎么样",
+   "expected_type": "timeframe",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Intercom"
+   ],
+   "note": "近期动态（属于知道竞品的分支）"
+  },
+  {
+   "id": "I33",
+   "scenario": "forms",
+   "kind": "A-find",
+   "lang": "zh",
+   "query": "我们是做在线表单问卷的，帮我找竞品",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "描述自家产品找竞品"
+  },
+  {
+   "id": "I34",
+   "scenario": "forms",
+   "kind": "A-find",
+   "lang": "en",
+   "query": "We build online forms and surveys software. Who are our competitors?",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "English, describe own product"
+  },
+  {
+   "id": "I35",
+   "scenario": "forms",
+   "kind": "A-similar",
+   "lang": "zh",
+   "query": "有哪些和金数据类似的产品？",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "用一个参照产品找同类"
+  },
+  {
+   "id": "I36",
+   "scenario": "forms",
+   "kind": "B-pricing",
+   "lang": "zh",
+   "query": "查一下问卷星、腾讯问卷的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "问卷星",
+    "腾讯问卷"
+   ],
+   "note": "点名查定价（国内品牌）"
+  },
+  {
+   "id": "I37",
+   "scenario": "forms",
+   "kind": "B-pricing",
+   "lang": "en",
+   "query": "Compare Typeform and Jotform pricing",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Typeform",
+    "Jotform"
+   ],
+   "note": "named, pricing (global brands)"
+  },
+  {
+   "id": "I38",
+   "scenario": "forms",
+   "kind": "B-mixed",
+   "lang": "zh",
+   "query": "我们做在线表单问卷，竞品有哪些？帮我看看其中SurveyMonkey的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "SurveyMonkey"
+   ],
+   "note": "既问竞品又点名 → 只查点名的（你的边界规则）"
+  },
+  {
+   "id": "I39",
+   "scenario": "forms",
+   "kind": "B-basic",
+   "lang": "zh",
+   "query": "金数据和Typeform的基本信息",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "金数据",
+    "Typeform"
+   ],
+   "note": "中外混合，基本信息"
+  },
+  {
+   "id": "I40",
+   "scenario": "forms",
+   "kind": "B-news",
+   "lang": "zh",
+   "query": "Jotform最近怎么样",
+   "expected_type": "timeframe",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Jotform"
+   ],
+   "note": "近期动态（属于知道竞品的分支）"
+  },
+  {
+   "id": "I41",
+   "scenario": "meeting",
+   "kind": "A-find",
+   "lang": "zh",
+   "query": "我们是做视频会议的，帮我找竞品",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "描述自家产品找竞品"
+  },
+  {
+   "id": "I42",
+   "scenario": "meeting",
+   "kind": "A-find",
+   "lang": "en",
+   "query": "We build video conferencing software. Who are our competitors?",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "English, describe own product"
+  },
+  {
+   "id": "I43",
+   "scenario": "meeting",
+   "kind": "A-similar",
+   "lang": "zh",
+   "query": "有哪些和腾讯会议类似的产品？",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "用一个参照产品找同类"
+  },
+  {
+   "id": "I44",
+   "scenario": "meeting",
+   "kind": "B-pricing",
+   "lang": "zh",
+   "query": "查一下小鱼易连、钉钉的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "小鱼易连",
+    "钉钉"
+   ],
+   "note": "点名查定价（国内品牌）"
+  },
+  {
+   "id": "I45",
+   "scenario": "meeting",
+   "kind": "B-pricing",
+   "lang": "en",
+   "query": "Compare Zoom and Webex pricing",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Zoom",
+    "Webex"
+   ],
+   "note": "named, pricing (global brands)"
+  },
+  {
+   "id": "I46",
+   "scenario": "meeting",
+   "kind": "B-mixed",
+   "lang": "zh",
+   "query": "我们做视频会议，竞品有哪些？帮我看看其中Google Meet的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Google Meet"
+   ],
+   "note": "既问竞品又点名 → 只查点名的（你的边界规则）"
+  },
+  {
+   "id": "I47",
+   "scenario": "meeting",
+   "kind": "B-basic",
+   "lang": "zh",
+   "query": "腾讯会议和Zoom的基本信息",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "腾讯会议",
+    "Zoom"
+   ],
+   "note": "中外混合，基本信息"
+  },
+  {
+   "id": "I48",
+   "scenario": "meeting",
+   "kind": "B-news",
+   "lang": "zh",
+   "query": "Webex最近怎么样",
+   "expected_type": "timeframe",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Webex"
+   ],
+   "note": "近期动态（属于知道竞品的分支）"
+  },
+  {
+   "id": "I49",
+   "scenario": "design",
+   "kind": "A-find",
+   "lang": "zh",
+   "query": "我们是做在线设计协作的，帮我找竞品",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "描述自家产品找竞品"
+  },
+  {
+   "id": "I50",
+   "scenario": "design",
+   "kind": "A-find",
+   "lang": "en",
+   "query": "We build collaborative design software. Who are our competitors?",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "English, describe own product"
+  },
+  {
+   "id": "I51",
+   "scenario": "design",
+   "kind": "A-similar",
+   "lang": "zh",
+   "query": "有哪些和即时设计类似的产品？",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "用一个参照产品找同类"
+  },
+  {
+   "id": "I52",
+   "scenario": "design",
+   "kind": "B-pricing",
+   "lang": "zh",
+   "query": "查一下MasterGo、墨刀的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "MasterGo",
+    "墨刀"
+   ],
+   "note": "点名查定价（国内品牌）"
+  },
+  {
+   "id": "I53",
+   "scenario": "design",
+   "kind": "B-pricing",
+   "lang": "en",
+   "query": "Compare Figma and Canva pricing",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Figma",
+    "Canva"
+   ],
+   "note": "named, pricing (global brands)"
+  },
+  {
+   "id": "I54",
+   "scenario": "design",
+   "kind": "B-mixed",
+   "lang": "zh",
+   "query": "我们做在线设计协作，竞品有哪些？帮我看看其中Sketch的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Sketch"
+   ],
+   "note": "既问竞品又点名 → 只查点名的（你的边界规则）"
+  },
+  {
+   "id": "I55",
+   "scenario": "design",
+   "kind": "B-basic",
+   "lang": "zh",
+   "query": "即时设计和Figma的基本信息",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "即时设计",
+    "Figma"
+   ],
+   "note": "中外混合，基本信息"
+  },
+  {
+   "id": "I56",
+   "scenario": "design",
+   "kind": "B-news",
+   "lang": "zh",
+   "query": "Canva最近怎么样",
+   "expected_type": "timeframe",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Canva"
+   ],
+   "note": "近期动态（属于知道竞品的分支）"
+  },
+  {
+   "id": "I57",
+   "scenario": "hr",
+   "kind": "A-find",
+   "lang": "zh",
+   "query": "我们是做人力资源 SaaS的，帮我找竞品",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "描述自家产品找竞品"
+  },
+  {
+   "id": "I58",
+   "scenario": "hr",
+   "kind": "A-find",
+   "lang": "en",
+   "query": "We build HR software software. Who are our competitors?",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "English, describe own product"
+  },
+  {
+   "id": "I59",
+   "scenario": "hr",
+   "kind": "A-similar",
+   "lang": "zh",
+   "query": "有哪些和北森类似的产品？",
+   "expected_type": "own",
+   "expected_branch": "A",
+   "expected_competitors": null,
+   "note": "用一个参照产品找同类"
+  },
+  {
+   "id": "I60",
+   "scenario": "hr",
+   "kind": "B-pricing",
+   "lang": "zh",
+   "query": "查一下Moka、薪人薪事的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Moka",
+    "薪人薪事"
+   ],
+   "note": "点名查定价（国内品牌）"
+  },
+  {
+   "id": "I61",
+   "scenario": "hr",
+   "kind": "B-pricing",
+   "lang": "en",
+   "query": "Compare Workday and BambooHR pricing",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Workday",
+    "BambooHR"
+   ],
+   "note": "named, pricing (global brands)"
+  },
+  {
+   "id": "I62",
+   "scenario": "hr",
+   "kind": "B-mixed",
+   "lang": "zh",
+   "query": "我们做人力资源 SaaS，竞品有哪些？帮我看看其中Rippling的定价",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "Rippling"
+   ],
+   "note": "既问竞品又点名 → 只查点名的（你的边界规则）"
+  },
+  {
+   "id": "I63",
+   "scenario": "hr",
+   "kind": "B-basic",
+   "lang": "zh",
+   "query": "北森和Workday的基本信息",
+   "expected_type": "named",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "北森",
+    "Workday"
+   ],
+   "note": "中外混合，基本信息"
+  },
+  {
+   "id": "I64",
+   "scenario": "hr",
+   "kind": "B-news",
+   "lang": "zh",
+   "query": "BambooHR最近怎么样",
+   "expected_type": "timeframe",
+   "expected_branch": "B",
+   "expected_competitors": [
+    "BambooHR"
+   ],
+   "note": "近期动态（属于知道竞品的分支）"
+  }
+ ]
+}

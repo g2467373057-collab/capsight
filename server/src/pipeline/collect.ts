@@ -127,6 +127,9 @@ export function pickOfficialSite(name: string, hits: SearchHit[], hints?: SiteHi
 /** Is this host a rejected look-alike (directory, download site) rather than the official site? */
 export const isAggregator = (host: string) => AGGREGATOR.test(host)
 
+/** Never anyone's official site: directories, download portals, wikis, review and news sites (used to score evaluations). */
+export const isLookAlike = (host: string) => AGGREGATOR.test(host) || THIRD_PARTY.test(host)
+
 const isLatin = (s: string) => /^[\x20-\x7E]+$/.test(s.trim())
 
 /** Could this site be anyone's official site at all? (not a directory, review, wiki or news site) */
@@ -148,9 +151,16 @@ export function wikidataAgrees(website: string, name: string, hints: SiteHints):
   if (!host || !canBeOfficial(website)) return false
   if (!hints.domains.length) return true
   if (hostMatches(host, hints.domains)) return true
-  const label = squash(baseDomain(host).split('.')[0])
-  return [name, ...hints.aliases].map(squash).some((t) => t === label)
+  const base = baseDomain(host)
+  const label = squash(base.split('.')[0])
+  if (![name, ...hints.aliases].map(squash).some((t) => t === label)) return false
+  // Same brand word on another domain: trust it only on a generic ending or one the hints use.
+  // Wikidata matched the Hungarian company Intercom to intercom.hu while the product is intercom.com.
+  const tld = base.slice(base.indexOf('.') + 1)
+  const hinted = hints.domains.map((d) => { const b = baseDomain(d.replace(/^https?:\/\//, '').replace(/\/.*$/, '')); return b.slice(b.indexOf('.') + 1) })
+  return GENERIC_TLD.has(tld) || hinted.includes(tld)
 }
+const GENERIC_TLD = new Set(['com', 'io', 'so', 'ai', 'app', 'co', 'net', 'org', 'dev', 'cn', 'com.cn', 'tech', 'cloud'])
 
 /** Asks the model which domains the brand officially uses. Only a hint: every domain is checked against search results or the site itself. */
 export async function siteHints(llm: Llm | undefined, name: string, topic?: string): Promise<SiteHints> {
@@ -236,7 +246,9 @@ export const freshEnough = (date: string | undefined, days = 365) => {
 }
 
 /** Does the text state a price? ($9, ¥360, 360元, €10/month, per user per month …) */
-export const hasPrice = (text: string) => /[$€£¥￥]\s?\d|\d+(\.\d+)?\s?(元|美元|usd|eur|\/\s?(月|年|mo|month|user|seat))|per (user|seat|member|month)|每(人|用户|席位|月)/i.test(text)
+// A real, non-zero amount must be on the page: "per month" or "/mo" alone is what a JavaScript-rendered pricing page shows before its numbers load.
+export const hasPrice = (text: string) =>
+  /[$€£¥￥]\s?[1-9]|[1-9][\d,]*(\.\d+)?\s?(元|美元)|\b[1-9][\d,]*(\.\d+)?\s?(usd|eur|rmb|sgd)\b|\b[1-9][\d,]*(\.\d+)?\s?(\/|per|a)\s?(月|年|mo|month|user|seat|member)|[1-9][\d,]*(\.\d+)?\s?元?\s?\/?\s?每(人|用户|席位|月|年)/i.test(text)
 
 /** Candidate official URLs for a page type: matching links first, then common paths. */
 export function candidateUrls(b: Bundle, kinds: (keyof typeof PAGE_HINTS)[], withGuesses: boolean): string[] {

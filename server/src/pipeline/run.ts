@@ -1,4 +1,5 @@
 import type { Llm } from '../llm/llm.ts'
+import { baseDomain, hostOf } from '../sources/net.ts'
 import type { Fetcher } from '../sources/fetcher.ts'
 import type { SearchStack } from '../sources/search.ts'
 import type { Social } from '../sources/social.ts'
@@ -203,9 +204,15 @@ async function requery(deps: RunDeps, cdeps: CollectDeps, b: Bundle, failed: Che
       const kwZh: Record<string, string> = { overview: '公司介绍 关于我们', pricing: '定价 套餐', features: '功能', region: '总部', contact: '联系方式' }
       const q = field === 'pricing' ? `${pricingQuery(b.name, lang)}${b.domain ? ` site:${b.domain}` : ''}` : `${b.name} ${lang === 'zh' ? kwZh[field] : kw[field]}${b.domain ? ` site:${b.domain}` : ''}`
       const hits = await cdeps.search.web(q, { lang, num: 5 })
+      // "site:" is not honoured by every search engine: only pages on the official domain count as official, the rest are third-party
+      const base = b.domain ? baseDomain(b.domain) : ''
       for (const h of hits.slice(0, 3)) {
-        const doc = await fetchSiteDoc(cdeps, b, h.url)
-        if (doc) fresh.push(doc)
+        const host = hostOf(h.url)
+        const doc = await fetchSiteDoc(cdeps, b, h.url, base && host && baseDomain(host) === base ? 'site' : 'web')
+        if (doc) {
+          if (doc.kind === 'web' && !doc.date && h.date) doc.date = h.date.slice(0, 10)
+          fresh.push(doc)
+        }
       }
     }
     // re-extract from official pages (old + new), not from the snippets that misled us

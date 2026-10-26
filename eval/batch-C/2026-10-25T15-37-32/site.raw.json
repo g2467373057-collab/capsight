@@ -1,0 +1,506 @@
+[
+ {
+  "id": "docs-1",
+  "lang": "zh",
+  "domain": "shimo.im",
+  "method": "wikidata",
+  "ms": 755
+ },
+ {
+  "id": "docs-2",
+  "lang": "zh",
+  "domain": "docs.qq.com",
+  "method": "wikidata",
+  "ms": 782
+ },
+ {
+  "id": "docs-5",
+  "lang": "en",
+  "domain": "coda.io",
+  "method": "search_hint",
+  "ms": 780
+ },
+ {
+  "id": "docs-4",
+  "lang": "en",
+  "domain": "notion.com",
+  "method": "wikidata",
+  "ms": 924
+ },
+ {
+  "id": "docs-6",
+  "lang": "en",
+  "domain": "atlassian.com",
+  "method": "wikidata",
+  "ms": 5213
+ },
+ {
+  "id": "pm-1",
+  "lang": "zh",
+  "domain": "teambition.com",
+  "method": "search_hint",
+  "ms": 5241
+ },
+ {
+  "id": "pm-3",
+  "lang": "zh",
+  "domain": "",
+  "method": "",
+  "ms": 2772
+ },
+ {
+  "id": "pm-4",
+  "lang": "en",
+  "domain": "asana.com",
+  "method": "wikidata",
+  "ms": 885
+ },
+ {
+  "id": "pm-5",
+  "lang": "en",
+  "domain": "clickup.com",
+  "method": "search_hint",
+  "ms": 827
+ },
+ {
+  "id": "pm-2",
+  "lang": "zh",
+  "domain": "pingcode.com",
+  "method": "search_hint",
+  "ms": 4852
+ },
+ {
+  "id": "pm-6",
+  "lang": "en",
+  "domain": "monday.com",
+  "method": "wikidata",
+  "ms": 1045
+ },
+ {
+  "id": "crm-1",
+  "lang": "zh",
+  "domain": "fxiaoke.com",
+  "method": "search_hint",
+  "ms": 939
+ },
+ {
+  "id": "crm-3",
+  "lang": "zh",
+  "domain": "",
+  "method": "",
+  "ms": 6188
+ },
+ {
+  "id": "docs-3",
+  "lang": "zh",
+  "domain": "yuque.com",
+  "method": "search_hint",
+  "ms": 19333
+ },
+ {
+  "id": "crm-4",
+  "lang": "en",
+  "domain": "salesforce.com",
+  "method": "wikidata",
+  "ms": 1007
+ },
+ {
+  "id": "crm-5",
+  "lang": "en",
+  "domain": "hubspot.com",
+  "method": "wikidata",
+  "ms": 718
+ },
+ {
+  "id": "crm-2",
+  "lang": "zh",
+  "domain": "xiaoshouyi.com",
+  "method": "search_hint",
+  "ms": 8277
+ },
+ {
+  "id": "crm-6",
+  "lang": "en",
+  "domain": "pipedrive.com",
+  "method": "search_hint",
+  "ms": 3104
+ },
+ {
+  "id": "support-3",
+  "lang": "zh",
+  "domain": "meiqia.com",
+  "method": "search_hint",
+  "ms": 4614
+ },
+ {
+  "id": "support-4",
+  "lang": "en",
+  "domain": "zendesk.com",
+  "method": "wikidata",
+  "ms": 805
+ },
+ {
+  "id": "support-2",
+  "lang": "zh",
+  "domain": "udesk.cn",
+  "method": "hint_verified",
+  "ms": 11970
+ },
+ {
+  "id": "support-6",
+  "lang": "en",
+  "domain": "freshworks.com",
+  "method": "search_hint",
+  "ms": 1167
+ },
+ {
+  "id": "support-5",
+  "lang": "en",
+  "domain": "intercom.hu",
+  "method": "wikidata",
+  "ms": 11625
+ },
+ {
+  "id": "forms-1",
+  "lang": "zh",
+  "domain": "jinshuju.net",
+  "method": "search_hint",
+  "ms": 6532
+ },
+ {
+  "id": "support-1",
+  "lang": "zh",
+  "domain": "zhichi.com",
+  "method": "search_hint",
+  "ms": 22214
+ },
+ {
+  "id": "forms-4",
+  "lang": "en",
+  "domain": "typeform.com",
+  "method": "search_hint",
+  "ms": 764
+ },
+ {
+  "id": "forms-5",
+  "lang": "en",
+  "domain": "jotform.com",
+  "method": "search_hint",
+  "ms": 3527
+ },
+ {
+  "id": "forms-2",
+  "lang": "zh",
+  "domain": "wjx.cn",
+  "method": "search_hint",
+  "ms": 7594
+ },
+ {
+  "id": "forms-6",
+  "lang": "en",
+  "domain": "surveymonkey.com",
+  "method": "search_hint",
+  "ms": 3790
+ },
+ {
+  "id": "meeting-1",
+  "lang": "zh",
+  "domain": "meeting.tencent.com",
+  "method": "search_hint",
+  "ms": 4991
+ },
+ {
+  "id": "meeting-3",
+  "lang": "zh",
+  "domain": "dingtalk.com",
+  "method": "wikidata",
+  "ms": 952
+ },
+ {
+  "id": "meeting-4",
+  "lang": "en",
+  "domain": "zoom.com",
+  "method": "wikidata",
+  "ms": 922
+ },
+ {
+  "id": "forms-3",
+  "lang": "zh",
+  "domain": "wj.qq.com",
+  "method": "search_hint",
+  "ms": 14461
+ },
+ {
+  "id": "meeting-6",
+  "lang": "en",
+  "domain": "workspace.google.com",
+  "method": "wikidata",
+  "ms": 2982
+ },
+ {
+  "id": "meeting-5",
+  "lang": "en",
+  "domain": "webex.com",
+  "method": "wikidata",
+  "ms": 7033
+ },
+ {
+  "id": "design-2",
+  "lang": "zh",
+  "domain": "mastergo.com",
+  "method": "search_hint",
+  "ms": 7690
+ },
+ {
+  "id": "design-1",
+  "lang": "zh",
+  "domain": "js.design",
+  "method": "hint_verified",
+  "ms": 16101
+ },
+ {
+  "id": "design-4",
+  "lang": "en",
+  "domain": "figma.com",
+  "method": "wikidata",
+  "ms": 953
+ },
+ {
+  "id": "design-5",
+  "lang": "en",
+  "domain": "canva.com",
+  "method": "wikidata",
+  "ms": 1043
+ },
+ {
+  "id": "design-6",
+  "lang": "en",
+  "domain": "sketch.com",
+  "method": "search_hint",
+  "ms": 1216
+ },
+ {
+  "id": "design-3",
+  "lang": "zh",
+  "domain": "modao.cc",
+  "method": "hint_verified",
+  "ms": 8148
+ },
+ {
+  "id": "meeting-2",
+  "lang": "zh",
+  "domain": "xylink.com",
+  "method": "search_domain",
+  "ms": 27897
+ },
+ {
+  "id": "hr-2",
+  "lang": "zh",
+  "domain": "mokahr.com",
+  "method": "search_hint",
+  "ms": 4648
+ },
+ {
+  "id": "hr-3",
+  "lang": "zh",
+  "domain": "xinrenxinshi.com",
+  "method": "search_domain",
+  "ms": 6114
+ },
+ {
+  "id": "hr-1",
+  "lang": "zh",
+  "domain": "beisen.com",
+  "method": "search_hint",
+  "ms": 7520
+ },
+ {
+  "id": "hr-4",
+  "lang": "en",
+  "domain": "workday.com",
+  "method": "search_hint",
+  "ms": 2918
+ },
+ {
+  "id": "docs-4",
+  "lang": "zh",
+  "domain": "notion.com",
+  "method": "wikidata",
+  "ms": 949
+ },
+ {
+  "id": "docs-5",
+  "lang": "zh",
+  "domain": "coda.io",
+  "method": "search_hint",
+  "ms": 856
+ },
+ {
+  "id": "hr-5",
+  "lang": "en",
+  "domain": "bamboohr.com",
+  "method": "search_hint",
+  "ms": 3004
+ },
+ {
+  "id": "hr-6",
+  "lang": "en",
+  "domain": "rippling.com",
+  "method": "search_hint",
+  "ms": 3689
+ },
+ {
+  "id": "pm-5",
+  "lang": "zh",
+  "domain": "clickup.com",
+  "method": "search_hint",
+  "ms": 728
+ },
+ {
+  "id": "docs-6",
+  "lang": "zh",
+  "domain": "atlassian.com",
+  "method": "wikidata",
+  "ms": 2786
+ },
+ {
+  "id": "crm-4",
+  "lang": "zh",
+  "domain": "salesforce.com",
+  "method": "wikidata",
+  "ms": 625
+ },
+ {
+  "id": "pm-4",
+  "lang": "zh",
+  "domain": "asana.com",
+  "method": "wikidata",
+  "ms": 2699
+ },
+ {
+  "id": "pm-6",
+  "lang": "zh",
+  "domain": "monday.com",
+  "method": "wikidata",
+  "ms": 1188
+ },
+ {
+  "id": "crm-5",
+  "lang": "zh",
+  "domain": "hubspot.com",
+  "method": "wikidata",
+  "ms": 950
+ },
+ {
+  "id": "support-4",
+  "lang": "zh",
+  "domain": "zendesk.com",
+  "method": "wikidata",
+  "ms": 1119
+ },
+ {
+  "id": "crm-6",
+  "lang": "zh",
+  "domain": "pipedrive.com",
+  "method": "search_hint",
+  "ms": 1578
+ },
+ {
+  "id": "forms-4",
+  "lang": "zh",
+  "domain": "typeform.com",
+  "method": "search_hint",
+  "ms": 866
+ },
+ {
+  "id": "support-6",
+  "lang": "zh",
+  "domain": "freshworks.com",
+  "method": "search_hint",
+  "ms": 1123
+ },
+ {
+  "id": "forms-5",
+  "lang": "zh",
+  "domain": "jotform.com",
+  "method": "search_hint",
+  "ms": 1421
+ },
+ {
+  "id": "forms-6",
+  "lang": "zh",
+  "domain": "surveymonkey.com",
+  "method": "search_hint",
+  "ms": 1439
+ },
+ {
+  "id": "meeting-4",
+  "lang": "zh",
+  "domain": "zoom.com",
+  "method": "wikidata",
+  "ms": 1029
+ },
+ {
+  "id": "meeting-5",
+  "lang": "zh",
+  "domain": "webex.com",
+  "method": "wikidata",
+  "ms": 1107
+ },
+ {
+  "id": "meeting-6",
+  "lang": "zh",
+  "domain": "workspace.google.com",
+  "method": "wikidata",
+  "ms": 825
+ },
+ {
+  "id": "design-4",
+  "lang": "zh",
+  "domain": "figma.com",
+  "method": "wikidata",
+  "ms": 1261
+ },
+ {
+  "id": "design-5",
+  "lang": "zh",
+  "domain": "canva.com",
+  "method": "wikidata",
+  "ms": 997
+ },
+ {
+  "id": "design-6",
+  "lang": "zh",
+  "domain": "sketch.com",
+  "method": "search_hint",
+  "ms": 1501
+ },
+ {
+  "id": "hr-4",
+  "lang": "zh",
+  "domain": "workday.com",
+  "method": "search_hint",
+  "ms": 1490
+ },
+ {
+  "id": "hr-5",
+  "lang": "zh",
+  "domain": "bamboohr.com",
+  "method": "search_hint",
+  "ms": 1332
+ },
+ {
+  "id": "hr-6",
+  "lang": "zh",
+  "domain": "rippling.com",
+  "method": "search_hint",
+  "ms": 1426
+ },
+ {
+  "id": "support-5",
+  "lang": "zh",
+  "domain": "intercom.hu",
+  "method": "wikidata",
+  "ms": 11544
+ }
+]

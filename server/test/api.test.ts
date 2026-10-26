@@ -207,3 +207,21 @@ test('operator accounts in ADMIN_EMAILS skip the per-user daily limit', async ()
     s.app.server.close()
   }
 })
+
+test('admin dashboard: page views keep the path and a hashed visitor id only, and need a same-site origin', async () => {
+  const s = await boot()
+  try {
+    assert.equal((await s.call('POST', '/track', { path: 'studio', ref: 'https://www.google.com/search?q=x' })).status, 200)
+    assert.equal((await s.call('POST', '/track', { path: 'studio' })).status, 200)
+    assert.equal((await s.call('POST', '/track', { path: 'x' }, { Origin: 'https://evil.example' })).status, 403)
+    const rows = s.db.prepare('SELECT * FROM page_views').all() as { path: string; visitor: string; referrer: string | null; day: string }[]
+    assert.equal(rows.length, 2)
+    assert.equal(rows[0].path, 'studio')
+    assert.equal(rows[0].referrer, 'www.google.com')
+    assert.match(rows[0].visitor, /^[0-9a-f]{16}$/)
+    assert.equal(rows[0].visitor, rows[1].visitor) // same visitor, same day
+    assert.ok(!JSON.stringify(rows).includes('127.0.0.1')) // no raw IP stored
+  } finally {
+    s.app.server.close()
+  }
+})
